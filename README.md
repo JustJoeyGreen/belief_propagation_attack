@@ -67,10 +67,10 @@ Please don't. I'll update this once I've finished my PhD.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the University of Bristol Open Access Software Licence - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
 * Elisabeth Oswald for my PhD supervision
 * Arnab Roy for suggesting some of the graph reductions
-* [xkcd](https://xkcd.com/353/) getting through PhD life
+* [xkcd](https://xkcd.com/353/) for helping me remain sane through my PhD life
