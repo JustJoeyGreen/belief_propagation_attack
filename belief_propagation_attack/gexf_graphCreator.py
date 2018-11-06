@@ -501,9 +501,9 @@ def create_factor_graph_full_aes(number_of_traces, removed_nodes=None, key_sched
                     edges.append(('xt{}'.format(index), '_Xor_cm{}'.format(index)))
 
                     #  xtN = Xtimes(shift[N%16])
-                    which_round = get_round(i)
+                    which_round = get_round_from_number(i)
                     shift_number = shift[my_mod(i, 16)]
-                    s_index = pad_string_zeros(str(((get_round(i) - 1) * 16) + shift_number), 3)
+                    s_index = pad_string_zeros(str(((get_round_from_number(i) - 1) * 16) + shift_number), 3)
 
                     edges.append(('s{}{}'.format(s_index, t_index), '_Xtimes_xt{}'.format(index)))
                     edges.append(('s{}{}'.format(s_index, t_index), '_Xor_cm{}'.format(index)))
@@ -527,7 +527,7 @@ def create_factor_graph_full_aes(number_of_traces, removed_nodes=None, key_sched
         for i in range(1, 145, 16):
             # i = 1, 17, 33, ...
             i_index = pad_string_zeros(str(i))
-            which_round = get_round(i)
+            which_round = get_round_from_number(i)
 
             # Each column
             for j in range(i, i + 16, 4):
@@ -891,9 +891,9 @@ def create_factor_graph_full_aes_furious(number_of_traces, removed_nodes=None, k
                     edges.append(('xt{}'.format(index), '_Xor_cm{}'.format(index)))
 
                     #  xtN = Xtimes(shift[N%16])
-                    which_round = get_round(i)
+                    which_round = get_round_from_number(i)
                     shift_number = shift[my_mod(i, 16)]
-                    s_index = pad_string_zeros(str(((get_round(i) - 1) * 16) + shift_number), 3)
+                    s_index = pad_string_zeros(str(((get_round_from_number(i) - 1) * 16) + shift_number), 3)
 
                     edges.append(('s{}{}'.format(s_index, t_index), '_Xor_mc{}'.format(index)))
                     edges.append(('s{}{}'.format(s_index, t_index), '_Xor_cm{}'.format(index)))
@@ -918,7 +918,7 @@ def create_factor_graph_full_aes_furious(number_of_traces, removed_nodes=None, k
         for i in range(1, 145, 16):
             # i = 1, 17, 33, ...
             i_index = pad_string_zeros(str(i))
-            which_round = get_round(i)
+            which_round = get_round_from_number(i)
 
             # Each column
             for j in range(i, i + 16, 4):

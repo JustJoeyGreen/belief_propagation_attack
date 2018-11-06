@@ -29,7 +29,8 @@ from keras.models import load_model
 # Read Paths from PATH_FILE.txt
 with open("PATH_FILE.txt","r") as f:
     content = f.readlines()
-PATH_DICT = dict([i.replace('\n','').strip("=").split("=") for i in content if i[0] != '#'])
+PATH_DICT = dict([i.replace('\n','').strip("=").split("=")
+    for i in content if i[0] != '#'])
 
 # Temp Paths: Remove if unneeded
 PATH_TO_ELMO        = PATH_DICT['PATH_TO_ELMO']
@@ -43,12 +44,12 @@ TRACE_FOLDER = PATH_TO_TRACES + TRACE_NAME + '/'
 
 # Find Rounds of AES from TRACE_FILE
 r_of_aes = int(re.search('^.*_G(\d+)_.*', TRACE_NAME).group(1))
-# variable_dict = {'k': 48, 'sk': 8, 'xk': 2, 'p': 48, 't': 32, 's': 32, 'mc': 32, 'xt': 32, 'cm': 32, 'h': 24}
-variable_dict = {'k': 16 + (r_of_aes * 16), 'sk': (r_of_aes * 4), 'xk': r_of_aes,
-                 'p': 16 + (r_of_aes * 16), 't': 16 + (max(0, r_of_aes - 1) * 16),
-                 's': 16 + (max(0, r_of_aes - 1) * 16), 'mc': min(144, r_of_aes * 16),
-                 'xt': min(144, r_of_aes * 16), 'cm': min(144, r_of_aes * 16),
-                 'h': min(108, r_of_aes * 12)}
+variable_dict = {'k': 16 + (r_of_aes * 16), 'sk': (r_of_aes * 4),
+                'xk': r_of_aes, 'p': 16 + (r_of_aes * 16),
+                't': 16 + (max(0, r_of_aes - 1) * 16),
+                's': 16 + (max(0, r_of_aes - 1) * 16),
+                'mc': min(144, r_of_aes * 16),'xt': min(144, r_of_aes * 16),
+                'cm': min(144, r_of_aes * 16),'h': min(108, r_of_aes * 12)}
 
 # FOLDERS
 TIMEPOINTS_FOLDER   = TRACE_FOLDER + 'timepoints/'
@@ -68,9 +69,11 @@ OUTPUT_FOLDER       = 'output/'
 MODEL_FOLDER        = 'models/'
 NEURAL_MODEL_FOLDER = TRACE_FOLDER + 'models/'
 
-ALL_DIRECTORIES     = [TRACE_FOLDER, TIMEPOINTS_FOLDER, POWERVALUES_FOLDER, LDA_FOLDER, ELASTIC_FOLDER,
-                       COEFFICIENT_FOLDER, PLAINTEXT_FOLDER, TRACEDATA_FOLDER, REALVALUES_FOLDER, TENSORFLOW_FOLDER,
-                       FEATURECOLUMN_FOLDER, LABEL_FOLDER, KEY_FOLDER]
+ALL_DIRECTORIES     = [TRACE_FOLDER, TIMEPOINTS_FOLDER, POWERVALUES_FOLDER,
+                        LDA_FOLDER, ELASTIC_FOLDER, COEFFICIENT_FOLDER,
+                        PLAINTEXT_FOLDER, TRACEDATA_FOLDER, REALVALUES_FOLDER,
+                        TENSORFLOW_FOLDER, FEATURECOLUMN_FOLDER, LABEL_FOLDER,
+                        KEY_FOLDER]
 
 # FILES
 MUSIGMA_FILEPATH            = TRACE_FOLDER + 'musigma.dict'
@@ -85,8 +88,11 @@ METADATA_FILEPATH           = TRACE_FOLDER + 'metadata'
 OUTPUT_FILE_PREFIX          = OUTPUT_FOLDER + 'ranks'
 
 
-CNN_ASCAD_FILEPATH          = NEURAL_MODEL_FOLDER + 'cnn_best_ascad_desync0_epochs75_classes256_batchsize200.h5'
-MLP_ASCAD_FILEPATH          = NEURAL_MODEL_FOLDER + 'mlp_best_ascad_desync0_node200_layernb6_epochs200_classes256_batchsize100.h5'
+CNN_ASCAD_FILEPATH          = (NEURAL_MODEL_FOLDER +
+    'cnn_best_ascad_desync0_epochs75_classes256_batchsize200.h5')
+MLP_ASCAD_FILEPATH          = (NEURAL_MODEL_FOLDER +
+    'mlp_best_ascad_desync0_node200_layernb6_epochs200_' +
+    'classes256_batchsize100.h5')
 
 TESTING_MODELS_CSV          = TRACE_FOLDER + 'testing_models.csv'
 
@@ -213,25 +219,31 @@ def my_mult2(v1, v2, v3):
 #################################################################
 
 def string_contains(string, substr):
+    """Returns true if substr is a substring of string"""
     return substr in string
 
 def check_file_exists(filename):
+    """Checks if filename is a file using os package"""
     return os.path.isfile(filename)
 
 def get_elmo_leakage_value(value, instruction_category):
+    """Return the elmo leakage value given a value and an instruction category,
+    see ELMO for more details"""
     if instruction_category < 1 or instruction_category > 5:
-        print "ERROR: instruction_category must be with 1 and 5 (currently {})".format(instruction_category)
+        print "ERROR: instruction_category must be with 1 and 5 (currently \
+            {})".format(instruction_category)
         raise ValueError
     bin_rep = pad_string_zeros(bin(value).replace('0b',''), 8)
     # print "Value {} -> {}".format(valu
     total = 0
     for i, bit in enumerate(bin_rep):
         if bit == '1':
-            # total += operand2_leaks[i][instruction_category]
-            total += operand2_leaks[7-i][instruction_category-1] # Categories mapped 1 to 5 -> 0 to 4
+            # Categories mapped 1 to 5 -> 0 to 4
+            total += operand2_leaks[7-i][instruction_category-1]
     return total
 
 def clear_screen(n = 50):
+    """Clears the screen, make the terminal nice and neat"""
     s1 = "* " * 80
     s2 = " " + s1
     for i in range (n):
@@ -240,6 +252,8 @@ def clear_screen(n = 50):
     print_new_line()
 
 def pad_string_zeros(string, pad_length = 3):
+    """Pad the string with leading zeros, used for compatibility
+    with variable node names"""
     if type(string) != str:
         string = str(string)
     while len(string) < pad_length:
@@ -247,6 +261,7 @@ def pad_string_zeros(string, pad_length = 3):
     return string
 
 def xtimes(int x, int b = 8):
+    """Returns xtimes(x) in base b"""
     if (x & (1<<(b-1))) != 0:
         if b == 8:
             return ((x & ~(1<<(b-1))) << 1) ^ 27
@@ -255,6 +270,7 @@ def xtimes(int x, int b = 8):
     return x << 1
 
 def inv_xtimes(int x, int b = 8):
+    """Returns inverse xtimes(x) in base b"""
     if x % 2:
         if b == 8:
             return ((x ^ 27) >> 1) | (1 << 7)
@@ -265,11 +281,14 @@ def inv_xtimes(int x, int b = 8):
 
 
 def get_hw(n):
+    """Returns the Hamming Weight of a value"""
     return bin(n).count("1")
 
 get_hw_of_vector = np.vectorize(get_hw)
 
-def big_endian_to_int(byte_array, number_of_bytes, signed_int = False, float_coding = False):
+def big_endian_to_int(byte_array, number_of_bytes, signed_int = False,
+    float_coding = False):
+    """Converts a big endian byte array into an int"""
     int_val = 0
     for b in range(number_of_bytes-1, -1, -1):
         # # TODO
@@ -284,17 +303,16 @@ def big_endian_to_int(byte_array, number_of_bytes, signed_int = False, float_cod
         return struct.unpack('>f', s)[0]
     return int_val
 
-def get_round(int n):
-    return ((n-1) // 16) + 1
-
 def my_mod(int i, int n = 16):
+    """Returns my mod function, tweaked over standard mod"""
     return ((i-1)%n)+1
 
 # noinspection PyUnresolvedReferences
 def gaussian_probability_density(float x, float mu, float sigma):
+    """Returns probability density function using x, mean mu, and standard
+    deviation sigma"""
     cdef float s2, r, t, q, w, a, b, out
     if sigma > 0:
-        # return (1/(np.sqrt(2*np.pi*(sigma**2)))) * (np.exp(-1*((x - mu)**2)/(2 * sigma**2)))
         s2 = sigma**2
         r = (x - mu)**2
         t = (-1*r)/(2 * s2)
@@ -313,13 +331,16 @@ def gaussian_probability_density(float x, float mu, float sigma):
             return 0.0
 
 def strip_off_trace(var):
+    """Strips off the trace part of the variable string"""
     return var.split('-')[0]
 
 def split_eval(string, split_val):
+    """Splits and evals a string into a tuple"""
     a, b = string.split(split_val)
     return eval(a), eval(b)
 
 def get_detrimental_traces(v):
+    """Return the traces that perform detrimentally from a list of ranks"""
     # Assume first trace is good
     out = list()
     for i, val in enumerate(v):
@@ -327,7 +348,8 @@ def get_detrimental_traces(v):
             out.append(i)
     return out
 
-def smallest_power_of_two(x):
+def smallest_power_of_two(int x):
+    """Returns the smallest power of two beneath value x"""
     for i in range(1000):
         if (2**-i) < x:
             return -i
@@ -335,6 +357,7 @@ def smallest_power_of_two(x):
     raise ValueError
 
 def get_round_of_variable(var):
+    """Returns round from variable name"""
     var_name, var_number, var_trace = split_variable_name(var)
     if var_name != 'h':
         return get_round_from_number(var_number)
@@ -342,11 +365,15 @@ def get_round_of_variable(var):
         print "TODO: Handle getting round of h variables"
         exit(1)
 
-def get_round_from_number(var_number):
+def get_round_from_number(int var_number):
+    """Returns round from number"""
     return ((var_number - 1) // 16) + 1
 
 # The function to match real power value to probability distribution
-def real_value_match(var, power_value, normalise = True, use_lda = False, use_nn = False, trace_range = 200):
+def real_value_match(var, power_value, normalise = True, use_lda = False,
+    use_nn = False, trace_range = 200):
+    """Matches the real power value to a probability distribution,
+    using a specific method (LDA, NN, or standard Templates)"""
     # Check for power_value being None
     # print "Variable {}, Power Value {}".format(var, power_value)
     if np.any(np.isnan(power_value)):
@@ -359,11 +386,14 @@ def real_value_match(var, power_value, normalise = True, use_lda = False, use_nn
         # exit()
         var_name, var_number, _ = split_variable_name(var)
         # Load LDA file
-        lda_file = pickle.load(open('{}{}_{}_{}.p'.format(LDA_FOLDER, trace_range, var_name, var_number-1),'ro'))
-        probabilities = (lda_file.predict_proba([power_value])).astype(np.float32)[0]
+        lda_file = pickle.load(open('{}{}_{}_{}.p'.format(LDA_FOLDER,
+            trace_range, var_name, var_number-1),'ro'))
+        probabilities = (lda_file.predict_proba([power_value]))\
+            .astype(np.float32)[0]
 
         if (len(probabilities)) != 256:
-            print "Length of Probability for var {} is {}, must be 256".format(var, len(probabilities))
+            print "Length of Probability for var {} is {}, must be \
+                256".format(var, len(probabilities))
             raise IndexError
         # Predict Probabilities and Normalise
         return probabilities
@@ -374,23 +404,21 @@ def real_value_match(var, power_value, normalise = True, use_lda = False, use_nn
         if PRELOAD_NEURAL_NETWORKS:
             neural_network = neural_network_dict[var]
         else:
-            neural_network = load_sca_model('{}{}_mlp5_nodes200_window700_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var))
-        probabilities = normalise_array(neural_network.predict(np.resize(power_value, (1, power_value.size)))[0])
-        # probabilities = (lda_file.predict_proba([power_value])).astype(np.float32)[0]
+            neural_network = load_sca_model('{}{}_mlp5_nodes200_window700\
+            _epochs6000_batchsize200_sd100_traces200000_aug0.h\
+            5'.format(NEURAL_MODEL_FOLDER, var))
+        probabilities = normalise_array(
+            neural_network.predict(np.resize(
+                power_value, (1, power_value.size)))[0])
         if (len(probabilities)) != 256:
-            print "Length of Probability for var {} is {}, must be 256".format(var, len(probabilities))
+            print "Length of Probability for var {} is {}, must be 256"\
+            .format(var, len(probabilities))
             raise IndexError
         # Predict Probabilities and Normalise
         return probabilities
     else:
-        # myvar = 'k001'
-        # if var == myvar:
-        #     print "{} here!".format(myvar)
         musigma_dict = pickle.load(open(MUSIGMA_FILEPATH, 'ro'))
-        # if var == myvar:
-        #     print "{}".format(musigma_dict.keys())
         try:
-            # print var, musigma_dict
             musigma_array = musigma_dict[var]
         except IndexError:
             print "! No Mu Sigma Pair found for Variable {}".format(var)
