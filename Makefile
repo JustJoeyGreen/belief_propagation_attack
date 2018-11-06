@@ -26,3 +26,6 @@ cython-build: clean clean-pyc clean-c
 
 install:
 	pip install -r REQUIREMENTS.txt
+
+test:
+	python tests/test_utility.py
