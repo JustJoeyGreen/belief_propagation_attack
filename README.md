@@ -43,7 +43,7 @@ If this simulates an attack, you're good to go.
 WIP: run
 
 ```
-python TestUtility.py
+make test
 ```
 
 and see what happens.
