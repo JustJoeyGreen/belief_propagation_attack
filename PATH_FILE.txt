@@ -1,0 +1,17 @@
+#####################
+### PATH_FILE.txt ###
+#####################
+# Replace the paths in here
+# with the ones pointing to
+# your real data
+PATH_TO_ELMO=../../../ELMO/
+PATH_TO_LOCAL_HW=Leakage/HWModel/
+PATH_TO_LOCAL_ELMO=Leakage/ELMOPowerModel/
+TRACE_NAME=SCALE_PICO_AESFURIOUS_G2_MixedKey_125MHz_210000Traces_51250Samples_2018_06_18
+# When using External Hard Drive:
+PATH_TO_TRACES=/Volumes/TRACES/
+# When using BlueCrystal:
+#PATH_TO_TRACES=scratch/TRACES/
+# When using PC (Traces on Desktop):
+#PATH_TO_TRACES=/home/joey/Desktop/
+#### End of File ####
