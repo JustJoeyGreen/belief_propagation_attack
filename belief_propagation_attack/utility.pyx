@@ -8,7 +8,6 @@ import linecache
 import struct
 from scipy import stats
 import multiprocessing
-
 try:
     import matplotlib.pyplot as plt
 except RuntimeError:
@@ -19,6 +18,7 @@ import cython
 from cython.parallel import prange, parallel
 cimport numpy as np
 import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
 
 DTYPE = np.float32
 ctypedef np.float32_t DTYPE_t
