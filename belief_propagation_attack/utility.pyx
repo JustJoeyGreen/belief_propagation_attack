@@ -408,9 +408,8 @@ def real_value_match(var, power_value, normalise = True, use_lda = False,
         if PRELOAD_NEURAL_NETWORKS:
             neural_network = neural_network_dict[var]
         else:
-            neural_network = load_sca_model('{}{}_mlp5_nodes200_window700\
-            _epochs6000_batchsize200_sd100_traces200000_aug0.h\
-            5'.format(NEURAL_MODEL_FOLDER, var))
+            neural_network = load_sca_model('{}{}_mlp5_nodes200_window700_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var))
+
         probabilities = normalise_array(
             neural_network.predict(np.resize(
                 power_value, (1, power_value.size)))[0])
