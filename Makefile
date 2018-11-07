@@ -18,13 +18,13 @@ clean-all: clean clean-pyc clean-c clean-output
 build: clean
 	python setup.py build_ext --inplace
 	mv *.so belief_propagation_attack/
-	mkdir -p graphs/
+	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
 
 .PHONY: cython-build
 cython-build: clean clean-pyc clean-c
 	python setup.py build_ext --inplace --use-cython
 	mv *.so belief_propagation_attack/
-	mkdir -p graphs/
+	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
 
 install:
 	pip install -r REQUIREMENTS.txt

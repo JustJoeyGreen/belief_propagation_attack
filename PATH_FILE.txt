@@ -13,5 +13,5 @@ PATH_TO_TRACES=/Volumes/TRACES/
 # When using BlueCrystal:
 #PATH_TO_TRACES=scratch/TRACES/
 # When using PC (Traces on Desktop):
-#PATH_TO_TRACES=/home/joey/Desktop/
+#PATH_TO_TRACES=/home/joey/Desktop/TRACES/
 #### End of File ####
