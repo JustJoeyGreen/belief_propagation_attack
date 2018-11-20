@@ -1,4 +1,4 @@
-from utility import *
+from utilities import *
 from collections import OrderedDict
 # from scipy.special import entr
 from scipy.stats import entropy

@@ -373,70 +373,6 @@ def get_round_from_number(int var_number):
     """Returns round from number"""
     return ((var_number - 1) // 16) + 1
 
-# The function to match real power value to probability distribution
-def real_value_match(var, power_value, normalise = True, use_lda = False,
-    use_nn = False, trace_range = 200):
-    """Matches the real power value to a probability distribution,
-    using a specific method (LDA, NN, or standard Templates)"""
-    # Check for power_value being None
-    # print "Variable {}, Power Value {}".format(var, power_value)
-    if np.any(np.isnan(power_value)):
-        print "$ Variable {} has powervalue {}".format(var, power_value)
-        return get_no_knowledge_array()
-    # Get mu and sigma for var_name
-    # Strip off trace
-    var = strip_off_trace(var)
-    if use_lda:
-        # exit()
-        var_name, var_number, _ = split_variable_name(var)
-        # Load LDA file
-        lda_file = pickle.load(open('{}{}_{}_{}.p'.format(LDA_FOLDER,
-            trace_range, var_name, var_number-1),'ro'))
-        probabilities = (lda_file.predict_proba([power_value]))\
-            .astype(np.float32)[0]
-
-        if (len(probabilities)) != 256:
-            print "Length of Probability for var {} is {}, must be \
-                256".format(var, len(probabilities))
-            raise IndexError
-        # Predict Probabilities and Normalise
-        return probabilities
-    elif use_nn:
-        var_name, var_number, _ = split_variable_name(var)
-        # Load NN file
-        # print "Using Neural Networks here! Variable {}".format(var)
-        if PRELOAD_NEURAL_NETWORKS:
-            neural_network = neural_network_dict[var]
-        else:
-            neural_network = load_sca_model('{}{}_mlp5_nodes200_window700_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var))
-
-        probabilities = normalise_array(
-            neural_network.predict(np.resize(
-                power_value, (1, power_value.size)))[0])
-        if (len(probabilities)) != 256:
-            print "Length of Probability for var {} is {}, must be 256"\
-            .format(var, len(probabilities))
-            raise IndexError
-        # Predict Probabilities and Normalise
-        return probabilities
-    else:
-        musigma_dict = pickle.load(open(MUSIGMA_FILEPATH, 'ro'))
-        try:
-            musigma_array = musigma_dict[var]
-        except IndexError:
-            print "! No Mu Sigma Pair found for Variable {}".format(var)
-            return get_no_knowledge_array()
-
-        out_distribution = get_no_knowledge_array()
-
-        for i in range(256):
-            out_distribution[i] = gaussian_probability_density(power_value[0], musigma_array[i][0], musigma_array[i][1])
-
-        if normalise:
-            return normalise_array(out_distribution)
-        else:
-            return out_distribution
-
 def get_plaintext_array(int value):
     v = get_zeros_array()
     v[value] = 1.0
@@ -1779,17 +1715,21 @@ def normalise_neural_trace(v):
     # Shift up
     return v - np.min(v)
 
+def normalise_neural_trace_single(v):
+    return divide_rows_by_max(normalise_neural_trace(v))
+
+def divide_rows_by_max(X):
+    return X / np.max(X, axis=1)[:, None]
+
 def normalise_neural_traces(X):
     if X.shape[0] > 200000:
         # Memory error: do sequentially
         out = np.empty(X.shape)
         for i in range(X.shape[0]):
-            temp = normalise_neural_trace(X[i])
-            out[i] = np.divide(temp, np.max(temp) + 0.0)
+            out[i] = normalise_neural_trace_single(X[i])
         return out
     else:
-        temp = (np.apply_along_axis(normalise_neural_trace, 1, X))
-        return np.divide(temp, np.max(temp) + 0.0)
+        return divide_rows_by_max(np.apply_along_axis(normalise_neural_trace, 1, X))
 
 def get_input_length(str):
     try:
@@ -1806,13 +1746,3 @@ def get_training_traces(str):
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]
 # variable_list = ['{}{}'.format(vk, vi) for vk,vi in variable_dict.iteritems()]
-
-
-if PRELOAD_NEURAL_NETWORKS:
-    print ">> Preloading Neural Networks..."
-    neural_network_dict = dict()
-    for v, length in variable_dict.iteritems():
-        for i in range(length):
-            varname = '{}{}'.format(v, pad_string_zeros(i+1))
-            neural_network_dict[varname] = load_sca_model('{}{}_mlp5_nodes200_window700_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, varname))
-    print ">> ...done!"

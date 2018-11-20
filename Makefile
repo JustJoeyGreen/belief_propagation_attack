@@ -26,6 +26,12 @@ cython-build: clean clean-pyc clean-c
 	mv *.so belief_propagation_attack/
 	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
 
+.PHONY: cython-build
+quick-build:
+	python setup.py build_ext --inplace --use-cython
+	mv *.so belief_propagation_attack/
+	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
+
 install:
 	pip install -r REQUIREMENTS.txt
 

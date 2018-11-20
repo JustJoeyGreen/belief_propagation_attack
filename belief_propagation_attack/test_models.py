@@ -74,12 +74,16 @@ def rank(predictions, real_key, min_trace_idx, max_trace_idx, last_key_bytes_pro
     real_key_rank = np.where(sorted_proba == key_bytes_proba[real_key])[0][0]
     return (real_key_rank, key_bytes_proba)
 
-def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx, rank_step, template_attack = False):
+def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx, rank_step, template_attack = False, model_variable='s001'):
     # Real key byte value that we will use. '2' is the index of the byte (third byte) of interest.
 
     # real_key = metadata[0]['key'][2]
-    real_key = np.load('{}extra_k.npy'.format(REALVALUES_FOLDER))[0]
-    real_p = np.load('{}extra_p.npy'.format(REALVALUES_FOLDER))[0]
+    var_name, var_number, _ = split_variable_name(model_variable)
+    real_key = np.load('{}extra_k.npy'.format(REALVALUES_FOLDER))[var_number-1]
+    real_p = np.load('{}extra_p.npy'.format(REALVALUES_FOLDER))[var_number-1]
+
+    print 'Real Key: {}\nReal Ptx: {}\n'.format(real_key, real_p)
+
 
     # Check for overflow
     if max_trace_idx > dataset.shape[0]:
@@ -105,10 +109,6 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
 
     predictions = model.predict(input_data) #TODO: Use this!!
 
-    print input_data
-    print predictions
-    print len(np.unique(predictions, axis=0))
-
     if len(np.unique(predictions, axis=0)) < 3:
         # print len(np.unique(predictions, axis=0))
         print "! All attack traces predicted same value {}".format(get_value_from_plaintext_array(predictions[0]))
@@ -128,8 +128,22 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
 
             if template_attack:
 
-                probability_distributions[i] = array_xor_permutate(array_inv_sbox(prediction_vector), real_p[i])
+                if var_name not in ['k','t','s']:
+                    print "! Error: Can't perform Template Attack on unkown varname {}".format(var_name)
+                    raise
+                # if s001
+                temp = prediction_vector
+
+                if var_name == 's':
+                    temp = array_inv_sbox(temp)
+                if var_name == 's' or var_name == 't':
+                    temp = array_xor_permutate(temp, real_p[i])
+
+                probability_distributions[i] = temp
                 total_ranks[i] = get_rank_from_prob_dist(probability_distributions[i], real_key[i])
+
+                # print 'i: {}, real key {}, real plaintext {}\nranked dist: {}\n'.format(i, real_key[i], real_p[i], zip(range(256), get_rank_list_from_prob_dist(probability_distributions[i])))
+                # exit(1)
                 # rank_after_traces[i] = get_rank_from_prob_dist(np.prod(probability_distributions, axis=0), real_key[i])
 
             else:
@@ -254,7 +268,7 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
     # return f_ranks
 
 # Check a saved model against one of the bpann databases Attack traces
-def check_model(model_file, num_traces=2000):
+def check_model(model_file, num_traces=2000, template_attack=False):
 
     model_name = model_file.replace(MODEL_FOLDER, '')
     model_variable = model_name.split('_')[0]
@@ -275,7 +289,7 @@ def check_model(model_file, num_traces=2000):
     # Load model
     model = load_sca_model(model_file)
     # We test the rank over traces of the Attack dataset, with a step of 10 traces
-    ranks = full_ranks(model_name, model, X_attack, Y_attack, 0, num_traces, 10)
+    ranks = full_ranks(model_name, model, X_attack, Y_attack, 0, num_traces, 10, template_attack=template_attack, model_variable=model_variable)
 
     # # We plot the results
     # x = [ranks[i][0] for i in range(0, ranks.shape[0])]
@@ -310,6 +324,8 @@ if __name__ == "__main__":
                         type=int, default=10000)
     parser.add_argument('--S', '--SAVE', action="store_true", dest="SAVE",
                         help='Saves Output', default=False)
+    parser.add_argument('--T', '--TEMPLATE', '--TEMPLATE_ATTACK', action="store_true", dest="TEMPLATE_ATTACK",
+                        help='Performs Template Attack on Data', default=False)
 
     # Target node here
     args = parser.parse_args()
@@ -321,6 +337,7 @@ if __name__ == "__main__":
     TEST_TRACES = args.TEST_TRACES
     TEST_ALL = args.TEST_ALL
     SAVE = args.SAVE
+    TEMPLATE_ATTACK = args.TEMPLATE_ATTACK
 
     # var_list = list()
     # for v in variable_dict:
@@ -339,7 +356,7 @@ if __name__ == "__main__":
         for (m) in sorted(listdir(MODEL_FOLDER)):
             if string_ends_with(m, '.h5'):
                 print 'm: {}'.format(m)
-                check_model(MODEL_FOLDER + m, TEST_TRACES)
+                check_model(MODEL_FOLDER + m, TEST_TRACES, template_attack=TEMPLATE_ATTACK)
     else:
         # Check specific model
         # TODO

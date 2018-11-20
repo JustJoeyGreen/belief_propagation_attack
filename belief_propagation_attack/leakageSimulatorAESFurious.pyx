@@ -39,7 +39,8 @@ class LeakageSimulatorAESFurious:
         random.seed(seed)
         np.random.seed(seed)
 
-    def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10):
+    def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,
+    average_key_nodes = False):
 
         cdef int i, j, trace, index
 
@@ -90,22 +91,11 @@ class LeakageSimulatorAESFurious:
 
         # Save Hamming Weights to dictionary
         dictionary['key']   = self.key
-        if hw_leakage_model:
-            dictionary['k']     = linear_get_hamming_weights(k)
-            dictionary['sk']    = linear_get_hamming_weights(sk)
-            dictionary['xk']    = linear_get_hamming_weights(xk)
-        elif real_values:
-            dictionary['k']     = k
-            dictionary['sk']    = sk
-            dictionary['xk']    = xk
-        else:
-            # ELMO Power Model
-            dictionary['k']     = linear_get_elmo_values(k, 'k')
-            dictionary['sk']    = linear_get_elmo_values(sk, 'sk')
-            dictionary['xk']    = linear_get_elmo_values(xk, 'xk')
 
         # Everything else
-
+        dictionary['k']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
+        dictionary['sk']     = np.zeros((traces,(rounds_of_aes * 4)))
+        dictionary['xk']     = np.zeros((traces,rounds_of_aes))
         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
@@ -244,20 +234,29 @@ class LeakageSimulatorAESFurious:
             # Maybe sort out here?
 
             if hw_leakage_model:
+                dictionary['k']  [trace]     = linear_get_hamming_weights(k)
+                dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
+                dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
-                dictionary['h'] [trace]      = linear_get_hamming_weights(h)
+                dictionary['h']  [trace]     = linear_get_hamming_weights(h)
             elif real_values:
+                dictionary['k']  [trace]     = k
+                dictionary['sk'] [trace]     = sk
+                dictionary['xk'] [trace]     = xk
                 dictionary['t']  [trace]     = t
                 dictionary['s']  [trace]     = s
                 dictionary['xt'] [trace]     = xt
                 dictionary['cm'] [trace]     = cm
                 dictionary['mc'] [trace]     = mc
-                dictionary['h'] [trace]      = h
+                dictionary['h']  [trace]     = h
             else:
+                dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')
+                dictionary['sk'] [trace]     = linear_get_elmo_values(sk, 'sk')
+                dictionary['xk'] [trace]     = linear_get_elmo_values(xk, 'xk')
                 dictionary['t']  [trace]     = linear_get_elmo_values(t, 't')
                 dictionary['s']  [trace]     = linear_get_elmo_values(s, 's')
                 dictionary['xt'] [trace]     = linear_get_elmo_values(xt, 'xt')
@@ -271,7 +270,7 @@ class LeakageSimulatorAESFurious:
 
         # Affect with Noise
         if affect_with_noise:
-            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model)
+            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)
 
 
     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):
@@ -514,7 +513,7 @@ class LeakageSimulatorAESFurious:
 
         # Affect with Noise
         if affect_with_noise:
-            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model)
+            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)
 
 
 
@@ -522,7 +521,7 @@ class LeakageSimulatorAESFurious:
     def save_simulation(self):
         save_leakage(self.simulated_dictionary, 'furious_dict')
 
-    def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True):
+    def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):
 
         if badly_leaking_nodes is None:
             badly_leaking_nodes = []
@@ -537,8 +536,10 @@ class LeakageSimulatorAESFurious:
 
         cdef int traces, trace
 
-        key_variables = ['k','sk','xk']
-        variables = ['p','t','s','mc','xt','cm','h']
+        # key_variables = ['k','sk','xk']
+        # variables = ['p','t','s','mc','xt','cm','h']
+        variables = ['k','sk','xk','p','t','s','mc','xt','cm','h']
+
         traces = len(dictionary['p'])
 
         if len(badly_leaking_traces) == 0:
@@ -579,23 +580,25 @@ class LeakageSimulatorAESFurious:
 
         # Key Bytes
 
-        for variable in key_variables:
-            if variable in no_noise_nodes:
-                pass
-            else:
-                badly_leaking_node = variable in badly_leaking_nodes
-                # Average noise out
-                # holder = np.zeros((traces,len(dictionary[variable][:])))
+        # for variable in key_variables:
+        #     if variable in no_noise_nodes:
+        #         pass
+        #     else:
+        #         badly_leaking_node = variable in badly_leaking_nodes
+        #         # Average noise out
+        #         # holder = np.zeros((traces,len(dictionary[variable][:])))
+        #
+        #         # Shared keys are just a single array, so average the noise out?
+        #
+        #         dictionary[variable] = self.affect_key_array_with_noise(dictionary[variable], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr, traces = traces)
+        #
+        #
+        #         # print "\n*** Variable {}\n".format(variable)
+        #         # print "Holder [{}]:\n{}\n".format(len(holder), holder)
+        #         # print "Thresholded: {}".format(thresholded)
+        #         # print "Dictionary [{}]:\n{}\n\n".format(len(dictionary[variable]), dictionary[variable])
 
-                # Shared keys are just a single array, so average the noise out?
 
-                dictionary[variable] = self.affect_key_array_with_noise(dictionary[variable], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr, traces = traces)
-
-
-                # print "\n*** Variable {}\n".format(variable)
-                # print "Holder [{}]:\n{}\n".format(len(holder), holder)
-                # print "Thresholded: {}".format(thresholded)
-                # print "Dictionary [{}]:\n{}\n\n".format(len(dictionary[variable]), dictionary[variable])
 
         self.simulated_dictionary = dictionary
 

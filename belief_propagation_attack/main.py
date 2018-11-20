@@ -76,7 +76,7 @@ def run_belief_propagation_attack(margdist=None):
         # key = [0x00, 0xA3, 0xFC, 0x47, 0x37, 0x02, 0xD6, 0x97, 0x02, 0xB4, 0x57, 0xE6, 0x76, 0x02, 0x63, 0x57]
 
     # Set up Signal to Noise Ratio
-    snr = 2 ** SNR_exp
+    snr = float(2 ** SNR_exp)
     sigma = get_sigma(snr)
 
     badly_leaking_snr = 2 ** BADLY_LEAKING_SNR_exp
@@ -157,6 +157,17 @@ def run_belief_propagation_attack(margdist=None):
         if TRACE_NPY:
             rank_after_each_trace = np.zeros((REPEAT, TRACES), dtype=np.uint8)
 
+        # Set up graph
+        traces_to_use = TRACES
+        if method == "SEQ" or method == "IND":
+            traces_to_use = 1
+
+        my_graph = fG.FactorGraphAES(traces_to_use, removed_nodes=REMOVED_NODES, left_out_nodes=LEFT_OUT_NODES,
+                                     key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
+                                     rounds_of_aes=ROUNDS_OF_AES,
+                                     remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
+                                     use_lda=USE_LDA, use_nn=USE_NN)
+
         for rep in range(REPEAT):
 
             # Simulate data here!
@@ -164,38 +175,38 @@ def run_belief_propagation_attack(margdist=None):
             # if not NO_PRINT:
             #     print "> Simulating {} Traces...".format(TRACES)
 
-            if REAL_TRACES:
-                real_trace_handler = rTrace.RealTraceHandler()
-                all_values = real_trace_handler.return_all_values(traces=TRACES, offset=SEED,
-                                                      trace_range=TPRANGE, unprofiled=UNPROFILED,
-                                                      use_random_traces=RANDOM_REAL,
-                                                      seed=SEED + rep, correlation_threshold=CORRELATION_THRESHOLD,
-                                                                  normalise_each_trace=USE_NN)
-            else:
-                # for rep in range(REPEAT):
-                # Set up Leakage Simulator
-                if USE_ARM_AES:
-                    sim = lSim.LeakageSimulatorAES(seed=(rep + SEED))
-                else:
-                    sim = lSimF.LeakageSimulatorAESFurious(seed=(rep + SEED))
-                sim.fix_key(key)
-                # Simulate
-                if LEAKAGE_ON_THE_FLY:
-                    sim.simulate(snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
-                                 badly_leaking_nodes=BADLY_LEAKING_NODES, badly_leaking_traces=BADLY_LEAKING_TRACES,
-                                 badly_leaking_snr=badly_leaking_snr,
-                                 no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
-                                 hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE,
-                                 rounds_of_aes=ROUNDS_OF_AES)
-                else:
-                    sim.elmo_simulation(snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
-                                        badly_leaking_nodes=BADLY_LEAKING_NODES,
-                                        badly_leaking_traces=BADLY_LEAKING_TRACES, badly_leaking_snr=badly_leaking_snr,
-                                        no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
-                                        hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE)
-                all_values = sim.get_leakage_dictionary()
-                if PRINT_DICTIONARY:
-                    print_dictionary(sim.get_leakage_dictionary())
+            # if REAL_TRACES:
+            #     real_trace_handler = rTrace.RealTraceHandler()
+            #     all_values = real_trace_handler.return_all_values(traces=TRACES, offset=SEED,
+            #                                           trace_range=TPRANGE, unprofiled=UNPROFILED,
+            #                                           use_random_traces=RANDOM_REAL,
+            #                                           seed=SEED + rep, correlation_threshold=CORRELATION_THRESHOLD,
+            #                                                       normalise_each_trace=USE_NN)
+            # else:
+            #     # for rep in range(REPEAT):
+            #     # Set up Leakage Simulator
+            #     if USE_ARM_AES:
+            #         sim = lSim.LeakageSimulatorAES(seed=(rep + SEED))
+            #     else:
+            #         sim = lSimF.LeakageSimulatorAESFurious(seed=(rep + SEED))
+            #     sim.fix_key(key)
+            #     # Simulate
+            #     if LEAKAGE_ON_THE_FLY:
+            #         sim.simulate(snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
+            #                      badly_leaking_nodes=BADLY_LEAKING_NODES, badly_leaking_traces=BADLY_LEAKING_TRACES,
+            #                      badly_leaking_snr=badly_leaking_snr,
+            #                      no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
+            #                      hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE,
+            #                      rounds_of_aes=ROUNDS_OF_AES)
+            #     else:
+            #         sim.elmo_simulation(snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
+            #                             badly_leaking_nodes=BADLY_LEAKING_NODES,
+            #                             badly_leaking_traces=BADLY_LEAKING_TRACES, badly_leaking_snr=badly_leaking_snr,
+            #                             no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
+            #                             hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE)
+            #     all_values = sim.get_leakage_dictionary()
+            #     if PRINT_DICTIONARY:
+            #         print_dictionary(sim.get_leakage_dictionary())
 
             # if not NO_PRINT:
             #     print "> ...done!"
@@ -206,15 +217,6 @@ def run_belief_propagation_attack(margdist=None):
 
             if PRINT_ALL_KEY_RANKS:
                 print ("-_-_-_-_-_-_- Repeat {} -_-_-_-_-_-_-".format(rep))
-
-            # Set up graph
-            traces_to_use = TRACES
-            if method == "SEQ" or method == "IND":
-                traces_to_use = 1
-            my_graph = fG.FactorGraphAES(traces_to_use, removed_nodes=REMOVED_NODES, left_out_nodes=LEFT_OUT_NODES,
-                                         key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
-                                         rounds_of_aes=ROUNDS_OF_AES,
-                                         remove_cycle=REMOVE_CYCLE)
 
             # Test
             # for k_i in range(1, 17):
@@ -256,7 +258,7 @@ def run_belief_propagation_attack(margdist=None):
                 for j in range(256):
                     incoming_messages_list[i][j] = [0] * TRACES
 
-            for trace in range(TRACES):
+            for trace in range(TRACES): # but only done once if LFG, as it breaks early
 
                 not_allowed_traces = [7, 8, 11, 14, 19, 24, 26, 28, 29, 30, 38, 39, 42, 44, 47, 54, 55, 57, 60, 64, 65,
                                       66, 67, 68, 69, 74, 77, 81, 82, 88, 89, 97, 99, 101, 102, 103, 106, 112, 118,
@@ -268,14 +270,6 @@ def run_belief_propagation_attack(margdist=None):
                 if TEST2 and (trace in not_allowed_traces):
                     continue
 
-                if PRINT_ALL_KEY_RANKS:
-                    print "-~-~-~-~-~-~- Trace {} -~-~-~-~-~-~-".format(trace)
-                    first_plaintext_bytes = all_values['p'][trace][:16].astype(int)
-                    if USE_LDA or USE_NN:
-                        first_plaintext_bytes = first_plaintext_bytes[:, 0]
-                    print "Plaintext: {}".format(first_plaintext_bytes)
-                    print "Plaintext Hex String: {}".format(get_list_as_hex_string(first_plaintext_bytes))
-
                 # Clear edges
                 my_graph.initialise_edges()
 
@@ -284,11 +278,24 @@ def run_belief_propagation_attack(margdist=None):
                 if method == "SEQ" or method == "IND":
                     specific_trace = trace
 
-                my_graph.set_all_initial_distributions(all_values, snr, specific_trace=specific_trace,
+                # no more all_values, TODO
+                # (snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
+                #                      badly_leaking_nodes=BADLY_LEAKING_NODES, badly_leaking_traces=BADLY_LEAKING_TRACES,
+                #                      badly_leaking_snr=badly_leaking_snr,
+                #                      no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
+                #                      hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE,
+                #                      rounds_of_aes=ROUNDS_OF_AES)
+                my_graph.set_all_initial_distributions( #specific_trace=specific_trace,
                                                        no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
                                                        elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
-                                                       use_lda=USE_LDA, use_nn=USE_NN,
-                                                       trace_range=TPRANGE)
+                                                       trace_range=TPRANGE, no_noise=NO_NOISE, offset=trace+(rep*TRACES))
+
+                if PRINT_ALL_KEY_RANKS:
+                    print "-~-~-~-~-~-~- Trace {} -~-~-~-~-~-~-".format(trace)
+                    # first_plaintext_bytes = all_values['p'][trace][:16].astype(int)
+                    first_plaintext_bytes = my_graph.get_plaintext_values()
+                    print "Plaintext: {}".format(first_plaintext_bytes)
+                    print "Plaintext Hex String: {}".format(get_list_as_hex_string(first_plaintext_bytes))
 
                 # TEST
                 # my_graph.fabricate_key_scheduling_leakage()
@@ -1052,10 +1059,16 @@ if __name__ == "__main__":
         # if not NO_PRINT:
         print "! Can't currently use LDA on simulated data."
         raise ValueError
+
     if USE_NN and not REAL_TRACES:
         # if not NO_PRINT:
         print "! Can't currently use Neual Networks on simulated data."
         raise ValueError
+
+    if USE_NN and USE_LDA:
+        if not NO_PRINT:
+            print "|| Can't use LDA and NN at same time - setting USE_LDA to False"
+        USE_LDA = False
 
     if TPRANGE > 1 and (not USE_LDA and not USE_NN):
         if not NO_PRINT:
