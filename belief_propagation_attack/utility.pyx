@@ -1703,8 +1703,11 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
 
         if normalise_traces:
             print "£ Normalising traces"
+            print "Before:\n{}\n\n".format(X_profiling[0])
             X_profiling = normalise_neural_traces(X_profiling)
             X_attack = normalise_neural_traces(X_attack)
+            print "After:\n{}\nMin: {}\nMax: {}\n\n".format(X_profiling[0], np.min(X_profiling[0]), np.max(X_profiling[0]))
+            exit(1)
 
         # Save!
         save_object(((X_profiling, Y_profiling), (X_attack, Y_attack)), TEMP_FOLDER + filename)
@@ -1719,7 +1722,7 @@ def normalise_neural_trace_single(v):
     return divide_rows_by_max(normalise_neural_trace(v))
 
 def divide_rows_by_max(X):
-    return X / np.max(X, axis=1)[:, None]
+    return X.astype(np.float32) / np.max(X, axis=1)[:, None]
 
 def normalise_neural_traces(X):
     if X.shape[0] > 200000:
