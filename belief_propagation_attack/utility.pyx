@@ -1702,12 +1702,8 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
         Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
 
         if normalise_traces:
-            print "£ Normalising traces"
-            print "Before:\n{}\n\n".format(X_profiling[0])
             X_profiling = normalise_neural_traces(X_profiling)
             X_attack = normalise_neural_traces(X_attack)
-            print "After:\n{}\nMin: {}\nMax: {}\n\n".format(X_profiling[0], np.min(X_profiling[0]), np.max(X_profiling[0]))
-            exit(1)
 
         # Save!
         save_object(((X_profiling, Y_profiling), (X_attack, Y_attack)), TEMP_FOLDER + filename)

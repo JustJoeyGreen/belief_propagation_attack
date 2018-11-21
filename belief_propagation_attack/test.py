@@ -20,7 +20,7 @@
 
 from utility import *
 
-a = np.array([[1,2,3],[5,1,9],[5,2,8],[1,10,0],[-2,-7,20]], dtype=np.float32)
+a = np.array([[1,2,3],[5,1,9],[5,2,8],[1,10,0],[-2,-7,20]])
 
 b = normalise_neural_traces(a)
 
