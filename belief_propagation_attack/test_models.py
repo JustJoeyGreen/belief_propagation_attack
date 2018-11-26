@@ -160,6 +160,7 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
 
         if template_attack:
 
+            max_traces_required = 5000
             max_repeats = 1000
             consistency_max = 10
             traces_required = list()
@@ -197,12 +198,12 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
                     else:
                         consistency_checker = 0
 
-                    if i > 1000:
+                    if i > max_traces_required:
                         # print "! Repeat {} Took over 1000 Traces, currently rank {}".format(repeat, current_rank)
                         failed_traces += 1
                         break
 
-            print "* Percentage Success within 1000 traces: {}%".format(((max_repeats - failed_traces) * 100) / (max_repeats + 0.0))
+            print "* Percentage Success within {} traces: {}%".format(max_traces_required, ((max_repeats - failed_traces) * 100) / (max_repeats + 0.0))
             print "* Traces Required for First Order Template Attack *"
             print_statistics(traces_required)
 

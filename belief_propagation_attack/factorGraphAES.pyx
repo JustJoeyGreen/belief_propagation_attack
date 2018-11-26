@@ -77,7 +77,7 @@ class FactorGraphAES:
         else:
             try:
                 self.G = nx.read_gexf(
-                    'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+                    'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
                                                                                          rounds_of_aes,
                                                                                          remove_cycle_string,
                                                                                          list_to_file_string(
@@ -98,7 +98,7 @@ class FactorGraphAES:
                     print_new_line()
 
         self.G = nx.read_gexf(
-            'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+            'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
                                                                                  rounds_of_aes,
                                                                                  remove_cycle_string,
                                                                                  list_to_file_string(removed_nodes),

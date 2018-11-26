@@ -14,23 +14,24 @@ clean-output:
 
 clean-all: clean clean-pyc clean-c clean-output
 
+dirs:
+	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
+
 .PHONY: build
-build: clean
+build: clean dirs
 	python setup.py build_ext --inplace
 	mv *.so belief_propagation_attack/
-	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
 
-.PHONY: cython-build
-cython-build: clean clean-pyc clean-c
+
+.PHONY: cython-build dirs
+cython-build: clean clean-pyc clean-c dirs
 	python setup.py build_ext --inplace --use-cython
 	mv *.so belief_propagation_attack/
-	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
 
 .PHONY: cython-build
-quick-build:
+quick-build: dirs
 	python setup.py build_ext --inplace --use-cython
 	mv *.so belief_propagation_attack/
-	mkdir -p graphs/ leakage/ logs/ models/ output/ templates/
 
 install:
 	pip install -r REQUIREMENTS.txt

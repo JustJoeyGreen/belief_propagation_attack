@@ -221,10 +221,10 @@ class LeakageSimulatorAESFurious:
             # print "t Values:    {}".format(t[:16])
             # print_new_line()
 
-            if hw_leakage_model:
-                p_ham = linear_get_hamming_weights(p)
-            elif real_values:
+            if real_values:
                 p_ham = p
+            elif hw_leakage_model:
+                p_ham = linear_get_hamming_weights(p)
             else:
                 p_ham = linear_get_elmo_values(p, 'p')
 
@@ -233,17 +233,7 @@ class LeakageSimulatorAESFurious:
 
             # Maybe sort out here?
 
-            if hw_leakage_model:
-                dictionary['k']  [trace]     = linear_get_hamming_weights(k)
-                dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
-                dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
-                dictionary['t']  [trace]     = linear_get_hamming_weights(t)
-                dictionary['s']  [trace]     = linear_get_hamming_weights(s)
-                dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
-                dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
-                dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
-                dictionary['h']  [trace]     = linear_get_hamming_weights(h)
-            elif real_values:
+            if real_values:
                 dictionary['k']  [trace]     = k
                 dictionary['sk'] [trace]     = sk
                 dictionary['xk'] [trace]     = xk
@@ -253,6 +243,16 @@ class LeakageSimulatorAESFurious:
                 dictionary['cm'] [trace]     = cm
                 dictionary['mc'] [trace]     = mc
                 dictionary['h']  [trace]     = h
+            elif hw_leakage_model:
+                dictionary['k']  [trace]     = linear_get_hamming_weights(k)
+                dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
+                dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
+                dictionary['t']  [trace]     = linear_get_hamming_weights(t)
+                dictionary['s']  [trace]     = linear_get_hamming_weights(s)
+                dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
+                dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
+                dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
+                dictionary['h']  [trace]     = linear_get_hamming_weights(h)
             else:
                 dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')
                 dictionary['sk'] [trace]     = linear_get_elmo_values(sk, 'sk')

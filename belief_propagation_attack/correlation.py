@@ -685,10 +685,10 @@ def lda_templates(tprange=200):
     # Need: trace_data for samples, Actual Values of each node
 
     print "Loading Matrix trace_data, may take a while..."
-    trace_data = np.transpose(load_trace_data(memory_mapped = MEMORY_MAPPED))
+    trace_data = load_trace_data(memory_mapped = MEMORY_MAPPED)
     print "...done!"
     print_new_line()
-    samples, traces = trace_data.shape
+    traces, samples = trace_data.shape
 
     # profile_traces = int(traces * 0.8)
 
@@ -1185,7 +1185,9 @@ if __name__ == "__main__":
     SKIP_CODE = args.SKIP_CODE
 
     # TODO
-    ALL(skip_code=SKIP_CODE)
+    # ALL(skip_code=SKIP_CODE)
+
+    lda_templates()
 
     # a = load_trace_data(memory_mapped = MEMORY_MAPPED)
     #

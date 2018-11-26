@@ -2483,7 +2483,7 @@ static const char __pyx_k_get_marginal_distributions_of_ke[] = "get_marginal_dis
 static const char __pyx_k_get_marginal_distributions_of_pl[] = "get_marginal_distributions_of_plaintext_bytes";
 static const char __pyx_k_get_minimum_rounds_needed_for_va[] = "get_minimum_rounds_needed_for_variable";
 static const char __pyx_k_get_nodes_reachable_from_variabl[] = "get_nodes_reachable_from_variable_node_after_steps";
-static const char __pyx_k_graphs__trace_fullAES__removedno[] = "graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}";
+static const char __pyx_k_graphs__trace_fullAES__removedno[] = "graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph";
 static const char __pyx_k_k_3s_8s_Ranked_3s_with_3s_duplic[] = "k%3s %8s (Ranked %3s with %3s duplicates) [%s]";
 static const char __pyx_k_k_3s_Rank_3s_Ranked_3s_with_3s_d[] = "k%3s Rank %3s (Ranked %3s with %3s duplicates) [%s]";
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
@@ -4362,7 +4362,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         else:
  *             try:             # <<<<<<<<<<<<<<
  *                 self.G = nx.read_gexf(
- *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  */
   /*else*/ {
     {
@@ -4378,7 +4378,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         else:
  *             try:
  *                 self.G = nx.read_gexf(             # <<<<<<<<<<<<<<
- *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  *                                                                                          rounds_of_aes,
  */
         __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_nx); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 79, __pyx_L13_error)
@@ -4390,7 +4390,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
         /* "factorGraphAES.pyx":80
  *             try:
  *                 self.G = nx.read_gexf(
- *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,             # <<<<<<<<<<<<<<
+ *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,             # <<<<<<<<<<<<<<
  *                                                                                          rounds_of_aes,
  *                                                                                          remove_cycle_string,
  */
@@ -4579,7 +4579,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         else:
  *             try:
  *                 self.G = nx.read_gexf(             # <<<<<<<<<<<<<<
- *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  *                                                                                          rounds_of_aes,
  */
         if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_G, __pyx_t_4) < 0) __PYX_ERR(0, 79, __pyx_L13_error)
@@ -4703,7 +4703,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         else:
  *             try:             # <<<<<<<<<<<<<<
  *                 self.G = nx.read_gexf(
- *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  */
       }
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -5072,7 +5072,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         else:
  *             try:             # <<<<<<<<<<<<<<
  *                 self.G = nx.read_gexf(
- *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *                     'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  */
       __Pyx_XGIVEREF(__pyx_t_9);
       __Pyx_XGIVEREF(__pyx_t_10);
@@ -5093,7 +5093,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *                     print_new_line()
  * 
  *         self.G = nx.read_gexf(             # <<<<<<<<<<<<<<
- *             'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *             'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  *                                                                                  rounds_of_aes,
  */
   __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_nx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
@@ -5105,7 +5105,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
   /* "factorGraphAES.pyx":101
  * 
  *         self.G = nx.read_gexf(
- *             'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,             # <<<<<<<<<<<<<<
+ *             'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,             # <<<<<<<<<<<<<<
  *                                                                                  rounds_of_aes,
  *                                                                                  remove_cycle_string,
  */
@@ -5286,7 +5286,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *                     print_new_line()
  * 
  *         self.G = nx.read_gexf(             # <<<<<<<<<<<<<<
- *             'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}'.format(traces, furious_string,
+ *             'graphs/{}_trace_fullAES{}{}{}_removednodes-{}_keysched-{}.graph'.format(traces, furious_string,
  *                                                                                  rounds_of_aes,
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_G, __pyx_t_13) < 0) __PYX_ERR(0, 100, __pyx_L1_error)

@@ -368,7 +368,7 @@ def create_factor_graph(number_of_traces, h_case=1, use_cm=True, use_mc=True):
 
     try:
         nx.write_gexf(factor_graph,
-                      'graphs/{}_trace_first_round_graph_hcase-{}_cm-{}_mc-{}'.format(number_of_traces, h_case, use_cm,
+                      'graphs/{}_trace_first_round_graph_hcase-{}_cm-{}_mc-{}.graph'.format(number_of_traces, h_case, use_cm,
                                                                                       use_mc))
         # print "{} Trace Graph Done!".format(number_of_traces)
     except IOError:
@@ -756,7 +756,7 @@ def create_factor_graph_full_aes(number_of_traces, removed_nodes=None, key_sched
 
     # Save to file
     try:
-        nx.write_gexf(factor_graph, 'graphs/{}_trace_fullAES_removednodes-{}_keysched-{}'.format(number_of_traces,
+        nx.write_gexf(factor_graph, 'graphs/{}_trace_fullAES_removednodes-{}_keysched-{}.graph'.format(number_of_traces,
                                                                                                  list_to_file_string(
                                                                                                      removed_nodes),
                                                                                                  key_scheduling))
@@ -1133,7 +1133,7 @@ def create_factor_graph_full_aes_furious(number_of_traces, removed_nodes=None, k
     # Save to file
     try:
         nx.write_gexf(factor_graph,
-                      'graphs/{}_trace_fullAESFurious{}{}_removednodes-{}_keysched-{}'.format(number_of_traces,
+                      'graphs/{}_trace_fullAESFurious{}{}_removednodes-{}_keysched-{}.graph'.format(number_of_traces,
                                                                                                 rounds_of_aes,
                                                                                                 remove_cycle_string,
                                                                                                 list_to_file_string(
