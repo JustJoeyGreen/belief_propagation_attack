@@ -104,6 +104,7 @@ def run_belief_propagation_attack(margdist=None):
         print "snr = 2^{} = {} (sigma = {}), Threshold: {}".format(SNR_exp, snr, sigma, THRESHOLD)
         print "Epsilon = {}, Epsilon Successions: {}".format(EPSILON, EPSILON_S)
         print "Using REAL TRACES: {}".format(REAL_TRACES)
+        print "Using LDA: {}, Using Neural Networks: {} (Window Size {})".format(USE_LDA, USE_NN, TPRANGE)
         if REAL_TRACES:
             print "Correlation Threshold: {}".format(CORRELATION_THRESHOLD)
         print "If Simulating Data, Using ELMO Power Model: {}, Leakage on the Fly: {}, Reading Plaintexts: {}".format(ELMO_POWER_MODEL,
@@ -684,8 +685,8 @@ def run_belief_propagation_attack(margdist=None):
             # np.save("{}_{}_{}.npy".format(OUTPUT_FILE_PREFIX, g_string, TRACES), rank_after_each_trace)
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
             Pickle.dump(rank_after_each_trace,
-                        open("{}_{}{}{}_{}{}_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, g_string,
-                                                            ks_string, TRACES, snr_string), "wb"))
+                        open("{}_{}{}{}_{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, g_string,
+                                                            ks_string, TRACES, ROUNDS, snr_string), "wb"))
             if PLOT:
 
                 fig = plt.figure()

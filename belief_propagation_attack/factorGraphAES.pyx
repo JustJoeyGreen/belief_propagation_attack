@@ -240,9 +240,12 @@ class FactorGraphAES:
         all_ranks = list()
 
         # chosen_variables = self.variables
-        chosen_variables = ['k{}-0'.format(pad_string_zeros(i)) for i in range(17, 33)]
-        chosen_variables += ['sk{}-0'.format(pad_string_zeros(i)) for i in range(1, 5)]
-        chosen_variables.append('xk001-0')
+        # chosen_variables = ['k{}-0'.format(pad_string_zeros(i)) for i in range(17, 33)]
+        # chosen_variables += ['sk{}-0'.format(pad_string_zeros(i)) for i in range(1, 5)]
+        # chosen_variables.append('xk001-0')
+        chosen_variables = ['{}{}-0'.format(v, pad_string_zeros(i)) for v in ['t','p','s','mc','cm','xt','h'] for i in range(1,17)]
+        for i in range(1,17):
+            chosen_variables.append('k{}-K'.format(pad_string_zeros(i)))
 
         for variable in chosen_variables:
 
@@ -251,22 +254,25 @@ class FactorGraphAES:
                 real_val = int(real_values[var_name][0][var_number-1])
             except IndexError:
                 real_val = int(real_values[var_name][var_number-1])
-            initial_dist = self.initial_distribution[variable]
+            try:
+                initial_dist = self.initial_distribution[variable]
+                rank = get_rank_from_prob_dist(self.initial_distribution[variable], real_val, worst_case = worst_case)
 
+                if rank > 128:
+                    print "\n* Variable {} is rank {}, details:\n".format(variable, rank)
+                    print "Real Value: {}\nProbability: {}\nInitial Distribution:\n{}\n".format(real_val, initial_dist[real_val], initial_dist)
 
-            rank = get_rank_from_prob_dist(self.initial_distribution[variable], real_val, worst_case = worst_case)
+                # print "Variable {:8}: Rank {:3}".format(variable, rank)
+                rank_list[rank-1].append(variable)
+                if var_name == 'p' and var_number <= 16:
+                    pass
+                    # print "- Ignoring {}".format(variable)
+                else:
+                    all_ranks.append(rank)
 
-            if rank > 128:
-                print "\n* Variable {} is rank {}, details:\n".format(variable, rank)
-                print "Real Value: {}\nProbability: {}\nInitial Distribution:\n{}\n".format(real_val, initial_dist[real_val], initial_dist)
-
-            # print "Variable {:8}: Rank {:3}".format(variable, rank)
-            rank_list[rank-1].append(variable)
-            if var_name == 'p' and var_number <= 16:
+            except KeyError:
                 pass
-                # print "- Ignoring {}".format(variable)
-            else:
-                all_ranks.append(rank)
+
         print "*** Checking Leakage Details from Initial Distribution (Worst Case {}) ***\n".format(worst_case)
         for i in range (256):
             if len(rank_list[i]) >= 1:
