@@ -167,7 +167,7 @@ def run_belief_propagation_attack(margdist=None):
                                      key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
                                      rounds_of_aes=ROUNDS_OF_AES,
                                      remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
-                                     use_lda=USE_LDA, use_nn=USE_NN)
+                                     use_lda=USE_LDA, use_nn=USE_NN, tprange=TPRANGE)
 
         for rep in range(REPEAT):
 
@@ -289,7 +289,7 @@ def run_belief_propagation_attack(margdist=None):
                 my_graph.set_all_initial_distributions( #specific_trace=specific_trace,
                                                        no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
                                                        elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
-                                                       trace_range=TPRANGE, no_noise=NO_NOISE, offset=trace+(rep*TRACES))
+                                                       no_noise=NO_NOISE, offset=trace+(rep*TRACES))
 
                 if PRINT_ALL_KEY_RANKS:
                     print "-~-~-~-~-~-~- Trace {} -~-~-~-~-~-~-".format(trace)

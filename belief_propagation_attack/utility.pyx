@@ -1198,7 +1198,7 @@ def get_rank_list_from_prob_dist(np.ndarray probdist):
     temp = probdist.argsort()
     ranks = np.empty_like(temp)
     ranks[temp] = np.arange(len(probdist))
-    return ranks
+    return ranks + 1
 
 def get_rank_from_prob_dist(np.ndarray probdist, int index, worst_case = True):
     if worst_case:
@@ -1718,7 +1718,10 @@ def normalise_neural_trace_single(v):
     return divide_rows_by_max(normalise_neural_trace(v))
 
 def divide_rows_by_max(X):
-    return X.astype(np.float32) / np.max(X, axis=1)[:, None]
+    if len(X.shape) == 1:
+        return X.astype(np.float32) / np.max(X)
+    else:
+        return X.astype(np.float32) / np.max(X, axis=1)[:, None]
 
 def normalise_neural_traces(X):
     if X.shape[0] > 200000:
@@ -1730,7 +1733,7 @@ def normalise_neural_traces(X):
     else:
         return divide_rows_by_max(np.apply_along_axis(normalise_neural_trace, 1, X))
 
-def get_input_length(str):
+def get_window_size_from_model(str):
     try:
         return int(re.search('^.*_window(\d+)_.*', str).group(1))
     except AttributeError:

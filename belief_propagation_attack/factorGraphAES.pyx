@@ -43,7 +43,7 @@ shared_variables = ['k', 'sk', 'xk', 'rc']
 class FactorGraphAES:
 
     """ Container for Factor Graph """
-    def __init__(self, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False):
+    def __init__(self, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, tprange=200):
 
         if removed_nodes is None:
             removed_nodes = []
@@ -153,7 +153,7 @@ class FactorGraphAES:
         self.initialise_edges()
 
         if real_traces:
-            self.handler = rTraceH.RealTraceHandler(use_nn=use_nn, use_lda=use_lda)
+            self.handler = rTraceH.RealTraceHandler(use_nn=use_nn, use_lda=use_lda, tprange=tprange)
 
     def set_key(self, val):
         self.key = val
@@ -280,13 +280,9 @@ class FactorGraphAES:
         print "*** Stats ***"
         print_statistics(all_ranks)
 
-    # def set_all_initial_distributions(self, dictionary, float snr, specific_trace = None, no_leak = None, use_nn=False,
-                                      # fixed_value = None, elmo_pow_model = False, real_traces = False, use_lda = False,
-                                      # trace_range = 200, seed=0, no_print=True):
-
     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
-                                      trace_range = 200, seed=0, no_print=True, no_noise=False, offset=0):
+                                      seed=0, no_print=True, no_noise=False, offset=0):
 
         snr = 2 ** self.SNR_exp
 
@@ -388,129 +384,6 @@ class FactorGraphAES:
                             # cheat = 1
                         else:
                             pass
-
-
-
-
-
-
-        # # ('cm001', 3) -> ['cm001-0', 'cm001-1']
-
-        #
-        # hw_sigma = get_sigma(snr)
-        #
-        # # Shared variables
-        #
-        # # All variables in graph
-        # for var in self.variables:
-        #
-        #     # Split name
-        #     var_name, var_number, var_trace = split_variable_name(var)
-        #     distribution = None
-        #
-        #     # If chosen not to leak, initialise with all ones
-        #     if var in no_leak or var_name in no_leak or strip_off_trace(var) in no_leak:
-        #         # print "NOT LEAKING ON {}".format(var_name)
-        #         distribution = get_no_knowledge_array()
-        #
-        #     # If shared variable, apply straight to variable (independent of trace)
-        #     elif var_name in shared_variables:
-        #
-        #         # Check if in dictionary
-        #         try:
-        #
-        #             if real_traces:
-        #                 powervalue = dictionary[var_name][var_trace][var_number-1]
-        #             else:
-        #                 powervalue = dictionary[var_name][var_number-1]
-        #
-        #             # Check if p1 - p16 or rc
-        #             if var_name == 'rc':
-        #                 # Add as plaintext array
-        #                 distribution = get_plaintext_array(powervalue)
-        #             else:
-        #                 # Add to Initial Distribution
-        #                 if real_traces:
-        #                     # print "TEST: real value matching var {}".format(var)
-        #                     distribution = real_value_match(var, powervalue, snr, use_lda = use_lda, use_nn = use_nn,
-        #                                                     trace_range = trace_range)
-        #                 elif elmo_pow_model:
-        #                     distribution = template_match(var, powervalue, snr)
-        #                     # if var == 'k029-0' or var == 'k030-0' or var == 'k031-0':
-        #                     #     print "Var: {}\nPowerVal: {}\nSNR: {}\nDistribution:\n{}\n".format(var, powervalue, snr, distribution)
-        #                 else:
-        #                     distribution = get_hamming_weight_array(powervalue, hw_sigma)
-        #         except KeyError:
-        #             print "! Key Error for Variable {}".format(var)
-        #             print dictionary[var_name][var_trace][var_number-1]
-        #             exit(1)
-        #             if real_traces:
-        #                 distribution = get_no_knowledge_array()
-        #             else:
-        #                 print "KeyError: No record for {}[{}] in dictionary ({})".format(var_name, var_number-1, var)
-        #                 pass
-        #         except IndexError:
-        #             print "! Index Error in Factor Graph AES! Handle appropriately here!"
-        #             exit(1)
-        #     else:
-        #         # Check if in dictionary
-        #         try:
-        #             # print "Getting value for var {}...".format(var)
-        #             # Otherwise, get right trace number
-        #             try:
-        #                 if specific_trace is not None:
-        #                     powervalue = dictionary[var_name][specific_trace][var_number-1]
-        #                 else:
-        #                     powervalue = dictionary[var_name][var_trace][var_number-1]
-        #                 # print "...done! Value = {}".format(powervalue)
-        #             except IndexError:
-        #                 print "! ERROR: Power Value not Found! dictionary[{}][{}][{}]\n".format(var_name, var_trace, var_number-1)
-        #                 raise
-        #
-        #             # print "In FactorGraphAES, Power Value for {}{} in trace {}: {}".format(var_name, var_number, var_trace, powervalue)
-        #
-        #             # Check if p1 - p16 or rc
-        #             if var_name == 'p' and var_number <= 16:
-        #                 # Add as plaintext array
-        #                 if use_lda or use_nn:
-        #                     distribution = get_plaintext_array(powervalue[0])
-        #                 else:
-        #                     distribution = get_plaintext_array(powervalue)
-        #             else:
-        #                 # Add to Initial Distribution
-        #                 if real_traces:
-        #                     distribution = real_value_match(var, powervalue, snr, use_lda = use_lda, use_nn = use_nn, trace_range = trace_range)
-        #                 elif elmo_pow_model:
-        #                     distribution = template_match(var, powervalue, snr)
-        #                 else:
-        #                     distribution = get_hamming_weight_array(powervalue, hw_sigma)
-        #
-        #         except KeyError:
-        #             print "KeyError: No record for {}[{}] in dictionary ({})".format(var_name, var_number-1, var)
-        #             exit(1)
-        #             pass
-        #
-        #     # Now we have distribution set up, check if fixed node
-        #     if var in matched_fixed_values:
-        #         # Fix!
-        #         val = int(fixed_value[1])
-        #         nonzero = 0
-        #         if distribution[val] > 0:
-        #             nonzero = 1
-        #         tp = (val, nonzero)
-        #
-        #         if FIX_WITH_HAMMING_WEIGHT_ARRAY:
-        #             self.set_initial_distribution(var, get_hamming_weight_array(get_hw(val)))
-        #         elif FIX_WITH_ELMO_ARRAY:
-        #             # print "::: Fixing with ELMO Array, Leakage = {} (category {})".format(get_elmo_leakage_value(val, get_category(var)), get_category(var))
-        #             self.set_initial_distribution(var,
-        #                                           template_match(var, get_elmo_leakage_value(val, get_category(var)),
-        #                                                          snr))
-        #         else:
-        #             self.set_initial_distribution(var, get_plaintext_array(val))
-        #         # print "::: Initial Distirbution = {}".format(self.get_initial_distribution(var))
-        #     else:
-        #         self.set_initial_distribution(var, distribution)
 
     def set_key_distributions(self, key_distributions):
         # For each key byte, set the distribution from the input

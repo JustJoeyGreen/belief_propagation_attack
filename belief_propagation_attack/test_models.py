@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import argparse
 from utility import *
 from random import shuffle
+import realTraceHandler as rTH
 
 ###########################################################################
 
@@ -30,12 +31,6 @@ AES_Sbox = np.array([
             0xE1, 0xF8, 0x98, 0x11, 0x69, 0xD9, 0x8E, 0x94, 0x9B, 0x1E, 0x87, 0xE9, 0xCE, 0x55, 0x28, 0xDF,
             0x8C, 0xA1, 0x89, 0x0D, 0xBF, 0xE6, 0x42, 0x68, 0x41, 0x99, 0x2D, 0x0F, 0xB0, 0x54, 0xBB, 0x16
             ])
-
-def check_file_exists(file_path):
-    if os.path.exists(file_path) == False:
-        print("Error: provided file path '%s' does not exist!" % file_path)
-        sys.exit(-1)
-    return
 
 # Compute the rank of the real key for a give set of predictions
 def rank(predictions, real_key, min_trace_idx, max_trace_idx, last_key_bytes_proba):
@@ -269,28 +264,42 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
     # return f_ranks
 
 # Check a saved model against one of the bpann databases Attack traces
-def check_model(model_file, num_traces=2000, template_attack=False):
+def check_model(model_file, num_traces=10000, template_attack=False):
 
-    model_name = model_file.replace(MODEL_FOLDER, '')
-    model_variable = model_name.split('_')[0]
+    # Real Trave Handler
+    rth = rTH.RealTraceHandler(no_print = False, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True)
 
-    print "\n* Checking model {} (variable {}) *\n".format(model_name, model_variable)
+    try:
+        rank_list = rth.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces)
+        print_statistics(rank_list)
+    except:
+        print "! Uh oh, couldn't check the model! Need to resubmit. PASSING OVER..."
 
-    check_file_exists(model_file)
-    # Load profiling and attack data and metadata from the bpann database
+    # model_name = model_file.replace(MODEL_FOLDER, '')
+    # model_variable = model_name.split('_')[0]
+    #
+    # print "\n* Checking model {} (variable {}) *\n".format(model_name, model_variable)
+    #
+    # check_file_exists(model_file)
+    # # Load profiling and attack data and metadata from the bpann database
+    #
+    #
+    #
+    # # Get inputs size from file name!
+    # input_length = get_window_size_from_model(model_file)
+    #
+    # (_, _), (X_attack, Y_attack) = load_bpann(model_variable, input_length=input_length)
+    # # print 'X_attack for variable {}:\n{}\n\n'.format(model_variable, X_attack)
+    #
+    # # Load model
+    # model = load_sca_model(model_file)
+    # # We test the rank over traces of the Attack dataset, with a step of 10 traces
+    # ranks = full_ranks(model_name, model, X_attack, Y_attack, 0, num_traces, 10, template_attack=template_attack, model_variable=model_variable)
 
 
 
-    # Get inputs size from file name!
-    input_length = get_input_length(model_file)
 
-    (_, _), (X_attack, Y_attack) = load_bpann(model_variable, input_length=input_length)
-    # print 'X_attack for variable {}:\n{}\n\n'.format(model_variable, X_attack)
 
-    # Load model
-    model = load_sca_model(model_file)
-    # We test the rank over traces of the Attack dataset, with a step of 10 traces
-    ranks = full_ranks(model_name, model, X_attack, Y_attack, 0, num_traces, 10, template_attack=template_attack, model_variable=model_variable)
 
     # # We plot the results
     # x = [ranks[i][0] for i in range(0, ranks.shape[0])]
