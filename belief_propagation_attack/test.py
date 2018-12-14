@@ -3,6 +3,8 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as linDisAn
 from utility import *
 import realTraceHandler as rTH
 import argparse
+import matplotlib.pyplot as plt
+import trsfile
 
 parser = argparse.ArgumentParser(description='Trains Neural Network Models')
 parser.add_argument('-t', '-traces', '-test_traces', action="store", dest="TRACES",
@@ -11,10 +13,18 @@ parser.add_argument('-t', '-traces', '-test_traces', action="store", dest="TRACE
 args = parser.parse_args()
 TRACES = args.TRACES
 
+TEST = False
+
 # USE_REAL_TRACE_HANDLER = True
 USE_REAL_TRACE_HANDLER = True
 
-TEST = False
+# a = load_trace_data()
+# for i in range(20):
+#     plt.plot(a[i,1000:2000])
+# plt.show()
+# exit(1)
+
+
 if TEST:
     todo = list()
     for v, length in variable_dict.iteritems():
@@ -27,20 +37,85 @@ if TEST:
 
 if USE_REAL_TRACE_HANDLER:
 
-    # variable_list = ['k001', 'k002', 'p001', 'p002', 't001', 't002', 's001', 's002']
-    # variable_list = ['k001', 's001']
-    variable_list = ['k001']
     traces = TRACES
-    nn = True
-    lda = False
-    print "* LDA {}".format(lda)
+    rth_none = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=1, debug=True)
+    rth_lda = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = True, memory_mapped=True, tprange=200, debug=True)
+    rth_nn = rTH.RealTraceHandler(no_print = False, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True)
+    csv_file = 'output/variable_template_comparison.csv'
+    dict_file = 'output/best_template_dict.dict'
+    # clear_csv(csv_file)
+    # append_csv(csv_file, 'VarName,VarNumber,TopTimepoint,TopCoefficient,AriMean,Median,SensibleTimepoint,SensibleCoefficient,Ranked,CoefficientDifference,\n')
+    # append_csv(csv_file, 'Variable Name,Variable Number,Template Mean Rank,Template Median Rank,LDA Mean Rank,LDA Median Rank,Neural Mean Rank,Neural Median Rank,\n')
+    template_dict = {}
+    # for var_name in ['k','t','s']:
+    # for var_name in ['k']:
+    for var_name, length in variable_dict.iteritems():
 
-    rth = rTH.RealTraceHandler(no_print = False, use_nn = nn, use_lda = lda, memory_mapped=True, tprange=200 if lda else 700, debug=True)
+        # Assume first timepoint is sensible?
+        # current_timepoint = -1
+        # tp_window = 300
+        # for var_number in range(1, 17):
+        for var_number in range(1, length+1):
+            var = '{}{}'.format(var_name, pad_string_zeros(var_number))
+            print "\n\n* Variable {} {}".format(var_name, var_number)
 
-    for var in variable_list:
-        print "\n\n* Variable {}".format(var)
-        rank_list = rth.get_leakage_rank_list(var, traces=traces)
-        print_statistics(rank_list)
+            rank_list_none = np.array(rth_none.get_leakage_rank_list(var, traces=traces, invert=False))
+            rank_list_lda = np.array(rth_lda.get_leakage_rank_list(var, traces=traces, invert=False))
+            rank_list_nn = np.array(rth_nn.get_leakage_rank_list(var, traces=traces, invert=False))
+
+            # append_csv(csv_file, '{},{},{},{},{},{},{},{},\n'.format(var_name, var_number, get_average(rank_list_none), array_median(rank_list_none), get_average(rank_list_lda), array_median(rank_list_lda), get_average(rank_list_nn), array_median(rank_list_nn)))
+
+            template_dict[var] = {'uni':array_median(rank_list_none),'lda':array_median(rank_list_lda),'nn':array_median(rank_list_nn)}
+
+            if var_number == 1:
+                print "* Standard Template"
+                print_statistics(rank_list_none)
+                print "* LDA 200"
+                print_statistics(rank_list_lda)
+                print "* Neural 700"
+                print_statistics(rank_list_nn)
+
+            #
+            # print "+ Non-inverted"
+            # print_statistics(rank_list)
+            # print "- Inverted (1-leakage)"
+            # print_statistics(rank_list_inverted)
+
+            # append_csv(csv_file, '{},{},{},{},{},{},{},{},{},{},\n'.format(var_name, var_number, time_point, coeff_array[time_point], get_average(rank_list), array_median(rank_list), corrected, coeff_array[corrected], rank, coeff_array[time_point]-coeff_array[corrected]))
+
+    print template_dict
+
+    pickle.dump(template_dict, open(dict_file, 'wb'))
+    # exit(1) #todo
+
+    # # variable_list = ['k001', 'k002', 'p001', 'p002', 't001', 't002', 's001', 's002']
+    # # variable_list = ['k001', 's001']
+    # variable_list = ['k{}'.format(pad_string_zeros(i+1)) for i in range(16)]
+    # # variable_list = ['k001', 'k002', 'k003']
+    # # variable_list = ['k004']
+    #
+    # for var in variable_list:
+    #     print "\n\n* Variable {}".format(var)
+    #     var_name, var_number, _ = split_variable_name(var)
+    #     time_point = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var_name))[var_number-1]
+    #     print "Time Point {}".format(time_point)
+    #     coeff_array = np.load('{}{}_{}.npy'.format(COEFFICIENT_FOLDER, var_name, var_number-1))
+    #     TOP_N = 100
+    #     top_n = coeff_array.argsort()[-TOP_N:][::-1]
+    #     corrected = -1
+    #     for c, index in enumerate(top_n):
+    #         # print "Rank {}: Time Point {} ({})".format(c, index, coeff_array[index])
+    #         if index < k_max and index > k_max - (tp_window):
+    #             corrected = index
+    #             break
+    #     print "Old Time Point {}, Corrected: {}".format(time_point, corrected)
+    #     if corrected != -1:
+    #         k_max = corrected
+    #     rank_list = rth.get_leakage_rank_list(var, traces=traces)
+    #     print_statistics(rank_list)
+
+
+    exit(1)
 
 else:
 

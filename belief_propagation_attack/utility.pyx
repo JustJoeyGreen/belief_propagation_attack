@@ -111,7 +111,7 @@ NORMALISE_MIN       = 1e-16
 DIVIDED_MAX         = 10000
 DIVIDED_THRESH      = 100
 ALLOW_EMPTY         = True
-NO_WIPE             = False
+NO_WIPE             = True #TODO Joey 12th December
 SQRT2               = np.sqrt(2)
 MAX_SHIFT           = 10
 

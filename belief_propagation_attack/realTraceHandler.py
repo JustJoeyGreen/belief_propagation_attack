@@ -125,12 +125,13 @@ class RealTraceHandler:
         var_name, var_number, _ = split_variable_name(variable)
         return self.realvalues[var_name][var_number-1][trace]
 
-    def get_leakage_rank_list(self, variable, traces=1):
+    def get_leakage_rank_list(self, variable, traces=1, invert=False):
         var_name, var_number, _ = split_variable_name(variable)
         rank_list = list()
         for trace in range(traces):
             real_val = self.realvalues[var_name][var_number-1][trace]
             leakage = self.get_leakage(variable, trace=trace, normalise=False)
+            if invert: leakage = normalise_array(1 - leakage)
             rank = get_rank_from_prob_dist(leakage, real_val)
             rank_list.append(rank)
         # Return Rank List

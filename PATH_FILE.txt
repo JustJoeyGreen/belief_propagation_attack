@@ -8,6 +8,7 @@ PATH_TO_ELMO=../../../ELMO/
 PATH_TO_LOCAL_HW=Leakage/HWModel/
 PATH_TO_LOCAL_ELMO=Leakage/ELMOPowerModel/
 TRACE_NAME=SCALE_PICO_AESFURIOUS_G2_MixedKey_125MHz_210000Traces_51250Samples_2018_06_18
+#TRACE_NAME=SCALE_PICO_AESFURIOUS_G2_MixedKey_125MHz_210000Traces_33750Samples_2018_11_27
 # When using External Hard Drive:
 PATH_TO_TRACES=/Volumes/TRACES/
 # When using BlueCrystal:

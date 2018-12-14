@@ -75278,7 +75278,7 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "utility.pyx":115
  * ALLOW_EMPTY         = True
- * NO_WIPE             = False
+ * NO_WIPE             = True #TODO Joey 12th December
  * SQRT2               = np.sqrt(2)             # <<<<<<<<<<<<<<
  * MAX_SHIFT           = 10
  * 
@@ -79778,7 +79778,7 @@ static int __pyx_pymod_exec_utility(PyObject *__pyx_pyinit_module)
  * DIVIDED_MAX         = 10000
  * DIVIDED_THRESH      = 100             # <<<<<<<<<<<<<<
  * ALLOW_EMPTY         = True
- * NO_WIPE             = False
+ * NO_WIPE             = True #TODO Joey 12th December
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_DIVIDED_THRESH, __pyx_int_100) < 0) __PYX_ERR(0, 112, __pyx_L1_error)
 
@@ -79786,7 +79786,7 @@ static int __pyx_pymod_exec_utility(PyObject *__pyx_pyinit_module)
  * DIVIDED_MAX         = 10000
  * DIVIDED_THRESH      = 100
  * ALLOW_EMPTY         = True             # <<<<<<<<<<<<<<
- * NO_WIPE             = False
+ * NO_WIPE             = True #TODO Joey 12th December
  * SQRT2               = np.sqrt(2)
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_ALLOW_EMPTY, Py_True) < 0) __PYX_ERR(0, 113, __pyx_L1_error)
@@ -79794,15 +79794,15 @@ static int __pyx_pymod_exec_utility(PyObject *__pyx_pyinit_module)
   /* "utility.pyx":114
  * DIVIDED_THRESH      = 100
  * ALLOW_EMPTY         = True
- * NO_WIPE             = False             # <<<<<<<<<<<<<<
+ * NO_WIPE             = True #TODO Joey 12th December             # <<<<<<<<<<<<<<
  * SQRT2               = np.sqrt(2)
  * MAX_SHIFT           = 10
  */
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_NO_WIPE, Py_False) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_NO_WIPE, Py_True) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
 
   /* "utility.pyx":115
  * ALLOW_EMPTY         = True
- * NO_WIPE             = False
+ * NO_WIPE             = True #TODO Joey 12th December
  * SQRT2               = np.sqrt(2)             # <<<<<<<<<<<<<<
  * MAX_SHIFT           = 10
  * 
@@ -79819,7 +79819,7 @@ static int __pyx_pymod_exec_utility(PyObject *__pyx_pyinit_module)
   __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
 
   /* "utility.pyx":116
- * NO_WIPE             = False
+ * NO_WIPE             = True #TODO Joey 12th December
  * SQRT2               = np.sqrt(2)
  * MAX_SHIFT           = 10             # <<<<<<<<<<<<<<
  * 
