@@ -289,7 +289,7 @@ def run_belief_propagation_attack(margdist=None):
                 my_graph.set_all_initial_distributions( #specific_trace=specific_trace,
                                                        no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
                                                        elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
-                                                       no_noise=NO_NOISE, offset=trace+(rep*TRACES))
+                                                       no_noise=NO_NOISE, offset=trace+(rep*TRACES), ignore_bad=IGNORE_BAD_TEMPLATES)
 
                 if PRINT_ALL_KEY_RANKS:
                     print "-~-~-~-~-~-~- Trace {} -~-~-~-~-~-~-".format(trace)
@@ -800,6 +800,9 @@ if __name__ == "__main__":
     parser.add_argument('--IGT', '--IGNORE_GROUND_TRUTHS', action="store_false", dest="IGNORE_GROUND_TRUTHS",
                         help='Toggles Ignore Ground Truths (default: True)', default=True)
 
+    parser.add_argument('--IGB', '--IGNORE_BAD_TEMPLATES', action="store_true", dest="IGNORE_BAD_TEMPLATES",
+                        help='Toggles Ignore Bad Templates (default: False)', default=False)
+
     parser.add_argument('--LEAKAGE_ON_THE_FLY', '--LOTF', action="store_false", dest="LEAKAGE_ON_THE_FLY",
                         help='Toggles Leakage on the Fly off (default: True)', default=True)
 
@@ -1001,6 +1004,7 @@ if __name__ == "__main__":
     PLOT = args.PLOT
     NO_LEAK_KEY_SCHEDULE = args.NO_LEAK_KEY_SCHEDULE
     CORRELATION_THRESHOLD = args.CORRELATION_THRESHOLD
+    IGNORE_BAD_TEMPLATES = args.IGNORE_BAD_TEMPLATES
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)

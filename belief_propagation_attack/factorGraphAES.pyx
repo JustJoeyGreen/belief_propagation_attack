@@ -282,7 +282,7 @@ class FactorGraphAES:
 
     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
-                                      seed=0, no_print=True, no_noise=False, offset=0):
+                                      seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
 
         snr = 2 ** self.SNR_exp
 
@@ -380,7 +380,7 @@ class FactorGraphAES:
                         self.set_initial_distribution(var, self.handler.get_plaintext_byte_distribution(var, trace=offset+trace))
                     else:
                         if cheat == 0:
-                            self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace))
+                            self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace, ignore_bad=ignore_bad))
                             # cheat = 1
                         else:
                             pass

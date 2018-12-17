@@ -3,6 +3,7 @@ import linecache
 from utility import *
 from sklearn.preprocessing import normalize
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as linDisAnalysis
+import operator
 
 KEY = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
 TPRANGE_NN = 700
@@ -10,7 +11,7 @@ TPRANGE_LDA = 200
 
 class RealTraceHandler:
 
-    def __init__(self, no_print = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True):
+    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True):
         if not no_print:
             print "Preloading Matrix real_trace_data, may take a while..."
         self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH, memory_mapped=memory_mapped)
@@ -28,21 +29,20 @@ class RealTraceHandler:
             for var in variable_dict:
                 self.realvalues[var] = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var))
 
+        self.use_best = use_best
         self.use_lda = use_lda
         self.use_nn = use_nn
         self.tprange = tprange
-        if use_nn:
-            self.neural_network_dict = dict()
-        elif use_lda:
-            self.lda_dict = dict()
-        else: # neither
-            # TODO Fix Power Value File, it's totally wrong
-            # if not no_print:
-            #     print "Preloading all power values, may take a while..."
-            # self.powervalues = dict()
-            # for var in variable_dict:
-            #     self.powervalues[var] = np.load('{}extra_{}.npy'.format(POWERVALUES_FOLDER, var))
-            self.musigma_dict = pickle.load(open(MUSIGMA_FILEPATH, 'ro'))
+        self.neural_network_dict = dict()
+        self.lda_dict = dict()
+        # TODO Fix Power Value File, it's totally wrong
+        # if not no_print:
+        #     print "Preloading all power values, may take a while..."
+        # self.powervalues = dict()
+        # for var in variable_dict:
+        #     self.powervalues[var] = np.load('{}extra_{}.npy'.format(POWERVALUES_FOLDER, var))
+        self.musigma_dict = pickle.load(open(MUSIGMA_FILEPATH, 'ro'))
+        self.best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
 
     def return_power_window(self, timepoint, trace, window=700, nn_normalise=False):
         """ Return the window of power values for a given value """
@@ -56,27 +56,52 @@ class RealTraceHandler:
         var_name, var_number, _ = split_variable_name(variable)
         return self.return_power_window(self.timepoints[var_name][var_number-1], trace, window=window, nn_normalise=nn_normalise)
 
-    def get_leakage(self, variable, trace=0, normalise=True):
+    def get_best_template(self, variable):
+        templates = self.best_templates[variable]
+        return min(templates.iteritems(), key=operator.itemgetter(1))[0]
+
+    def check_template(self, variable, method='nn', threshold=128):
+        median_rank = self.best_templates[strip_off_trace(variable)][method]
+        # print "+ Checking template for {}, median rank {}".format(variable, median_rank)
+        return median_rank < threshold
+
+    def get_leakage(self, variable, trace=0, normalise=True, ignore_bad=False):
         # myvarlist = ["k001-K", "k001"]
         # if variable in myvarlist:
             # print "Getting Leakage for {}, trace {}".format(variable, trace)
+        tprange = self.tprange
+        if self.use_best:
+            best = self.get_best_template(variable)
+            if best == 'uni':
+                tprange = 1
+            elif best == 'lda':
+                tprange = TPRANGE_LDA
+            elif best == 'nn':
+                tprange = TPRANGE_NN
+
+            print 'Best Template for {}: {}'.format(variable, best)
+
         var_notrace = strip_off_trace(variable)
         if self.use_nn:
-            # Get window of power values
-            power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=self.tprange)
-            # Use neural network to predict value
-            try:
-                neural_network = self.neural_network_dict[var_notrace]
-            except KeyError:
-                # Add to dict!
-                print "> Loading NN for Variable {}...".format(var_notrace)
-                self.neural_network_dict[var_notrace] = load_sca_model('{}{}_mlp5_nodes200_window{}_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var_notrace, self.tprange))
-                neural_network = self.neural_network_dict[var_notrace]
-            new_input = np.resize(power_value, (1, power_value.size))
-            out_distribution = neural_network.predict(new_input)[0]
+            if ignore_bad and not self.check_template(variable):
+                out_distribution = get_no_knowledge_array()
+                print "> Ignoring NN for Variable {} as below threshold".format(variable)
+            else:
+                # Get window of power values
+                power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=tprange)
+                # Use neural network to predict value
+                try:
+                    neural_network = self.neural_network_dict[var_notrace]
+                except KeyError:
+                    # Add to dict!
+                    print "> Loading NN for Variable {}...".format(var_notrace)
+                    self.neural_network_dict[var_notrace] = load_sca_model('{}{}_mlp5_nodes200_window{}_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var_notrace, tprange))
+                    neural_network = self.neural_network_dict[var_notrace]
+                new_input = np.resize(power_value, (1, power_value.size))
+                out_distribution = neural_network.predict(new_input)[0]
         elif self.use_lda:
             # Get window of power values
-            power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=False, window=self.tprange)
+            power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=False, window=tprange)
             # Load LDA file
             try:
                 lda = self.lda_dict[var_notrace]
@@ -86,11 +111,9 @@ class RealTraceHandler:
                 try:
                     var_name, var_number, _ = split_variable_name(variable)
                     self.lda_dict[var_notrace] = pickle.load(open('{}{}_{}_{}.p'.format(LDA_FOLDER,
-                        self.tprange, var_name, var_number-1),'ro'))
+                        tprange, var_name, var_number-1),'ro'))
                 except IOError:
-                    print "! No LDA for Variable {} Window {}, creating now...".format(var_notrace, self.tprange)
-
-
+                    print "! No LDA for Variable {} Window {}, creating now...".format(var_notrace, tprange)
                 lda = self.lda_dict[var_notrace]
             out_distribution = (lda.predict_proba([power_value])).astype(np.float32)[0]
         else:

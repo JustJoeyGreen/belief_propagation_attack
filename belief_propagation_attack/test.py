@@ -5,6 +5,8 @@ import realTraceHandler as rTH
 import argparse
 import matplotlib.pyplot as plt
 import trsfile
+import operator
+
 
 parser = argparse.ArgumentParser(description='Trains Neural Network Models')
 parser.add_argument('-t', '-traces', '-test_traces', action="store", dest="TRACES",
@@ -38,11 +40,16 @@ if TEST:
 if USE_REAL_TRACE_HANDLER:
 
     traces = TRACES
-    rth_none = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=1, debug=True)
-    rth_lda = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = True, memory_mapped=True, tprange=200, debug=True)
-    rth_nn = rTH.RealTraceHandler(no_print = False, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True)
-    csv_file = 'output/variable_template_comparison.csv'
-    dict_file = 'output/best_template_dict.dict'
+
+    rth_nn = rTH.RealTraceHandler(no_print = False, use_nn = True, memory_mapped=True, tprange=700, debug=True)
+    for var in ['k00{}'.format(i) for i in range(1,10)]:
+        rth_nn.get_leakage(var, ignore_bad=True)
+    exit(1)
+    # rth_none = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=1, debug=True)
+    # rth_lda = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = True, memory_mapped=True, tprange=200, debug=True)
+    # rth_nn = rTH.RealTraceHandler(no_print = False, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True)
+    # csv_file = 'output/variable_template_comparison.csv'
+    # dict_file = 'output/best_template_dict.dict'
     # clear_csv(csv_file)
     # append_csv(csv_file, 'VarName,VarNumber,TopTimepoint,TopCoefficient,AriMean,Median,SensibleTimepoint,SensibleCoefficient,Ranked,CoefficientDifference,\n')
     # append_csv(csv_file, 'Variable Name,Variable Number,Template Mean Rank,Template Median Rank,LDA Mean Rank,LDA Median Rank,Neural Mean Rank,Neural Median Rank,\n')
@@ -85,7 +92,7 @@ if USE_REAL_TRACE_HANDLER:
 
     print template_dict
 
-    pickle.dump(template_dict, open(dict_file, 'wb'))
+    # pickle.dump(template_dict, open(dict_file, 'wb'))
     # exit(1) #todo
 
     # # variable_list = ['k001', 'k002', 'p001', 'p002', 't001', 't002', 's001', 's002']

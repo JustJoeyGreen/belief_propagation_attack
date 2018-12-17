@@ -2089,6 +2089,7 @@ static const char __pyx_k_bit_length[] = "bit_length";
 static const char __pyx_k_debug_mode[] = "debug_mode";
 static const char __pyx_k_dfs_result[] = "dfs_result";
 static const char __pyx_k_difference[] = "difference";
+static const char __pyx_k_ignore_bad[] = "ignore_bad";
 static const char __pyx_k_key_number[] = "key_number";
 static const char __pyx_k_key_target[] = "key_target";
 static const char __pyx_k_leaf_nodes[] = "leaf_nodes";
@@ -2892,6 +2893,7 @@ static PyObject *__pyx_n_s_handler;
 static PyObject *__pyx_n_s_hw_leakage_model;
 static PyObject *__pyx_n_s_hw_sigma;
 static PyObject *__pyx_n_s_i;
+static PyObject *__pyx_n_s_ignore_bad;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_incoming;
 static PyObject *__pyx_n_s_incoming_message;
@@ -3168,7 +3170,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_26get_all_key_initia
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_28get_all_key_incoming_messages(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_30get_plaintext_values(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_32check_leakage_details(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_worst_case); /* proto */
-static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_specific_trace, PyObject *__pyx_v_no_leak, PyObject *__pyx_v_fixed_value, PyObject *__pyx_v_elmo_pow_model, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_seed, PyObject *__pyx_v_no_print, PyObject *__pyx_v_no_noise, PyObject *__pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_specific_trace, PyObject *__pyx_v_no_leak, PyObject *__pyx_v_fixed_value, PyObject *__pyx_v_elmo_pow_model, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_seed, PyObject *__pyx_v_no_print, PyObject *__pyx_v_no_noise, PyObject *__pyx_v_offset, PyObject *__pyx_v_ignore_bad); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_36set_key_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_key_distributions); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_38fabricate_key_scheduling_leakage(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_40get_neighbours(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name); /* proto */
@@ -10377,7 +10379,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_32check_leakage_deta
  * 
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,             # <<<<<<<<<<<<<<
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  */
 
 /* Python wrapper */
@@ -10394,12 +10396,13 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_35set_all_initial_di
   PyObject *__pyx_v_no_print = 0;
   PyObject *__pyx_v_no_noise = 0;
   PyObject *__pyx_v_offset = 0;
+  PyObject *__pyx_v_ignore_bad = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_all_initial_distributions (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_specific_trace,&__pyx_n_s_no_leak,&__pyx_n_s_fixed_value,&__pyx_n_s_elmo_pow_model,&__pyx_n_s_real_traces,&__pyx_n_s_seed,&__pyx_n_s_no_print,&__pyx_n_s_no_noise,&__pyx_n_s_offset,0};
-    PyObject* values[10] = {0,0,0,0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_specific_trace,&__pyx_n_s_no_leak,&__pyx_n_s_fixed_value,&__pyx_n_s_elmo_pow_model,&__pyx_n_s_real_traces,&__pyx_n_s_seed,&__pyx_n_s_no_print,&__pyx_n_s_no_noise,&__pyx_n_s_offset,&__pyx_n_s_ignore_bad,0};
+    PyObject* values[11] = {0,0,0,0,0,0,0,0,0,0,0};
     values[1] = ((PyObject *)((PyObject *)Py_None));
     values[2] = ((PyObject *)((PyObject *)Py_None));
 
@@ -10407,7 +10410,7 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_35set_all_initial_di
  * 
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,             # <<<<<<<<<<<<<<
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  * 
  */
     values[3] = ((PyObject *)((PyObject *)Py_None));
@@ -10418,17 +10421,20 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_35set_all_initial_di
     /* "factorGraphAES.pyx":285
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
- *                                       seed=0, no_print=True, no_noise=False, offset=0):             # <<<<<<<<<<<<<<
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):             # <<<<<<<<<<<<<<
  * 
  *         snr = 2 ** self.SNR_exp
  */
     values[7] = ((PyObject *)((PyObject *)Py_True));
     values[8] = ((PyObject *)((PyObject *)Py_False));
     values[9] = ((PyObject *)((PyObject *)__pyx_int_0));
+    values[10] = ((PyObject *)((PyObject *)Py_False));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
         case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
         CYTHON_FALLTHROUGH;
         case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
@@ -10511,12 +10517,20 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_35set_all_initial_di
           PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_offset);
           if (value) { values[9] = value; kw_args--; }
         }
+        CYTHON_FALLTHROUGH;
+        case 10:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_ignore_bad);
+          if (value) { values[10] = value; kw_args--; }
+        }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "set_all_initial_distributions") < 0)) __PYX_ERR(0, 283, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
         case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
         CYTHON_FALLTHROUGH;
         case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
@@ -10550,23 +10564,24 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_35set_all_initial_di
     __pyx_v_no_print = values[7];
     __pyx_v_no_noise = values[8];
     __pyx_v_offset = values[9];
+    __pyx_v_ignore_bad = values[10];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("set_all_initial_distributions", 0, 1, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 283, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("set_all_initial_distributions", 0, 1, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 283, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("factorGraphAES.FactorGraphAES.set_all_initial_distributions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_distributions(__pyx_self, __pyx_v_self, __pyx_v_specific_trace, __pyx_v_no_leak, __pyx_v_fixed_value, __pyx_v_elmo_pow_model, __pyx_v_real_traces, __pyx_v_seed, __pyx_v_no_print, __pyx_v_no_noise, __pyx_v_offset);
+  __pyx_r = __pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_distributions(__pyx_self, __pyx_v_self, __pyx_v_specific_trace, __pyx_v_no_leak, __pyx_v_fixed_value, __pyx_v_elmo_pow_model, __pyx_v_real_traces, __pyx_v_seed, __pyx_v_no_print, __pyx_v_no_noise, __pyx_v_offset, __pyx_v_ignore_bad);
 
   /* "factorGraphAES.pyx":283
  *         print_statistics(all_ranks)
  * 
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,             # <<<<<<<<<<<<<<
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  */
 
   /* function exit code */
@@ -10574,7 +10589,7 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_35set_all_initial_di
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_specific_trace, PyObject *__pyx_v_no_leak, PyObject *__pyx_v_fixed_value, PyObject *__pyx_v_elmo_pow_model, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_seed, PyObject *__pyx_v_no_print, PyObject *__pyx_v_no_noise, PyObject *__pyx_v_offset) {
+static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_distributions(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_specific_trace, PyObject *__pyx_v_no_leak, PyObject *__pyx_v_fixed_value, PyObject *__pyx_v_elmo_pow_model, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_seed, PyObject *__pyx_v_no_print, PyObject *__pyx_v_no_noise, PyObject *__pyx_v_offset, PyObject *__pyx_v_ignore_bad) {
   PyObject *__pyx_v_snr = NULL;
   PyObject *__pyx_v_matched_fixed_values = NULL;
   PyObject *__pyx_v_leakage_simulator = NULL;
@@ -10618,7 +10633,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_di
   __Pyx_INCREF(__pyx_v_no_leak);
 
   /* "factorGraphAES.pyx":287
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  * 
  *         snr = 2 ** self.SNR_exp             # <<<<<<<<<<<<<<
  * 
@@ -13213,7 +13228,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_di
  *                         self.set_initial_distribution(var, self.handler.get_plaintext_byte_distribution(var, trace=offset+trace))
  *                     else:
  *                         if cheat == 0:             # <<<<<<<<<<<<<<
- *                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace))
+ *                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace, ignore_bad=ignore_bad))
  *                             # cheat = 1
  */
         /*else*/ {
@@ -13223,7 +13238,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_di
             /* "factorGraphAES.pyx":383
  *                     else:
  *                         if cheat == 0:
- *                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace))             # <<<<<<<<<<<<<<
+ *                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace, ignore_bad=ignore_bad))             # <<<<<<<<<<<<<<
  *                             # cheat = 1
  *                         else:
  */
@@ -13239,12 +13254,13 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_di
             __Pyx_INCREF(__pyx_v_var);
             __Pyx_GIVEREF(__pyx_v_var);
             PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v_var);
-            __pyx_t_22 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 383, __pyx_L1_error)
+            __pyx_t_22 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 383, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_22);
             __pyx_t_6 = PyNumber_Add(__pyx_v_offset, __pyx_v_trace); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 383, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_6);
             if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_trace, __pyx_t_6) < 0) __PYX_ERR(0, 383, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+            if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_ignore_bad, __pyx_v_ignore_bad) < 0) __PYX_ERR(0, 383, __pyx_L1_error)
             __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, __pyx_t_22); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 383, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_6);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -13303,7 +13319,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_di
  *                         self.set_initial_distribution(var, self.handler.get_plaintext_byte_distribution(var, trace=offset+trace))
  *                     else:
  *                         if cheat == 0:             # <<<<<<<<<<<<<<
- *                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace))
+ *                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace, ignore_bad=ignore_bad))
  *                             # cheat = 1
  */
             goto __pyx_L66;
@@ -13349,7 +13365,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_34set_all_initial_di
  * 
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,             # <<<<<<<<<<<<<<
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  */
 
   /* function exit code */
@@ -46543,6 +46559,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_hw_leakage_model, __pyx_k_hw_leakage_model, sizeof(__pyx_k_hw_leakage_model), 0, 0, 1, 1},
   {&__pyx_n_s_hw_sigma, __pyx_k_hw_sigma, sizeof(__pyx_k_hw_sigma), 0, 0, 1, 1},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
+  {&__pyx_n_s_ignore_bad, __pyx_k_ignore_bad, sizeof(__pyx_k_ignore_bad), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_incoming, __pyx_k_incoming, sizeof(__pyx_k_incoming), 0, 0, 1, 1},
   {&__pyx_n_s_incoming_message, __pyx_k_incoming_message, sizeof(__pyx_k_incoming_message), 0, 0, 1, 1},
@@ -47272,13 +47289,13 @@ static int __Pyx_InitCachedConstants(void) {
  * 
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,             # <<<<<<<<<<<<<<
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  */
-  __pyx_tuple__70 = PyTuple_Pack(23, __pyx_n_s_self, __pyx_n_s_specific_trace, __pyx_n_s_no_leak, __pyx_n_s_fixed_value, __pyx_n_s_elmo_pow_model, __pyx_n_s_real_traces, __pyx_n_s_seed, __pyx_n_s_no_print, __pyx_n_s_no_noise, __pyx_n_s_offset, __pyx_n_s_snr, __pyx_n_s_matched_fixed_values, __pyx_n_s_leakage_simulator, __pyx_n_s_leakage, __pyx_n_s_hw_sigma, __pyx_n_s_var, __pyx_n_s_var_name, __pyx_n_s_var_number, __pyx_n_s_var_trace, __pyx_n_s_distribution, __pyx_n_s_powervalue, __pyx_n_s_trace, __pyx_n_s_cheat); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_tuple__70 = PyTuple_Pack(24, __pyx_n_s_self, __pyx_n_s_specific_trace, __pyx_n_s_no_leak, __pyx_n_s_fixed_value, __pyx_n_s_elmo_pow_model, __pyx_n_s_real_traces, __pyx_n_s_seed, __pyx_n_s_no_print, __pyx_n_s_no_noise, __pyx_n_s_offset, __pyx_n_s_ignore_bad, __pyx_n_s_snr, __pyx_n_s_matched_fixed_values, __pyx_n_s_leakage_simulator, __pyx_n_s_leakage, __pyx_n_s_hw_sigma, __pyx_n_s_var, __pyx_n_s_var_name, __pyx_n_s_var_number, __pyx_n_s_var_trace, __pyx_n_s_distribution, __pyx_n_s_powervalue, __pyx_n_s_trace, __pyx_n_s_cheat); if (unlikely(!__pyx_tuple__70)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__70);
   __Pyx_GIVEREF(__pyx_tuple__70);
-  __pyx_codeobj__71 = (PyObject*)__Pyx_PyCode_New(10, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__70, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_factor, __pyx_n_s_set_all_initial_distributions, 283, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__71)) __PYX_ERR(0, 283, __pyx_L1_error)
-  __pyx_tuple__72 = PyTuple_Pack(9, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)__pyx_int_0), ((PyObject *)Py_True), ((PyObject *)Py_False), ((PyObject *)__pyx_int_0)); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_codeobj__71 = (PyObject*)__Pyx_PyCode_New(11, 0, 24, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__70, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_factor, __pyx_n_s_set_all_initial_distributions, 283, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__71)) __PYX_ERR(0, 283, __pyx_L1_error)
+  __pyx_tuple__72 = PyTuple_Pack(10, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject *)__pyx_int_0), ((PyObject *)Py_True), ((PyObject *)Py_False), ((PyObject *)__pyx_int_0), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__72)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__72);
   __Pyx_GIVEREF(__pyx_tuple__72);
 
@@ -48847,7 +48864,7 @@ static int __pyx_pymod_exec_factorGraphAES(PyObject *__pyx_pyinit_module)
  * 
  *     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,             # <<<<<<<<<<<<<<
  *                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
- *                                       seed=0, no_print=True, no_noise=False, offset=0):
+ *                                       seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
  */
   __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_14factorGraphAES_14FactorGraphAES_35set_all_initial_distributions, 0, __pyx_n_s_FactorGraphAES_set_all_initial_d, NULL, __pyx_n_s_factorGraphAES, __pyx_d, ((PyObject *)__pyx_codeobj__71)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 283, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
