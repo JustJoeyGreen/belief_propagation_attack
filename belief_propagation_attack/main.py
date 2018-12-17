@@ -682,11 +682,12 @@ def run_belief_propagation_attack(margdist=None):
             lda_string = "LDA{}_".format(TPRANGE) if USE_LDA else ""
             nn_string = "NN{}_".format(TPRANGE) if USE_NN else ""
             best_string = "BEST_" if USE_BEST else ""
+            ignore_string = "IGNOREBAD_" if IGNORE_BAD_TEMPLATES else ""
             ks_string = "KS_" if INCLUDE_KEY_SCHEDULING else ""
             # np.save("{}_{}_{}.npy".format(OUTPUT_FILE_PREFIX, g_string, TRACES), rank_after_each_trace)
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
             Pickle.dump(rank_after_each_trace,
-                        open("{}_{}{}{}{}_{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, best_string, g_string,
+                        open("{}_{}{}{}{}{}_{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, best_string, ignore_string, g_string,
                                                             ks_string, TRACES, ROUNDS, snr_string), "wb"))
             if PLOT:
 
