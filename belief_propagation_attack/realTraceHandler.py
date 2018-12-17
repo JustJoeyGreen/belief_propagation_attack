@@ -57,7 +57,7 @@ class RealTraceHandler:
         return self.return_power_window(self.timepoints[var_name][var_number-1], trace, window=window, nn_normalise=nn_normalise)
 
     def get_best_template(self, variable):
-        templates = self.best_templates[variable]
+        templates = self.best_templates[strip_off_trace(variable)]
         return min(templates.iteritems(), key=operator.itemgetter(1))[0]
 
     def check_template(self, variable, method='nn', threshold=128):
@@ -70,6 +70,7 @@ class RealTraceHandler:
         # if variable in myvarlist:
             # print "Getting Leakage for {}, trace {}".format(variable, trace)
         tprange = self.tprange
+        best = None
         if self.use_best:
             best = self.get_best_template(variable)
             if best == 'uni':
@@ -78,11 +79,10 @@ class RealTraceHandler:
                 tprange = TPRANGE_LDA
             elif best == 'nn':
                 tprange = TPRANGE_NN
-
             print 'Best Template for {}: {}'.format(variable, best)
 
         var_notrace = strip_off_trace(variable)
-        if self.use_nn:
+        if best == 'nn' or (best is None and self.use_nn):
             if ignore_bad and not self.check_template(variable):
                 out_distribution = get_no_knowledge_array()
                 print "> Ignoring NN for Variable {} as below threshold".format(variable)
@@ -99,7 +99,7 @@ class RealTraceHandler:
                     neural_network = self.neural_network_dict[var_notrace]
                 new_input = np.resize(power_value, (1, power_value.size))
                 out_distribution = neural_network.predict(new_input)[0]
-        elif self.use_lda:
+        elif best == 'lda' or (best is None and self.use_lda):
             # Get window of power values
             power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=False, window=tprange)
             # Load LDA file

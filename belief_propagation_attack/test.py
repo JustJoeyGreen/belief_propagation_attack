@@ -41,9 +41,9 @@ if USE_REAL_TRACE_HANDLER:
 
     traces = TRACES
 
-    rth_nn = rTH.RealTraceHandler(no_print = False, use_nn = True, memory_mapped=True, tprange=700, debug=True)
+    rth_best = rTH.RealTraceHandler(no_print = False, use_best = True, memory_mapped=True, tprange=700, debug=True)
     for var in ['k00{}'.format(i) for i in range(1,10)]:
-        rth_nn.get_leakage(var, ignore_bad=True)
+        rth_best.get_leakage(var)
     exit(1)
     # rth_none = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=1, debug=True)
     # rth_lda = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = True, memory_mapped=True, tprange=200, debug=True)

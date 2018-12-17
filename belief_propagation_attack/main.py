@@ -104,7 +104,7 @@ def run_belief_propagation_attack(margdist=None):
         print "snr = 2^{} = {} (sigma = {}), Threshold: {}".format(SNR_exp, snr, sigma, THRESHOLD)
         print "Epsilon = {}, Epsilon Successions: {}".format(EPSILON, EPSILON_S)
         print "Using REAL TRACES: {}".format(REAL_TRACES)
-        print "Using LDA: {}, Using Neural Networks: {} (Window Size {})".format(USE_LDA, USE_NN, TPRANGE)
+        print "Using LDA: {}, Using Neural Networks: {} (Window Size {}), Using Best Template: {}".format(USE_LDA, USE_NN, TPRANGE, USE_BEST)
         if REAL_TRACES:
             print "Correlation Threshold: {}".format(CORRELATION_THRESHOLD)
         print "If Simulating Data, Using ELMO Power Model: {}, Leakage on the Fly: {}, Reading Plaintexts: {}".format(ELMO_POWER_MODEL,
@@ -167,7 +167,7 @@ def run_belief_propagation_attack(margdist=None):
                                      key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
                                      rounds_of_aes=ROUNDS_OF_AES,
                                      remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
-                                     use_lda=USE_LDA, use_nn=USE_NN, tprange=TPRANGE)
+                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE)
 
         for rep in range(REPEAT):
 
@@ -681,11 +681,12 @@ def run_belief_propagation_attack(margdist=None):
                     g_string += "A"
             lda_string = "LDA{}_".format(TPRANGE) if USE_LDA else ""
             nn_string = "NN{}_".format(TPRANGE) if USE_NN else ""
+            best_string = "BEST_" if USE_BEST else ""
             ks_string = "KS_" if INCLUDE_KEY_SCHEDULING else ""
             # np.save("{}_{}_{}.npy".format(OUTPUT_FILE_PREFIX, g_string, TRACES), rank_after_each_trace)
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
             Pickle.dump(rank_after_each_trace,
-                        open("{}_{}{}{}_{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, g_string,
+                        open("{}_{}{}{}{}_{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, best_string, g_string,
                                                             ks_string, TRACES, ROUNDS, snr_string), "wb"))
             if PLOT:
 
@@ -902,6 +903,8 @@ if __name__ == "__main__":
                         help='Uses LDA for Real Traces (default: False)', default=False)
     parser.add_argument('--USE_NN', '--NN', action="store_true", dest="USE_NN",
                         help='Uses Neural Network for Real Traces (default: False)', default=False)
+    parser.add_argument('--USE_BEST', '--B', '--BEST', action="store_true", dest="USE_BEST",
+                        help='Uses Best Template for Real Traces, out of Univariate, LDA, and NN (default: False)', default=False)
 
     parser.add_argument('--SAVE_FIRST_DISTS', '--SFD', action="store_true", dest="SAVE_FIRST_DISTS",
                         help='Saves the Distributions of the first Key and Plaintexts bytes (Test Purposes Only) (default: False)',
@@ -1005,6 +1008,7 @@ if __name__ == "__main__":
     NO_LEAK_KEY_SCHEDULE = args.NO_LEAK_KEY_SCHEDULE
     CORRELATION_THRESHOLD = args.CORRELATION_THRESHOLD
     IGNORE_BAD_TEMPLATES = args.IGNORE_BAD_TEMPLATES
+    USE_BEST = args.USE_BEST
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)
@@ -1067,13 +1071,18 @@ if __name__ == "__main__":
 
     if USE_NN and not REAL_TRACES:
         # if not NO_PRINT:
-        print "! Can't currently use Neual Networks on simulated data."
+        print "! Can't currently use Neural Networks on simulated data."
         raise ValueError
 
-    if USE_NN and USE_LDA:
+    if USE_BEST and not REAL_TRACES:
+        # if not NO_PRINT:
+        print "! Can't currently use Best Templates on simulated data."
+        raise ValueError
+
+    if (USE_NN and USE_LDA) or (USE_NN and USE_BEST) or (USE_LDA and USE_BEST):
         if not NO_PRINT:
-            print "|| Can't use LDA and NN at same time - setting USE_LDA to False"
-        USE_LDA = False
+            print "!! Can only use one (NN, LDA, or BEST)! Please specify which. Aborting..."
+        exit(1)
 
     if TPRANGE > 1 and (not USE_LDA and not USE_NN):
         if not NO_PRINT:

@@ -43,7 +43,7 @@ shared_variables = ['k', 'sk', 'xk', 'rc']
 class FactorGraphAES:
 
     """ Container for Factor Graph """
-    def __init__(self, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, tprange=200):
+    def __init__(self, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200):
 
         if removed_nodes is None:
             removed_nodes = []
@@ -153,7 +153,7 @@ class FactorGraphAES:
         self.initialise_edges()
 
         if real_traces:
-            self.handler = rTraceH.RealTraceHandler(use_nn=use_nn, use_lda=use_lda, tprange=tprange)
+            self.handler = rTraceH.RealTraceHandler(use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange)
 
     def set_key(self, val):
         self.key = val
