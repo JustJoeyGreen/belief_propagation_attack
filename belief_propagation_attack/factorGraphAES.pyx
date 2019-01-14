@@ -43,7 +43,9 @@ shared_variables = ['k', 'sk', 'xk', 'rc']
 class FactorGraphAES:
 
     """ Container for Factor Graph """
-    def __init__(self, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200):
+    def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, shift_attack = None):
+
+        self.no_print = no_print
 
         if removed_nodes is None:
             removed_nodes = []
@@ -153,7 +155,7 @@ class FactorGraphAES:
         self.initialise_edges()
 
         if real_traces:
-            self.handler = rTraceH.RealTraceHandler(use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange)
+            self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, shift_attack=shift_attack)
 
     def set_key(self, val):
         self.key = val
@@ -282,7 +284,7 @@ class FactorGraphAES:
 
     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
-                                      seed=0, no_print=True, no_noise=False, offset=0, ignore_bad=False):
+                                      seed=0, no_noise=False, offset=0, ignore_bad=False):
 
         snr = 2 ** self.SNR_exp
 
@@ -295,7 +297,7 @@ class FactorGraphAES:
             matched_fixed_values = []
         else:
             matched_fixed_values = get_variables_that_match(self.variables, fixed_value[0])
-            if not no_print:
+            if not self.no_print:
                 print "::: Fixing var {}, matched: {}".format(fixed_value[0], matched_fixed_values)
 
         # SIMULATED DATA
@@ -701,7 +703,7 @@ class FactorGraphAES:
     def bp_run(self, int rounds, print_all_messages = False, print_all_marginal_distributions = False,
                print_all_key_ranks = False, print_possible_values = False, print_marginal_distance = False,
                rank_order = False, break_when_found = True, break_when_information_exhausted_pattern = False,
-               float epsilon = 0, int epsilon_s = INFORMATION_EXHAUSTED_S, break_if_failed = True, no_print = False,
+               float epsilon = 0, int epsilon_s = INFORMATION_EXHAUSTED_S, break_if_failed = True,
                round_csv = False, snrexp = "UNKNOWN", update_key_initial_distributions = False, debug_mode = False):
 
         cdef int ranking_start, i, epsilon_succession
@@ -731,7 +733,7 @@ class FactorGraphAES:
             if i > 0:
                 self.bp_one_round(i, rounds+1)
 
-            if (print_all_messages or print_all_marginal_distributions or print_all_key_ranks or print_marginal_distance or print_possible_values) and not no_print:
+            if (print_all_messages or print_all_marginal_distributions or print_all_key_ranks or print_marginal_distance or print_possible_values) and not self.no_print:
                 print "----------- Running Round {} -----------".format(i)
                 print_new_line()
 
@@ -766,21 +768,21 @@ class FactorGraphAES:
 
             # Break if found
             if break_when_found and self.found_key():
-                if not no_print:
+                if not self.no_print:
                     print '+++++++ Found the Key at Round {} +++++++'.format(i)
                 final_state = "foundkey"
                 break
 
             # Break if failed
             if break_if_failed and (i > FAILURE_MIN_ROUNDS) and (self.check_plaintext_failure() or self.check_failure_on_specific_byte('t')):
-                if not no_print:
+                if not self.no_print:
                     print '!!!!!!!!!! FAILED at Round {} !!!!!!!!!!'.format(i)
                 final_state = "failed"
                 break
 
             # Break if all key bytes converged or repeating a pattern
             if break_when_information_exhausted_pattern and self.information_exhausted_pattern(k_rank_order, i):
-                if PRINT_EXHAUSTION and not no_print:
+                if PRINT_EXHAUSTION and not self.no_print:
                     print '+++ Information Exhausted at Round {} (Pattern Matched) +++'.format(i)
                 final_state = "patternexhaust"
                 break
@@ -791,7 +793,7 @@ class FactorGraphAES:
                 else:
                     epsilon_succession = 0
                 if epsilon_succession > epsilon_s:
-                    if PRINT_EXHAUSTION and not no_print:
+                    if PRINT_EXHAUSTION and not self.no_print:
                         print '+++ Information Exhausted at Round {} (Below Epsilon Threshold after {} Successions) +++'.format(i, INFORMATION_EXHAUSTED_S)
                     # round_converged = i - epsilon_s + 1
                     # round_found = i - epsilon_s + 1
@@ -830,36 +832,36 @@ class FactorGraphAES:
                 mode = get_mode(smaller_rank_order)
 
                 string = "Key Byte {}: {}".format(i+1, smaller_rank_order)
-                if not no_print:
+                if not self.no_print:
                     print string
                 output_string += string + "\n"
 
                 string = "Max Rank: {}".format(max(smaller_rank_order))
-                if not no_print:
+                if not self.no_print:
                     print string
                 output_string += string + "\n"
 
                 string = "Min Rank: {}".format(min(smaller_rank_order))
-                if not no_print:
+                if not self.no_print:
                     print string
                 output_string += string + "\n"
 
                 string = "Average Rank: {}".format(get_average(smaller_rank_order))
-                if not no_print:
+                if not self.no_print:
                     print string
                 output_string += string + "\n"
 
                 string = "Mode Rank: {}".format(mode)
-                if not no_print:
+                if not self.no_print:
                     print string
                 output_string += string + "\n"
 
                 string = "Final Rank: {}".format(smaller_rank_order[-1])
-                if not no_print:
+                if not self.no_print:
                     print string
                 output_string += string + "\n"
 
-                if not no_print:
+                if not self.no_print:
                     print_new_line()
                     print_new_line()
 

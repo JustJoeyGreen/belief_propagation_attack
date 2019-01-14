@@ -3,9 +3,6 @@ import os
 import os.path
 import argparse
 import factorGraphAES as fG
-import leakageSimulatorAES as lSim
-import leakageSimulatorAESFurious as lSimF
-import realTraceHandler as rTrace
 from utility import *
 import cPickle as Pickle
 from datetime import datetime
@@ -13,7 +10,6 @@ import timing
 import matplotlib.pyplot as plt
 
 CHOSEN_KEY = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
-
 
 def run_belief_propagation_attack(margdist=None):
     global key_distributions
@@ -163,78 +159,16 @@ def run_belief_propagation_attack(margdist=None):
         if method == "SEQ" or method == "IND":
             traces_to_use = 1
 
-        my_graph = fG.FactorGraphAES(traces_to_use, removed_nodes=REMOVED_NODES, left_out_nodes=LEFT_OUT_NODES,
+        my_graph = fG.FactorGraphAES(no_print=NO_PRINT, traces=traces_to_use, removed_nodes=REMOVED_NODES, left_out_nodes=LEFT_OUT_NODES,
                                      key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
                                      rounds_of_aes=ROUNDS_OF_AES,
                                      remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
-                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE)
+                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, shift_attack=SHIFT_ATTACK_TRACES)
 
         for rep in range(REPEAT):
 
-            # Simulate data here!
-
-            # if not NO_PRINT:
-            #     print "> Simulating {} Traces...".format(TRACES)
-
-            # if REAL_TRACES:
-            #     real_trace_handler = rTrace.RealTraceHandler()
-            #     all_values = real_trace_handler.return_all_values(traces=TRACES, offset=SEED,
-            #                                           trace_range=TPRANGE, unprofiled=UNPROFILED,
-            #                                           use_random_traces=RANDOM_REAL,
-            #                                           seed=SEED + rep, correlation_threshold=CORRELATION_THRESHOLD,
-            #                                                       normalise_each_trace=USE_NN)
-            # else:
-            #     # for rep in range(REPEAT):
-            #     # Set up Leakage Simulator
-            #     if USE_ARM_AES:
-            #         sim = lSim.LeakageSimulatorAES(seed=(rep + SEED))
-            #     else:
-            #         sim = lSimF.LeakageSimulatorAESFurious(seed=(rep + SEED))
-            #     sim.fix_key(key)
-            #     # Simulate
-            #     if LEAKAGE_ON_THE_FLY:
-            #         sim.simulate(snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
-            #                      badly_leaking_nodes=BADLY_LEAKING_NODES, badly_leaking_traces=BADLY_LEAKING_TRACES,
-            #                      badly_leaking_snr=badly_leaking_snr,
-            #                      no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
-            #                      hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE,
-            #                      rounds_of_aes=ROUNDS_OF_AES)
-            #     else:
-            #         sim.elmo_simulation(snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
-            #                             badly_leaking_nodes=BADLY_LEAKING_NODES,
-            #                             badly_leaking_traces=BADLY_LEAKING_TRACES, badly_leaking_snr=badly_leaking_snr,
-            #                             no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
-            #                             hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE)
-            #     all_values = sim.get_leakage_dictionary()
-            #     if PRINT_DICTIONARY:
-            #         print_dictionary(sim.get_leakage_dictionary())
-
-            # if not NO_PRINT:
-            #     print "> ...done!"
-
-            # allowed_repeats = [0, 47]
-            # if TEST2 and (rep not in allowed_repeats):
-            #     continue
-
             if PRINT_ALL_KEY_RANKS:
                 print ("-_-_-_-_-_-_- Repeat {} -_-_-_-_-_-_-".format(rep))
-
-            # Test
-            # for k_i in range(1, 17):
-            #     k_test = 'k{}-K'.format(pad_string_zeros(k_i))
-            #     print "{}:".format(k_test)
-            #     print my_graph.get_neighbours(k_test)
-            #     print ""
-            #
-            # print "\n"
-            # print my_graph.get_variables()
-            # print "\n"
-            # print my_graph.get_factors()
-            # print "\n"
-            # print my_graph.get_edges()
-            # print "\n"
-            # print "* Graph {} *\nVariables: {:4}\nFactors: {:4}\nEdges: {:4}\n".format(graph_string, len(my_graph.get_variables()), len(my_graph.get_factors()), len(my_graph.get_edges()))
-            # exit(1)
 
             # Set Key and snr
             my_graph.set_key(key)
@@ -279,13 +213,6 @@ def run_belief_propagation_attack(margdist=None):
                 if method == "SEQ" or method == "IND":
                     specific_trace = trace
 
-                # no more all_values, TODO
-                # (snr=snr, traces=TRACES, offset=(rep * TRACES), read_plaintexts=READ_PLAINTEXTS,
-                #                      badly_leaking_nodes=BADLY_LEAKING_NODES, badly_leaking_traces=BADLY_LEAKING_TRACES,
-                #                      badly_leaking_snr=badly_leaking_snr,
-                #                      no_noise_nodes=NO_NOISE_NODES, threshold=THRESHOLD, local_leakage=LOCAL_LEAKAGE,
-                #                      hw_leakage_model=not ELMO_POWER_MODEL, affect_with_noise=not NO_NOISE,
-                #                      rounds_of_aes=ROUNDS_OF_AES)
                 my_graph.set_all_initial_distributions( #specific_trace=specific_trace,
                                                        no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
                                                        elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
@@ -297,9 +224,6 @@ def run_belief_propagation_attack(margdist=None):
                     first_plaintext_bytes = my_graph.get_plaintext_values()
                     print "Plaintext: {}".format(first_plaintext_bytes)
                     print "Plaintext Hex String: {}".format(get_list_as_hex_string(first_plaintext_bytes))
-
-                # TEST
-                # my_graph.fabricate_key_scheduling_leakage()
 
                 # Check
                 if CHECK_LEAKAGE:
@@ -331,7 +255,6 @@ def run_belief_propagation_attack(margdist=None):
                                                                             epsilon_s=EPSILON_S,
                                                                             print_marginal_distance=PRINT_MARGINAL_DISTANCE,
                                                                             break_if_failed=BREAK_IF_FAILED,
-                                                                            no_print=(NO_PRINT or ONLY_END),
                                                                             round_csv=ROUND_CSV, snrexp=SNR_exp,
                                                                             update_key_initial_distributions=UPDATE_KEY)
 
@@ -929,6 +852,9 @@ if __name__ == "__main__":
     parser.add_argument('-fix', action="store", dest="FIXED_VALUE_NODE",
                         help='Fix Variable node to get Marginal Distance to Key Bytes (default: None)', default=None)
 
+    parser.add_argument('-shift', '-sa', action="store", dest="SHIFT_ATTACK_TRACES",
+                        help='Shift Attack Traces by random amount (default: None)', default=None)
+
     parser.add_argument('--CL', '--CHECK_LEAKAGE', action="store_true", dest="CHECK_LEAKAGE",
                         help='Checks Initial Leakage (default: False)', default=False)
     parser.add_argument('--NLKS', '--NO_LEAK_KEY_SCHEDULE', action="store_true", dest="NO_LEAK_KEY_SCHEDULE",
@@ -1010,31 +936,12 @@ if __name__ == "__main__":
     CORRELATION_THRESHOLD = args.CORRELATION_THRESHOLD
     IGNORE_BAD_TEMPLATES = args.IGNORE_BAD_TEMPLATES
     USE_BEST = args.USE_BEST
+    SHIFT_ATTACK_TRACES = args.SHIFT_ATTACK_TRACES
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)
 
     BADLY_LEAKING_TRACES = [int(i) for i in BADLY_LEAKING_TRACES]
-
-    # TEST BLOCK
-
-    # if TESTING:
-    #     print "Testing Here!\n"
-    #
-    #     # TEST
-    #     test_sim = lSimF.leakageSimulatorAESFurious()
-    #
-    #     k = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
-    #     # p = [0x54, 0x77, 0x6F, 0x20, 0x4F, 0x6E, 0x65, 0x20, 0x4E, 0x69, 0x6E, 0x65, 0x20, 0x54, 0x77, 0x6F]
-    #     p = [105, 216, 224, 59, 183, 59, 85, 189, 197, 89, 45, 141, 228, 36, 137, 228]
-    #
-    #     test_sim.fix_key(k)
-    #     test_sim.fix_plaintext(p)
-    #     test_sim.simulate(read_plaintexts=0, print_all=0, random_plaintexts=0, affect_with_noise=False,
-    #                       hw_leakage_model=False)
-    #
-    #     # Exit without running BP
-    #     exit(1)
 
     ################################################################################
 
@@ -1105,12 +1012,6 @@ if __name__ == "__main__":
         if not NO_PRINT:
             print "|| Default Power Model: ELMO"
         ELMO_POWER_MODEL = True
-
-    # Handle Read Traces
-    # if REAL_TRACES and ROUNDS_OF_AES > 1:
-    #     if not NO_PRINT:
-    #         print "|| Real Traces can only support first round graph (G_1) - setting ROUNDS_OF_AES to 1"
-    #     ROUNDS_OF_AES = 1
 
     if REAL_TRACES and not TRACE_NPY:
         if not NO_PRINT:

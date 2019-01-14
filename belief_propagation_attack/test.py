@@ -18,7 +18,38 @@ TRACES = args.TRACES
 TEST = False
 
 # USE_REAL_TRACE_HANDLER = True
-USE_REAL_TRACE_HANDLER = True
+USE_REAL_TRACE_HANDLER = False
+
+SHIFT_TRACES = True
+SHIFT_VAL = 50
+SHIFT_EXTRA = False
+
+def shift_traces(extra=SHIFT_EXTRA, shifted=SHIFT_VAL):
+    # Load trace data
+    trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)
+    traces, samples = trace_data.shape
+    _, _, _, coding = load_meta()
+    shifted_filepath = get_shifted_tracedata_filepath(extra=extra, shifted=shifted)
+    print "Extra: {}, Shifted: {}, Filepath: {}".format(extra, shifted, shifted_filepath)
+    # New path
+    shifted_data = np.memmap(shifted_filepath, shape=(traces, samples), mode='w+', dtype=coding)
+    for t in range(traces):
+        if ((t % (traces/100)) == 0):
+            print "{}% Complete".format(t*100 / (traces + 0.0))
+        randint = np.random.randint(-SHIFT_VAL/2, SHIFT_VAL/2)
+        shifted_data[t] = roll_and_pad(trace_data[t], randint)
+    del shifted_data
+
+# for shift_val in [50,100]:
+#     for shift_extra in [False, True]:
+#         shift_traces(extra=shift_extra, shifted=shift_val)
+
+a = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=SHIFT_EXTRA, shifted=SHIFT_VAL))
+for i in range(20):
+    plt.plot(a[i][1000:2000])
+plt.show()
+exit(1)
+
 
 # a = load_trace_data()
 # for i in range(20):
@@ -41,9 +72,9 @@ if USE_REAL_TRACE_HANDLER:
 
     traces = TRACES
 
-    rth_best = rTH.RealTraceHandler(no_print = False, use_best = True, memory_mapped=True, tprange=700, debug=True)
+    rth_nn = rTH.RealTraceHandler(no_print = False, use_nn = True, memory_mapped=True, tprange=700, debug=True)
     for var in ['k00{}'.format(i) for i in range(1,10)]:
-        rth_best.get_leakage(var)
+        rth_nn.get_leakage(var, ignore_bad=True)
     exit(1)
     # rth_none = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=1, debug=True)
     # rth_lda = rTH.RealTraceHandler(no_print = False, use_nn = False, use_lda = True, memory_mapped=True, tprange=200, debug=True)

@@ -223,6 +223,9 @@ def my_mult2(v1, v2, v3):
 
 #################################################################
 
+def get_shifted_tracedata_filepath(extra=False,shifted=50):
+    return TRACEDATA_FOLDER + '{}tracedata_shifted{}.npy'.format('extra' if extra else '', shifted)
+
 def string_contains(string, substr):
     """Returns true if substr is a substring of string"""
     return substr in string
@@ -1583,16 +1586,15 @@ def parmap(f, X, nprocs=multiprocessing.cpu_count()):
 
     return [x for i, x in sorted(res)]
 
-def load_trace_data(filepath=TRACEDATA_FILEPATH, memory_mapped = True):
+def load_trace_data(filepath=TRACEDATA_FILEPATH, memory_mapped=True, no_print=True):
     if memory_mapped:
         profile_traces, attack_traces, samples, coding = load_meta()
-        if filepath == TRACEDATA_FILEPATH:
-            # used_traces = int(traces * cutoff_percent)
-            used_traces = profile_traces
-        elif filepath == TRACEDATA_EXTRA_FILEPATH:
-            # used_traces = int(traces * (1 - cutoff_percent))
+        if string_contains(filepath, 'extra'):
             used_traces = attack_traces
-        print ">>> Loading Trace Data, used_traces = {}, memory_mapped: {}".format(used_traces, memory_mapped)
+        else:
+            used_traces = profile_traces
+        if not no_print:
+            print ">>> Loading Trace Data, used_traces = {}, memory_mapped: {}".format(used_traces, memory_mapped)
         return np.memmap(filepath, dtype=coding, mode='r+', shape=(used_traces, samples))
     else:
         return np.load(filepath, mmap_mode='r')

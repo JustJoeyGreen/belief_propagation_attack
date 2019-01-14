@@ -11,10 +11,11 @@ TPRANGE_LDA = 200
 
 class RealTraceHandler:
 
-    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True):
+    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, shift_attack = None):
+        self.no_print = no_print
         if not no_print:
             print "Preloading Matrix real_trace_data, may take a while..."
-        self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH, memory_mapped=memory_mapped)
+        self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if shift_attack is None else get_shifted_tracedata_filepath(extra=True, shifted=shift_attack), memory_mapped=memory_mapped)
         self.real_trace_data_maxtraces, self.real_trace_data_len = self.real_trace_data.shape
         self.plaintexts = np.load(PLAINTEXT_EXTRA_FILEPATH)
 
@@ -79,13 +80,15 @@ class RealTraceHandler:
                 tprange = TPRANGE_LDA
             elif best == 'nn':
                 tprange = TPRANGE_NN
-            print 'Best Template for {}: {}'.format(variable, best)
+            if not self.no_print:
+                print 'Best Template for {}: {}'.format(variable, best)
 
         var_notrace = strip_off_trace(variable)
         if best == 'nn' or (best is None and self.use_nn):
             if ignore_bad and not self.check_template(variable):
                 out_distribution = get_no_knowledge_array()
-                print "> Ignoring NN for Variable {} as below threshold".format(variable)
+                if not self.no_print:
+                    print "> Ignoring NN for Variable {} as below threshold".format(variable)
             else:
                 # Get window of power values
                 power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=tprange)
@@ -94,7 +97,8 @@ class RealTraceHandler:
                     neural_network = self.neural_network_dict[var_notrace]
                 except KeyError:
                     # Add to dict!
-                    print "> Loading NN for Variable {}...".format(var_notrace)
+                    if not self.no_print:
+                        print "> Loading NN for Variable {}...".format(var_notrace)
                     self.neural_network_dict[var_notrace] = load_sca_model('{}{}_mlp5_nodes200_window{}_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var_notrace, tprange))
                     neural_network = self.neural_network_dict[var_notrace]
                 new_input = np.resize(power_value, (1, power_value.size))
@@ -113,7 +117,8 @@ class RealTraceHandler:
                     self.lda_dict[var_notrace] = pickle.load(open('{}{}_{}_{}.p'.format(LDA_FOLDER,
                         tprange, var_name, var_number-1),'ro'))
                 except IOError:
-                    print "! No LDA for Variable {} Window {}, creating now...".format(var_notrace, tprange)
+                    if not self.no_print:
+                        print "! No LDA for Variable {} Window {}, creating now...".format(var_notrace, tprange)
                 lda = self.lda_dict[var_notrace]
             out_distribution = (lda.predict_proba([power_value])).astype(np.float32)[0]
         else:
@@ -121,7 +126,8 @@ class RealTraceHandler:
             try:
                 musigma_array = self.musigma_dict[strip_off_trace(variable)]
             except IndexError:
-                print "! No Mu Sigma Pair found for Variable {}".format(var_notrace)
+                if not self.no_print:
+                    print "! No Mu Sigma Pair found for Variable {}".format(var_notrace)
                 return get_no_knowledge_array()
 
             out_distribution = get_no_knowledge_array()
@@ -164,9 +170,11 @@ class RealTraceHandler:
         # Get variable of model
         model_name = model_file.replace(MODEL_FOLDER, '')
         variable = model_name.split('_')[0]
-        print "\n* Checking model {} (variable {}) *\n".format(model_name, variable)
+        if not self.no_print:
+            print "\n* Checking model {} (variable {}) *\n".format(model_name, variable)
         if not check_file_exists(model_file):
-            print "!!! Doesn't exist!"
+            if not self.no_print:
+                print "!!! Doesn't exist!"
             return False
         else:
             var_name, var_number, _ = split_variable_name(variable)
