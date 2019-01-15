@@ -39,7 +39,7 @@ class LeakageSimulatorAESFurious:
         random.seed(seed)
         np.random.seed(seed)
 
-    def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,
+    def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,
     average_key_nodes = False):
 
         cdef int i, j, trace, index
@@ -521,7 +521,7 @@ class LeakageSimulatorAESFurious:
     def save_simulation(self):
         save_leakage(self.simulated_dictionary, 'furious_dict')
 
-    def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):
+    def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
 
         if badly_leaking_nodes is None:
             badly_leaking_nodes = []

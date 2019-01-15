@@ -3067,7 +3067,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *         random.seed(seed)
  *         np.random.seed(seed)             # <<<<<<<<<<<<<<
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,
  */
   __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3149,7 +3149,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
 /* "leakageSimulatorAESFurious.pyx":42
  *         np.random.seed(seed)
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
  *     average_key_nodes = False):
  * 
  */
@@ -3188,13 +3188,13 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     values[9] = ((PyObject *)((PyObject *)Py_None));
     values[10] = ((PyObject *)((PyObject *)Py_None));
     values[13] = ((PyObject *)((PyObject *)Py_True));
-    values[14] = ((PyObject *)((PyObject *)Py_True));
+    values[14] = ((PyObject *)((PyObject *)Py_False));
     values[15] = ((PyObject *)((PyObject *)Py_False));
     values[16] = ((PyObject *)((PyObject *)__pyx_int_10));
 
     /* "leakageSimulatorAESFurious.pyx":43
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,
  *     average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         cdef int i, j, trace, index
@@ -3414,7 +3414,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     if (values[4]) {
       __pyx_v_read_plaintexts = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_read_plaintexts == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L3_error)
     } else {
-      __pyx_v_read_plaintexts = ((int)((int)1));
+      __pyx_v_read_plaintexts = ((int)((int)0));
     }
     if (values[5]) {
       __pyx_v_random_plaintexts = __Pyx_PyInt_As_int(values[5]); if (unlikely((__pyx_v_random_plaintexts == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L3_error)
@@ -3455,7 +3455,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   /* "leakageSimulatorAESFurious.pyx":42
  *         np.random.seed(seed)
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
  *     average_key_nodes = False):
  * 
  */
@@ -9252,7 +9252,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   /* "leakageSimulatorAESFurious.pyx":42
  *         np.random.seed(seed)
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
  *     average_key_nodes = False):
  * 
  */
@@ -14382,7 +14382,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *     def save_simulation(self):
  *         save_leakage(self.simulated_dictionary, 'furious_dict')             # <<<<<<<<<<<<<<
  * 
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
  */
   __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_save_leakage); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 522, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -14465,7 +14465,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
 /* "leakageSimulatorAESFurious.pyx":524
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):             # <<<<<<<<<<<<<<
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
@@ -14494,7 +14494,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     values[4] = ((PyObject *)((PyObject*)__pyx_float_0_1));
     values[5] = ((PyObject *)((PyObject *)Py_None));
     values[6] = ((PyObject *)((PyObject *)Py_None));
-    values[7] = ((PyObject *)((PyObject *)Py_True));
+    values[7] = ((PyObject *)((PyObject *)Py_False));
     values[8] = ((PyObject *)((PyObject *)Py_False));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
@@ -14658,7 +14658,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __Pyx_INCREF(__pyx_v_no_noise_nodes);
 
   /* "leakageSimulatorAESFurious.pyx":526
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
  * 
  *         if badly_leaking_nodes is None:             # <<<<<<<<<<<<<<
  *             badly_leaking_nodes = []
@@ -14681,7 +14681,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_3 = 0;
 
     /* "leakageSimulatorAESFurious.pyx":526
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
  * 
  *         if badly_leaking_nodes is None:             # <<<<<<<<<<<<<<
  *             badly_leaking_nodes = []
@@ -15595,7 +15595,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   /* "leakageSimulatorAESFurious.pyx":524
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):             # <<<<<<<<<<<<<<
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
@@ -21690,7 +21690,7 @@ static int __Pyx_InitCachedConstants(void) {
   /* "leakageSimulatorAESFurious.pyx":42
  *         np.random.seed(seed)
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
  *     average_key_nodes = False):
  * 
  */
@@ -21729,7 +21729,7 @@ static int __Pyx_InitCachedConstants(void) {
   /* "leakageSimulatorAESFurious.pyx":524
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):             # <<<<<<<<<<<<<<
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
@@ -21737,7 +21737,7 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__49);
   __Pyx_GIVEREF(__pyx_tuple__49);
   __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(9, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_dictionary_with_noise, 524, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 524, __pyx_L1_error)
-  __pyx_tuple__51 = PyTuple_Pack(7, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_0_1), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 524, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(7, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_0_1), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 524, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__51);
   __Pyx_GIVEREF(__pyx_tuple__51);
 
@@ -22265,7 +22265,7 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
   /* "leakageSimulatorAESFurious.pyx":42
  *         np.random.seed(seed)
  * 
- *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 1, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = True, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
+ *     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,             # <<<<<<<<<<<<<<
  *     average_key_nodes = False):
  * 
  */
@@ -22275,7 +22275,7 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = __Pyx_PyInt_From_int(((int)0)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyInt_From_int(((int)1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_int(((int)0)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = __Pyx_PyInt_From_int(((int)1)); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
@@ -22317,9 +22317,9 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
   __Pyx_INCREF(((PyObject *)Py_True));
   __Pyx_GIVEREF(((PyObject *)Py_True));
   PyTuple_SET_ITEM(__pyx_t_9, 12, ((PyObject *)Py_True));
-  __Pyx_INCREF(((PyObject *)Py_True));
-  __Pyx_GIVEREF(((PyObject *)Py_True));
-  PyTuple_SET_ITEM(__pyx_t_9, 13, ((PyObject *)Py_True));
+  __Pyx_INCREF(((PyObject *)Py_False));
+  __Pyx_GIVEREF(((PyObject *)Py_False));
+  PyTuple_SET_ITEM(__pyx_t_9, 13, ((PyObject *)Py_False));
   __Pyx_INCREF(((PyObject *)Py_False));
   __Pyx_GIVEREF(((PyObject *)Py_False));
   PyTuple_SET_ITEM(__pyx_t_9, 14, ((PyObject *)Py_False));
@@ -22371,7 +22371,7 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
   /* "leakageSimulatorAESFurious.pyx":524
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
- *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = True, average_key_nodes = False):             # <<<<<<<<<<<<<<
+ *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */

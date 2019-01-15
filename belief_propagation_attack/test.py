@@ -24,6 +24,20 @@ SHIFT_TRACES = True
 SHIFT_VAL = 50
 SHIFT_EXTRA = False
 
+
+
+# Try leakage sim
+leakage_simulator = lSimF.LeakageSimulatorAESFurious()
+leakage_simulator.simulate(traces = 1)
+leakage = leakage_simulator.get_leakage_dictionary()
+
+vars = ['p','t','s','k']
+for v in vars:
+    print '{}: {}'.format(v, len(leakage[v][0]))
+exit(1)
+
+
+
 def shift_traces(extra=SHIFT_EXTRA, shifted=SHIFT_VAL):
     # Load trace data
     trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)

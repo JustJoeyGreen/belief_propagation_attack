@@ -325,7 +325,11 @@ class FactorGraphAES:
                 elif var_name in shared_variables and self.traces > 1:
                     # Check if in dictionary
                     try:
-                        powervalue = leakage[var_name][var_number-1]
+                        var_leakage = leakage[var_name]
+                        powervalue = var_leakage[:, var_number-1]
+                        # Need to handle multiple power values!!!
+                        # For now, average them I guess
+                        powervalue = np.mean(powervalue)
                         # Check if p1 - p16 or rc
                         if var_name == 'rc':
                             # Add as plaintext array

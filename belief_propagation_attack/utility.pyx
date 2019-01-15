@@ -1604,12 +1604,6 @@ def print_details(x):
 
 
 
-
-
-
-
-
-
 def get_value_from_plaintext_array(v):
     return np.where(v==1)[0][0]
 
