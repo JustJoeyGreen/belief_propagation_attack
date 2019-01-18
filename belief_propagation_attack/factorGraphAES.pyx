@@ -157,6 +157,8 @@ class FactorGraphAES:
         if real_traces:
             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, shift_attack=shift_attack)
 
+        self.averaged_key_values = None
+
     def set_key(self, val):
         self.key = val
 
@@ -282,6 +284,59 @@ class FactorGraphAES:
         print "*** Stats ***"
         print_statistics(all_ranks)
 
+    def compute_averaged_key_values(self, averaged_traces = 1, specific_trace = None, no_leak = None,
+                                      fixed_value = None, elmo_pow_model = False, real_traces = False,
+                                      seed=0, no_noise=False, offset=0, ignore_bad=False):
+        snr = 2 ** self.SNR_exp
+        # Handle no leaks and fixed values
+        if no_leak is None:
+            no_leak = []
+        else:
+            no_leak = get_all_variables_that_match(self.variables, no_leak)
+        if fixed_value is None:
+            matched_fixed_values = []
+        else:
+            matched_fixed_values = get_variables_that_match(self.variables, fixed_value[0])
+            if not self.no_print:
+                print "::: Fixing var {}, matched: {}".format(fixed_value[0], matched_fixed_values)
+
+        averaged_power_values = np.zeros(len(self.key_nodes))
+
+        if not real_traces:
+            # Simulate traces - if LFG then do all traces at same time
+            leakage_simulator = lSimF.LeakageSimulatorAESFurious(seed=seed+offset)
+            leakage_simulator.fix_key(self.key)
+
+            # leakage = leakage_simulator.simulate(snr = snr, traces = self.traces, offset = 0, read_plaintexts = 0, random_plaintexts = 1)
+            leakage_simulator.simulate(snr = snr, traces = averaged_traces, offset = offset, read_plaintexts = 0, random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = 0, print_all = 0, affect_with_noise = not no_noise, hw_leakage_model = False, real_values = False, rounds_of_aes = self.rounds_of_aes)
+
+            leakage = leakage_simulator.get_leakage_dictionary()
+
+            hw_sigma = get_sigma(snr)
+
+            for i, var in enumerate(self.key_nodes):
+                # Split name
+                var_name, var_number, var_trace = split_variable_name(var)
+                try:
+                    var_leakage = leakage[var_name]
+                    powervalue = var_leakage[:, var_number-1]
+                    # Need to handle multiple power values!!!
+                    # For now, average them I guess
+                    # print "In COMPUTE_AVERAGE BEFORE AVERAGE: Var {}, PowerValue {}".format(var, powervalue)
+                    powervalue = np.mean(powervalue) #debug
+                    averaged_power_values[i] = powervalue
+                    # print "In COMPUTE_AVERAGE: Var {}, PowerValue {}".format(var, powervalue)
+                except KeyError:
+                    print "! Key Error for Variable {}".format(var)
+                    print leakage[var_name][var_trace][var_number-1]
+                    raise
+        else:
+            print "! TODO: Averaged Key Power Values for Real Traces (IFG)"
+            raise
+
+        self.averaged_key_values = averaged_power_values
+
+
     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
                                       seed=0, no_noise=False, offset=0, ignore_bad=False):
@@ -329,7 +384,11 @@ class FactorGraphAES:
                         powervalue = var_leakage[:, var_number-1]
                         # Need to handle multiple power values!!!
                         # For now, average them I guess
+
+
                         powervalue = np.mean(powervalue)
+                        # powervalue = powervalue[0] #debug
+
                         # Check if p1 - p16 or rc
                         if var_name == 'rc':
                             # Add as plaintext array
@@ -337,6 +396,9 @@ class FactorGraphAES:
                         else:
                             if elmo_pow_model:
                                 self.set_initial_distribution(var, template_match(var, powervalue, snr))
+                                # # DEBUG
+                                # if var_name == 'k' and var_number == 1:
+                                #     print "Setting Dist of Var {} from Power Value {}:\n{}\n".format(var, powervalue, template_match(var, powervalue, snr))
                             else:
                                 self.set_initial_distribution(var, get_hamming_weight_array(powervalue, hw_sigma))
                     except KeyError:
@@ -349,7 +411,10 @@ class FactorGraphAES:
                         # print "Getting value for var {}...".format(var)
                         # Otherwise, get right trace number
                         try:
-                            if specific_trace is not None:
+                            if var_name == 'k' and var_number <= 16 and self.averaged_key_values is not None:
+                                powervalue = self.averaged_key_values[var_number-1]
+                                # print "In SET_ALL_INIT: Var {}, PowerValue {}".format(var, powervalue)
+                            elif specific_trace is not None:
                                 powervalue = leakage[var_name][specific_trace][var_number-1]
                             else:
                                 powervalue = leakage[var_name][var_trace][var_number-1]
@@ -365,6 +430,9 @@ class FactorGraphAES:
                             # Add to Initial Distribution
                             if elmo_pow_model:
                                 self.set_initial_distribution(var, template_match(var, powervalue, snr))
+                                # # DEBUG
+                                # if var_name == 'k' and var_number == 1:
+                                #     print "Setting Dist of Var {} from Power Value {}:\n{}\n".format(var, powervalue, template_match(var, powervalue, snr))
                             else:
                                 self.set_initial_distribution(var, get_hamming_weight_array(powervalue, hw_sigma))
                     except KeyError:
@@ -546,8 +614,6 @@ class FactorGraphAES:
         out_list = list()
 
         if variable not in self.left_out_nodes:
-
-
 
             for neighbour in self.get_neighbours(variable):
 

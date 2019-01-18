@@ -178,7 +178,10 @@ def run_belief_propagation_attack(margdist=None):
             key_distributions = np.array([get_no_knowledge_array() for i in range(16)])  # 16 Key Bytes
             key_distributions_sum = np.array([get_no_knowledge_array() for i in range(16)])
             if INDEPENDENT_AVERAGE:
-                summed_key_initial_distributions = np.array([get_zeros_array() for i in range(16)])  # 16 Key Bytes
+                my_graph.compute_averaged_key_values(averaged_traces = TRACES, no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
+                    elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
+                    no_noise=NO_NOISE, offset=(rep*TRACES), ignore_bad=IGNORE_BAD_TEMPLATES)
+                key_initial_distributions = np.array([get_zeros_array() for i in range(16)])  # 16 Key Bytes
                 current_incoming_key_messages = np.array([get_no_knowledge_array() for i in range(16)])  # 16 Key Bytes
 
             # Bool to handle early break
@@ -247,9 +250,8 @@ def run_belief_propagation_attack(margdist=None):
                                                           my_graph.get_all_key_initial_distributions())
                     key_distributions_sum = array_2d_add(key_distributions_sum,
                                                          my_graph.get_all_key_initial_distributions())
-                elif (method == "IND") and INDEPENDENT_AVERAGE:
-                    summed_key_initial_distributions = array_2d_add(summed_key_initial_distributions,
-                                                         my_graph.get_all_key_initial_distributions())
+                elif (method == "IND") and INDEPENDENT_AVERAGE and (trace == 0):
+                    key_initial_distributions = my_graph.get_all_key_initial_distributions()
 
                 # Start Timer
                 start_time = datetime.now()
@@ -306,6 +308,7 @@ def run_belief_propagation_attack(margdist=None):
                 if IGNORE_GROUND_TRUTHS or (
                         not my_graph.check_plaintext_failure(debug_mode=True) and
                         not my_graph.check_failure_on_specific_byte('t', debug_mode=False)):
+
                     # Update Key Distribution Depending
                     if method == "SEQ":
                         key_distributions = my_graph.get_marginal_distributions_of_key_bytes()
@@ -327,7 +330,7 @@ def run_belief_propagation_attack(margdist=None):
                         # Multiply the incoming messages
                         current_incoming_key_messages = array_2d_multiply(current_incoming_key_messages,
                                                               my_graph.get_all_key_incoming_messages())
-                        key_distributions = array_2d_multiply((summed_key_initial_distributions/(trace+1.0)), current_incoming_key_messages)
+                        key_distributions = array_2d_multiply(key_initial_distributions, current_incoming_key_messages)
 
                     if BREAK_WHEN_FOUND and (method == "SEQ" or method == "IND") and my_graph.found_key(
                             supplied_dist=key_distributions):
@@ -723,8 +726,8 @@ if __name__ == "__main__":
                         help='Toggles Sequential Graph On (default: False)', default=False)
     parser.add_argument('--ING', '--IND', '--IFG', action="store_false", dest="INDEPENDENT_GRAPHS",
                         help='Toggles Independent Graph Off (default: True)', default=True)
-    parser.add_argument('--INGAVG', '--INDAVG', '--IFGAVG', '--IAVG', action="store_false", dest="INDEPENDENT_AVERAGE",
-                        help='Toggles Independent Graph Key Averaging Off (default: True)', default=True)
+    parser.add_argument('--INGAVG', '--INDAVG', '--IFGAVG', '--IAVG', action="store_true", dest="INDEPENDENT_AVERAGE",
+                        help='Toggles Independent Graph Key Power Value Averaging On (default: False)', default=False)
     parser.add_argument('--KS', action="store_true", dest="KEY_SCHEDULING",
                         help='Toggles Key Scheduling On (default: False)', default=False)
     parser.add_argument('--ELMO', action="store_true", dest="ELMO_POWER_MODEL",
