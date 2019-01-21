@@ -66,7 +66,8 @@ class RealTraceHandler:
         # print "+ Checking template for {}, median rank {}".format(variable, median_rank)
         return median_rank < threshold
 
-    def get_leakage(self, variable, trace=0, normalise=True, ignore_bad=False):
+
+    def get_leakage_value(self, variable, trace=0, average_power_values=False, averaged_traces=1):
         # myvarlist = ["k001-K", "k001"]
         # if variable in myvarlist:
             # print "Getting Leakage for {}, trace {}".format(variable, trace)
@@ -83,6 +84,38 @@ class RealTraceHandler:
             if not self.no_print:
                 print 'Best Template for {}: {}'.format(variable, best)
 
+        nn_normalise = True if (best == 'nn' or (best is None and self.use_nn)) else False
+
+        if average_power_values:
+            power_value = np.mean(np.array([self.return_power_window_of_variable(variable, i, nn_normalise=nn_normalise, window=tprange) for i in range(averaged_traces)]), axis=0)
+        else:
+            power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=nn_normalise, window=tprange)
+
+        # if best == 'nn' or (best is None and self.use_nn):
+        #     power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=tprange)
+        # elif best == 'lda' or (best is None and self.use_lda):
+        #     # Get window of power values
+        #     power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=False, window=tprange)
+        # else:
+        #     power_value = self.return_power_window_of_variable(variable, trace, window=tprange)
+
+        return power_value
+
+    def get_leakage_distribution(self, variable, power_value, trace=0, normalise=True, ignore_bad=False, average_power_values=False, averaged_traces=1):
+        # myvarlist = ["k001-K", "k001"]
+        # if variable in myvarlist:
+            # print "Getting Leakage for {}, trace {}".format(variable, trace)
+        tprange = self.tprange
+        best = None
+        if self.use_best:
+            best = self.get_best_template(variable)
+            if best == 'uni':
+                tprange = 1
+            elif best == 'lda':
+                tprange = TPRANGE_LDA
+            elif best == 'nn':
+                tprange = TPRANGE_NN
+
         var_notrace = strip_off_trace(variable)
         if best == 'nn' or (best is None and self.use_nn):
             if ignore_bad and not self.check_template(variable):
@@ -90,8 +123,6 @@ class RealTraceHandler:
                 if not self.no_print:
                     print "> Ignoring NN for Variable {} as below threshold".format(variable)
             else:
-                # Get window of power values
-                power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=tprange)
                 # Use neural network to predict value
                 try:
                     neural_network = self.neural_network_dict[var_notrace]
@@ -104,8 +135,6 @@ class RealTraceHandler:
                 new_input = np.resize(power_value, (1, power_value.size))
                 out_distribution = neural_network.predict(new_input)[0]
         elif best == 'lda' or (best is None and self.use_lda):
-            # Get window of power values
-            power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=False, window=tprange)
             # Load LDA file
             try:
                 lda = self.lda_dict[var_notrace]
@@ -132,10 +161,8 @@ class RealTraceHandler:
 
             out_distribution = get_no_knowledge_array()
 
-            power_val = self.return_power_window_of_variable(variable, trace, window=1)
-
             for i in range(256):
-                out_distribution[i] = gaussian_probability_density(power_val, musigma_array[i][0], musigma_array[i][1])
+                out_distribution[i] = gaussian_probability_density(power_value, musigma_array[i][0], musigma_array[i][1])
 
         # if variable in myvarlist:
         #     print 'Out Dist:\n{}'.format(out_distribution)
@@ -145,6 +172,10 @@ class RealTraceHandler:
             return normalise_array(out_distribution)
         else:
             return out_distribution
+
+    # Both together
+    def get_leakage(self, variable, trace=0, normalise=True, ignore_bad=False, average_power_values=False, averaged_traces=1):
+        return self.get_leakage_distribution(variable, self.get_leakage_value(variable, trace=trace, average_power_values=average_power_values, averaged_traces=averaged_traces), trace=trace, normalise=normalise, ignore_bad=ignore_bad)
 
     def get_plaintext_byte_distribution(self, variable, trace=0):
         # print 'For variable {}:\n{}\n\n'.format(variable, get_plaintext_array(self.plaintexts[trace][get_variable_number(variable) - 1]))

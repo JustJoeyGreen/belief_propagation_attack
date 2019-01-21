@@ -331,8 +331,17 @@ class FactorGraphAES:
                     print leakage[var_name][var_trace][var_number-1]
                     raise
         else:
-            print "! TODO: Averaged Key Power Values for Real Traces (IFG)"
-            raise
+
+            for i, var in enumerate(self.key_nodes):
+                # Split name
+                var_name, var_number, var_trace = split_variable_name(var)
+                try:
+                    powervalue = self.handler.get_leakage_value(var, average_power_values=True, averaged_traces=averaged_traces)
+                    averaged_power_values[i] = powervalue
+                    # print "In COMPUTE_AVERAGE: Var {}, PowerValue {}".format(var, powervalue)
+                except KeyError:
+                    print "! Key Error for Variable {}".format(var)
+                    raise
 
         self.averaged_key_values = averaged_power_values
 
@@ -452,6 +461,8 @@ class FactorGraphAES:
                         self.set_initial_distribution(var, get_no_knowledge_array())
                     elif var_name == 'p' and var_number <= 16:
                         self.set_initial_distribution(var, self.handler.get_plaintext_byte_distribution(var, trace=offset+trace))
+                    elif var_name == 'k' and var_number <= 16 and self.averaged_key_values is not None:
+                        self.set_initial_distribution(var, self.handler.get_leakage_distribution(var, self.averaged_key_values[var_number-1], ignore_bad=ignore_bad))
                     else:
                         if cheat == 0:
                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace, ignore_bad=ignore_bad))
