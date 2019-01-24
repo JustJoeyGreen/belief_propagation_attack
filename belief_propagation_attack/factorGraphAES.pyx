@@ -300,7 +300,7 @@ class FactorGraphAES:
             if not self.no_print:
                 print "::: Fixing var {}, matched: {}".format(fixed_value[0], matched_fixed_values)
 
-        averaged_power_values = np.zeros(len(self.key_nodes))
+        averaged_power_values = [0] * len(self.key_nodes)
 
         if not real_traces:
             # Simulate traces - if LFG then do all traces at same time
@@ -337,6 +337,7 @@ class FactorGraphAES:
                 var_name, var_number, var_trace = split_variable_name(var)
                 try:
                     powervalue = self.handler.get_leakage_value(var, average_power_values=True, averaged_traces=averaged_traces)
+                    # print "In Computer Average Keys, power value {}, type {}".format(powervalue, type(powervalue))
                     averaged_power_values[i] = powervalue
                     # print "In COMPUTE_AVERAGE: Var {}, PowerValue {}".format(var, powervalue)
                 except KeyError:
@@ -463,6 +464,7 @@ class FactorGraphAES:
                         self.set_initial_distribution(var, self.handler.get_plaintext_byte_distribution(var, trace=offset+trace))
                     elif var_name == 'k' and var_number <= 16 and self.averaged_key_values is not None:
                         self.set_initial_distribution(var, self.handler.get_leakage_distribution(var, self.averaged_key_values[var_number-1], ignore_bad=ignore_bad))
+                        # print "Initial Dist for var {}:\n{}\n".format(var, self.handler.get_leakage_distribution(var, self.averaged_key_values[var_number-1], ignore_bad=ignore_bad)) #debug
                     else:
                         if cheat == 0:
                             self.set_initial_distribution(var, self.handler.get_leakage(var, trace=offset+trace, ignore_bad=ignore_bad))

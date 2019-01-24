@@ -108,7 +108,7 @@ old_settings = np.seterr(all='ignore')
 SIZE_OF_ARRAY       = 256
 RANKING_START       = 500
 NORMALISE_MAX       = 30000000000
-NORMALISE_MIN       = 1e-16
+NORMALISE_MIN       = 1e-8 #Previously 1e-16
 DIVIDED_MAX         = 10000
 DIVIDED_THRESH      = 100
 ALLOW_EMPTY         = True
@@ -567,16 +567,24 @@ def normalise_array(v):
     else:
         divided = np.copy(v)
     # Then, remove small values
-    if NO_WIPE:
-        wiped = divided
-    else:
-        wiped = wipe_low(divided, NORMALISE_MIN)
-    # Check if already normalised
-    if np.sum(wiped) == 1.0:
-        # Already normalised
-        return wiped
+    # if NO_WIPE:
+    #     wiped = divided
+    # else:
+    #     wiped = wipe_low(divided, NORMALISE_MIN)
+
+    # Set all values of 0 to have minimum value
+    if np.min(divided) <= 0.0:
+        zero_indexes = (divided <= 0.0)
+        min_nonzero = array_min(divided)
+        divided[zero_indexes] = min(min_nonzero, NORMALISE_MIN)
+
+    # # Check if already normalised
+    # if np.sum(wiped) == 1.0:
+    #     # Already normalised
+    #     return wiped
+
     # Else, normalise by dividing all by sum
-    norm = array_divide_float(wiped, np.sum(wiped))
+    norm = array_divide_float(divided, np.sum(divided))
 
     if len(norm[norm < 0]) > 0 or len(norm[norm > 2]) > 0:
         print "Negative / Over 2 here!"
@@ -584,8 +592,8 @@ def normalise_array(v):
         print "Max: {}, Min: {}".format(np.max(v), np.min(v))
         print "divided:\n{}\n".format(divided)
         print "Max: {}, Min: {}".format(np.max(divided), np.min(divided))
-        print "wiped:\n{}\n".format(wiped)
-        print "Max: {}, Min: {}".format(np.max(wiped), np.min(wiped))
+        # print "wiped:\n{}\n".format(wiped)
+        # print "Max: {}, Min: {}".format(np.max(wiped), np.min(wiped))
         print "norm:\n{}\n".format(norm)
         print "Max: {}, Min: {}".format(np.max(norm), np.min(norm))
         raise ValueError

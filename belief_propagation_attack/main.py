@@ -137,7 +137,7 @@ def run_belief_propagation_attack(margdist=None):
     for method in connecting_methods:
 
         if not NO_PRINT:
-            print print_fill_1, "Starting {}".format(connecting_dict[method]), print_fill_1
+            print print_fill_1, "Starting {}{}".format(connecting_dict[method], ', Key Averaging {}'.format(INDEPENDENT_AVERAGE) if method == "IND" else ''), print_fill_1
             print_new_line()
 
         final_key_ranks = []
@@ -726,8 +726,8 @@ if __name__ == "__main__":
                         help='Toggles Sequential Graph On (default: False)', default=False)
     parser.add_argument('--ING', '--IND', '--IFG', action="store_false", dest="INDEPENDENT_GRAPHS",
                         help='Toggles Independent Graph Off (default: True)', default=True)
-    parser.add_argument('--INGAVG', '--INDAVG', '--IFGAVG', '--IAVG', action="store_true", dest="INDEPENDENT_AVERAGE",
-                        help='Toggles Independent Graph Key Power Value Averaging On (default: False)', default=False)
+    parser.add_argument('--INGAVG', '--INDAVG', '--IFGAVG', '--IAVG', action="store_false", dest="INDEPENDENT_AVERAGE",
+                        help='Toggles Independent Graph Key Power Value Averaging Off (default: True)', default=True)
     parser.add_argument('--KS', action="store_true", dest="KEY_SCHEDULING",
                         help='Toggles Key Scheduling On (default: False)', default=False)
     parser.add_argument('--ELMO', action="store_true", dest="ELMO_POWER_MODEL",

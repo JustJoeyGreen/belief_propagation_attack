@@ -55,6 +55,8 @@ class MyTestCase(unittest.TestCase):
         self.assertAlmostEquals(v_divide[2], 0.4)
         self.assertEquals(v_divide[3], 0.0)
 
+    # def test_array_divide_float(self):
+
     def test_normalise_array(self):
         v1 = utility.get_filled_array(1)
         v_norm_v1 = utility.normalise_array(v1)
