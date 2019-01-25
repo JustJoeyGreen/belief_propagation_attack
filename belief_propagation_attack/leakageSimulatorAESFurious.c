@@ -3715,52 +3715,52 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":65
- * 
+  /* "leakageSimulatorAESFurious.pyx":66
  *         # Key
+ *         # print 'DEBUGGING IN LSIM: ', self.key, len(self.key), k
  *         k[:len(self.key)] = self.key             # <<<<<<<<<<<<<<
  * 
  *         # All Round Keys
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_7 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_k), __pyx_t_1, 0, __pyx_t_7, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  if (__Pyx_PyObject_SetSlice(((PyObject *)__pyx_v_k), __pyx_t_1, 0, __pyx_t_7, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":69
+  /* "leakageSimulatorAESFurious.pyx":70
  *         # All Round Keys
  *         # rc
  *         rc[0] = 1             # <<<<<<<<<<<<<<
  *         for i in range(rounds_of_aes):
  *             rc[i+1] = xtimes(rc[i])
  */
-  if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_rc), 0, __pyx_int_1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_rc), 0, __pyx_int_1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1) < 0)) __PYX_ERR(0, 70, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":70
+  /* "leakageSimulatorAESFurious.pyx":71
  *         # rc
  *         rc[0] = 1
  *         for i in range(rounds_of_aes):             # <<<<<<<<<<<<<<
  *             rc[i+1] = xtimes(rc[i])
  * 
  */
-  __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_v_rounds_of_aes); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_v_rounds_of_aes); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 71, __pyx_L1_error)
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "leakageSimulatorAESFurious.pyx":71
+    /* "leakageSimulatorAESFurious.pyx":72
  *         rc[0] = 1
  *         for i in range(rounds_of_aes):
  *             rc[i+1] = xtimes(rc[i])             # <<<<<<<<<<<<<<
  * 
  *         # sk, xk, k
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_rc), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(((PyObject *)__pyx_v_rc), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -3773,14 +3773,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_3) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3789,125 +3789,125 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_3); __pyx_t_3 = NULL;
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_4);
         __pyx_t_4 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__pyx_v_i + 1);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_rc), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_rc), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 72, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "leakageSimulatorAESFurious.pyx":74
+  /* "leakageSimulatorAESFurious.pyx":75
  * 
  *         # sk, xk, k
  *         for i in range(0, (16 * rounds_of_aes), 16):             # <<<<<<<<<<<<<<
  *             sk[(i/4)  ] = sbox[k[i+13]]
  *             sk[(i/4)+1] = sbox[k[i+14]]
  */
-  __pyx_t_1 = PyNumber_Multiply(__pyx_int_16, __pyx_v_rounds_of_aes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Multiply(__pyx_int_16, __pyx_v_rounds_of_aes); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_1); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=16) {
     __pyx_v_i = __pyx_t_9;
 
-    /* "leakageSimulatorAESFurious.pyx":75
+    /* "leakageSimulatorAESFurious.pyx":76
  *         # sk, xk, k
  *         for i in range(0, (16 * rounds_of_aes), 16):
  *             sk[(i/4)  ] = sbox[k[i+13]]             # <<<<<<<<<<<<<<
  *             sk[(i/4)+1] = sbox[k[i+14]]
  *             sk[(i/4)+2] = sbox[k[i+15]]
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_11 = (__pyx_v_i + 13);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_10 = PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 76, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = __Pyx_div_long(__pyx_v_i, 4);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 75, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":76
+    /* "leakageSimulatorAESFurious.pyx":77
  *         for i in range(0, (16 * rounds_of_aes), 16):
  *             sk[(i/4)  ] = sbox[k[i+13]]
  *             sk[(i/4)+1] = sbox[k[i+14]]             # <<<<<<<<<<<<<<
  *             sk[(i/4)+2] = sbox[k[i+15]]
  *             sk[(i/4)+3] = sbox[k[i+12]]
  */
-    __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_11 = (__pyx_v_i + 14);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyObject_GetItem(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __pyx_t_1 = PyObject_GetItem(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__Pyx_div_long(__pyx_v_i, 4) + 1);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 76, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":77
+    /* "leakageSimulatorAESFurious.pyx":78
  *             sk[(i/4)  ] = sbox[k[i+13]]
  *             sk[(i/4)+1] = sbox[k[i+14]]
  *             sk[(i/4)+2] = sbox[k[i+15]]             # <<<<<<<<<<<<<<
  *             sk[(i/4)+3] = sbox[k[i+12]]
  *             # XOR with rc
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_11 = (__pyx_v_i + 15);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __pyx_t_10 = PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__Pyx_div_long(__pyx_v_i, 4) + 2);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 77, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 78, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":78
+    /* "leakageSimulatorAESFurious.pyx":79
  *             sk[(i/4)+1] = sbox[k[i+14]]
  *             sk[(i/4)+2] = sbox[k[i+15]]
  *             sk[(i/4)+3] = sbox[k[i+12]]             # <<<<<<<<<<<<<<
  *             # XOR with rc
  *             xk[(i/16)]  = sk[(i/4)]   ^ k[i  ]
  */
-    __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_sbox); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_11 = (__pyx_v_i + 12);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyObject_GetItem(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+    __pyx_t_1 = PyObject_GetItem(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__Pyx_div_long(__pyx_v_i, 4) + 3);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 78, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 79, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":80
+    /* "leakageSimulatorAESFurious.pyx":81
  *             sk[(i/4)+3] = sbox[k[i+12]]
  *             # XOR with rc
  *             xk[(i/16)]  = sk[(i/4)]   ^ k[i  ]             # <<<<<<<<<<<<<<
@@ -3915,19 +3915,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             k[i+16]     = xk[(i/16)]  ^ rc[(i/16)]
  */
     __pyx_t_11 = __Pyx_div_long(__pyx_v_i, 4);
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyNumber_Xor(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Xor(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = __Pyx_div_long(__pyx_v_i, 16);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_xk), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_xk), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 81, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":82
+    /* "leakageSimulatorAESFurious.pyx":83
  *             xk[(i/16)]  = sk[(i/4)]   ^ k[i  ]
  *             # First
  *             k[i+16]     = xk[(i/16)]  ^ rc[(i/16)]             # <<<<<<<<<<<<<<
@@ -3935,20 +3935,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             k[i+17]     = sk[(i/4)+1] ^ k[i+1]
  */
     __pyx_t_11 = __Pyx_div_long(__pyx_v_i, 16);
-    __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_xk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_xk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_11 = __Pyx_div_long(__pyx_v_i, 16);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_rc), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_rc), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyNumber_Xor(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Xor(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__pyx_v_i + 16);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 82, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":84
+    /* "leakageSimulatorAESFurious.pyx":85
  *             k[i+16]     = xk[(i/16)]  ^ rc[(i/16)]
  *             # Others
  *             k[i+17]     = sk[(i/4)+1] ^ k[i+1]             # <<<<<<<<<<<<<<
@@ -3956,20 +3956,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             k[i+19]     = sk[(i/4)+3] ^ k[i+3]
  */
     __pyx_t_11 = (__Pyx_div_long(__pyx_v_i, 4) + 1);
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_11 = (__pyx_v_i + 1);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyNumber_Xor(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Xor(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__pyx_v_i + 17);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":85
+    /* "leakageSimulatorAESFurious.pyx":86
  *             # Others
  *             k[i+17]     = sk[(i/4)+1] ^ k[i+1]
  *             k[i+18]     = sk[(i/4)+2] ^ k[i+2]             # <<<<<<<<<<<<<<
@@ -3977,20 +3977,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             # Loop the rest
  */
     __pyx_t_11 = (__Pyx_div_long(__pyx_v_i, 4) + 2);
-    __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_11 = (__pyx_v_i + 2);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyNumber_Xor(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Xor(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__pyx_v_i + 18);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":86
+    /* "leakageSimulatorAESFurious.pyx":87
  *             k[i+17]     = sk[(i/4)+1] ^ k[i+1]
  *             k[i+18]     = sk[(i/4)+2] ^ k[i+2]
  *             k[i+19]     = sk[(i/4)+3] ^ k[i+3]             # <<<<<<<<<<<<<<
@@ -3998,32 +3998,32 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             if rounds_of_aes > 1:
  */
     __pyx_t_11 = (__Pyx_div_long(__pyx_v_i, 4) + 3);
-    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(((PyObject *)__pyx_v_sk), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_11 = (__pyx_v_i + 3);
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyNumber_Xor(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 86, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Xor(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_11 = (__pyx_v_i + 19);
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 86, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_11, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 87, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":88
+    /* "leakageSimulatorAESFurious.pyx":89
  *             k[i+19]     = sk[(i/4)+3] ^ k[i+3]
  *             # Loop the rest
  *             if rounds_of_aes > 1:             # <<<<<<<<<<<<<<
  *                 for j in range(i, i + 12):
  *                     k[j+20] = k[j+4] ^ k[j+16]
  */
-    __pyx_t_10 = PyObject_RichCompare(__pyx_v_rounds_of_aes, __pyx_int_1, Py_GT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_10 = PyObject_RichCompare(__pyx_v_rounds_of_aes, __pyx_int_1, Py_GT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 89, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":89
+      /* "leakageSimulatorAESFurious.pyx":90
  *             # Loop the rest
  *             if rounds_of_aes > 1:
  *                 for j in range(i, i + 12):             # <<<<<<<<<<<<<<
@@ -4034,7 +4034,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       for (__pyx_t_12 = __pyx_v_i; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_j = __pyx_t_12;
 
-        /* "leakageSimulatorAESFurious.pyx":90
+        /* "leakageSimulatorAESFurious.pyx":91
  *             if rounds_of_aes > 1:
  *                 for j in range(i, i + 12):
  *                     k[j+20] = k[j+4] ^ k[j+16]             # <<<<<<<<<<<<<<
@@ -4042,21 +4042,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *         # Save Hamming Weights to dictionary
  */
         __pyx_t_13 = (__pyx_v_j + 4);
-        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 90, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_13 = (__pyx_v_j + 16);
-        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = PyNumber_Xor(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Xor(__pyx_t_10, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_t_13 = (__pyx_v_j + 20);
-        if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
+        if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, __pyx_t_1, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 91, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":88
+      /* "leakageSimulatorAESFurious.pyx":89
  *             k[i+19]     = sk[(i/4)+3] ^ k[i+3]
  *             # Loop the rest
  *             if rounds_of_aes > 1:             # <<<<<<<<<<<<<<
@@ -4066,38 +4066,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
 
-  /* "leakageSimulatorAESFurious.pyx":93
+  /* "leakageSimulatorAESFurious.pyx":94
  * 
  *         # Save Hamming Weights to dictionary
  *         dictionary['key']   = self.key             # <<<<<<<<<<<<<<
  * 
  *         # Everything else
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_key, __pyx_t_1) < 0)) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_key, __pyx_t_1) < 0)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":96
+  /* "leakageSimulatorAESFurious.pyx":97
  * 
  *         # Everything else
  *         dictionary['k']     = np.zeros((traces,16 + (rounds_of_aes * 16)))             # <<<<<<<<<<<<<<
  *         dictionary['sk']     = np.zeros((traces,(rounds_of_aes * 4)))
  *         dictionary['xk']     = np.zeros((traces,rounds_of_aes))
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_4, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_4, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -4116,14 +4116,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4132,45 +4132,45 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     } else
     #endif
     {
-      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_k, __pyx_t_1) < 0)) __PYX_ERR(0, 96, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_k, __pyx_t_1) < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":97
+  /* "leakageSimulatorAESFurious.pyx":98
  *         # Everything else
  *         dictionary['k']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
  *         dictionary['sk']     = np.zeros((traces,(rounds_of_aes * 4)))             # <<<<<<<<<<<<<<
  *         dictionary['xk']     = np.zeros((traces,rounds_of_aes))
  *         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
  */
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_10);
@@ -4189,14 +4189,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4205,43 +4205,43 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_sk, __pyx_t_1) < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_sk, __pyx_t_1) < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":98
+  /* "leakageSimulatorAESFurious.pyx":99
  *         dictionary['k']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
  *         dictionary['sk']     = np.zeros((traces,(rounds_of_aes * 4)))
  *         dictionary['xk']     = np.zeros((traces,rounds_of_aes))             # <<<<<<<<<<<<<<
  *         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
  *         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
@@ -4260,14 +4260,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4276,48 +4276,48 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xk, __pyx_t_1) < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xk, __pyx_t_1) < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":99
+  /* "leakageSimulatorAESFurious.pyx":100
  *         dictionary['sk']     = np.zeros((traces,(rounds_of_aes * 4)))
  *         dictionary['xk']     = np.zeros((traces,rounds_of_aes))
  *         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))             # <<<<<<<<<<<<<<
  *         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  *         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  */
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_3, 16, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_3, 16, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_10);
@@ -4336,14 +4336,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4352,155 +4352,59 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_p, __pyx_t_1) < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_p, __pyx_t_1) < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":100
+  /* "leakageSimulatorAESFurious.pyx":101
  *         dictionary['xk']     = np.zeros((traces,rounds_of_aes))
  *         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
  *         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))             # <<<<<<<<<<<<<<
  *         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  *         dictionary['xt']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_8 = 0;
-  __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = PyObject_RichCompare(__pyx_t_3, __pyx_t_14, Py_GT); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  if (__pyx_t_6) {
-    __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_2 = __pyx_t_3;
-  } else {
-    __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 100, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_2 = __pyx_t_15;
-    __pyx_t_15 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_3, 16, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_4);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
-  __pyx_t_4 = 0;
-  __pyx_t_2 = 0;
-  __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_10);
-    if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-      __Pyx_INCREF(__pyx_t_2);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_10, function);
-    }
-  }
-  if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
-  } else {
-    #if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(__pyx_t_10)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    #if CYTHON_FAST_PYCCALL
-    if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
-      PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
-      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    } else
-    #endif
-    {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
-      __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    }
-  }
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_t, __pyx_t_1) < 0)) __PYX_ERR(0, 100, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "leakageSimulatorAESFurious.pyx":101
- *         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
- *         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
- *         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))             # <<<<<<<<<<<<<<
- *         dictionary['xt']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
- *         dictionary['cm']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
- */
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = 0;
-  __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_14 = PyObject_RichCompare(__pyx_t_3, __pyx_t_15, Py_GT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 101, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_15 = PyObject_RichCompare(__pyx_t_3, __pyx_t_14, Py_GT); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   if (__pyx_t_6) {
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_2 = __pyx_t_3;
   } else {
-    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 101, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_2 = __pyx_t_14;
-    __pyx_t_14 = 0;
+    __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_15);
+    __pyx_t_2 = __pyx_t_15;
+    __pyx_t_15 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
@@ -4511,6 +4415,102 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 101, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_4);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
+  __pyx_t_4 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_10);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_10, function);
+    }
+  }
+  if (!__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_GOTREF(__pyx_t_1);
+  } else {
+    #if CYTHON_FAST_PYCALL
+    if (PyFunction_Check(__pyx_t_10)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    } else
+    #endif
+    #if CYTHON_FAST_PYCCALL
+    if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
+      PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    } else
+    #endif
+    {
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
+      __pyx_t_3 = 0;
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+  }
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_t, __pyx_t_1) < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "leakageSimulatorAESFurious.pyx":102
+ *         dictionary['p']     = np.zeros((traces,16 + (rounds_of_aes * 16)))
+ *         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
+ *         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))             # <<<<<<<<<<<<<<
+ *         dictionary['xt']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
+ *         dictionary['cm']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
+ */
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __pyx_t_3 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_8 = 0;
+  __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_14 = PyObject_RichCompare(__pyx_t_3, __pyx_t_15, Py_GT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+  if (__pyx_t_6) {
+    __Pyx_INCREF(__pyx_t_3);
+    __pyx_t_2 = __pyx_t_3;
+  } else {
+    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_14);
+    __pyx_t_2 = __pyx_t_14;
+    __pyx_t_14 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_3, 16, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_2);
@@ -4528,14 +4528,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4544,62 +4544,62 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_s, __pyx_t_1) < 0)) __PYX_ERR(0, 101, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_s, __pyx_t_1) < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":102
+  /* "leakageSimulatorAESFurious.pyx":103
  *         dictionary['t']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  *         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  *         dictionary['xt']    = np.zeros((traces,min(144, rounds_of_aes * 16)))             # <<<<<<<<<<<<<<
  *         dictionary['cm']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['mc']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = 0x90;
-  __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = PyObject_RichCompare(__pyx_t_3, __pyx_t_14, Py_LT); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_15 = PyObject_RichCompare(__pyx_t_3, __pyx_t_14, Py_LT); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   if (__pyx_t_6) {
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_2 = __pyx_t_3;
   } else {
-    __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __pyx_t_2 = __pyx_t_15;
     __pyx_t_15 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
@@ -4619,14 +4619,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4635,62 +4635,62 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xt, __pyx_t_1) < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xt, __pyx_t_1) < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":103
+  /* "leakageSimulatorAESFurious.pyx":104
  *         dictionary['s']     = np.zeros((traces,16 + (max(0, rounds_of_aes - 1) * 16)))
  *         dictionary['xt']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['cm']    = np.zeros((traces,min(144, rounds_of_aes * 16)))             # <<<<<<<<<<<<<<
  *         dictionary['mc']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['h']     = np.zeros((traces,min(108, rounds_of_aes * 12)))
  */
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = 0x90;
-  __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_14 = PyObject_RichCompare(__pyx_t_3, __pyx_t_15, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_14 = PyObject_RichCompare(__pyx_t_3, __pyx_t_15, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   if (__pyx_t_6) {
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_2 = __pyx_t_3;
   } else {
-    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __pyx_t_2 = __pyx_t_14;
     __pyx_t_14 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_10);
@@ -4710,14 +4710,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4726,62 +4726,62 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_cm, __pyx_t_1) < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_cm, __pyx_t_1) < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":104
+  /* "leakageSimulatorAESFurious.pyx":105
  *         dictionary['xt']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['cm']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['mc']    = np.zeros((traces,min(144, rounds_of_aes * 16)))             # <<<<<<<<<<<<<<
  *         dictionary['h']     = np.zeros((traces,min(108, rounds_of_aes * 12)))
  * 
  */
-  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = 0x90;
-  __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = PyObject_RichCompare(__pyx_t_3, __pyx_t_14, Py_LT); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_15 = PyObject_RichCompare(__pyx_t_3, __pyx_t_14, Py_LT); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   if (__pyx_t_6) {
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_2 = __pyx_t_3;
   } else {
-    __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __pyx_t_2 = __pyx_t_15;
     __pyx_t_15 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
@@ -4801,14 +4801,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4817,62 +4817,62 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_mc, __pyx_t_1) < 0)) __PYX_ERR(0, 104, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_mc, __pyx_t_1) < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":105
+  /* "leakageSimulatorAESFurious.pyx":106
  *         dictionary['cm']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['mc']    = np.zeros((traces,min(144, rounds_of_aes * 16)))
  *         dictionary['h']     = np.zeros((traces,min(108, rounds_of_aes * 12)))             # <<<<<<<<<<<<<<
  * 
  *         for trace in range (traces):
  */
-  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_8 = 0x6C;
-  __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_14 = PyObject_RichCompare(__pyx_t_3, __pyx_t_15, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_14 = PyObject_RichCompare(__pyx_t_3, __pyx_t_15, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   if (__pyx_t_6) {
     __Pyx_INCREF(__pyx_t_3);
     __pyx_t_2 = __pyx_t_3;
   } else {
-    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __pyx_t_2 = __pyx_t_14;
     __pyx_t_14 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_10);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_10);
@@ -4892,14 +4892,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4908,29 +4908,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_h, __pyx_t_1) < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_h, __pyx_t_1) < 0)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":107
+  /* "leakageSimulatorAESFurious.pyx":108
  *         dictionary['h']     = np.zeros((traces,min(108, rounds_of_aes * 12)))
  * 
  *         for trace in range (traces):             # <<<<<<<<<<<<<<
@@ -4941,18 +4941,18 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_9; __pyx_t_12+=1) {
     __pyx_v_trace = __pyx_t_12;
 
-    /* "leakageSimulatorAESFurious.pyx":110
+    /* "leakageSimulatorAESFurious.pyx":111
  * 
  *             # Independent
  *             p       = get_empty_int_array(16 + (rounds_of_aes * 16))             # <<<<<<<<<<<<<<
  *             t       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             s       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_10, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_10, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_10 = NULL;
@@ -4966,14 +4966,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_10) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4982,20 +4982,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10); __pyx_t_10 = NULL;
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -5004,38 +5004,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_p, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":111
+    /* "leakageSimulatorAESFurious.pyx":112
  *             # Independent
  *             p       = get_empty_int_array(16 + (rounds_of_aes * 16))
  *             t       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))             # <<<<<<<<<<<<<<
  *             s       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             shift   = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_8 = 0;
-    __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_14 = PyObject_RichCompare(__pyx_t_2, __pyx_t_10, Py_GT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_14 = PyObject_RichCompare(__pyx_t_2, __pyx_t_10, Py_GT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_2);
       __pyx_t_3 = __pyx_t_2;
     } else {
-      __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 111, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __pyx_t_3 = __pyx_t_14;
       __pyx_t_14 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_2, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_2, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -5049,14 +5049,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5065,20 +5065,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 111, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 112, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
@@ -5087,38 +5087,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":112
+    /* "leakageSimulatorAESFurious.pyx":113
  *             p       = get_empty_int_array(16 + (rounds_of_aes * 16))
  *             t       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             s       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))             # <<<<<<<<<<<<<<
  *             shift   = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             xt      = get_empty_int_array(min(144, rounds_of_aes * 16))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_14 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __pyx_t_8 = 0;
-    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_RichCompare(__pyx_t_14, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_10 = PyObject_RichCompare(__pyx_t_14, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_14);
       __pyx_t_3 = __pyx_t_14;
     } else {
-      __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_3 = __pyx_t_10;
       __pyx_t_10 = 0;
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_14 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_14, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_14, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_14 = NULL;
@@ -5132,14 +5132,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_14) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5148,20 +5148,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 112, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_14); __pyx_t_14 = NULL;
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
@@ -5170,38 +5170,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_s, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":113
+    /* "leakageSimulatorAESFurious.pyx":114
  *             t       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             s       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             shift   = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))             # <<<<<<<<<<<<<<
  *             xt      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             cm      = get_empty_int_array(min(144, rounds_of_aes * 16))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_SubtractObjC(__pyx_v_rounds_of_aes, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_8 = 0;
-    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_10, __pyx_t_14, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_10, __pyx_t_14, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_10);
       __pyx_t_3 = __pyx_t_10;
     } else {
-      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = __pyx_t_2;
       __pyx_t_2 = 0;
     }
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_10, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddCObj(__pyx_int_16, __pyx_t_10, 16, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_10 = NULL;
@@ -5215,14 +5215,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_10) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5231,20 +5231,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10); __pyx_t_10 = NULL;
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_3);
         __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -5253,29 +5253,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_shift, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":114
+    /* "leakageSimulatorAESFurious.pyx":115
  *             s       = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             shift   = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             xt      = get_empty_int_array(min(144, rounds_of_aes * 16))             # <<<<<<<<<<<<<<
  *             cm      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             mc      = get_empty_int_array(min(144, rounds_of_aes * 16))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_8 = 0x90;
-    __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_14 = PyObject_RichCompare(__pyx_t_2, __pyx_t_10, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_14 = PyObject_RichCompare(__pyx_t_2, __pyx_t_10, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_2);
       __pyx_t_3 = __pyx_t_2;
     } else {
-      __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __pyx_t_3 = __pyx_t_14;
       __pyx_t_14 = 0;
@@ -5292,14 +5292,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5308,21 +5308,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_3);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
@@ -5331,29 +5331,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_xt, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":115
+    /* "leakageSimulatorAESFurious.pyx":116
  *             shift   = get_empty_int_array(16 + (max(0, rounds_of_aes - 1) * 16))
  *             xt      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             cm      = get_empty_int_array(min(144, rounds_of_aes * 16))             # <<<<<<<<<<<<<<
  *             mc      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             h       = get_empty_int_array(min(108, rounds_of_aes * 12))
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_14 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __pyx_t_8 = 0x90;
-    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_10 = PyObject_RichCompare(__pyx_t_14, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_10 = PyObject_RichCompare(__pyx_t_14, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_10); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_10); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_14);
       __pyx_t_3 = __pyx_t_14;
     } else {
-      __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_3 = __pyx_t_10;
       __pyx_t_10 = 0;
@@ -5370,14 +5370,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_14) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5386,21 +5386,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 115, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_14); __pyx_t_14 = NULL;
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_3);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 115, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
@@ -5409,29 +5409,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_cm, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":116
+    /* "leakageSimulatorAESFurious.pyx":117
  *             xt      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             cm      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             mc      = get_empty_int_array(min(144, rounds_of_aes * 16))             # <<<<<<<<<<<<<<
  *             h       = get_empty_int_array(min(108, rounds_of_aes * 12))
  * 
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_16); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_8 = 0x90;
-    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_10, __pyx_t_14, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_10, __pyx_t_14, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 117, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_10);
       __pyx_t_3 = __pyx_t_10;
     } else {
-      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = __pyx_t_2;
       __pyx_t_2 = 0;
@@ -5448,14 +5448,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_10) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5464,21 +5464,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_New(1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10); __pyx_t_10 = NULL;
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_2, 0+1, __pyx_t_3);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       }
@@ -5487,29 +5487,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_mc, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":117
+    /* "leakageSimulatorAESFurious.pyx":118
  *             cm      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             mc      = get_empty_int_array(min(144, rounds_of_aes * 16))
  *             h       = get_empty_int_array(min(108, rounds_of_aes * 12))             # <<<<<<<<<<<<<<
  * 
  *             # Get Plaintext Bytes
  */
-    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_empty_int_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_v_rounds_of_aes, __pyx_int_12); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_8 = 0x6C;
-    __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_14 = PyObject_RichCompare(__pyx_t_2, __pyx_t_10, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_14 = PyObject_RichCompare(__pyx_t_2, __pyx_t_10, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_2);
       __pyx_t_3 = __pyx_t_2;
     } else {
-      __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 118, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __pyx_t_3 = __pyx_t_14;
       __pyx_t_14 = 0;
@@ -5526,14 +5526,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_2) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5542,21 +5542,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
         PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_2); __pyx_t_2 = NULL;
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_GIVEREF(__pyx_t_3);
         PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_3);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_14, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
@@ -5565,7 +5565,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_h, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":120
+    /* "leakageSimulatorAESFurious.pyx":121
  * 
  *             # Get Plaintext Bytes
  *             if read_plaintexts:             # <<<<<<<<<<<<<<
@@ -5575,25 +5575,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_6 = (__pyx_v_read_plaintexts != 0);
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":121
+      /* "leakageSimulatorAESFurious.pyx":122
  *             # Get Plaintext Bytes
  *             if read_plaintexts:
  *                 p_backup = np.zeros(16)             # <<<<<<<<<<<<<<
  *                 try:
  *                     for i in range(1, 17):
  */
-      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF_SET(__pyx_v_p_backup, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":122
+      /* "leakageSimulatorAESFurious.pyx":123
  *             if read_plaintexts:
  *                 p_backup = np.zeros(16)
  *                 try:             # <<<<<<<<<<<<<<
@@ -5609,7 +5609,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_XGOTREF(__pyx_t_18);
         /*try:*/ {
 
-          /* "leakageSimulatorAESFurious.pyx":123
+          /* "leakageSimulatorAESFurious.pyx":124
  *                 p_backup = np.zeros(16)
  *                 try:
  *                     for i in range(1, 17):             # <<<<<<<<<<<<<<
@@ -5619,7 +5619,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           for (__pyx_t_19 = 1; __pyx_t_19 < 17; __pyx_t_19+=1) {
             __pyx_v_i = __pyx_t_19;
 
-            /* "leakageSimulatorAESFurious.pyx":124
+            /* "leakageSimulatorAESFurious.pyx":125
  *                 try:
  *                     for i in range(1, 17):
  *                         if local_leakage:             # <<<<<<<<<<<<<<
@@ -5629,34 +5629,34 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             __pyx_t_6 = (__pyx_v_local_leakage != 0);
             if (__pyx_t_6) {
 
-              /* "leakageSimulatorAESFurious.pyx":125
+              /* "leakageSimulatorAESFurious.pyx":126
  *                     for i in range(1, 17):
  *                         if local_leakage:
  *                             if hw_leakage_model:             # <<<<<<<<<<<<<<
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))
  *                             else:
  */
-              __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 125, __pyx_L16_error)
+              __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 126, __pyx_L16_error)
               if (__pyx_t_6) {
 
-                /* "leakageSimulatorAESFurious.pyx":126
+                /* "leakageSimulatorAESFurious.pyx":127
  *                         if local_leakage:
  *                             if hw_leakage_model:
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))             # <<<<<<<<<<<<<<
  *                             else:
  *                                 line = linecache.getline(PATH_TO_LOCAL_ELMO + 'printdata.txt', i + ((trace+offset) * 16))
  */
-                __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L16_error)
+                __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_getline); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 126, __pyx_L16_error)
+                __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_getline); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 127, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-                __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L16_error)
+                __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_4);
-                __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 126, __pyx_L16_error)
+                __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 127, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-                __pyx_t_4 = __Pyx_PyInt_From_long((__pyx_v_i + ((__pyx_v_trace + __pyx_v_offset) * 16))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 126, __pyx_L16_error)
+                __pyx_t_4 = __Pyx_PyInt_From_long((__pyx_v_i + ((__pyx_v_trace + __pyx_v_offset) * 16))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __pyx_t_2 = NULL;
                 __pyx_t_20 = 0;
@@ -5673,7 +5673,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_14)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_3, __pyx_t_4};
-                  __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L16_error)
+                  __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L16_error)
                   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5683,7 +5683,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_3, __pyx_t_4};
-                  __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L16_error)
+                  __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L16_error)
                   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5691,7 +5691,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 } else
                 #endif
                 {
-                  __pyx_t_10 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 126, __pyx_L16_error)
+                  __pyx_t_10 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 127, __pyx_L16_error)
                   __Pyx_GOTREF(__pyx_t_10);
                   if (__pyx_t_2) {
                     __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -5702,7 +5702,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                   PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_20, __pyx_t_4);
                   __pyx_t_3 = 0;
                   __pyx_t_4 = 0;
-                  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 126, __pyx_L16_error)
+                  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L16_error)
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
                 }
@@ -5710,7 +5710,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_1);
                 __pyx_t_1 = 0;
 
-                /* "leakageSimulatorAESFurious.pyx":125
+                /* "leakageSimulatorAESFurious.pyx":126
  *                     for i in range(1, 17):
  *                         if local_leakage:
  *                             if hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -5720,7 +5720,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 goto __pyx_L27;
               }
 
-              /* "leakageSimulatorAESFurious.pyx":128
+              /* "leakageSimulatorAESFurious.pyx":129
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))
  *                             else:
  *                                 line = linecache.getline(PATH_TO_LOCAL_ELMO + 'printdata.txt', i + ((trace+offset) * 16))             # <<<<<<<<<<<<<<
@@ -5728,17 +5728,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                             line = linecache.getline(PATH_TO_ELMO + 'output/printdata.txt', i + ((trace+offset) * 16))
  */
               /*else*/ {
-                __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 128, __pyx_L16_error)
+                __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 129, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_14);
-                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_getline); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 128, __pyx_L16_error)
+                __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_getline); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_10);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-                __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 128, __pyx_L16_error)
+                __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 129, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_14);
-                __pyx_t_4 = PyNumber_Add(__pyx_t_14, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 128, __pyx_L16_error)
+                __pyx_t_4 = PyNumber_Add(__pyx_t_14, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 129, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_4);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-                __pyx_t_14 = __Pyx_PyInt_From_long((__pyx_v_i + ((__pyx_v_trace + __pyx_v_offset) * 16))); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 128, __pyx_L16_error)
+                __pyx_t_14 = __Pyx_PyInt_From_long((__pyx_v_i + ((__pyx_v_trace + __pyx_v_offset) * 16))); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 129, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_14);
                 __pyx_t_3 = NULL;
                 __pyx_t_20 = 0;
@@ -5755,7 +5755,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_10)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_4, __pyx_t_14};
-                  __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L16_error)
+                  __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L16_error)
                   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -5765,7 +5765,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_4, __pyx_t_14};
-                  __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L16_error)
+                  __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L16_error)
                   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -5773,7 +5773,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 } else
                 #endif
                 {
-                  __pyx_t_2 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L16_error)
+                  __pyx_t_2 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L16_error)
                   __Pyx_GOTREF(__pyx_t_2);
                   if (__pyx_t_3) {
                     __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -5784,7 +5784,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                   PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_20, __pyx_t_14);
                   __pyx_t_4 = 0;
                   __pyx_t_14 = 0;
-                  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L16_error)
+                  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L16_error)
                   __Pyx_GOTREF(__pyx_t_1);
                   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 }
@@ -5794,7 +5794,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               }
               __pyx_L27:;
 
-              /* "leakageSimulatorAESFurious.pyx":124
+              /* "leakageSimulatorAESFurious.pyx":125
  *                 try:
  *                     for i in range(1, 17):
  *                         if local_leakage:             # <<<<<<<<<<<<<<
@@ -5804,7 +5804,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               goto __pyx_L26;
             }
 
-            /* "leakageSimulatorAESFurious.pyx":130
+            /* "leakageSimulatorAESFurious.pyx":131
  *                                 line = linecache.getline(PATH_TO_LOCAL_ELMO + 'printdata.txt', i + ((trace+offset) * 16))
  *                         else:
  *                             line = linecache.getline(PATH_TO_ELMO + 'output/printdata.txt', i + ((trace+offset) * 16))             # <<<<<<<<<<<<<<
@@ -5812,17 +5812,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         p_backup[i-1] = eval('0x' + line)
  */
             /*else*/ {
-              __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 130, __pyx_L16_error)
+              __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 131, __pyx_L16_error)
               __Pyx_GOTREF(__pyx_t_10);
-              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_getline); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L16_error)
+              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_getline); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 131, __pyx_L16_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 130, __pyx_L16_error)
+              __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 131, __pyx_L16_error)
               __Pyx_GOTREF(__pyx_t_10);
-              __pyx_t_14 = PyNumber_Add(__pyx_t_10, __pyx_kp_s_output_printdata_txt); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 130, __pyx_L16_error)
+              __pyx_t_14 = PyNumber_Add(__pyx_t_10, __pyx_kp_s_output_printdata_txt); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 131, __pyx_L16_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-              __pyx_t_10 = __Pyx_PyInt_From_long((__pyx_v_i + ((__pyx_v_trace + __pyx_v_offset) * 16))); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 130, __pyx_L16_error)
+              __pyx_t_10 = __Pyx_PyInt_From_long((__pyx_v_i + ((__pyx_v_trace + __pyx_v_offset) * 16))); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 131, __pyx_L16_error)
               __Pyx_GOTREF(__pyx_t_10);
               __pyx_t_4 = NULL;
               __pyx_t_20 = 0;
@@ -5839,7 +5839,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_2)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_14, __pyx_t_10};
-                __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L16_error)
+                __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L16_error)
                 __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5849,7 +5849,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_14, __pyx_t_10};
-                __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L16_error)
+                __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L16_error)
                 __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -5857,7 +5857,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               } else
               #endif
               {
-                __pyx_t_3 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L16_error)
+                __pyx_t_3 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 if (__pyx_t_4) {
                   __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -5868,7 +5868,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_20, __pyx_t_10);
                 __pyx_t_14 = 0;
                 __pyx_t_10 = 0;
-                __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L16_error)
+                __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L16_error)
                 __Pyx_GOTREF(__pyx_t_1);
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               }
@@ -5878,170 +5878,170 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
             __pyx_L26:;
 
-            /* "leakageSimulatorAESFurious.pyx":132
+            /* "leakageSimulatorAESFurious.pyx":133
  *                             line = linecache.getline(PATH_TO_ELMO + 'output/printdata.txt', i + ((trace+offset) * 16))
  *                         #print 'i = {}, val = 0x{} ({})'.format(i, line, eval('0x' + line))
  *                         p_backup[i-1] = eval('0x' + line)             # <<<<<<<<<<<<<<
  *                 except (IndexError, SyntaxError) as e:
  *                     print "Caught Error in leakageSimulatorAESFurious: {}".format(e)
  */
-            __pyx_t_1 = PyNumber_Add(__pyx_kp_s_0x, __pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_1 = PyNumber_Add(__pyx_kp_s_0x, __pyx_v_line); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_1);
-            __pyx_t_2 = __Pyx_Globals(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_2 = __Pyx_Globals(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_2);
-            __pyx_t_3 = __Pyx_PyDict_NewPresized(39); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_3 = __Pyx_PyDict_NewPresized(39); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_3);
             if (__pyx_v_affect_with_noise) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_affect_with_noise, __pyx_v_affect_with_noise) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_affect_with_noise, __pyx_v_affect_with_noise) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_average_key_nodes) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_average_key_nodes, __pyx_v_average_key_nodes) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_average_key_nodes, __pyx_v_average_key_nodes) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_badly_leaking_nodes) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_badly_leaking_snr) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_badly_leaking_traces) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_cm) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_cm, __pyx_v_cm) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_cm, __pyx_v_cm) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_dictionary) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_e) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_e, __pyx_v_e) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_e, __pyx_v_e) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_h) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_h, __pyx_v_h) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_h, __pyx_v_h) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_hw_leakage_model) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_i, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
-            }
-            __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_index); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
-            __Pyx_GOTREF(__pyx_t_10);
-            if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_index, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_i, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_index); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_j, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_index, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
+            }
+            __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_j); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
+            __Pyx_GOTREF(__pyx_t_10);
+            if (__pyx_t_10) {
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_j, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (((PyObject *)__pyx_v_k)) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_k, ((PyObject *)__pyx_v_k)) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_k, ((PyObject *)__pyx_v_k)) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_line) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_line, __pyx_v_line) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_line, __pyx_v_line) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_local_leakage); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_local_leakage); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_local_leakage, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_local_leakage, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (__pyx_v_mc) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_mc, __pyx_v_mc) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_mc, __pyx_v_mc) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_no_noise_nodes) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_offset); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_offset); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_offset, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_offset, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (__pyx_v_p) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_p, __pyx_v_p) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_p, __pyx_v_p) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_p_backup) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_p_backup, __pyx_v_p_backup) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_p_backup, __pyx_v_p_backup) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_p_ham) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_p_ham, __pyx_v_p_ham) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_p_ham, __pyx_v_p_ham) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_print_all); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_print_all); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_print_all, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_print_all, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_random_plaintexts); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_random_plaintexts); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_random_plaintexts, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_random_plaintexts, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (((PyObject *)__pyx_v_rc)) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_rc, ((PyObject *)__pyx_v_rc)) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_rc, ((PyObject *)__pyx_v_rc)) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_read_plaintexts); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_read_plaintexts); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_read_plaintexts, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_read_plaintexts, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (__pyx_v_real_values) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_real_values, __pyx_v_real_values) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_real_values, __pyx_v_real_values) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_rounds_of_aes) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_rounds_of_aes, __pyx_v_rounds_of_aes) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_rounds_of_aes, __pyx_v_rounds_of_aes) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_s) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_s, __pyx_v_s) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_s, __pyx_v_s) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_self) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_shift) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_shift, __pyx_v_shift) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_shift, __pyx_v_shift) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (((PyObject *)__pyx_v_sk)) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_sk, ((PyObject *)__pyx_v_sk)) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_sk, ((PyObject *)__pyx_v_sk)) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_snr, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_snr, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (__pyx_v_t) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_t, __pyx_v_t) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_t, __pyx_v_t) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_threshold) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_trace, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_trace, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             if (__pyx_t_10) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_traces, __pyx_t_10) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_traces, __pyx_t_10) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             if (((PyObject *)__pyx_v_xk)) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_xk, ((PyObject *)__pyx_v_xk)) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_xk, ((PyObject *)__pyx_v_xk)) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
             if (__pyx_v_xt) {
-              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_xt, __pyx_v_xt) < 0) __PYX_ERR(0, 132, __pyx_L16_error)
+              if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_xt, __pyx_v_xt) < 0) __PYX_ERR(0, 133, __pyx_L16_error)
             }
-            __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_GIVEREF(__pyx_t_1);
             PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -6052,15 +6052,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             __pyx_t_1 = 0;
             __pyx_t_2 = 0;
             __pyx_t_3 = 0;
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L16_error)
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __pyx_t_8 = (__pyx_v_i - 1);
-            if (unlikely(__Pyx_SetItemInt(__pyx_v_p_backup, __pyx_t_8, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 132, __pyx_L16_error)
+            if (unlikely(__Pyx_SetItemInt(__pyx_v_p_backup, __pyx_t_8, __pyx_t_3, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 133, __pyx_L16_error)
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           }
 
-          /* "leakageSimulatorAESFurious.pyx":122
+          /* "leakageSimulatorAESFurious.pyx":123
  *             if read_plaintexts:
  *                 p_backup = np.zeros(16)
  *                 try:             # <<<<<<<<<<<<<<
@@ -6081,7 +6081,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":133
+        /* "leakageSimulatorAESFurious.pyx":134
  *                         #print 'i = {}, val = 0x{} ({})'.format(i, line, eval('0x' + line))
  *                         p_backup[i-1] = eval('0x' + line)
  *                 except (IndexError, SyntaxError) as e:             # <<<<<<<<<<<<<<
@@ -6091,21 +6091,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_19 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_IndexError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
         if (__pyx_t_19) {
           __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_10, &__pyx_t_2) < 0) __PYX_ERR(0, 133, __pyx_L18_except_error)
+          if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_10, &__pyx_t_2) < 0) __PYX_ERR(0, 134, __pyx_L18_except_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_INCREF(__pyx_t_10);
           __pyx_v_e = __pyx_t_10;
 
-          /* "leakageSimulatorAESFurious.pyx":134
+          /* "leakageSimulatorAESFurious.pyx":135
  *                         p_backup[i-1] = eval('0x' + line)
  *                 except (IndexError, SyntaxError) as e:
  *                     print "Caught Error in leakageSimulatorAESFurious: {}".format(e)             # <<<<<<<<<<<<<<
  *                     raise
  *             elif random_plaintexts:
  */
-          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Caught_Error_in_leakageSimulator, __pyx_n_s_format); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 134, __pyx_L18_except_error)
+          __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Caught_Error_in_leakageSimulator, __pyx_n_s_format); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 135, __pyx_L18_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_4 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_14))) {
@@ -6118,13 +6118,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_4) {
-            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_e); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L18_except_error)
+            __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_e); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L18_except_error)
             __Pyx_GOTREF(__pyx_t_1);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_e};
-              __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L18_except_error)
+              __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L18_except_error)
               __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
               __Pyx_GOTREF(__pyx_t_1);
             } else
@@ -6132,28 +6132,28 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_e};
-              __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L18_except_error)
+              __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L18_except_error)
               __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
               __Pyx_GOTREF(__pyx_t_1);
             } else
             #endif
             {
-              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 134, __pyx_L18_except_error)
+              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 135, __pyx_L18_except_error)
               __Pyx_GOTREF(__pyx_t_15);
               __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4); __pyx_t_4 = NULL;
               __Pyx_INCREF(__pyx_v_e);
               __Pyx_GIVEREF(__pyx_v_e);
               PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_e);
-              __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L18_except_error)
+              __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L18_except_error)
               __Pyx_GOTREF(__pyx_t_1);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 134, __pyx_L18_except_error)
+          if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 135, __pyx_L18_except_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":135
+          /* "leakageSimulatorAESFurious.pyx":136
  *                 except (IndexError, SyntaxError) as e:
  *                     print "Caught Error in leakageSimulatorAESFurious: {}".format(e)
  *                     raise             # <<<<<<<<<<<<<<
@@ -6165,12 +6165,12 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_XGIVEREF(__pyx_t_2);
           __Pyx_ErrRestoreWithState(__pyx_t_3, __pyx_t_10, __pyx_t_2);
           __pyx_t_3 = 0; __pyx_t_10 = 0; __pyx_t_2 = 0; 
-          __PYX_ERR(0, 135, __pyx_L18_except_error)
+          __PYX_ERR(0, 136, __pyx_L18_except_error)
         }
         goto __pyx_L18_except_error;
         __pyx_L18_except_error:;
 
-        /* "leakageSimulatorAESFurious.pyx":122
+        /* "leakageSimulatorAESFurious.pyx":123
  *             if read_plaintexts:
  *                 p_backup = np.zeros(16)
  *                 try:             # <<<<<<<<<<<<<<
@@ -6185,7 +6185,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_L23_try_end:;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":120
+      /* "leakageSimulatorAESFurious.pyx":121
  * 
  *             # Get Plaintext Bytes
  *             if read_plaintexts:             # <<<<<<<<<<<<<<
@@ -6195,7 +6195,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L15;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":136
+    /* "leakageSimulatorAESFurious.pyx":137
  *                     print "Caught Error in leakageSimulatorAESFurious: {}".format(e)
  *                     raise
  *             elif random_plaintexts:             # <<<<<<<<<<<<<<
@@ -6205,14 +6205,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_6 = (__pyx_v_random_plaintexts != 0);
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":137
+      /* "leakageSimulatorAESFurious.pyx":138
  *                     raise
  *             elif random_plaintexts:
  *                 p_backup = get_random_bytes()             # <<<<<<<<<<<<<<
  *             else:
  *                 p_backup = self.plaintext
  */
-      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_random_bytes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 137, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_random_bytes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 138, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
@@ -6225,17 +6225,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (__pyx_t_3) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
-        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_XDECREF_SET(__pyx_v_p_backup, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":136
+      /* "leakageSimulatorAESFurious.pyx":137
  *                     print "Caught Error in leakageSimulatorAESFurious: {}".format(e)
  *                     raise
  *             elif random_plaintexts:             # <<<<<<<<<<<<<<
@@ -6245,7 +6245,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L15;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":139
+    /* "leakageSimulatorAESFurious.pyx":140
  *                 p_backup = get_random_bytes()
  *             else:
  *                 p_backup = self.plaintext             # <<<<<<<<<<<<<<
@@ -6253,27 +6253,27 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  * 
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plaintext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plaintext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_XDECREF_SET(__pyx_v_p_backup, __pyx_t_2);
       __pyx_t_2 = 0;
     }
     __pyx_L15:;
 
-    /* "leakageSimulatorAESFurious.pyx":149
+    /* "leakageSimulatorAESFurious.pyx":150
  *             #     p[:len(self.plaintext)] = self.plaintext
  * 
  *             p[:len(self.plaintext)] = p_backup             # <<<<<<<<<<<<<<
  *             if print_all:
  *                 print "* Trace {:3}, Plaintext: {}".format(trace, p_backup)
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plaintext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plaintext); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
+    __pyx_t_7 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 150, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__Pyx_PyObject_SetSlice(__pyx_v_p, __pyx_v_p_backup, 0, __pyx_t_7, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
+    if (__Pyx_PyObject_SetSlice(__pyx_v_p, __pyx_v_p_backup, 0, __pyx_t_7, NULL, NULL, NULL, 0, 1, 1) < 0) __PYX_ERR(0, 150, __pyx_L1_error)
 
-    /* "leakageSimulatorAESFurious.pyx":150
+    /* "leakageSimulatorAESFurious.pyx":151
  * 
  *             p[:len(self.plaintext)] = p_backup
  *             if print_all:             # <<<<<<<<<<<<<<
@@ -6283,16 +6283,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_6 = (__pyx_v_print_all != 0);
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":151
+      /* "leakageSimulatorAESFurious.pyx":152
  *             p[:len(self.plaintext)] = p_backup
  *             if print_all:
  *                 print "* Trace {:3}, Plaintext: {}".format(trace, p_backup)             # <<<<<<<<<<<<<<
  * 
  *             # TEST TODO
  */
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Trace_3_Plaintext, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Trace_3_Plaintext, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -6309,7 +6309,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_10)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_3, __pyx_v_p_backup};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6318,14 +6318,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_3, __pyx_v_p_backup};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else
       #endif
       {
-        __pyx_t_14 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 152, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -6336,15 +6336,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_GIVEREF(__pyx_v_p_backup);
         PyTuple_SET_ITEM(__pyx_t_14, 1+__pyx_t_19, __pyx_v_p_backup);
         __pyx_t_3 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 151, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 152, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":150
+      /* "leakageSimulatorAESFurious.pyx":151
  * 
  *             p[:len(self.plaintext)] = p_backup
  *             if print_all:             # <<<<<<<<<<<<<<
@@ -6353,7 +6353,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
     }
 
-    /* "leakageSimulatorAESFurious.pyx":156
+    /* "leakageSimulatorAESFurious.pyx":157
  *             # p[:len(self.plaintext)] = hexStringToIntArray('6bc1bee22e409f96e93d7e117393172a')
  * 
  *             for index in range(0, max(1, rounds_of_aes) * 16, 16):             # <<<<<<<<<<<<<<
@@ -6363,42 +6363,42 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_INCREF(__pyx_v_rounds_of_aes);
     __pyx_t_2 = __pyx_v_rounds_of_aes;
     __pyx_t_8 = 1;
-    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_14, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_14, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_6) {
       __Pyx_INCREF(__pyx_t_2);
       __pyx_t_10 = __pyx_t_2;
     } else {
-      __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_long(__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 157, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = __pyx_t_3;
       __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PyNumber_Multiply(__pyx_t_10, __pyx_int_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_Multiply(__pyx_t_10, __pyx_int_16); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_As_long(__pyx_t_2); if (unlikely((__pyx_t_8 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_8; __pyx_t_19+=16) {
       __pyx_v_index = __pyx_t_19;
 
-      /* "leakageSimulatorAESFurious.pyx":158
+      /* "leakageSimulatorAESFurious.pyx":159
  *             for index in range(0, max(1, rounds_of_aes) * 16, 16):
  * 
  *                 t[index:index+16] = linear_xor(k[index:index+16], p[index:index+16])             # <<<<<<<<<<<<<<
  *                 s[index:index+16] = linear_sbox(t[index:index+16])
  * 
  */
-      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_xor); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_xor); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 159, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_3 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_k), __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_k), __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_14 = __Pyx_PyObject_GetSlice(__pyx_v_p, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetSlice(__pyx_v_p, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 159, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __pyx_t_1 = NULL;
       __pyx_t_20 = 0;
@@ -6415,7 +6415,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_10)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_3, __pyx_t_14};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6425,7 +6425,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_t_3, __pyx_t_14};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_20, 2+__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -6433,7 +6433,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_20); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -6444,24 +6444,24 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_20, __pyx_t_14);
         __pyx_t_3 = 0;
         __pyx_t_14 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (__Pyx_PyObject_SetSlice(__pyx_v_t, __pyx_t_2, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
+      if (__Pyx_PyObject_SetSlice(__pyx_v_t, __pyx_t_2, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":159
+      /* "leakageSimulatorAESFurious.pyx":160
  * 
  *                 t[index:index+16] = linear_xor(k[index:index+16], p[index:index+16])
  *                 s[index:index+16] = linear_sbox(t[index:index+16])             # <<<<<<<<<<<<<<
  * 
  *                 if rounds_of_aes >= 1 and index < 144:
  */
-      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_sbox); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 159, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_sbox); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 160, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_15 = __Pyx_PyObject_GetSlice(__pyx_v_t, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 159, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyObject_GetSlice(__pyx_v_t, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 160, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __pyx_t_14 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
@@ -6474,14 +6474,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_14) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_2);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_15};
-          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -6490,37 +6490,37 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_15};
-          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         } else
         #endif
         {
-          __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_14); __pyx_t_14 = NULL;
           __Pyx_GIVEREF(__pyx_t_15);
           PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_15);
           __pyx_t_15 = 0;
-          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 160, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (__Pyx_PyObject_SetSlice(__pyx_v_s, __pyx_t_2, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
+      if (__Pyx_PyObject_SetSlice(__pyx_v_s, __pyx_t_2, __pyx_v_index, (__pyx_v_index + 16), NULL, NULL, NULL, 1, 1, 1) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":161
+      /* "leakageSimulatorAESFurious.pyx":162
  *                 s[index:index+16] = linear_sbox(t[index:index+16])
  * 
  *                 if rounds_of_aes >= 1 and index < 144:             # <<<<<<<<<<<<<<
  * 
  *                     # Mix Columns
  */
-      __pyx_t_2 = PyObject_RichCompare(__pyx_v_rounds_of_aes, __pyx_int_1, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
-      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_v_rounds_of_aes, __pyx_int_1, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 162, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_5) {
       } else {
@@ -6532,7 +6532,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __pyx_L34_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "leakageSimulatorAESFurious.pyx":164
+        /* "leakageSimulatorAESFurious.pyx":165
  * 
  *                     # Mix Columns
  *                     for i in range(index, index + 16):             # <<<<<<<<<<<<<<
@@ -6543,43 +6543,43 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         for (__pyx_t_20 = __pyx_v_index; __pyx_t_20 < __pyx_t_11; __pyx_t_20+=1) {
           __pyx_v_i = __pyx_t_20;
 
-          /* "leakageSimulatorAESFurious.pyx":167
+          /* "leakageSimulatorAESFurious.pyx":168
  * 
  *                         # Shift cheating
  *                         j = index + (shift_rows_s[i % 16])             # <<<<<<<<<<<<<<
  *                         shift[i] = s[j]
  * 
  */
-          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_shift_rows_s); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 167, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_shift_rows_s); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_13 = __Pyx_mod_long(__pyx_v_i, 16);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_10, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_10, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 168, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 167, __pyx_L1_error)
+          __pyx_t_10 = PyNumber_Add(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_21 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_21 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
+          __pyx_t_21 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_21 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __pyx_v_j = __pyx_t_21;
 
-          /* "leakageSimulatorAESFurious.pyx":168
+          /* "leakageSimulatorAESFurious.pyx":169
  *                         # Shift cheating
  *                         j = index + (shift_rows_s[i % 16])
  *                         shift[i] = s[j]             # <<<<<<<<<<<<<<
  * 
  *                     for i in range(index, index + 16, 4):
  */
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_s, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 168, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_s, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 169, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_shift, __pyx_v_i, __pyx_t_10, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 168, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_shift, __pyx_v_i, __pyx_t_10, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 169, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":170
+        /* "leakageSimulatorAESFurious.pyx":171
  *                         shift[i] = s[j]
  * 
  *                     for i in range(index, index + 16, 4):             # <<<<<<<<<<<<<<
@@ -6590,7 +6590,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         for (__pyx_t_20 = __pyx_v_index; __pyx_t_20 < __pyx_t_11; __pyx_t_20+=4) {
           __pyx_v_i = __pyx_t_20;
 
-          /* "leakageSimulatorAESFurious.pyx":173
+          /* "leakageSimulatorAESFurious.pyx":174
  * 
  *                         # h bits
  *                         j = (i/4) * 3             # <<<<<<<<<<<<<<
@@ -6599,46 +6599,46 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
           __pyx_v_j = (__Pyx_div_long(__pyx_v_i, 4) * 3);
 
-          /* "leakageSimulatorAESFurious.pyx":174
+          /* "leakageSimulatorAESFurious.pyx":175
  *                         # h bits
  *                         j = (i/4) * 3
  *                         h[j  ]  = shift[i  ] ^ shift[i+1]             # <<<<<<<<<<<<<<
  *                         h[j+1]  = h[j  ]     ^ shift[i+2]
  *                         h[j+2]  = h[j+1]     ^ shift[i+3]
  */
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 175, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 174, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_h, __pyx_v_j, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 174, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_h, __pyx_v_j, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":175
+          /* "leakageSimulatorAESFurious.pyx":176
  *                         j = (i/4) * 3
  *                         h[j  ]  = shift[i  ] ^ shift[i+1]
  *                         h[j+1]  = h[j  ]     ^ shift[i+2]             # <<<<<<<<<<<<<<
  *                         h[j+2]  = h[j+1]     ^ shift[i+3]
  * 
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_h, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 175, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_h, __pyx_v_j, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 175, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_10 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 175, __pyx_L1_error)
+          __pyx_t_10 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 176, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_j + 1);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_h, __pyx_t_13, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 175, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_h, __pyx_t_13, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 176, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":176
+          /* "leakageSimulatorAESFurious.pyx":177
  *                         h[j  ]  = shift[i  ] ^ shift[i+1]
  *                         h[j+1]  = h[j  ]     ^ shift[i+2]
  *                         h[j+2]  = h[j+1]     ^ shift[i+3]             # <<<<<<<<<<<<<<
@@ -6646,39 +6646,39 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         # Shifty bits
  */
           __pyx_t_13 = (__pyx_v_j + 1);
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 176, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 177, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 176, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_j + 2);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_h, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 176, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_h, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 177, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":179
+          /* "leakageSimulatorAESFurious.pyx":180
  * 
  *                         # Shifty bits
  *                         mc[i  ] = shift[i  ] ^ shift[i+1]             # <<<<<<<<<<<<<<
  *                         mc[i+1] = shift[i+1] ^ shift[i+2]
  *                         mc[i+2] = shift[i+2] ^ shift[i+3]
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 179, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_10 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 179, __pyx_L1_error)
+          __pyx_t_10 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 180, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_v_i, __pyx_t_10, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_v_i, __pyx_t_10, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":180
+          /* "leakageSimulatorAESFurious.pyx":181
  *                         # Shifty bits
  *                         mc[i  ] = shift[i  ] ^ shift[i+1]
  *                         mc[i+1] = shift[i+1] ^ shift[i+2]             # <<<<<<<<<<<<<<
@@ -6686,20 +6686,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         mc[i+3] = shift[i+3] ^ shift[i  ]
  */
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 180, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 181, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 180, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 1);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 180, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":181
+          /* "leakageSimulatorAESFurious.pyx":182
  *                         mc[i  ] = shift[i  ] ^ shift[i+1]
  *                         mc[i+1] = shift[i+1] ^ shift[i+2]
  *                         mc[i+2] = shift[i+2] ^ shift[i+3]             # <<<<<<<<<<<<<<
@@ -6707,20 +6707,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         # Normal bits
  */
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_10 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_10 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 182, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 2);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_t_13, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_t_13, __pyx_t_10, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":182
+          /* "leakageSimulatorAESFurious.pyx":183
  *                         mc[i+1] = shift[i+1] ^ shift[i+2]
  *                         mc[i+2] = shift[i+2] ^ shift[i+3]
  *                         mc[i+3] = shift[i+3] ^ shift[i  ]             # <<<<<<<<<<<<<<
@@ -6728,28 +6728,28 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         xt[i  ] = xtimes(mc[i  ])
  */
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 182, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 182, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 3);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_mc, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":184
+          /* "leakageSimulatorAESFurious.pyx":185
  *                         mc[i+3] = shift[i+3] ^ shift[i  ]
  *                         # Normal bits
  *                         xt[i  ] = xtimes(mc[i  ])             # <<<<<<<<<<<<<<
  *                         xt[i+1] = xtimes(mc[i+1])
  *                         xt[i+2] = xtimes(mc[i+2])
  */
-          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 184, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 184, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 185, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -6762,14 +6762,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_15) {
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __Pyx_GOTREF(__pyx_t_2);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -6778,39 +6778,39 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             } else
             #endif
             {
-              __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 184, __pyx_L1_error)
+              __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 185, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_15); __pyx_t_15 = NULL;
               __Pyx_GIVEREF(__pyx_t_10);
               PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_10);
               __pyx_t_10 = 0;
-              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 184, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 185, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":185
+          /* "leakageSimulatorAESFurious.pyx":186
  *                         # Normal bits
  *                         xt[i  ] = xtimes(mc[i  ])
  *                         xt[i+1] = xtimes(mc[i+1])             # <<<<<<<<<<<<<<
  *                         xt[i+2] = xtimes(mc[i+2])
  *                         xt[i+3] = xtimes(mc[i+3])
  */
-          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 185, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_10 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -6823,14 +6823,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_10) {
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_14); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_14); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             __Pyx_GOTREF(__pyx_t_2);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_14};
-              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -6839,40 +6839,40 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_14};
-              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             } else
             #endif
             {
-              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 185, __pyx_L1_error)
+              __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 186, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_15);
               __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_10); __pyx_t_10 = NULL;
               __Pyx_GIVEREF(__pyx_t_14);
               PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_t_14);
               __pyx_t_14 = 0;
-              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_15, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 1);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 185, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":186
+          /* "leakageSimulatorAESFurious.pyx":187
  *                         xt[i  ] = xtimes(mc[i  ])
  *                         xt[i+1] = xtimes(mc[i+1])
  *                         xt[i+2] = xtimes(mc[i+2])             # <<<<<<<<<<<<<<
  *                         xt[i+3] = xtimes(mc[i+3])
  *                         # cm
  */
-          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 186, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_15 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 186, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 187, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_14 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -6885,14 +6885,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_14) {
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_15); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             __Pyx_GOTREF(__pyx_t_2);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_15};
-              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -6901,40 +6901,40 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_14, __pyx_t_15};
-              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             } else
             #endif
             {
-              __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_GIVEREF(__pyx_t_14); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_14); __pyx_t_14 = NULL;
               __Pyx_GIVEREF(__pyx_t_15);
               PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_15);
               __pyx_t_15 = 0;
-              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 2);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 186, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":187
+          /* "leakageSimulatorAESFurious.pyx":188
  *                         xt[i+1] = xtimes(mc[i+1])
  *                         xt[i+2] = xtimes(mc[i+2])
  *                         xt[i+3] = xtimes(mc[i+3])             # <<<<<<<<<<<<<<
  *                         # cm
  *                         cm[i  ] = shift[i  ] ^ xt[i  ]
  */
-          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_xtimes); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 188, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 187, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetItemInt(__pyx_v_mc, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 188, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -6947,14 +6947,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_15) {
-            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+            __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __Pyx_GOTREF(__pyx_t_2);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -6963,48 +6963,48 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             } else
             #endif
             {
-              __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 187, __pyx_L1_error)
+              __pyx_t_14 = PyTuple_New(1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 188, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_14);
               __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_15); __pyx_t_15 = NULL;
               __Pyx_GIVEREF(__pyx_t_10);
               PyTuple_SET_ITEM(__pyx_t_14, 0+1, __pyx_t_10);
               __pyx_t_10 = 0;
-              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+              __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_14, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_2);
               __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 3);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 187, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_xt, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 188, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":189
+          /* "leakageSimulatorAESFurious.pyx":190
  *                         xt[i+3] = xtimes(mc[i+3])
  *                         # cm
  *                         cm[i  ] = shift[i  ] ^ xt[i  ]             # <<<<<<<<<<<<<<
  *                         cm[i+1] = shift[i+1] ^ xt[i+1]
  *                         cm[i+2] = shift[i+2] ^ xt[i+2]
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 189, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 189, __pyx_L1_error)
+          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 190, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_v_i, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 189, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_v_i, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":190
+          /* "leakageSimulatorAESFurious.pyx":191
  *                         # cm
  *                         cm[i  ] = shift[i  ] ^ xt[i  ]
  *                         cm[i+1] = shift[i+1] ^ xt[i+1]             # <<<<<<<<<<<<<<
@@ -7012,20 +7012,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         cm[i+3] = shift[i+3] ^ xt[i+3]
  */
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 190, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 191, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 191, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 1);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 190, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 191, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":191
+          /* "leakageSimulatorAESFurious.pyx":192
  *                         cm[i  ] = shift[i  ] ^ xt[i  ]
  *                         cm[i+1] = shift[i+1] ^ xt[i+1]
  *                         cm[i+2] = shift[i+2] ^ xt[i+2]             # <<<<<<<<<<<<<<
@@ -7033,20 +7033,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         # p
  */
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 191, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 192, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 191, __pyx_L1_error)
+          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 192, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 2);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 191, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":192
+          /* "leakageSimulatorAESFurious.pyx":193
  *                         cm[i+1] = shift[i+1] ^ xt[i+1]
  *                         cm[i+2] = shift[i+2] ^ xt[i+2]
  *                         cm[i+3] = shift[i+3] ^ xt[i+3]             # <<<<<<<<<<<<<<
@@ -7054,40 +7054,40 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         p[i+16] = cm[i  ] ^ h[j+2]
  */
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 192, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 193, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 192, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_xt, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 193, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 3);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_cm, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 193, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":194
+          /* "leakageSimulatorAESFurious.pyx":195
  *                         cm[i+3] = shift[i+3] ^ xt[i+3]
  *                         # p
  *                         p[i+16] = cm[i  ] ^ h[j+2]             # <<<<<<<<<<<<<<
  *                         p[i+17] = cm[i+1] ^ h[j+2]
  *                         p[i+18] = cm[i+2] ^ h[j+2]
  */
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = (__pyx_v_j + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 194, __pyx_L1_error)
+          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 16);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 194, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":195
+          /* "leakageSimulatorAESFurious.pyx":196
  *                         # p
  *                         p[i+16] = cm[i  ] ^ h[j+2]
  *                         p[i+17] = cm[i+1] ^ h[j+2]             # <<<<<<<<<<<<<<
@@ -7095,20 +7095,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         p[i+19] = cm[i+3] ^ h[j+2]
  */
           __pyx_t_13 = (__pyx_v_i + 1);
-          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 195, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 196, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_13 = (__pyx_v_j + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 195, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 17);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 195, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":196
+          /* "leakageSimulatorAESFurious.pyx":197
  *                         p[i+16] = cm[i  ] ^ h[j+2]
  *                         p[i+17] = cm[i+1] ^ h[j+2]
  *                         p[i+18] = cm[i+2] ^ h[j+2]             # <<<<<<<<<<<<<<
@@ -7116,20 +7116,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  * 
  */
           __pyx_t_13 = (__pyx_v_i + 2);
-          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = (__pyx_v_j + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_14 = PyNumber_Xor(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 197, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 18);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":197
+          /* "leakageSimulatorAESFurious.pyx":198
  *                         p[i+17] = cm[i+1] ^ h[j+2]
  *                         p[i+18] = cm[i+2] ^ h[j+2]
  *                         p[i+19] = cm[i+3] ^ h[j+2]             # <<<<<<<<<<<<<<
@@ -7137,21 +7137,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                 elif rounds_of_aes > 1:
  */
           __pyx_t_13 = (__pyx_v_i + 3);
-          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 197, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_cm, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 198, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_13 = (__pyx_v_j + 2);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 197, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_h, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
+          __pyx_t_2 = PyNumber_Xor(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_13 = (__pyx_v_i + 19);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_2, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 198, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":161
+        /* "leakageSimulatorAESFurious.pyx":162
  *                 s[index:index+16] = linear_sbox(t[index:index+16])
  * 
  *                 if rounds_of_aes >= 1 and index < 144:             # <<<<<<<<<<<<<<
@@ -7161,19 +7161,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L33;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":199
+      /* "leakageSimulatorAESFurious.pyx":200
  *                         p[i+19] = cm[i+3] ^ h[j+2]
  * 
  *                 elif rounds_of_aes > 1:             # <<<<<<<<<<<<<<
  * 
  *                     for i in range (index, index + 16):
  */
-      __pyx_t_2 = PyObject_RichCompare(__pyx_v_rounds_of_aes, __pyx_int_1, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
-      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 199, __pyx_L1_error)
+      __pyx_t_2 = PyObject_RichCompare(__pyx_v_rounds_of_aes, __pyx_int_1, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+      __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 200, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       if (__pyx_t_6) {
 
-        /* "leakageSimulatorAESFurious.pyx":201
+        /* "leakageSimulatorAESFurious.pyx":202
  *                 elif rounds_of_aes > 1:
  * 
  *                     for i in range (index, index + 16):             # <<<<<<<<<<<<<<
@@ -7184,50 +7184,50 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         for (__pyx_t_20 = __pyx_v_index; __pyx_t_20 < __pyx_t_11; __pyx_t_20+=1) {
           __pyx_v_i = __pyx_t_20;
 
-          /* "leakageSimulatorAESFurious.pyx":203
+          /* "leakageSimulatorAESFurious.pyx":204
  *                     for i in range (index, index + 16):
  * 
  *                         shift[i] = s[144+(shift_rows_s[i % 16])]             # <<<<<<<<<<<<<<
  * 
  *                         p[i+16] = shift[i] ^ k[i+16]
  */
-          __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_shift_rows_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_shift_rows_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_13 = __Pyx_mod_long(__pyx_v_i, 16);
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_144, __pyx_t_3, 0x90, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_PyInt_AddCObj(__pyx_int_144, __pyx_t_3, 0x90, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = PyObject_GetItem(__pyx_v_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+          __pyx_t_3 = PyObject_GetItem(__pyx_v_s, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 204, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_shift, __pyx_v_i, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 203, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_shift, __pyx_v_i, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":205
+          /* "leakageSimulatorAESFurious.pyx":206
  *                         shift[i] = s[144+(shift_rows_s[i % 16])]
  * 
  *                         p[i+16] = shift[i] ^ k[i+16]             # <<<<<<<<<<<<<<
  * 
  *             if print_all:
  */
-          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_shift, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_13 = (__pyx_v_i + 16);
-          __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
+          __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_k), __pyx_t_13, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_14 = PyNumber_Xor(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 205, __pyx_L1_error)
+          __pyx_t_14 = PyNumber_Xor(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 206, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __pyx_t_13 = (__pyx_v_i + 16);
-          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 205, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_v_p, __pyx_t_13, __pyx_t_14, long, 1, __Pyx_PyInt_From_long, 0, 1, 1) < 0)) __PYX_ERR(0, 206, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":199
+        /* "leakageSimulatorAESFurious.pyx":200
  *                         p[i+19] = cm[i+3] ^ h[j+2]
  * 
  *                 elif rounds_of_aes > 1:             # <<<<<<<<<<<<<<
@@ -7238,7 +7238,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __pyx_L33:;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":207
+    /* "leakageSimulatorAESFurious.pyx":208
  *                         p[i+16] = shift[i] ^ k[i+16]
  * 
  *             if print_all:             # <<<<<<<<<<<<<<
@@ -7248,16 +7248,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_6 = (__pyx_v_print_all != 0);
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":208
+      /* "leakageSimulatorAESFurious.pyx":209
  * 
  *             if print_all:
  *                 print "Key:         {}".format(k[:16])             # <<<<<<<<<<<<<<
  *                 print "Plaintext:   {}".format(p[:16])
  *                 print "Ciphertext:  {}".format(p[-16:])
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Key, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Key, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_k), 0, 16, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_k), 0, 16, NULL, NULL, &__pyx_slice__2, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7270,14 +7270,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_10) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 208, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 208, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7286,38 +7286,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 208, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 208, __pyx_L1_error)
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 209, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_10); __pyx_t_10 = NULL;
           __Pyx_GIVEREF(__pyx_t_3);
           PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_t_3);
           __pyx_t_3 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 208, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 208, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":209
+      /* "leakageSimulatorAESFurious.pyx":210
  *             if print_all:
  *                 print "Key:         {}".format(k[:16])
  *                 print "Plaintext:   {}".format(p[:16])             # <<<<<<<<<<<<<<
  *                 print "Ciphertext:  {}".format(p[-16:])
  *                 print_new_line()
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Plaintext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Plaintext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_15 = __Pyx_PyObject_GetSlice(__pyx_v_p, 0, 16, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 209, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyObject_GetSlice(__pyx_v_p, 0, 16, NULL, NULL, &__pyx_slice__3, 0, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 210, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7330,14 +7330,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_3) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_15};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -7346,38 +7346,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_15};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         } else
         #endif
         {
-          __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 209, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 210, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_3); __pyx_t_3 = NULL;
           __Pyx_GIVEREF(__pyx_t_15);
           PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_15);
           __pyx_t_15 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 209, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 209, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":210
+      /* "leakageSimulatorAESFurious.pyx":211
  *                 print "Key:         {}".format(k[:16])
  *                 print "Plaintext:   {}".format(p[:16])
  *                 print "Ciphertext:  {}".format(p[-16:])             # <<<<<<<<<<<<<<
  *                 print_new_line()
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Ciphertext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Ciphertext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_v_p, -16L, 0, NULL, NULL, &__pyx_slice__4, 1, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 210, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_v_p, -16L, 0, NULL, NULL, &__pyx_slice__4, 1, 0, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7390,14 +7390,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -7406,36 +7406,36 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         } else
         #endif
         {
-          __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_15); __pyx_t_15 = NULL;
           __Pyx_GIVEREF(__pyx_t_10);
           PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_t_10);
           __pyx_t_10 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 210, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 210, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":211
+      /* "leakageSimulatorAESFurious.pyx":212
  *                 print "Plaintext:   {}".format(p[:16])
  *                 print "Ciphertext:  {}".format(p[-16:])
  *                 print_new_line()             # <<<<<<<<<<<<<<
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_3 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -7448,27 +7448,27 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (__pyx_t_3) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 212, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       } else {
-        __pyx_t_14 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 211, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 212, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":212
+      /* "leakageSimulatorAESFurious.pyx":213
  *                 print "Ciphertext:  {}".format(p[-16:])
  *                 print_new_line()
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))             # <<<<<<<<<<<<<<
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))
  *                 print "Ciphertext:  {}".format(get_list_as_hex_string(p[-16:]))
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Key, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Key, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_list_as_hex_string); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_list_as_hex_string); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_15 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_k), 0, 16, NULL, NULL, &__pyx_slice__5, 0, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 212, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_k), 0, 16, NULL, NULL, &__pyx_slice__5, 0, 1, 1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
@@ -7481,14 +7481,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_1) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_15); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_15};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -7497,20 +7497,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
           PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_t_15};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         } else
         #endif
         {
-          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1); __pyx_t_1 = NULL;
           __Pyx_GIVEREF(__pyx_t_15);
           PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_15);
           __pyx_t_15 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
@@ -7527,14 +7527,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_10) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 212, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7543,40 +7543,40 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else
         #endif
         {
-          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_10); __pyx_t_10 = NULL;
           __Pyx_GIVEREF(__pyx_t_3);
           PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
           __pyx_t_3 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 212, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 212, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":213
+      /* "leakageSimulatorAESFurious.pyx":214
  *                 print_new_line()
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))             # <<<<<<<<<<<<<<
  *                 print "Ciphertext:  {}".format(get_list_as_hex_string(p[-16:]))
  *                 # print "expected: {}".format(hexStringToIntArray('3ad77bb40d7a3660a89ecaf32466ef97'))
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Plaintext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Plaintext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_list_as_hex_string); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_list_as_hex_string); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_v_p, 0, 16, NULL, NULL, &__pyx_slice__6, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 213, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_v_p, 0, 16, NULL, NULL, &__pyx_slice__6, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -7589,14 +7589,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_15) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_10); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -7605,20 +7605,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_10};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
           __Pyx_GIVEREF(__pyx_t_10);
           PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_10);
           __pyx_t_10 = 0;
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
@@ -7635,14 +7635,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_3) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -7651,40 +7651,40 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_4};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3); __pyx_t_3 = NULL;
           __Pyx_GIVEREF(__pyx_t_4);
           PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_t_4);
           __pyx_t_4 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 213, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 213, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":214
+      /* "leakageSimulatorAESFurious.pyx":215
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))
  *                 print "Ciphertext:  {}".format(get_list_as_hex_string(p[-16:]))             # <<<<<<<<<<<<<<
  *                 # print "expected: {}".format(hexStringToIntArray('3ad77bb40d7a3660a89ecaf32466ef97'))
  * 
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Ciphertext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Ciphertext, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_list_as_hex_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_list_as_hex_string); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_p, -16L, 0, NULL, NULL, &__pyx_slice__7, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_v_p, -16L, 0, NULL, NULL, &__pyx_slice__7, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -7697,14 +7697,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_10) {
-        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_1);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7713,20 +7713,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
           PyObject *__pyx_temp[2] = {__pyx_t_10, __pyx_t_3};
-          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_10); __pyx_t_10 = NULL;
           __Pyx_GIVEREF(__pyx_t_3);
           PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_t_3);
           __pyx_t_3 = 0;
-          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_15, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
@@ -7743,14 +7743,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_4) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 215, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_1};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -7759,29 +7759,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_1};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_4); __pyx_t_4 = NULL;
           __Pyx_GIVEREF(__pyx_t_1);
           PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_t_1);
           __pyx_t_1 = 0;
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 214, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 215, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 214, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_14) < 0) __PYX_ERR(0, 215, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":207
+      /* "leakageSimulatorAESFurious.pyx":208
  *                         p[i+16] = shift[i] ^ k[i+16]
  * 
  *             if print_all:             # <<<<<<<<<<<<<<
@@ -7790,17 +7790,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
     }
 
-    /* "leakageSimulatorAESFurious.pyx":224
+    /* "leakageSimulatorAESFurious.pyx":225
  *             # print_new_line()
  * 
  *             if real_values:             # <<<<<<<<<<<<<<
  *                 p_ham = p
  *             elif hw_leakage_model:
  */
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_real_values); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 224, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_real_values); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 225, __pyx_L1_error)
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":225
+      /* "leakageSimulatorAESFurious.pyx":226
  * 
  *             if real_values:
  *                 p_ham = p             # <<<<<<<<<<<<<<
@@ -7810,7 +7810,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_INCREF(__pyx_v_p);
       __Pyx_XDECREF_SET(__pyx_v_p_ham, __pyx_v_p);
 
-      /* "leakageSimulatorAESFurious.pyx":224
+      /* "leakageSimulatorAESFurious.pyx":225
  *             # print_new_line()
  * 
  *             if real_values:             # <<<<<<<<<<<<<<
@@ -7820,24 +7820,24 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L43;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":226
+    /* "leakageSimulatorAESFurious.pyx":227
  *             if real_values:
  *                 p_ham = p
  *             elif hw_leakage_model:             # <<<<<<<<<<<<<<
  *                 p_ham = linear_get_hamming_weights(p)
  *             else:
  */
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 226, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 227, __pyx_L1_error)
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":227
+      /* "leakageSimulatorAESFurious.pyx":228
  *                 p_ham = p
  *             elif hw_leakage_model:
  *                 p_ham = linear_get_hamming_weights(p)             # <<<<<<<<<<<<<<
  *             else:
  *                 p_ham = linear_get_elmo_values(p, 'p')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -7850,13 +7850,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_p); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 227, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_p); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 228, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_p};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
@@ -7864,19 +7864,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_p};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
           __Pyx_INCREF(__pyx_v_p);
           __Pyx_GIVEREF(__pyx_v_p);
           PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_v_p);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 227, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 228, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
@@ -7885,7 +7885,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XDECREF_SET(__pyx_v_p_ham, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":226
+      /* "leakageSimulatorAESFurious.pyx":227
  *             if real_values:
  *                 p_ham = p
  *             elif hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -7895,7 +7895,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L43;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":229
+    /* "leakageSimulatorAESFurious.pyx":230
  *                 p_ham = linear_get_hamming_weights(p)
  *             else:
  *                 p_ham = linear_get_elmo_values(p, 'p')             # <<<<<<<<<<<<<<
@@ -7903,7 +7903,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             p_ham[:16] = p[:16]
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -7920,7 +7920,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_p, __pyx_n_s_p};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 229, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 230, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -7928,13 +7928,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_p, __pyx_n_s_p};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 229, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 230, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 229, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 230, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -7945,7 +7945,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_p);
         __Pyx_GIVEREF(__pyx_n_s_p);
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_19, __pyx_n_s_p);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 229, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 230, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
@@ -7955,149 +7955,149 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __pyx_L43:;
 
-    /* "leakageSimulatorAESFurious.pyx":231
+    /* "leakageSimulatorAESFurious.pyx":232
  *                 p_ham = linear_get_elmo_values(p, 'p')
  * 
  *             p_ham[:16] = p[:16]             # <<<<<<<<<<<<<<
  *             dictionary['p'] [trace]     = p_ham
  * 
  */
-    __pyx_t_14 = __Pyx_PyObject_GetSlice(__pyx_v_p, 0, 16, NULL, NULL, &__pyx_slice__8, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 231, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetSlice(__pyx_v_p, 0, 16, NULL, NULL, &__pyx_slice__8, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    if (__Pyx_PyObject_SetSlice(__pyx_v_p_ham, __pyx_t_14, 0, 16, NULL, NULL, &__pyx_slice__9, 0, 1, 1) < 0) __PYX_ERR(0, 231, __pyx_L1_error)
+    if (__Pyx_PyObject_SetSlice(__pyx_v_p_ham, __pyx_t_14, 0, 16, NULL, NULL, &__pyx_slice__9, 0, 1, 1) < 0) __PYX_ERR(0, 232, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":232
+    /* "leakageSimulatorAESFurious.pyx":233
  * 
  *             p_ham[:16] = p[:16]
  *             dictionary['p'] [trace]     = p_ham             # <<<<<<<<<<<<<<
  * 
  *             # Maybe sort out here?
  */
-    __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_p); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_p); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_p_ham, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 232, __pyx_L1_error)
+    if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_p_ham, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":236
+    /* "leakageSimulatorAESFurious.pyx":237
  *             # Maybe sort out here?
  * 
  *             if real_values:             # <<<<<<<<<<<<<<
  *                 dictionary['k']  [trace]     = k
  *                 dictionary['sk'] [trace]     = sk
  */
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_real_values); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_real_values); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 237, __pyx_L1_error)
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":237
+      /* "leakageSimulatorAESFurious.pyx":238
  * 
  *             if real_values:
  *                 dictionary['k']  [trace]     = k             # <<<<<<<<<<<<<<
  *                 dictionary['sk'] [trace]     = sk
  *                 dictionary['xk'] [trace]     = xk
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_k); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 237, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_k); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 238, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, ((PyObject *)__pyx_v_k), int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 237, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, ((PyObject *)__pyx_v_k), int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 238, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":238
+      /* "leakageSimulatorAESFurious.pyx":239
  *             if real_values:
  *                 dictionary['k']  [trace]     = k
  *                 dictionary['sk'] [trace]     = sk             # <<<<<<<<<<<<<<
  *                 dictionary['xk'] [trace]     = xk
  *                 dictionary['t']  [trace]     = t
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_sk); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 238, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_sk); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 239, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, ((PyObject *)__pyx_v_sk), int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 238, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, ((PyObject *)__pyx_v_sk), int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 239, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":239
+      /* "leakageSimulatorAESFurious.pyx":240
  *                 dictionary['k']  [trace]     = k
  *                 dictionary['sk'] [trace]     = sk
  *                 dictionary['xk'] [trace]     = xk             # <<<<<<<<<<<<<<
  *                 dictionary['t']  [trace]     = t
  *                 dictionary['s']  [trace]     = s
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xk); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 239, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xk); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 240, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, ((PyObject *)__pyx_v_xk), int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 239, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, ((PyObject *)__pyx_v_xk), int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 240, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":240
+      /* "leakageSimulatorAESFurious.pyx":241
  *                 dictionary['sk'] [trace]     = sk
  *                 dictionary['xk'] [trace]     = xk
  *                 dictionary['t']  [trace]     = t             # <<<<<<<<<<<<<<
  *                 dictionary['s']  [trace]     = s
  *                 dictionary['xt'] [trace]     = xt
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_t); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 240, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_t); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 241, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_t, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 240, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_t, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 241, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":241
+      /* "leakageSimulatorAESFurious.pyx":242
  *                 dictionary['xk'] [trace]     = xk
  *                 dictionary['t']  [trace]     = t
  *                 dictionary['s']  [trace]     = s             # <<<<<<<<<<<<<<
  *                 dictionary['xt'] [trace]     = xt
  *                 dictionary['cm'] [trace]     = cm
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_s); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 241, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_s); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 242, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_s, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 241, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_s, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":242
+      /* "leakageSimulatorAESFurious.pyx":243
  *                 dictionary['t']  [trace]     = t
  *                 dictionary['s']  [trace]     = s
  *                 dictionary['xt'] [trace]     = xt             # <<<<<<<<<<<<<<
  *                 dictionary['cm'] [trace]     = cm
  *                 dictionary['mc'] [trace]     = mc
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xt); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 242, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xt); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 243, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_xt, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 242, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_xt, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":243
+      /* "leakageSimulatorAESFurious.pyx":244
  *                 dictionary['s']  [trace]     = s
  *                 dictionary['xt'] [trace]     = xt
  *                 dictionary['cm'] [trace]     = cm             # <<<<<<<<<<<<<<
  *                 dictionary['mc'] [trace]     = mc
  *                 dictionary['h']  [trace]     = h
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_cm); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 243, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_cm); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 244, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_cm, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_cm, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 244, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":244
+      /* "leakageSimulatorAESFurious.pyx":245
  *                 dictionary['xt'] [trace]     = xt
  *                 dictionary['cm'] [trace]     = cm
  *                 dictionary['mc'] [trace]     = mc             # <<<<<<<<<<<<<<
  *                 dictionary['h']  [trace]     = h
  *             elif hw_leakage_model:
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_mc); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 244, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_mc); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 245, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_mc, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 244, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_mc, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 245, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":245
+      /* "leakageSimulatorAESFurious.pyx":246
  *                 dictionary['cm'] [trace]     = cm
  *                 dictionary['mc'] [trace]     = mc
  *                 dictionary['h']  [trace]     = h             # <<<<<<<<<<<<<<
  *             elif hw_leakage_model:
  *                 dictionary['k']  [trace]     = linear_get_hamming_weights(k)
  */
-      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_h); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 245, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_h); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 246, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_h, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 245, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_14, __pyx_v_trace, __pyx_v_h, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 246, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":236
+      /* "leakageSimulatorAESFurious.pyx":237
  *             # Maybe sort out here?
  * 
  *             if real_values:             # <<<<<<<<<<<<<<
@@ -8107,24 +8107,24 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L44;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":246
+    /* "leakageSimulatorAESFurious.pyx":247
  *                 dictionary['mc'] [trace]     = mc
  *                 dictionary['h']  [trace]     = h
  *             elif hw_leakage_model:             # <<<<<<<<<<<<<<
  *                 dictionary['k']  [trace]     = linear_get_hamming_weights(k)
  *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
  */
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 247, __pyx_L1_error)
     if (__pyx_t_6) {
 
-      /* "leakageSimulatorAESFurious.pyx":247
+      /* "leakageSimulatorAESFurious.pyx":248
  *                 dictionary['h']  [trace]     = h
  *             elif hw_leakage_model:
  *                 dictionary['k']  [trace]     = linear_get_hamming_weights(k)             # <<<<<<<<<<<<<<
  *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
  *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -8137,13 +8137,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_k)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 247, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_k)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, ((PyObject *)__pyx_v_k)};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 247, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
@@ -8151,386 +8151,270 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, ((PyObject *)__pyx_v_k)};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 247, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
           __Pyx_INCREF(((PyObject *)__pyx_v_k));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_k));
           PyTuple_SET_ITEM(__pyx_t_1, 0+1, ((PyObject *)__pyx_v_k));
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 247, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 247, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-
-      /* "leakageSimulatorAESFurious.pyx":248
- *             elif hw_leakage_model:
- *                 dictionary['k']  [trace]     = linear_get_hamming_weights(k)
- *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)             # <<<<<<<<<<<<<<
- *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
- *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
- */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = NULL;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_1)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_1);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_2, function);
-        }
-      }
-      if (!__pyx_t_1) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_sk)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_14);
-      } else {
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_sk)};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_GOTREF(__pyx_t_14);
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_sk)};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_GOTREF(__pyx_t_14);
-        } else
-        #endif
-        {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 248, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_15);
-          __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
-          __Pyx_INCREF(((PyObject *)__pyx_v_sk));
-          __Pyx_GIVEREF(((PyObject *)__pyx_v_sk));
-          PyTuple_SET_ITEM(__pyx_t_15, 0+1, ((PyObject *)__pyx_v_sk));
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 248, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        }
-      }
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_sk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 248, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
       /* "leakageSimulatorAESFurious.pyx":249
+ *             elif hw_leakage_model:
  *                 dictionary['k']  [trace]     = linear_get_hamming_weights(k)
- *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
- *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)             # <<<<<<<<<<<<<<
+ *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)             # <<<<<<<<<<<<<<
+ *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
  *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
- *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
  */
       __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_15 = NULL;
+      __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_15)) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_1)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_15);
+          __Pyx_INCREF(__pyx_t_1);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_2, function);
         }
       }
-      if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_xk)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 249, __pyx_L1_error)
+      if (!__pyx_t_1) {
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_sk)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 249, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_15, ((PyObject *)__pyx_v_xk)};
+          PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_sk)};
           __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 249, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_15, ((PyObject *)__pyx_v_xk)};
+          PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_sk)};
           __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 249, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
-          __Pyx_INCREF(((PyObject *)__pyx_v_xk));
-          __Pyx_GIVEREF(((PyObject *)__pyx_v_xk));
-          PyTuple_SET_ITEM(__pyx_t_1, 0+1, ((PyObject *)__pyx_v_xk));
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 249, __pyx_L1_error)
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 249, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_15);
+          __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
+          __Pyx_INCREF(((PyObject *)__pyx_v_sk));
+          __Pyx_GIVEREF(((PyObject *)__pyx_v_sk));
+          PyTuple_SET_ITEM(__pyx_t_15, 0+1, ((PyObject *)__pyx_v_sk));
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 249, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_sk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 249, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
       /* "leakageSimulatorAESFurious.pyx":250
+ *                 dictionary['k']  [trace]     = linear_get_hamming_weights(k)
  *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
- *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
- *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)             # <<<<<<<<<<<<<<
+ *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)             # <<<<<<<<<<<<<<
+ *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
  *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
- *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
  */
       __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = NULL;
+      __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_1)) {
+        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_15)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_15);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_2, function);
         }
       }
-      if (!__pyx_t_1) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_t); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L1_error)
+      if (!__pyx_t_15) {
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_xk)); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_t};
+          PyObject *__pyx_temp[2] = {__pyx_t_15, ((PyObject *)__pyx_v_xk)};
           __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_t};
+          PyObject *__pyx_temp[2] = {__pyx_t_15, ((PyObject *)__pyx_v_xk)};
           __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 250, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_15);
-          __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
-          __Pyx_INCREF(__pyx_v_t);
-          __Pyx_GIVEREF(__pyx_v_t);
-          PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_t);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
+          __Pyx_INCREF(((PyObject *)__pyx_v_xk));
+          __Pyx_GIVEREF(((PyObject *)__pyx_v_xk));
+          PyTuple_SET_ITEM(__pyx_t_1, 0+1, ((PyObject *)__pyx_v_xk));
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_t); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 250, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 250, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
       /* "leakageSimulatorAESFurious.pyx":251
+ *                 dictionary['sk'] [trace]     = linear_get_hamming_weights(sk)
  *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
- *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
- *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)             # <<<<<<<<<<<<<<
+ *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)             # <<<<<<<<<<<<<<
+ *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
  *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
- *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
  */
       __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_15 = NULL;
+      __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_15)) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_1)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_15);
+          __Pyx_INCREF(__pyx_t_1);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_2, function);
         }
       }
-      if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_s); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 251, __pyx_L1_error)
+      if (!__pyx_t_1) {
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_t); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 251, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_s};
+          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_t};
           __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 251, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_s};
+          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_t};
           __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 251, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 251, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
-          __Pyx_INCREF(__pyx_v_s);
-          __Pyx_GIVEREF(__pyx_v_s);
-          PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_v_s);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 251, __pyx_L1_error)
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 251, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_15);
+          __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
+          __Pyx_INCREF(__pyx_v_t);
+          __Pyx_GIVEREF(__pyx_v_t);
+          PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_t);
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 251, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_t); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 251, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 251, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
       /* "leakageSimulatorAESFurious.pyx":252
+ *                 dictionary['xk'] [trace]     = linear_get_hamming_weights(xk)
  *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
- *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
- *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)             # <<<<<<<<<<<<<<
+ *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)             # <<<<<<<<<<<<<<
+ *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
  *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
- *                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
  */
       __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_1 = NULL;
+      __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_1)) {
+        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_15)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(__pyx_t_15);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_2, function);
         }
       }
-      if (!__pyx_t_1) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_xt); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 252, __pyx_L1_error)
+      if (!__pyx_t_15) {
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_s); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 252, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_xt};
+          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_s};
           __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 252, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_xt};
+          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_s};
           __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 252, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 252, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_15);
-          __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
-          __Pyx_INCREF(__pyx_v_xt);
-          __Pyx_GIVEREF(__pyx_v_xt);
-          PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_xt);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 252, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
+          __Pyx_INCREF(__pyx_v_s);
+          __Pyx_GIVEREF(__pyx_v_s);
+          PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_v_s);
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 252, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 252, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
       /* "leakageSimulatorAESFurious.pyx":253
+ *                 dictionary['t']  [trace]     = linear_get_hamming_weights(t)
  *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
- *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
- *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)             # <<<<<<<<<<<<<<
+ *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)             # <<<<<<<<<<<<<<
+ *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
  *                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
- *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)
  */
       __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_15 = NULL;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_2);
-        if (likely(__pyx_t_15)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-          __Pyx_INCREF(__pyx_t_15);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_2, function);
-        }
-      }
-      if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_cm); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_14);
-      } else {
-        #if CYTHON_FAST_PYCALL
-        if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_cm};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __Pyx_GOTREF(__pyx_t_14);
-        } else
-        #endif
-        #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_cm};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __Pyx_GOTREF(__pyx_t_14);
-        } else
-        #endif
-        {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
-          __Pyx_INCREF(__pyx_v_cm);
-          __Pyx_GIVEREF(__pyx_v_cm);
-          PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_v_cm);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_14);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        }
-      }
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_cm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-
-      /* "leakageSimulatorAESFurious.pyx":254
- *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
- *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
- *                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)             # <<<<<<<<<<<<<<
- *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)
- *             else:
- */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -8543,52 +8427,52 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_1) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mc); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_xt); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_mc};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_xt};
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_mc};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_xt};
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 253, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
-          __Pyx_INCREF(__pyx_v_mc);
-          __Pyx_GIVEREF(__pyx_v_mc);
-          PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_mc);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_INCREF(__pyx_v_xt);
+          __Pyx_GIVEREF(__pyx_v_xt);
+          PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_xt);
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_mc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 253, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 254, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 253, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":255
- *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
+      /* "leakageSimulatorAESFurious.pyx":254
+ *                 dictionary['s']  [trace]     = linear_get_hamming_weights(s)
+ *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
+ *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)             # <<<<<<<<<<<<<<
  *                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
- *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)             # <<<<<<<<<<<<<<
- *             else:
- *                 dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')
+ *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -8601,13 +8485,129 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_15) {
-        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_h); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_cm); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_14);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_2)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_cm};
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_GOTREF(__pyx_t_14);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_cm};
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
+          __Pyx_GOTREF(__pyx_t_14);
+        } else
+        #endif
+        {
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_1);
+          __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
+          __Pyx_INCREF(__pyx_v_cm);
+          __Pyx_GIVEREF(__pyx_v_cm);
+          PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_v_cm);
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 254, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_cm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 254, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+      /* "leakageSimulatorAESFurious.pyx":255
+ *                 dictionary['xt'] [trace]     = linear_get_hamming_weights(xt)
+ *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
+ *                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)             # <<<<<<<<<<<<<<
+ *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)
+ *             else:
+ */
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_1 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_1)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_1);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      if (!__pyx_t_1) {
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_mc); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_14);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_2)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_mc};
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_GOTREF(__pyx_t_14);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_1, __pyx_v_mc};
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_GOTREF(__pyx_t_14);
+        } else
+        #endif
+        {
+          __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_15);
+          __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
+          __Pyx_INCREF(__pyx_v_mc);
+          __Pyx_GIVEREF(__pyx_v_mc);
+          PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_v_mc);
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_14);
+          __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_mc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+
+      /* "leakageSimulatorAESFurious.pyx":256
+ *                 dictionary['cm'] [trace]     = linear_get_hamming_weights(cm)
+ *                 dictionary['mc'] [trace]     = linear_get_hamming_weights(mc)
+ *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)             # <<<<<<<<<<<<<<
+ *             else:
+ *                 dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')
+ */
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_hamming_weights); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_15 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+        __pyx_t_15 = PyMethod_GET_SELF(__pyx_t_2);
+        if (likely(__pyx_t_15)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+          __Pyx_INCREF(__pyx_t_15);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_2, function);
+        }
+      }
+      if (!__pyx_t_15) {
+        __pyx_t_14 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_h); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 256, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_h};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 256, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
@@ -8615,31 +8615,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_h};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 256, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_1 = PyTuple_New(1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
           __Pyx_INCREF(__pyx_v_h);
           __Pyx_GIVEREF(__pyx_v_h);
           PyTuple_SET_ITEM(__pyx_t_1, 0+1, __pyx_v_h);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 255, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 256, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 255, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 256, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":246
+      /* "leakageSimulatorAESFurious.pyx":247
  *                 dictionary['mc'] [trace]     = mc
  *                 dictionary['h']  [trace]     = h
  *             elif hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -8649,7 +8649,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L44;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":257
+    /* "leakageSimulatorAESFurious.pyx":258
  *                 dictionary['h']  [trace]     = linear_get_hamming_weights(h)
  *             else:
  *                 dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')             # <<<<<<<<<<<<<<
@@ -8657,7 +8657,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                 dictionary['xk'] [trace]     = linear_get_elmo_values(xk, 'xk')
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -8674,7 +8674,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, ((PyObject *)__pyx_v_k), __pyx_n_s_k};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 257, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 258, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -8682,13 +8682,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, ((PyObject *)__pyx_v_k), __pyx_n_s_k};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 257, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 258, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 257, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 258, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -8699,25 +8699,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_k);
         __Pyx_GIVEREF(__pyx_n_s_k);
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_19, __pyx_n_s_k);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 257, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 258, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_k); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 257, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 258, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":258
+      /* "leakageSimulatorAESFurious.pyx":259
  *             else:
  *                 dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')
  *                 dictionary['sk'] [trace]     = linear_get_elmo_values(sk, 'sk')             # <<<<<<<<<<<<<<
  *                 dictionary['xk'] [trace]     = linear_get_elmo_values(xk, 'xk')
  *                 dictionary['t']  [trace]     = linear_get_elmo_values(t, 't')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       __pyx_t_19 = 0;
@@ -8734,7 +8734,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, ((PyObject *)__pyx_v_sk), __pyx_n_s_sk};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -8742,13 +8742,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, ((PyObject *)__pyx_v_sk), __pyx_n_s_sk};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         if (__pyx_t_15) {
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -8759,25 +8759,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_sk);
         __Pyx_GIVEREF(__pyx_n_s_sk);
         PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_19, __pyx_n_s_sk);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 258, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 259, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_sk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_sk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 258, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 259, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":259
+      /* "leakageSimulatorAESFurious.pyx":260
  *                 dictionary['k']  [trace]     = linear_get_elmo_values(k, 'k')
  *                 dictionary['sk'] [trace]     = linear_get_elmo_values(sk, 'sk')
  *                 dictionary['xk'] [trace]     = linear_get_elmo_values(xk, 'xk')             # <<<<<<<<<<<<<<
  *                 dictionary['t']  [trace]     = linear_get_elmo_values(t, 't')
  *                 dictionary['s']  [trace]     = linear_get_elmo_values(s, 's')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -8794,7 +8794,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, ((PyObject *)__pyx_v_xk), __pyx_n_s_xk};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 259, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 260, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -8802,13 +8802,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, ((PyObject *)__pyx_v_xk), __pyx_n_s_xk};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 259, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 260, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 259, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 260, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -8819,25 +8819,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_xk);
         __Pyx_GIVEREF(__pyx_n_s_xk);
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_19, __pyx_n_s_xk);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 259, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 260, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 259, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xk); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 259, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":260
+      /* "leakageSimulatorAESFurious.pyx":261
  *                 dictionary['sk'] [trace]     = linear_get_elmo_values(sk, 'sk')
  *                 dictionary['xk'] [trace]     = linear_get_elmo_values(xk, 'xk')
  *                 dictionary['t']  [trace]     = linear_get_elmo_values(t, 't')             # <<<<<<<<<<<<<<
  *                 dictionary['s']  [trace]     = linear_get_elmo_values(s, 's')
  *                 dictionary['xt'] [trace]     = linear_get_elmo_values(xt, 'xt')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       __pyx_t_19 = 0;
@@ -8854,7 +8854,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_t, __pyx_n_s_t};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -8862,13 +8862,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_t, __pyx_n_s_t};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         if (__pyx_t_15) {
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -8879,25 +8879,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_t);
         __Pyx_GIVEREF(__pyx_n_s_t);
         PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_19, __pyx_n_s_t);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 260, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_t); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_t); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 260, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":261
+      /* "leakageSimulatorAESFurious.pyx":262
  *                 dictionary['xk'] [trace]     = linear_get_elmo_values(xk, 'xk')
  *                 dictionary['t']  [trace]     = linear_get_elmo_values(t, 't')
  *                 dictionary['s']  [trace]     = linear_get_elmo_values(s, 's')             # <<<<<<<<<<<<<<
  *                 dictionary['xt'] [trace]     = linear_get_elmo_values(xt, 'xt')
  *                 dictionary['cm'] [trace]     = linear_get_elmo_values(cm, 'cm')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -8914,7 +8914,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_s, __pyx_n_s_s};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -8922,13 +8922,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_s, __pyx_n_s_s};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -8939,25 +8939,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_s);
         __Pyx_GIVEREF(__pyx_n_s_s);
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_19, __pyx_n_s_s);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 261, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_s); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":262
+      /* "leakageSimulatorAESFurious.pyx":263
  *                 dictionary['t']  [trace]     = linear_get_elmo_values(t, 't')
  *                 dictionary['s']  [trace]     = linear_get_elmo_values(s, 's')
  *                 dictionary['xt'] [trace]     = linear_get_elmo_values(xt, 'xt')             # <<<<<<<<<<<<<<
  *                 dictionary['cm'] [trace]     = linear_get_elmo_values(cm, 'cm')
  *                 dictionary['mc'] [trace]     = linear_get_elmo_values(mc, 'mc')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       __pyx_t_19 = 0;
@@ -8974,7 +8974,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_xt, __pyx_n_s_xt};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -8982,13 +8982,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_xt, __pyx_n_s_xt};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         if (__pyx_t_15) {
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -8999,25 +8999,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_xt);
         __Pyx_GIVEREF(__pyx_n_s_xt);
         PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_19, __pyx_n_s_xt);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 262, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_xt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":263
+      /* "leakageSimulatorAESFurious.pyx":264
  *                 dictionary['s']  [trace]     = linear_get_elmo_values(s, 's')
  *                 dictionary['xt'] [trace]     = linear_get_elmo_values(xt, 'xt')
  *                 dictionary['cm'] [trace]     = linear_get_elmo_values(cm, 'cm')             # <<<<<<<<<<<<<<
  *                 dictionary['mc'] [trace]     = linear_get_elmo_values(mc, 'mc')
  *                 dictionary['h'] [trace]      = linear_get_elmo_values(h, 'h')
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -9034,7 +9034,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_cm, __pyx_n_s_cm};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -9042,13 +9042,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_cm, __pyx_n_s_cm};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 263, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -9059,25 +9059,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_cm);
         __Pyx_GIVEREF(__pyx_n_s_cm);
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_19, __pyx_n_s_cm);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_cm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 263, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_cm); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":264
+      /* "leakageSimulatorAESFurious.pyx":265
  *                 dictionary['xt'] [trace]     = linear_get_elmo_values(xt, 'xt')
  *                 dictionary['cm'] [trace]     = linear_get_elmo_values(cm, 'cm')
  *                 dictionary['mc'] [trace]     = linear_get_elmo_values(mc, 'mc')             # <<<<<<<<<<<<<<
  *                 dictionary['h'] [trace]      = linear_get_elmo_values(h, 'h')
  * 
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_15 = NULL;
       __pyx_t_19 = 0;
@@ -9094,7 +9094,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_mc, __pyx_n_s_mc};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -9102,13 +9102,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_v_mc, __pyx_n_s_mc};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         if (__pyx_t_15) {
           __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -9119,25 +9119,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_mc);
         __Pyx_GIVEREF(__pyx_n_s_mc);
         PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_19, __pyx_n_s_mc);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_1, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_mc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_mc); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":265
+      /* "leakageSimulatorAESFurious.pyx":266
  *                 dictionary['cm'] [trace]     = linear_get_elmo_values(cm, 'cm')
  *                 dictionary['mc'] [trace]     = linear_get_elmo_values(mc, 'mc')
  *                 dictionary['h'] [trace]      = linear_get_elmo_values(h, 'h')             # <<<<<<<<<<<<<<
  * 
  * 
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_linear_get_elmo_values); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = NULL;
       __pyx_t_19 = 0;
@@ -9154,7 +9154,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_h, __pyx_n_s_h};
-        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
@@ -9162,13 +9162,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[3] = {__pyx_t_1, __pyx_v_h, __pyx_n_s_h};
-        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_19, 2+__pyx_t_19); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_GOTREF(__pyx_t_14);
       } else
       #endif
       {
-        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 265, __pyx_L1_error)
+        __pyx_t_15 = PyTuple_New(2+__pyx_t_19); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 266, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         if (__pyx_t_1) {
           __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -9179,68 +9179,68 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_n_s_h);
         __Pyx_GIVEREF(__pyx_n_s_h);
         PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_19, __pyx_n_s_h);
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_15, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_n_s_h); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(__pyx_t_2, __pyx_v_trace, __pyx_t_14, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     }
     __pyx_L44:;
   }
 
-  /* "leakageSimulatorAESFurious.pyx":269
+  /* "leakageSimulatorAESFurious.pyx":270
  * 
  *         # Save dictionary
  *         self.simulated_dictionary = dictionary             # <<<<<<<<<<<<<<
  * 
  *         # Affect with Noise
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 270, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":272
+  /* "leakageSimulatorAESFurious.pyx":273
  * 
  *         # Affect with Noise
  *         if affect_with_noise:             # <<<<<<<<<<<<<<
  *             self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)
  * 
  */
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_affect_with_noise); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 272, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_affect_with_noise); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 273, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "leakageSimulatorAESFurious.pyx":273
+    /* "leakageSimulatorAESFurious.pyx":274
  *         # Affect with Noise
  *         if affect_with_noise:
  *             self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_dictionary_with_noise); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_dictionary_with_noise); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_2 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_15 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_15 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_snr, __pyx_t_15) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_snr, __pyx_t_15) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_average_key_nodes, __pyx_v_average_key_nodes) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
-    __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 273, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_average_key_nodes, __pyx_v_average_key_nodes) < 0) __PYX_ERR(0, 274, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":272
+    /* "leakageSimulatorAESFurious.pyx":273
  * 
  *         # Affect with Noise
  *         if affect_with_noise:             # <<<<<<<<<<<<<<
@@ -9296,7 +9296,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":276
+/* "leakageSimulatorAESFurious.pyx":277
  * 
  * 
  *     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):             # <<<<<<<<<<<<<<
@@ -9451,7 +9451,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "elmo_simulation") < 0)) __PYX_ERR(0, 276, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "elmo_simulation") < 0)) __PYX_ERR(0, 277, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -9500,7 +9500,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("elmo_simulation", 0, 1, 13, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 276, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("elmo_simulation", 0, 1, 13, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 277, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.elmo_simulation", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -9567,7 +9567,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __Pyx_INCREF(__pyx_v_badly_leaking_traces);
   __Pyx_INCREF(__pyx_v_no_noise_nodes);
 
-  /* "leakageSimulatorAESFurious.pyx":278
+  /* "leakageSimulatorAESFurious.pyx":279
  *     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):
  * 
  *         if badly_leaking_nodes is None:             # <<<<<<<<<<<<<<
@@ -9578,19 +9578,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":279
+    /* "leakageSimulatorAESFurious.pyx":280
  * 
  *         if badly_leaking_nodes is None:
  *             badly_leaking_nodes = []             # <<<<<<<<<<<<<<
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_badly_leaking_nodes, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":278
+    /* "leakageSimulatorAESFurious.pyx":279
  *     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):
  * 
  *         if badly_leaking_nodes is None:             # <<<<<<<<<<<<<<
@@ -9599,7 +9599,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":280
+  /* "leakageSimulatorAESFurious.pyx":281
  *         if badly_leaking_nodes is None:
  *             badly_leaking_nodes = []
  *         if badly_leaking_traces is None:             # <<<<<<<<<<<<<<
@@ -9610,19 +9610,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "leakageSimulatorAESFurious.pyx":281
+    /* "leakageSimulatorAESFurious.pyx":282
  *             badly_leaking_nodes = []
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []             # <<<<<<<<<<<<<<
  *         if no_noise_nodes is None:
  *             no_noise_nodes = []
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_badly_leaking_traces, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":280
+    /* "leakageSimulatorAESFurious.pyx":281
  *         if badly_leaking_nodes is None:
  *             badly_leaking_nodes = []
  *         if badly_leaking_traces is None:             # <<<<<<<<<<<<<<
@@ -9631,7 +9631,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":282
+  /* "leakageSimulatorAESFurious.pyx":283
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []
  *         if no_noise_nodes is None:             # <<<<<<<<<<<<<<
@@ -9642,19 +9642,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":283
+    /* "leakageSimulatorAESFurious.pyx":284
  *             badly_leaking_traces = []
  *         if no_noise_nodes is None:
  *             no_noise_nodes = []             # <<<<<<<<<<<<<<
  * 
  *         # Open asm trace
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_no_noise_nodes, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":282
+    /* "leakageSimulatorAESFurious.pyx":283
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []
  *         if no_noise_nodes is None:             # <<<<<<<<<<<<<<
@@ -9663,50 +9663,50 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":286
+  /* "leakageSimulatorAESFurious.pyx":287
  * 
  *         # Open asm trace
  *         if local_leakage:             # <<<<<<<<<<<<<<
  *             if hw_leakage_model:
  *                 f = open(PATH_TO_LOCAL_HW + 'asmtrace00001.txt')
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_local_leakage); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_local_leakage); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 287, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":287
+    /* "leakageSimulatorAESFurious.pyx":288
  *         # Open asm trace
  *         if local_leakage:
  *             if hw_leakage_model:             # <<<<<<<<<<<<<<
  *                 f = open(PATH_TO_LOCAL_HW + 'asmtrace00001.txt')
  *             else:
  */
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 288, __pyx_L1_error)
     if (__pyx_t_2) {
 
-      /* "leakageSimulatorAESFurious.pyx":288
+      /* "leakageSimulatorAESFurious.pyx":289
  *         if local_leakage:
  *             if hw_leakage_model:
  *                 f = open(PATH_TO_LOCAL_HW + 'asmtrace00001.txt')             # <<<<<<<<<<<<<<
  *             else:
  *                 f = open(PATH_TO_LOCAL_ELMO + 'asmtrace00001.txt')
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyNumber_Add(__pyx_t_3, __pyx_kp_s_asmtrace00001_txt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Add(__pyx_t_3, __pyx_kp_s_asmtrace00001_txt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 288, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 289, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_v_f = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":287
+      /* "leakageSimulatorAESFurious.pyx":288
  *         # Open asm trace
  *         if local_leakage:
  *             if hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -9716,7 +9716,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L7;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":290
+    /* "leakageSimulatorAESFurious.pyx":291
  *                 f = open(PATH_TO_LOCAL_HW + 'asmtrace00001.txt')
  *             else:
  *                 f = open(PATH_TO_LOCAL_ELMO + 'asmtrace00001.txt')             # <<<<<<<<<<<<<<
@@ -9724,17 +9724,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             f = open(PATH_TO_ELMO + 'output/asmoutput/asmtrace00001.txt')
  */
     /*else*/ {
-      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_kp_s_asmtrace00001_txt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_kp_s_asmtrace00001_txt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_f = __pyx_t_3;
@@ -9742,7 +9742,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __pyx_L7:;
 
-    /* "leakageSimulatorAESFurious.pyx":286
+    /* "leakageSimulatorAESFurious.pyx":287
  * 
  *         # Open asm trace
  *         if local_leakage:             # <<<<<<<<<<<<<<
@@ -9752,7 +9752,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     goto __pyx_L6;
   }
 
-  /* "leakageSimulatorAESFurious.pyx":292
+  /* "leakageSimulatorAESFurious.pyx":293
  *                 f = open(PATH_TO_LOCAL_ELMO + 'asmtrace00001.txt')
  *         else:
  *             f = open(PATH_TO_ELMO + 'output/asmoutput/asmtrace00001.txt')             # <<<<<<<<<<<<<<
@@ -9760,17 +9760,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *         # Get trigger dict
  */
   /*else*/ {
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyNumber_Add(__pyx_t_3, __pyx_kp_s_output_asmoutput_asmtrace00001_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Add(__pyx_t_3, __pyx_kp_s_output_asmoutput_asmtrace00001_t); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 293, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 292, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 293, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_f = __pyx_t_4;
@@ -9778,151 +9778,151 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   __pyx_L6:;
 
-  /* "leakageSimulatorAESFurious.pyx":295
+  /* "leakageSimulatorAESFurious.pyx":296
  * 
  *         # Get trigger dict
  *         triggers = dict()             # <<<<<<<<<<<<<<
  *         triggers['all'] = list()
  *         triggers['k'] = list()
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_triggers = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":296
+  /* "leakageSimulatorAESFurious.pyx":297
  *         # Get trigger dict
  *         triggers = dict()
  *         triggers['all'] = list()             # <<<<<<<<<<<<<<
  *         triggers['k'] = list()
  *         triggers['p'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 296, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_all, __pyx_t_4) < 0)) __PYX_ERR(0, 296, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_all, __pyx_t_4) < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":297
+  /* "leakageSimulatorAESFurious.pyx":298
  *         triggers = dict()
  *         triggers['all'] = list()
  *         triggers['k'] = list()             # <<<<<<<<<<<<<<
  *         triggers['p'] = list()
  *         triggers['t'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 297, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_k, __pyx_t_4) < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_k, __pyx_t_4) < 0)) __PYX_ERR(0, 298, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":298
+  /* "leakageSimulatorAESFurious.pyx":299
  *         triggers['all'] = list()
  *         triggers['k'] = list()
  *         triggers['p'] = list()             # <<<<<<<<<<<<<<
  *         triggers['t'] = list()
  *         triggers['s'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 298, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_p, __pyx_t_4) < 0)) __PYX_ERR(0, 298, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_p, __pyx_t_4) < 0)) __PYX_ERR(0, 299, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":299
+  /* "leakageSimulatorAESFurious.pyx":300
  *         triggers['k'] = list()
  *         triggers['p'] = list()
  *         triggers['t'] = list()             # <<<<<<<<<<<<<<
  *         triggers['s'] = list()
  *         triggers['xt'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 299, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_t, __pyx_t_4) < 0)) __PYX_ERR(0, 299, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_t, __pyx_t_4) < 0)) __PYX_ERR(0, 300, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":300
+  /* "leakageSimulatorAESFurious.pyx":301
  *         triggers['p'] = list()
  *         triggers['t'] = list()
  *         triggers['s'] = list()             # <<<<<<<<<<<<<<
  *         triggers['xt'] = list()
  *         triggers['cm'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 300, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_s, __pyx_t_4) < 0)) __PYX_ERR(0, 300, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_s, __pyx_t_4) < 0)) __PYX_ERR(0, 301, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":301
+  /* "leakageSimulatorAESFurious.pyx":302
  *         triggers['t'] = list()
  *         triggers['s'] = list()
  *         triggers['xt'] = list()             # <<<<<<<<<<<<<<
  *         triggers['cm'] = list()
  *         triggers['mc'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_xt, __pyx_t_4) < 0)) __PYX_ERR(0, 301, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_xt, __pyx_t_4) < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":302
+  /* "leakageSimulatorAESFurious.pyx":303
  *         triggers['s'] = list()
  *         triggers['xt'] = list()
  *         triggers['cm'] = list()             # <<<<<<<<<<<<<<
  *         triggers['mc'] = list()
  *         triggers['h'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_cm, __pyx_t_4) < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_cm, __pyx_t_4) < 0)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":303
+  /* "leakageSimulatorAESFurious.pyx":304
  *         triggers['xt'] = list()
  *         triggers['cm'] = list()
  *         triggers['mc'] = list()             # <<<<<<<<<<<<<<
  *         triggers['h'] = list()
  *         triggers['sk'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_mc, __pyx_t_4) < 0)) __PYX_ERR(0, 303, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_mc, __pyx_t_4) < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":304
+  /* "leakageSimulatorAESFurious.pyx":305
  *         triggers['cm'] = list()
  *         triggers['mc'] = list()
  *         triggers['h'] = list()             # <<<<<<<<<<<<<<
  *         triggers['sk'] = list()
  *         triggers['xk'] = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 304, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_h, __pyx_t_4) < 0)) __PYX_ERR(0, 304, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_h, __pyx_t_4) < 0)) __PYX_ERR(0, 305, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":305
+  /* "leakageSimulatorAESFurious.pyx":306
  *         triggers['mc'] = list()
  *         triggers['h'] = list()
  *         triggers['sk'] = list()             # <<<<<<<<<<<<<<
  *         triggers['xk'] = list()
  * 
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 305, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_sk, __pyx_t_4) < 0)) __PYX_ERR(0, 305, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_sk, __pyx_t_4) < 0)) __PYX_ERR(0, 306, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":306
+  /* "leakageSimulatorAESFurious.pyx":307
  *         triggers['h'] = list()
  *         triggers['sk'] = list()
  *         triggers['xk'] = list()             # <<<<<<<<<<<<<<
  * 
  *         count = 0
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 306, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_xk, __pyx_t_4) < 0)) __PYX_ERR(0, 306, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_triggers, __pyx_n_s_xk, __pyx_t_4) < 0)) __PYX_ERR(0, 307, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":308
+  /* "leakageSimulatorAESFurious.pyx":309
  *         triggers['xk'] = list()
  * 
  *         count = 0             # <<<<<<<<<<<<<<
@@ -9932,7 +9932,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_count = __pyx_int_0;
 
-  /* "leakageSimulatorAESFurious.pyx":312
+  /* "leakageSimulatorAESFurious.pyx":313
  * 
  *         # Find and add all triggers
  *         for line in f:             # <<<<<<<<<<<<<<
@@ -9943,26 +9943,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_4 = __pyx_v_f; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_f); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_f); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 313, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 312, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 313, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 312, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 312, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9972,7 +9972,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 312, __pyx_L1_error)
+          else __PYX_ERR(0, 313, __pyx_L1_error)
         }
         break;
       }
@@ -9981,14 +9981,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":313
+    /* "leakageSimulatorAESFurious.pyx":314
  *         # Find and add all triggers
  *         for line in f:
  *             if string_contains(line, '0xF'):             # <<<<<<<<<<<<<<
  *                 triggers['all'].append((count+1))
  *                 # Sort into respective trigger file
  */
-    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     __pyx_t_9 = 0;
@@ -10005,7 +10005,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
@@ -10013,13 +10013,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
       PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_3);
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       if (__pyx_t_8) {
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10030,38 +10030,38 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_INCREF(__pyx_kp_s_0xF);
       __Pyx_GIVEREF(__pyx_kp_s_0xF);
       PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_kp_s_0xF);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 313, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (__pyx_t_2) {
 
-      /* "leakageSimulatorAESFurious.pyx":314
+      /* "leakageSimulatorAESFurious.pyx":315
  *         for line in f:
  *             if string_contains(line, '0xF'):
  *                 triggers['all'].append((count+1))             # <<<<<<<<<<<<<<
  *                 # Sort into respective trigger file
  *                 if string_contains(line, '0xF0'):
  */
-      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_all); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_all); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":316
+      /* "leakageSimulatorAESFurious.pyx":317
  *                 triggers['all'].append((count+1))
  *                 # Sort into respective trigger file
  *                 if string_contains(line, '0xF0'):             # <<<<<<<<<<<<<<
  *                     triggers['k'].append((count+1))
  *                 elif string_contains(line, '0xF1'):
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       __pyx_t_9 = 0;
@@ -10078,7 +10078,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF0};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -10086,13 +10086,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF0};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_10) {
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -10103,31 +10103,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF0);
         __Pyx_GIVEREF(__pyx_kp_s_0xF0);
         PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_9, __pyx_kp_s_0xF0);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 316, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 316, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 317, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":317
+        /* "leakageSimulatorAESFurious.pyx":318
  *                 # Sort into respective trigger file
  *                 if string_contains(line, '0xF0'):
  *                     triggers['k'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF1'):
  *                     triggers['p'].append((count+1))
  */
-        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_k); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_k); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 318, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 317, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 317, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 318, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":316
+        /* "leakageSimulatorAESFurious.pyx":317
  *                 triggers['all'].append((count+1))
  *                 # Sort into respective trigger file
  *                 if string_contains(line, '0xF0'):             # <<<<<<<<<<<<<<
@@ -10137,14 +10137,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":318
+      /* "leakageSimulatorAESFurious.pyx":319
  *                 if string_contains(line, '0xF0'):
  *                     triggers['k'].append((count+1))
  *                 elif string_contains(line, '0xF1'):             # <<<<<<<<<<<<<<
  *                     triggers['p'].append((count+1))
  *                 elif string_contains(line, '0xF2'):
  */
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 318, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -10161,7 +10161,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF1};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -10169,13 +10169,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF1};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 318, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 319, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10186,31 +10186,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF1);
         __Pyx_GIVEREF(__pyx_kp_s_0xF1);
         PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_kp_s_0xF1);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 318, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 318, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 319, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":319
+        /* "leakageSimulatorAESFurious.pyx":320
  *                     triggers['k'].append((count+1))
  *                 elif string_contains(line, '0xF1'):
  *                     triggers['p'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF2'):
  *                     triggers['t'].append((count+1))
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 319, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 319, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 319, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":318
+        /* "leakageSimulatorAESFurious.pyx":319
  *                 if string_contains(line, '0xF0'):
  *                     triggers['k'].append((count+1))
  *                 elif string_contains(line, '0xF1'):             # <<<<<<<<<<<<<<
@@ -10220,14 +10220,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":320
+      /* "leakageSimulatorAESFurious.pyx":321
  *                 elif string_contains(line, '0xF1'):
  *                     triggers['p'].append((count+1))
  *                 elif string_contains(line, '0xF2'):             # <<<<<<<<<<<<<<
  *                     triggers['t'].append((count+1))
  *                 elif string_contains(line, '0xF3'):
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 320, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       __pyx_t_9 = 0;
@@ -10244,7 +10244,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF2};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 320, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -10252,13 +10252,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF2};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 320, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 320, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 321, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_10) {
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -10269,31 +10269,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF2);
         __Pyx_GIVEREF(__pyx_kp_s_0xF2);
         PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_9, __pyx_kp_s_0xF2);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 320, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 320, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":321
+        /* "leakageSimulatorAESFurious.pyx":322
  *                     triggers['p'].append((count+1))
  *                 elif string_contains(line, '0xF2'):
  *                     triggers['t'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF3'):
  *                     triggers['s'].append((count+1))
  */
-        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_t); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 321, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_t); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 322, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 321, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 321, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 322, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":320
+        /* "leakageSimulatorAESFurious.pyx":321
  *                 elif string_contains(line, '0xF1'):
  *                     triggers['p'].append((count+1))
  *                 elif string_contains(line, '0xF2'):             # <<<<<<<<<<<<<<
@@ -10303,14 +10303,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":322
+      /* "leakageSimulatorAESFurious.pyx":323
  *                 elif string_contains(line, '0xF2'):
  *                     triggers['t'].append((count+1))
  *                 elif string_contains(line, '0xF3'):             # <<<<<<<<<<<<<<
  *                     triggers['s'].append((count+1))
  *                 elif string_contains(line, '0xF4'):
  */
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 322, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -10327,7 +10327,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF3};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -10335,13 +10335,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF3};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 322, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 323, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10352,31 +10352,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF3);
         __Pyx_GIVEREF(__pyx_kp_s_0xF3);
         PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_kp_s_0xF3);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 322, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 322, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":323
+        /* "leakageSimulatorAESFurious.pyx":324
  *                     triggers['t'].append((count+1))
  *                 elif string_contains(line, '0xF3'):
  *                     triggers['s'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF4'):
  *                     triggers['xt'].append((count+1))
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 323, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 323, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 324, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":322
+        /* "leakageSimulatorAESFurious.pyx":323
  *                 elif string_contains(line, '0xF2'):
  *                     triggers['t'].append((count+1))
  *                 elif string_contains(line, '0xF3'):             # <<<<<<<<<<<<<<
@@ -10386,14 +10386,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":324
+      /* "leakageSimulatorAESFurious.pyx":325
  *                 elif string_contains(line, '0xF3'):
  *                     triggers['s'].append((count+1))
  *                 elif string_contains(line, '0xF4'):             # <<<<<<<<<<<<<<
  *                     triggers['xt'].append((count+1))
  *                 elif string_contains(line, '0xF5'):
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       __pyx_t_9 = 0;
@@ -10410,7 +10410,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF4};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 324, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 325, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -10418,13 +10418,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF4};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 324, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 325, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 324, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 325, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_10) {
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -10435,31 +10435,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF4);
         __Pyx_GIVEREF(__pyx_kp_s_0xF4);
         PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_9, __pyx_kp_s_0xF4);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 324, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 325, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 324, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 325, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":325
+        /* "leakageSimulatorAESFurious.pyx":326
  *                     triggers['s'].append((count+1))
  *                 elif string_contains(line, '0xF4'):
  *                     triggers['xt'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF5'):
  *                     triggers['cm'].append((count+1))
  */
-        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 325, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 326, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":324
+        /* "leakageSimulatorAESFurious.pyx":325
  *                 elif string_contains(line, '0xF3'):
  *                     triggers['s'].append((count+1))
  *                 elif string_contains(line, '0xF4'):             # <<<<<<<<<<<<<<
@@ -10469,14 +10469,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":326
+      /* "leakageSimulatorAESFurious.pyx":327
  *                 elif string_contains(line, '0xF4'):
  *                     triggers['xt'].append((count+1))
  *                 elif string_contains(line, '0xF5'):             # <<<<<<<<<<<<<<
  *                     triggers['cm'].append((count+1))
  *                 elif string_contains(line, '0xF6'):
  */
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 326, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -10493,7 +10493,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF5};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -10501,13 +10501,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF5};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10518,31 +10518,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF5);
         __Pyx_GIVEREF(__pyx_kp_s_0xF5);
         PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_kp_s_0xF5);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 326, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":327
+        /* "leakageSimulatorAESFurious.pyx":328
  *                     triggers['xt'].append((count+1))
  *                 elif string_contains(line, '0xF5'):
  *                     triggers['cm'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF6'):
  *                     triggers['mc'].append((count+1))
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_cm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_cm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 328, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 327, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 327, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 328, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":326
+        /* "leakageSimulatorAESFurious.pyx":327
  *                 elif string_contains(line, '0xF4'):
  *                     triggers['xt'].append((count+1))
  *                 elif string_contains(line, '0xF5'):             # <<<<<<<<<<<<<<
@@ -10552,14 +10552,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":328
+      /* "leakageSimulatorAESFurious.pyx":329
  *                 elif string_contains(line, '0xF5'):
  *                     triggers['cm'].append((count+1))
  *                 elif string_contains(line, '0xF6'):             # <<<<<<<<<<<<<<
  *                     triggers['mc'].append((count+1))
  *                 elif string_contains(line, '0xF7'):
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 328, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       __pyx_t_9 = 0;
@@ -10576,7 +10576,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF6};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -10584,13 +10584,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF6};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 328, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 329, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_10) {
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -10601,31 +10601,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF6);
         __Pyx_GIVEREF(__pyx_kp_s_0xF6);
         PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_9, __pyx_kp_s_0xF6);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 328, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 328, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 329, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":329
+        /* "leakageSimulatorAESFurious.pyx":330
  *                     triggers['cm'].append((count+1))
  *                 elif string_contains(line, '0xF6'):
  *                     triggers['mc'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF7'):
  *                     triggers['h'].append((count+1))
  */
-        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_mc); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 329, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_mc); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 329, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 329, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":328
+        /* "leakageSimulatorAESFurious.pyx":329
  *                 elif string_contains(line, '0xF5'):
  *                     triggers['cm'].append((count+1))
  *                 elif string_contains(line, '0xF6'):             # <<<<<<<<<<<<<<
@@ -10635,14 +10635,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":330
+      /* "leakageSimulatorAESFurious.pyx":331
  *                 elif string_contains(line, '0xF6'):
  *                     triggers['mc'].append((count+1))
  *                 elif string_contains(line, '0xF7'):             # <<<<<<<<<<<<<<
  *                     triggers['h'].append((count+1))
  *                 elif string_contains(line, '0xF8'):
  */
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 330, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 331, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -10659,7 +10659,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF7};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -10667,13 +10667,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF7};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 331, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10684,31 +10684,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF7);
         __Pyx_GIVEREF(__pyx_kp_s_0xF7);
         PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_kp_s_0xF7);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 330, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 330, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 331, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":331
+        /* "leakageSimulatorAESFurious.pyx":332
  *                     triggers['mc'].append((count+1))
  *                 elif string_contains(line, '0xF7'):
  *                     triggers['h'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF8'):
  *                     triggers['sk'].append((count+1))
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 332, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 331, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 332, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":330
+        /* "leakageSimulatorAESFurious.pyx":331
  *                 elif string_contains(line, '0xF6'):
  *                     triggers['mc'].append((count+1))
  *                 elif string_contains(line, '0xF7'):             # <<<<<<<<<<<<<<
@@ -10718,14 +10718,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":332
+      /* "leakageSimulatorAESFurious.pyx":333
  *                 elif string_contains(line, '0xF7'):
  *                     triggers['h'].append((count+1))
  *                 elif string_contains(line, '0xF8'):             # <<<<<<<<<<<<<<
  *                     triggers['sk'].append((count+1))
  *                 elif string_contains(line, '0xF9'):
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 332, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_10 = NULL;
       __pyx_t_9 = 0;
@@ -10742,7 +10742,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF8};
-        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 332, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
@@ -10750,13 +10750,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[3] = {__pyx_t_10, __pyx_v_line, __pyx_kp_s_0xF8};
-        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 332, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_GOTREF(__pyx_t_7);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 332, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         if (__pyx_t_10) {
           __Pyx_GIVEREF(__pyx_t_10); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_10); __pyx_t_10 = NULL;
@@ -10767,31 +10767,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF8);
         __Pyx_GIVEREF(__pyx_kp_s_0xF8);
         PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_9, __pyx_kp_s_0xF8);
-        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 332, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 332, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":333
+        /* "leakageSimulatorAESFurious.pyx":334
  *                     triggers['h'].append((count+1))
  *                 elif string_contains(line, '0xF8'):
  *                     triggers['sk'].append((count+1))             # <<<<<<<<<<<<<<
  *                 elif string_contains(line, '0xF9'):
  *                     triggers['xk'].append((count+1))
  */
-        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_sk); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 333, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_sk); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 334, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 333, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 334, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 333, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_7, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 334, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":332
+        /* "leakageSimulatorAESFurious.pyx":333
  *                 elif string_contains(line, '0xF7'):
  *                     triggers['h'].append((count+1))
  *                 elif string_contains(line, '0xF8'):             # <<<<<<<<<<<<<<
@@ -10801,14 +10801,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":334
+      /* "leakageSimulatorAESFurious.pyx":335
  *                 elif string_contains(line, '0xF8'):
  *                     triggers['sk'].append((count+1))
  *                 elif string_contains(line, '0xF9'):             # <<<<<<<<<<<<<<
  *                     triggers['xk'].append((count+1))
  * 
  */
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 334, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_string_contains); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 335, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_t_8 = NULL;
       __pyx_t_9 = 0;
@@ -10825,7 +10825,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF9};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 334, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
@@ -10833,13 +10833,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_v_line, __pyx_kp_s_0xF9};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 334, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else
       #endif
       {
-        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 334, __pyx_L1_error)
+        __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 335, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         if (__pyx_t_8) {
           __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -10850,31 +10850,31 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_INCREF(__pyx_kp_s_0xF9);
         __Pyx_GIVEREF(__pyx_kp_s_0xF9);
         PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, __pyx_kp_s_0xF9);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 334, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       }
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 334, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 335, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       if (__pyx_t_2) {
 
-        /* "leakageSimulatorAESFurious.pyx":335
+        /* "leakageSimulatorAESFurious.pyx":336
  *                     triggers['sk'].append((count+1))
  *                 elif string_contains(line, '0xF9'):
  *                     triggers['xk'].append((count+1))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xk); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 335, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xk); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 335, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 335, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_7); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":334
+        /* "leakageSimulatorAESFurious.pyx":335
  *                 elif string_contains(line, '0xF8'):
  *                     triggers['sk'].append((count+1))
  *                 elif string_contains(line, '0xF9'):             # <<<<<<<<<<<<<<
@@ -10884,7 +10884,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
       __pyx_L11:;
 
-      /* "leakageSimulatorAESFurious.pyx":313
+      /* "leakageSimulatorAESFurious.pyx":314
  *         # Find and add all triggers
  *         for line in f:
  *             if string_contains(line, '0xF'):             # <<<<<<<<<<<<<<
@@ -10893,19 +10893,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
     }
 
-    /* "leakageSimulatorAESFurious.pyx":338
+    /* "leakageSimulatorAESFurious.pyx":339
  * 
  * 
  *             count += 1             # <<<<<<<<<<<<<<
  * 
  *         # Close the file
  */
-    __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 339, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF_SET(__pyx_v_count, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":312
+    /* "leakageSimulatorAESFurious.pyx":313
  * 
  *         # Find and add all triggers
  *         for line in f:             # <<<<<<<<<<<<<<
@@ -10915,14 +10915,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":341
+  /* "leakageSimulatorAESFurious.pyx":342
  * 
  *         # Close the file
  *         f.close()             # <<<<<<<<<<<<<<
  * 
  *         # Print out Trigger Points
  */
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_f, __pyx_n_s_close); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 341, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_f, __pyx_n_s_close); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 342, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -10935,101 +10935,81 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 342, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 341, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 342, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":348
+  /* "leakageSimulatorAESFurious.pyx":349
  *         # printDictionary(triggers, getLen = True)
  * 
  *         dictionary = dict()             # <<<<<<<<<<<<<<
  *         dictionary['key']   = self.key
  *         dictionary['k']     = list()
  */
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 348, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_dictionary = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":349
+  /* "leakageSimulatorAESFurious.pyx":350
  * 
  *         dictionary = dict()
  *         dictionary['key']   = self.key             # <<<<<<<<<<<<<<
  *         dictionary['k']     = list()
  *         dictionary['sk']    = list()
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 349, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_key, __pyx_t_4) < 0)) __PYX_ERR(0, 349, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_key, __pyx_t_4) < 0)) __PYX_ERR(0, 350, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":350
+  /* "leakageSimulatorAESFurious.pyx":351
  *         dictionary = dict()
  *         dictionary['key']   = self.key
  *         dictionary['k']     = list()             # <<<<<<<<<<<<<<
  *         dictionary['sk']    = list()
  *         dictionary['xk']    = list()
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 350, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_k, __pyx_t_4) < 0)) __PYX_ERR(0, 350, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_k, __pyx_t_4) < 0)) __PYX_ERR(0, 351, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":351
+  /* "leakageSimulatorAESFurious.pyx":352
  *         dictionary['key']   = self.key
  *         dictionary['k']     = list()
  *         dictionary['sk']    = list()             # <<<<<<<<<<<<<<
  *         dictionary['xk']    = list()
  * 
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 351, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_sk, __pyx_t_4) < 0)) __PYX_ERR(0, 351, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_sk, __pyx_t_4) < 0)) __PYX_ERR(0, 352, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":352
+  /* "leakageSimulatorAESFurious.pyx":353
  *         dictionary['k']     = list()
  *         dictionary['sk']    = list()
  *         dictionary['xk']    = list()             # <<<<<<<<<<<<<<
  * 
  *         dictionary['p']     = [0] * traces
  */
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 352, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xk, __pyx_t_4) < 0)) __PYX_ERR(0, 352, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xk, __pyx_t_4) < 0)) __PYX_ERR(0, 353, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":354
+  /* "leakageSimulatorAESFurious.pyx":355
  *         dictionary['xk']    = list()
  * 
  *         dictionary['p']     = [0] * traces             # <<<<<<<<<<<<<<
  *         dictionary['t']     = [0] * traces
  *         dictionary['s']     = [0] * traces
- */
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 354, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_INCREF(__pyx_int_0);
-  __Pyx_GIVEREF(__pyx_int_0);
-  PyList_SET_ITEM(__pyx_t_4, 0, __pyx_int_0);
-  { PyObject* __pyx_temp = PyNumber_InPlaceMultiply(__pyx_t_4, __pyx_v_traces); if (unlikely(!__pyx_temp)) __PYX_ERR(0, 354, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_temp);
-    __Pyx_DECREF(__pyx_t_4);
-    __pyx_t_4 = __pyx_temp;
-  }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_p, __pyx_t_4) < 0)) __PYX_ERR(0, 354, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-  /* "leakageSimulatorAESFurious.pyx":355
- * 
- *         dictionary['p']     = [0] * traces
- *         dictionary['t']     = [0] * traces             # <<<<<<<<<<<<<<
- *         dictionary['s']     = [0] * traces
- *         dictionary['xt']    = [0] * traces
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -11041,15 +11021,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_temp;
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_t, __pyx_t_4) < 0)) __PYX_ERR(0, 355, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_p, __pyx_t_4) < 0)) __PYX_ERR(0, 355, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "leakageSimulatorAESFurious.pyx":356
+ * 
  *         dictionary['p']     = [0] * traces
- *         dictionary['t']     = [0] * traces
- *         dictionary['s']     = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['t']     = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['s']     = [0] * traces
  *         dictionary['xt']    = [0] * traces
- *         dictionary['cm']    = [0] * traces
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -11061,15 +11041,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_temp;
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_s, __pyx_t_4) < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_t, __pyx_t_4) < 0)) __PYX_ERR(0, 356, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "leakageSimulatorAESFurious.pyx":357
+ *         dictionary['p']     = [0] * traces
  *         dictionary['t']     = [0] * traces
- *         dictionary['s']     = [0] * traces
- *         dictionary['xt']    = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['s']     = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['xt']    = [0] * traces
  *         dictionary['cm']    = [0] * traces
- *         dictionary['mc']    = [0] * traces
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -11081,15 +11061,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_temp;
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xt, __pyx_t_4) < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_s, __pyx_t_4) < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "leakageSimulatorAESFurious.pyx":358
+ *         dictionary['t']     = [0] * traces
  *         dictionary['s']     = [0] * traces
- *         dictionary['xt']    = [0] * traces
- *         dictionary['cm']    = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['xt']    = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['cm']    = [0] * traces
  *         dictionary['mc']    = [0] * traces
- *         dictionary['h']     = [0] * traces
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 358, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -11101,15 +11081,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_temp;
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_cm, __pyx_t_4) < 0)) __PYX_ERR(0, 358, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_xt, __pyx_t_4) < 0)) __PYX_ERR(0, 358, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "leakageSimulatorAESFurious.pyx":359
+ *         dictionary['s']     = [0] * traces
  *         dictionary['xt']    = [0] * traces
- *         dictionary['cm']    = [0] * traces
- *         dictionary['mc']    = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['cm']    = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['mc']    = [0] * traces
  *         dictionary['h']     = [0] * traces
- * 
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -11121,14 +11101,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_temp;
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_mc, __pyx_t_4) < 0)) __PYX_ERR(0, 359, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_cm, __pyx_t_4) < 0)) __PYX_ERR(0, 359, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "leakageSimulatorAESFurious.pyx":360
+ *         dictionary['xt']    = [0] * traces
  *         dictionary['cm']    = [0] * traces
- *         dictionary['mc']    = [0] * traces
- *         dictionary['h']     = [0] * traces             # <<<<<<<<<<<<<<
- * 
+ *         dictionary['mc']    = [0] * traces             # <<<<<<<<<<<<<<
+ *         dictionary['h']     = [0] * traces
  * 
  */
   __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 360, __pyx_L1_error)
@@ -11141,31 +11121,51 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_temp;
   }
-  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_h, __pyx_t_4) < 0)) __PYX_ERR(0, 360, __pyx_L1_error)
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_mc, __pyx_t_4) < 0)) __PYX_ERR(0, 360, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":364
+  /* "leakageSimulatorAESFurious.pyx":361
+ *         dictionary['cm']    = [0] * traces
+ *         dictionary['mc']    = [0] * traces
+ *         dictionary['h']     = [0] * traces             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_INCREF(__pyx_int_0);
+  __Pyx_GIVEREF(__pyx_int_0);
+  PyList_SET_ITEM(__pyx_t_4, 0, __pyx_int_0);
+  { PyObject* __pyx_temp = PyNumber_InPlaceMultiply(__pyx_t_4, __pyx_v_traces); if (unlikely(!__pyx_temp)) __PYX_ERR(0, 361, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_temp);
+    __Pyx_DECREF(__pyx_t_4);
+    __pyx_t_4 = __pyx_temp;
+  }
+  if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_n_s_h, __pyx_t_4) < 0)) __PYX_ERR(0, 361, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+  /* "leakageSimulatorAESFurious.pyx":365
  * 
  *         # Open Each Trace File
  *         for trace in range (traces):             # <<<<<<<<<<<<<<
  * 
  *             try:
  */
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 364, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_traces);
   __Pyx_GIVEREF(__pyx_v_traces);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_traces);
-  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 364, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 365, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
     __pyx_t_4 = __pyx_t_7; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 365, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 364, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 365, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   for (;;) {
@@ -11173,17 +11173,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 365, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 365, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 365, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 364, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 365, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -11193,7 +11193,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 364, __pyx_L1_error)
+          else __PYX_ERR(0, 365, __pyx_L1_error)
         }
         break;
       }
@@ -11202,7 +11202,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_trace, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":366
+    /* "leakageSimulatorAESFurious.pyx":367
  *         for trace in range (traces):
  * 
  *             try:             # <<<<<<<<<<<<<<
@@ -11218,22 +11218,22 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XGOTREF(__pyx_t_14);
       /*try:*/ {
 
-        /* "leakageSimulatorAESFurious.pyx":367
+        /* "leakageSimulatorAESFurious.pyx":368
  * 
  *             try:
  *                 trace_path = PATH_TO_ELMO + 'output/traces/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))             # <<<<<<<<<<<<<<
  *                 if local_leakage:
  *                     if hw_leakage_model:
  */
-        __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 367, __pyx_L14_error)
+        __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 368, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_output_traces_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 367, __pyx_L14_error)
+        __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_output_traces_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 368, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 367, __pyx_L14_error)
+        __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 368, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_16 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 367, __pyx_L14_error)
+        __pyx_t_16 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 368, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_16);
-        __pyx_t_17 = PyNumber_Add(__pyx_t_16, __pyx_v_offset); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 367, __pyx_L14_error)
+        __pyx_t_17 = PyNumber_Add(__pyx_t_16, __pyx_v_offset); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 368, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_17);
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
         __pyx_t_16 = NULL;
@@ -11251,7 +11251,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_15)) {
           PyObject *__pyx_temp[3] = {__pyx_t_16, __pyx_t_17, __pyx_int_5};
-          __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 367, __pyx_L14_error)
+          __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 368, __pyx_L14_error)
           __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
@@ -11260,14 +11260,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
           PyObject *__pyx_temp[3] = {__pyx_t_16, __pyx_t_17, __pyx_int_5};
-          __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 367, __pyx_L14_error)
+          __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 368, __pyx_L14_error)
           __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
         } else
         #endif
         {
-          __pyx_t_18 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 367, __pyx_L14_error)
+          __pyx_t_18 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 368, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_18);
           if (__pyx_t_16) {
             __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_16); __pyx_t_16 = NULL;
@@ -11278,7 +11278,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_GIVEREF(__pyx_int_5);
           PyTuple_SET_ITEM(__pyx_t_18, 1+__pyx_t_9, __pyx_int_5);
           __pyx_t_17 = 0;
-          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 367, __pyx_L14_error)
+          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_18, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 368, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         }
@@ -11294,14 +11294,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_15) {
-          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L14_error)
+          __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L14_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_3);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_10)) {
             PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_8};
-            __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L14_error)
+            __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L14_error)
             __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11310,68 +11310,68 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
             PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_t_8};
-            __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L14_error)
+            __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L14_error)
             __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           } else
           #endif
           {
-            __pyx_t_18 = PyTuple_New(1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 367, __pyx_L14_error)
+            __pyx_t_18 = PyTuple_New(1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 368, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_18);
             __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_15); __pyx_t_15 = NULL;
             __Pyx_GIVEREF(__pyx_t_8);
             PyTuple_SET_ITEM(__pyx_t_18, 0+1, __pyx_t_8);
             __pyx_t_8 = 0;
-            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 367, __pyx_L14_error)
+            __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = PyNumber_Add(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 367, __pyx_L14_error)
+        __pyx_t_10 = PyNumber_Add(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 368, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF_SET(__pyx_v_trace_path, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":368
+        /* "leakageSimulatorAESFurious.pyx":369
  *             try:
  *                 trace_path = PATH_TO_ELMO + 'output/traces/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  *                 if local_leakage:             # <<<<<<<<<<<<<<
  *                     if hw_leakage_model:
  *                         trace_path = PATH_TO_LOCAL_HW + 'trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  */
-        __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_local_leakage); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 368, __pyx_L14_error)
+        __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_local_leakage); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 369, __pyx_L14_error)
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":369
+          /* "leakageSimulatorAESFurious.pyx":370
  *                 trace_path = PATH_TO_ELMO + 'output/traces/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  *                 if local_leakage:
  *                     if hw_leakage_model:             # <<<<<<<<<<<<<<
  *                         trace_path = PATH_TO_LOCAL_HW + 'trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  *                     else:
  */
-          __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 369, __pyx_L14_error)
+          __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 370, __pyx_L14_error)
           if (__pyx_t_2) {
 
-            /* "leakageSimulatorAESFurious.pyx":370
+            /* "leakageSimulatorAESFurious.pyx":371
  *                 if local_leakage:
  *                     if hw_leakage_model:
  *                         trace_path = PATH_TO_LOCAL_HW + 'trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))             # <<<<<<<<<<<<<<
  *                     else:
  *                         trace_path = PATH_TO_LOCAL_ELMO + 'trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  */
-            __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 370, __pyx_L14_error)
+            __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 371, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 370, __pyx_L14_error)
+            __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 370, __pyx_L14_error)
+            __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 371, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_8);
-            __pyx_t_15 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 370, __pyx_L14_error)
+            __pyx_t_15 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 371, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_15);
-            __pyx_t_17 = PyNumber_Add(__pyx_t_15, __pyx_v_offset); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 370, __pyx_L14_error)
+            __pyx_t_17 = PyNumber_Add(__pyx_t_15, __pyx_v_offset); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 371, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_17);
             __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             __pyx_t_15 = NULL;
@@ -11389,7 +11389,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_8)) {
               PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_17, __pyx_int_5};
-              __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 370, __pyx_L14_error)
+              __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 371, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_18);
               __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
@@ -11398,14 +11398,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
               PyObject *__pyx_temp[3] = {__pyx_t_15, __pyx_t_17, __pyx_int_5};
-              __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 370, __pyx_L14_error)
+              __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 371, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_18);
               __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 370, __pyx_L14_error)
+              __pyx_t_16 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 371, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_16);
               if (__pyx_t_15) {
                 __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
@@ -11416,7 +11416,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               __Pyx_GIVEREF(__pyx_int_5);
               PyTuple_SET_ITEM(__pyx_t_16, 1+__pyx_t_9, __pyx_int_5);
               __pyx_t_17 = 0;
-              __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_16, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 370, __pyx_L14_error)
+              __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_16, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 371, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_18);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
@@ -11432,14 +11432,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               }
             }
             if (!__pyx_t_8) {
-              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L14_error)
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L14_error)
               __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else {
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_7)) {
                 PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_18};
-                __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L14_error)
+                __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L14_error)
                 __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
@@ -11448,33 +11448,33 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
                 PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_18};
-                __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L14_error)
+                __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L14_error)
                 __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
               } else
               #endif
               {
-                __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 370, __pyx_L14_error)
+                __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 371, __pyx_L14_error)
                 __Pyx_GOTREF(__pyx_t_16);
                 __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_8); __pyx_t_8 = NULL;
                 __Pyx_GIVEREF(__pyx_t_18);
                 PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_t_18);
                 __pyx_t_18 = 0;
-                __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L14_error)
+                __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L14_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               }
             }
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-            __pyx_t_7 = PyNumber_Add(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 370, __pyx_L14_error)
+            __pyx_t_7 = PyNumber_Add(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_7);
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_DECREF_SET(__pyx_v_trace_path, __pyx_t_7);
             __pyx_t_7 = 0;
 
-            /* "leakageSimulatorAESFurious.pyx":369
+            /* "leakageSimulatorAESFurious.pyx":370
  *                 trace_path = PATH_TO_ELMO + 'output/traces/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  *                 if local_leakage:
  *                     if hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -11484,7 +11484,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             goto __pyx_L23;
           }
 
-          /* "leakageSimulatorAESFurious.pyx":372
+          /* "leakageSimulatorAESFurious.pyx":373
  *                         trace_path = PATH_TO_LOCAL_HW + 'trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  *                     else:
  *                         trace_path = PATH_TO_LOCAL_ELMO + 'trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))             # <<<<<<<<<<<<<<
@@ -11492,15 +11492,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                 # print "Path to Trace File {}: {}".format(trace, trace_path)
  */
           /*else*/ {
-            __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 372, __pyx_L14_error)
+            __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 373, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 372, __pyx_L14_error)
+            __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 373, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 372, __pyx_L14_error)
+            __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 373, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_18);
-            __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 372, __pyx_L14_error)
+            __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 373, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_8);
-            __pyx_t_17 = PyNumber_Add(__pyx_t_8, __pyx_v_offset); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 372, __pyx_L14_error)
+            __pyx_t_17 = PyNumber_Add(__pyx_t_8, __pyx_v_offset); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 373, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_17);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
             __pyx_t_8 = NULL;
@@ -11518,7 +11518,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_18)) {
               PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_17, __pyx_int_5};
-              __pyx_t_16 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 372, __pyx_L14_error)
+              __pyx_t_16 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 373, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
@@ -11527,14 +11527,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
               PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_17, __pyx_int_5};
-              __pyx_t_16 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 372, __pyx_L14_error)
+              __pyx_t_16 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 373, __pyx_L14_error)
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
             } else
             #endif
             {
-              __pyx_t_15 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 372, __pyx_L14_error)
+              __pyx_t_15 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 373, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_15);
               if (__pyx_t_8) {
                 __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -11545,7 +11545,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               __Pyx_GIVEREF(__pyx_int_5);
               PyTuple_SET_ITEM(__pyx_t_15, 1+__pyx_t_9, __pyx_int_5);
               __pyx_t_17 = 0;
-              __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_15, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 372, __pyx_L14_error)
+              __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_15, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 373, __pyx_L14_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
             }
@@ -11561,14 +11561,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               }
             }
             if (!__pyx_t_18) {
-              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L14_error)
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L14_error)
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else {
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_10)) {
                 PyObject *__pyx_temp[2] = {__pyx_t_18, __pyx_t_16};
-                __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L14_error)
+                __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L14_error)
                 __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -11577,26 +11577,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
                 PyObject *__pyx_temp[2] = {__pyx_t_18, __pyx_t_16};
-                __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L14_error)
+                __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L14_error)
                 __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               } else
               #endif
               {
-                __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 372, __pyx_L14_error)
+                __pyx_t_15 = PyTuple_New(1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 373, __pyx_L14_error)
                 __Pyx_GOTREF(__pyx_t_15);
                 __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_15, 0, __pyx_t_18); __pyx_t_18 = NULL;
                 __Pyx_GIVEREF(__pyx_t_16);
                 PyTuple_SET_ITEM(__pyx_t_15, 0+1, __pyx_t_16);
                 __pyx_t_16 = 0;
-                __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 372, __pyx_L14_error)
+                __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L14_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
               }
             }
             __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-            __pyx_t_10 = PyNumber_Add(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 372, __pyx_L14_error)
+            __pyx_t_10 = PyNumber_Add(__pyx_t_7, __pyx_t_3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 373, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_10);
             __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11605,7 +11605,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
           __pyx_L23:;
 
-          /* "leakageSimulatorAESFurious.pyx":368
+          /* "leakageSimulatorAESFurious.pyx":369
  *             try:
  *                 trace_path = PATH_TO_ELMO + 'output/traces/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5))
  *                 if local_leakage:             # <<<<<<<<<<<<<<
@@ -11614,25 +11614,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
         }
 
-        /* "leakageSimulatorAESFurious.pyx":375
+        /* "leakageSimulatorAESFurious.pyx":376
  * 
  *                 # print "Path to Trace File {}: {}".format(trace, trace_path)
  *                 f = open(trace_path)             # <<<<<<<<<<<<<<
  *             except IOError:
  *                 print "IOError: Can't open file named {}".format(
  */
-        __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 375, __pyx_L14_error)
+        __pyx_t_10 = PyTuple_New(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 376, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_INCREF(__pyx_v_trace_path);
         __Pyx_GIVEREF(__pyx_v_trace_path);
         PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_v_trace_path);
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L14_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __Pyx_DECREF_SET(__pyx_v_f, __pyx_t_3);
         __pyx_t_3 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":366
+        /* "leakageSimulatorAESFurious.pyx":367
  *         for trace in range (traces):
  * 
  *             try:             # <<<<<<<<<<<<<<
@@ -11654,7 +11654,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":376
+      /* "leakageSimulatorAESFurious.pyx":377
  *                 # print "Path to Trace File {}: {}".format(trace, trace_path)
  *                 f = open(trace_path)
  *             except IOError:             # <<<<<<<<<<<<<<
@@ -11664,35 +11664,35 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_IOError);
       if (__pyx_t_9) {
         __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.elmo_simulation", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_10, &__pyx_t_7) < 0) __PYX_ERR(0, 376, __pyx_L16_except_error)
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_10, &__pyx_t_7) < 0) __PYX_ERR(0, 377, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_GOTREF(__pyx_t_7);
 
-        /* "leakageSimulatorAESFurious.pyx":377
+        /* "leakageSimulatorAESFurious.pyx":378
  *                 f = open(trace_path)
  *             except IOError:
  *                 print "IOError: Can't open file named {}".format(             # <<<<<<<<<<<<<<
  *                     'Leakage/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5)))
  *                 raise
  */
-        __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_IOError_Can_t_open_file_named, __pyx_n_s_format); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 377, __pyx_L16_except_error)
+        __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_IOError_Can_t_open_file_named, __pyx_n_s_format); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 378, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_16);
 
-        /* "leakageSimulatorAESFurious.pyx":378
+        /* "leakageSimulatorAESFurious.pyx":379
  *             except IOError:
  *                 print "IOError: Can't open file named {}".format(
  *                     'Leakage/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5)))             # <<<<<<<<<<<<<<
  *                 raise
  * 
  */
-        __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Leakage_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+        __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Leakage_trace_trc, __pyx_n_s_format); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 379, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_17);
-        __pyx_t_19 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+        __pyx_t_19 = __Pyx_GetModuleGlobalName(__pyx_n_s_pad_string_zeros); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 379, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_19);
-        __pyx_t_20 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+        __pyx_t_20 = __Pyx_PyInt_AddObjC(__pyx_v_trace, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 379, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_20);
-        __pyx_t_21 = PyNumber_Add(__pyx_t_20, __pyx_v_offset); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+        __pyx_t_21 = PyNumber_Add(__pyx_t_20, __pyx_v_offset); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 379, __pyx_L16_except_error)
         __Pyx_GOTREF(__pyx_t_21);
         __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
         __pyx_t_20 = NULL;
@@ -11710,7 +11710,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_19)) {
           PyObject *__pyx_temp[3] = {__pyx_t_20, __pyx_t_21, __pyx_int_5};
-          __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+          __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 379, __pyx_L16_except_error)
           __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
@@ -11719,14 +11719,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_19)) {
           PyObject *__pyx_temp[3] = {__pyx_t_20, __pyx_t_21, __pyx_int_5};
-          __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+          __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 379, __pyx_L16_except_error)
           __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
         } else
         #endif
         {
-          __pyx_t_22 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+          __pyx_t_22 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 379, __pyx_L16_except_error)
           __Pyx_GOTREF(__pyx_t_22);
           if (__pyx_t_20) {
             __Pyx_GIVEREF(__pyx_t_20); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_20); __pyx_t_20 = NULL;
@@ -11737,7 +11737,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_GIVEREF(__pyx_int_5);
           PyTuple_SET_ITEM(__pyx_t_22, 1+__pyx_t_9, __pyx_int_5);
           __pyx_t_21 = 0;
-          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_22, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_22, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 379, __pyx_L16_except_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
         }
@@ -11753,14 +11753,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_19) {
-          __pyx_t_18 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_8); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+          __pyx_t_18 = __Pyx_PyObject_CallOneArg(__pyx_t_17, __pyx_t_8); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 379, __pyx_L16_except_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_GOTREF(__pyx_t_18);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_17)) {
             PyObject *__pyx_temp[2] = {__pyx_t_19, __pyx_t_8};
-            __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_17, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+            __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_17, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 379, __pyx_L16_except_error)
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
             __Pyx_GOTREF(__pyx_t_18);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11769,20 +11769,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_17)) {
             PyObject *__pyx_temp[2] = {__pyx_t_19, __pyx_t_8};
-            __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_17, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+            __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_17, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 379, __pyx_L16_except_error)
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
             __Pyx_GOTREF(__pyx_t_18);
             __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           } else
           #endif
           {
-            __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+            __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 379, __pyx_L16_except_error)
             __Pyx_GOTREF(__pyx_t_22);
             __Pyx_GIVEREF(__pyx_t_19); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_19); __pyx_t_19 = NULL;
             __Pyx_GIVEREF(__pyx_t_8);
             PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_t_8);
             __pyx_t_8 = 0;
-            __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_22, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 378, __pyx_L16_except_error)
+            __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_17, __pyx_t_22, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 379, __pyx_L16_except_error)
             __Pyx_GOTREF(__pyx_t_18);
             __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
           }
@@ -11799,14 +11799,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_17) {
-          __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_18); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 377, __pyx_L16_except_error)
+          __pyx_t_15 = __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_18); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 378, __pyx_L16_except_error)
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
           __Pyx_GOTREF(__pyx_t_15);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_16)) {
             PyObject *__pyx_temp[2] = {__pyx_t_17, __pyx_t_18};
-            __pyx_t_15 = __Pyx_PyFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 377, __pyx_L16_except_error)
+            __pyx_t_15 = __Pyx_PyFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 378, __pyx_L16_except_error)
             __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
             __Pyx_GOTREF(__pyx_t_15);
             __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
@@ -11815,29 +11815,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_16)) {
             PyObject *__pyx_temp[2] = {__pyx_t_17, __pyx_t_18};
-            __pyx_t_15 = __Pyx_PyCFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 377, __pyx_L16_except_error)
+            __pyx_t_15 = __Pyx_PyCFunction_FastCall(__pyx_t_16, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 378, __pyx_L16_except_error)
             __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
             __Pyx_GOTREF(__pyx_t_15);
             __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
           } else
           #endif
           {
-            __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 377, __pyx_L16_except_error)
+            __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 378, __pyx_L16_except_error)
             __Pyx_GOTREF(__pyx_t_22);
             __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_17); __pyx_t_17 = NULL;
             __Pyx_GIVEREF(__pyx_t_18);
             PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_t_18);
             __pyx_t_18 = 0;
-            __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_22, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 377, __pyx_L16_except_error)
+            __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_22, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 378, __pyx_L16_except_error)
             __Pyx_GOTREF(__pyx_t_15);
             __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-        if (__Pyx_PrintOne(0, __pyx_t_15) < 0) __PYX_ERR(0, 377, __pyx_L16_except_error)
+        if (__Pyx_PrintOne(0, __pyx_t_15) < 0) __PYX_ERR(0, 378, __pyx_L16_except_error)
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":379
+        /* "leakageSimulatorAESFurious.pyx":380
  *                 print "IOError: Can't open file named {}".format(
  *                     'Leakage/trace{}.trc'.format(pad_string_zeros(trace + 1 + offset, 5)))
  *                 raise             # <<<<<<<<<<<<<<
@@ -11849,12 +11849,12 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_XGIVEREF(__pyx_t_7);
         __Pyx_ErrRestoreWithState(__pyx_t_3, __pyx_t_10, __pyx_t_7);
         __pyx_t_3 = 0; __pyx_t_10 = 0; __pyx_t_7 = 0; 
-        __PYX_ERR(0, 379, __pyx_L16_except_error)
+        __PYX_ERR(0, 380, __pyx_L16_except_error)
       }
       goto __pyx_L16_except_error;
       __pyx_L16_except_error:;
 
-      /* "leakageSimulatorAESFurious.pyx":366
+      /* "leakageSimulatorAESFurious.pyx":367
  *         for trace in range (traces):
  * 
  *             try:             # <<<<<<<<<<<<<<
@@ -11869,139 +11869,139 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __pyx_L21_try_end:;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":381
+    /* "leakageSimulatorAESFurious.pyx":382
  *                 raise
  * 
  *             hw_leaks = dict()             # <<<<<<<<<<<<<<
  *             hw_leaks['k'] = list()
  *             hw_leaks['p'] = list()
  */
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 381, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_XDECREF_SET(__pyx_v_hw_leaks, ((PyObject*)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":382
+    /* "leakageSimulatorAESFurious.pyx":383
  * 
  *             hw_leaks = dict()
  *             hw_leaks['k'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['p'] = list()
  *             hw_leaks['t'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 382, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 383, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_k, __pyx_t_7) < 0)) __PYX_ERR(0, 382, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_k, __pyx_t_7) < 0)) __PYX_ERR(0, 383, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":383
+    /* "leakageSimulatorAESFurious.pyx":384
  *             hw_leaks = dict()
  *             hw_leaks['k'] = list()
  *             hw_leaks['p'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['t'] = list()
  *             hw_leaks['s'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 383, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_p, __pyx_t_7) < 0)) __PYX_ERR(0, 383, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_p, __pyx_t_7) < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":384
+    /* "leakageSimulatorAESFurious.pyx":385
  *             hw_leaks['k'] = list()
  *             hw_leaks['p'] = list()
  *             hw_leaks['t'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['s'] = list()
  *             hw_leaks['xt'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 384, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_t, __pyx_t_7) < 0)) __PYX_ERR(0, 384, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_t, __pyx_t_7) < 0)) __PYX_ERR(0, 385, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":385
+    /* "leakageSimulatorAESFurious.pyx":386
  *             hw_leaks['p'] = list()
  *             hw_leaks['t'] = list()
  *             hw_leaks['s'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['xt'] = list()
  *             hw_leaks['cm'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 385, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 386, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_s, __pyx_t_7) < 0)) __PYX_ERR(0, 385, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_s, __pyx_t_7) < 0)) __PYX_ERR(0, 386, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":386
+    /* "leakageSimulatorAESFurious.pyx":387
  *             hw_leaks['t'] = list()
  *             hw_leaks['s'] = list()
  *             hw_leaks['xt'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['cm'] = list()
  *             hw_leaks['mc'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 386, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_xt, __pyx_t_7) < 0)) __PYX_ERR(0, 386, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_xt, __pyx_t_7) < 0)) __PYX_ERR(0, 387, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":387
+    /* "leakageSimulatorAESFurious.pyx":388
  *             hw_leaks['s'] = list()
  *             hw_leaks['xt'] = list()
  *             hw_leaks['cm'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['mc'] = list()
  *             hw_leaks['h'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 387, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_cm, __pyx_t_7) < 0)) __PYX_ERR(0, 387, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_cm, __pyx_t_7) < 0)) __PYX_ERR(0, 388, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":388
+    /* "leakageSimulatorAESFurious.pyx":389
  *             hw_leaks['xt'] = list()
  *             hw_leaks['cm'] = list()
  *             hw_leaks['mc'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['h'] = list()
  *             hw_leaks['sk'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 388, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_mc, __pyx_t_7) < 0)) __PYX_ERR(0, 388, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_mc, __pyx_t_7) < 0)) __PYX_ERR(0, 389, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":389
+    /* "leakageSimulatorAESFurious.pyx":390
  *             hw_leaks['cm'] = list()
  *             hw_leaks['mc'] = list()
  *             hw_leaks['h'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['sk'] = list()
  *             hw_leaks['xk'] = list()
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 389, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_h, __pyx_t_7) < 0)) __PYX_ERR(0, 389, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_h, __pyx_t_7) < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":390
+    /* "leakageSimulatorAESFurious.pyx":391
  *             hw_leaks['mc'] = list()
  *             hw_leaks['h'] = list()
  *             hw_leaks['sk'] = list()             # <<<<<<<<<<<<<<
  *             hw_leaks['xk'] = list()
  * 
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 390, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_sk, __pyx_t_7) < 0)) __PYX_ERR(0, 390, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_sk, __pyx_t_7) < 0)) __PYX_ERR(0, 391, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":391
+    /* "leakageSimulatorAESFurious.pyx":392
  *             hw_leaks['h'] = list()
  *             hw_leaks['sk'] = list()
  *             hw_leaks['xk'] = list()             # <<<<<<<<<<<<<<
  * 
  *             count = 0
  */
-    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 391, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 392, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_xk, __pyx_t_7) < 0)) __PYX_ERR(0, 391, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_xk, __pyx_t_7) < 0)) __PYX_ERR(0, 392, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":393
+    /* "leakageSimulatorAESFurious.pyx":394
  *             hw_leaks['xk'] = list()
  * 
  *             count = 0             # <<<<<<<<<<<<<<
@@ -12011,7 +12011,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_DECREF_SET(__pyx_v_count, __pyx_int_0);
 
-    /* "leakageSimulatorAESFurious.pyx":394
+    /* "leakageSimulatorAESFurious.pyx":395
  * 
  *             count = 0
  *             t = 0             # <<<<<<<<<<<<<<
@@ -12021,7 +12021,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_XDECREF_SET(__pyx_v_t, __pyx_int_0);
 
-    /* "leakageSimulatorAESFurious.pyx":396
+    /* "leakageSimulatorAESFurious.pyx":397
  *             t = 0
  * 
  *             for line in f:             # <<<<<<<<<<<<<<
@@ -12032,26 +12032,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __pyx_t_7 = __pyx_v_f; __Pyx_INCREF(__pyx_t_7); __pyx_t_23 = 0;
       __pyx_t_24 = NULL;
     } else {
-      __pyx_t_23 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_v_f); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __pyx_t_23 = -1; __pyx_t_7 = PyObject_GetIter(__pyx_v_f); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 397, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_24 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 396, __pyx_L1_error)
+      __pyx_t_24 = Py_TYPE(__pyx_t_7)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 397, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_24)) {
         if (likely(PyList_CheckExact(__pyx_t_7))) {
           if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_7)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_10 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_10 = PyList_GET_ITEM(__pyx_t_7, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 397, __pyx_L1_error)
           #else
-          __pyx_t_10 = PySequence_ITEM(__pyx_t_7, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(__pyx_t_7, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 397, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           #endif
         } else {
           if (__pyx_t_23 >= PyTuple_GET_SIZE(__pyx_t_7)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_GET_ITEM(__pyx_t_7, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 397, __pyx_L1_error)
           #else
-          __pyx_t_10 = PySequence_ITEM(__pyx_t_7, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 396, __pyx_L1_error)
+          __pyx_t_10 = PySequence_ITEM(__pyx_t_7, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 397, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           #endif
         }
@@ -12061,7 +12061,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 396, __pyx_L1_error)
+            else __PYX_ERR(0, 397, __pyx_L1_error)
           }
           break;
         }
@@ -12070,44 +12070,44 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":397
+      /* "leakageSimulatorAESFurious.pyx":398
  * 
  *             for line in f:
  *                 if count in triggers['all']:             # <<<<<<<<<<<<<<
  *                     # Put into right list
  *                     if count in triggers['k']:
  */
-      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_all); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_all); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 398, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 397, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 398, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __pyx_t_1 = (__pyx_t_2 != 0);
       if (__pyx_t_1) {
 
-        /* "leakageSimulatorAESFurious.pyx":399
+        /* "leakageSimulatorAESFurious.pyx":400
  *                 if count in triggers['all']:
  *                     # Put into right list
  *                     if count in triggers['k']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['k'].append(strip_zero_trail(line))
  *                     elif count in triggers['p']:
  */
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 399, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 400, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_2 = (__pyx_t_1 != 0);
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":400
+          /* "leakageSimulatorAESFurious.pyx":401
  *                     # Put into right list
  *                     if count in triggers['k']:
  *                         hw_leaks['k'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['p']:
  *                         hw_leaks['p'].append(strip_zero_trail(line))
  */
-          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 400, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_k); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 401, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 400, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 401, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_16 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12120,13 +12120,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
@@ -12134,29 +12134,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
             #endif
             {
-              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 400, __pyx_L1_error)
+              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 401, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_v_line);
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 400, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 400, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 401, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":399
+          /* "leakageSimulatorAESFurious.pyx":400
  *                 if count in triggers['all']:
  *                     # Put into right list
  *                     if count in triggers['k']:             # <<<<<<<<<<<<<<
@@ -12166,30 +12166,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":401
+        /* "leakageSimulatorAESFurious.pyx":402
  *                     if count in triggers['k']:
  *                         hw_leaks['k'].append(strip_zero_trail(line))
  *                     elif count in triggers['p']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['p'].append(strip_zero_trail(line))
  *                     elif count in triggers['t']:
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 401, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 401, __pyx_L1_error)
+        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 402, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_1 = (__pyx_t_2 != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":402
+          /* "leakageSimulatorAESFurious.pyx":403
  *                         hw_leaks['k'].append(strip_zero_trail(line))
  *                     elif count in triggers['p']:
  *                         hw_leaks['p'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['t']:
  *                         hw_leaks['t'].append(strip_zero_trail(line))
  */
-          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 402, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 403, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 402, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 403, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_22 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12202,13 +12202,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_22) {
-            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 402, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 402, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
@@ -12216,29 +12216,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 402, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 402, __pyx_L1_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 403, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_22); __pyx_t_22 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_line);
-              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 402, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 402, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 403, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":401
+          /* "leakageSimulatorAESFurious.pyx":402
  *                     if count in triggers['k']:
  *                         hw_leaks['k'].append(strip_zero_trail(line))
  *                     elif count in triggers['p']:             # <<<<<<<<<<<<<<
@@ -12248,30 +12248,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":403
+        /* "leakageSimulatorAESFurious.pyx":404
  *                     elif count in triggers['p']:
  *                         hw_leaks['p'].append(strip_zero_trail(line))
  *                     elif count in triggers['t']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['t'].append(strip_zero_trail(line))
  *                     elif count in triggers['s']:
  */
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_t); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_t); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 404, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 403, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 404, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_2 = (__pyx_t_1 != 0);
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":404
+          /* "leakageSimulatorAESFurious.pyx":405
  *                         hw_leaks['p'].append(strip_zero_trail(line))
  *                     elif count in triggers['t']:
  *                         hw_leaks['t'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['s']:
  *                         hw_leaks['s'].append(strip_zero_trail(line))
  */
-          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_t); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 404, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_t); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 404, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_16 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12284,13 +12284,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
@@ -12298,29 +12298,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
             #endif
             {
-              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 404, __pyx_L1_error)
+              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 405, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_v_line);
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 404, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 404, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 405, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":403
+          /* "leakageSimulatorAESFurious.pyx":404
  *                     elif count in triggers['p']:
  *                         hw_leaks['p'].append(strip_zero_trail(line))
  *                     elif count in triggers['t']:             # <<<<<<<<<<<<<<
@@ -12330,30 +12330,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":405
+        /* "leakageSimulatorAESFurious.pyx":406
  *                     elif count in triggers['t']:
  *                         hw_leaks['t'].append(strip_zero_trail(line))
  *                     elif count in triggers['s']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['s'].append(strip_zero_trail(line))
  *                     elif count in triggers['xt']:
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 405, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 406, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 405, __pyx_L1_error)
+        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 406, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_1 = (__pyx_t_2 != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":406
+          /* "leakageSimulatorAESFurious.pyx":407
  *                         hw_leaks['t'].append(strip_zero_trail(line))
  *                     elif count in triggers['s']:
  *                         hw_leaks['s'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['xt']:
  *                         hw_leaks['xt'].append(strip_zero_trail(line))
  */
-          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 406, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_s); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 407, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 406, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 407, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_22 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12366,13 +12366,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_22) {
-            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 406, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 406, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
@@ -12380,29 +12380,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 406, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 406, __pyx_L1_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 407, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_22); __pyx_t_22 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_line);
-              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 406, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 406, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 407, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":405
+          /* "leakageSimulatorAESFurious.pyx":406
  *                     elif count in triggers['t']:
  *                         hw_leaks['t'].append(strip_zero_trail(line))
  *                     elif count in triggers['s']:             # <<<<<<<<<<<<<<
@@ -12412,30 +12412,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":407
+        /* "leakageSimulatorAESFurious.pyx":408
  *                     elif count in triggers['s']:
  *                         hw_leaks['s'].append(strip_zero_trail(line))
  *                     elif count in triggers['xt']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['xt'].append(strip_zero_trail(line))
  *                     elif count in triggers['cm']:
  */
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xt); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 407, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xt); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 408, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 407, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 408, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_2 = (__pyx_t_1 != 0);
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":408
+          /* "leakageSimulatorAESFurious.pyx":409
  *                         hw_leaks['s'].append(strip_zero_trail(line))
  *                     elif count in triggers['xt']:
  *                         hw_leaks['xt'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['cm']:
  *                         hw_leaks['cm'].append(strip_zero_trail(line))
  */
-          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_xt); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 408, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_xt); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 409, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 408, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 409, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_16 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12448,13 +12448,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 409, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 409, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
@@ -12462,29 +12462,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 409, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
             #endif
             {
-              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 408, __pyx_L1_error)
+              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 409, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_v_line);
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 408, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 409, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 408, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 409, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":407
+          /* "leakageSimulatorAESFurious.pyx":408
  *                     elif count in triggers['s']:
  *                         hw_leaks['s'].append(strip_zero_trail(line))
  *                     elif count in triggers['xt']:             # <<<<<<<<<<<<<<
@@ -12494,30 +12494,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":409
+        /* "leakageSimulatorAESFurious.pyx":410
  *                     elif count in triggers['xt']:
  *                         hw_leaks['xt'].append(strip_zero_trail(line))
  *                     elif count in triggers['cm']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['cm'].append(strip_zero_trail(line))
  *                     elif count in triggers['mc']:
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_cm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 409, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_cm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 409, __pyx_L1_error)
+        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 410, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_1 = (__pyx_t_2 != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":410
+          /* "leakageSimulatorAESFurious.pyx":411
  *                         hw_leaks['xt'].append(strip_zero_trail(line))
  *                     elif count in triggers['cm']:
  *                         hw_leaks['cm'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['mc']:
  *                         hw_leaks['mc'].append(strip_zero_trail(line))
  */
-          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_cm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 410, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_cm); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 411, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 410, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 411, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_22 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12530,13 +12530,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_22) {
-            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 410, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 410, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
@@ -12544,29 +12544,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 410, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 410, __pyx_L1_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 411, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_22); __pyx_t_22 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_line);
-              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 410, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 410, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 411, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":409
+          /* "leakageSimulatorAESFurious.pyx":410
  *                     elif count in triggers['xt']:
  *                         hw_leaks['xt'].append(strip_zero_trail(line))
  *                     elif count in triggers['cm']:             # <<<<<<<<<<<<<<
@@ -12576,30 +12576,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":411
+        /* "leakageSimulatorAESFurious.pyx":412
  *                     elif count in triggers['cm']:
  *                         hw_leaks['cm'].append(strip_zero_trail(line))
  *                     elif count in triggers['mc']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['mc'].append(strip_zero_trail(line))
  *                     elif count in triggers['h']:
  */
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_mc); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_mc); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 412, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 411, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 412, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_2 = (__pyx_t_1 != 0);
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":412
+          /* "leakageSimulatorAESFurious.pyx":413
  *                         hw_leaks['cm'].append(strip_zero_trail(line))
  *                     elif count in triggers['mc']:
  *                         hw_leaks['mc'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['h']:
  *                         hw_leaks['h'].append(strip_zero_trail(line))
  */
-          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_mc); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 412, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_mc); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 413, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 412, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 413, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_16 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12612,13 +12612,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
@@ -12626,29 +12626,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
             #endif
             {
-              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 412, __pyx_L1_error)
+              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 413, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_v_line);
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 412, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 412, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 413, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":411
+          /* "leakageSimulatorAESFurious.pyx":412
  *                     elif count in triggers['cm']:
  *                         hw_leaks['cm'].append(strip_zero_trail(line))
  *                     elif count in triggers['mc']:             # <<<<<<<<<<<<<<
@@ -12658,30 +12658,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":413
+        /* "leakageSimulatorAESFurious.pyx":414
  *                     elif count in triggers['mc']:
  *                         hw_leaks['mc'].append(strip_zero_trail(line))
  *                     elif count in triggers['h']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['h'].append(strip_zero_trail(line))
  *                     elif count in triggers['sk']:
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 413, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 413, __pyx_L1_error)
+        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 414, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_1 = (__pyx_t_2 != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":414
+          /* "leakageSimulatorAESFurious.pyx":415
  *                         hw_leaks['mc'].append(strip_zero_trail(line))
  *                     elif count in triggers['h']:
  *                         hw_leaks['h'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['sk']:
  *                         hw_leaks['sk'].append(strip_zero_trail(line))
  */
-          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 414, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_h); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 414, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_22 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12694,13 +12694,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_22) {
-            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 414, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 415, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 414, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 415, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
@@ -12708,29 +12708,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 414, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 415, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 414, __pyx_L1_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 415, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_22); __pyx_t_22 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_line);
-              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 414, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 415, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 414, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 415, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":413
+          /* "leakageSimulatorAESFurious.pyx":414
  *                     elif count in triggers['mc']:
  *                         hw_leaks['mc'].append(strip_zero_trail(line))
  *                     elif count in triggers['h']:             # <<<<<<<<<<<<<<
@@ -12740,30 +12740,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":415
+        /* "leakageSimulatorAESFurious.pyx":416
  *                     elif count in triggers['h']:
  *                         hw_leaks['h'].append(strip_zero_trail(line))
  *                     elif count in triggers['sk']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['sk'].append(strip_zero_trail(line))
  *                     elif count in triggers['xk']:
  */
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_sk); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 415, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_sk); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 415, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_10, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 416, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         __pyx_t_2 = (__pyx_t_1 != 0);
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":416
+          /* "leakageSimulatorAESFurious.pyx":417
  *                         hw_leaks['h'].append(strip_zero_trail(line))
  *                     elif count in triggers['sk']:
  *                         hw_leaks['sk'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  *                     elif count in triggers['xk']:
  *                         hw_leaks['xk'].append(strip_zero_trail(line))
  */
-          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_sk); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 416, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_sk); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 417, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 416, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 417, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_16 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12776,13 +12776,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_16) {
-            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
+            __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_3);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
@@ -12790,29 +12790,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_16, __pyx_v_line};
-              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
               __Pyx_GOTREF(__pyx_t_3);
             } else
             #endif
             {
-              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 416, __pyx_L1_error)
+              __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 417, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_16); __pyx_t_16 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_v_line);
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 416, __pyx_L1_error)
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_22, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 416, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_10, __pyx_t_3); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 417, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":415
+          /* "leakageSimulatorAESFurious.pyx":416
  *                     elif count in triggers['h']:
  *                         hw_leaks['h'].append(strip_zero_trail(line))
  *                     elif count in triggers['sk']:             # <<<<<<<<<<<<<<
@@ -12822,30 +12822,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L29;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":417
+        /* "leakageSimulatorAESFurious.pyx":418
  *                     elif count in triggers['sk']:
  *                         hw_leaks['sk'].append(strip_zero_trail(line))
  *                     elif count in triggers['xk']:             # <<<<<<<<<<<<<<
  *                         hw_leaks['xk'].append(strip_zero_trail(line))
  * 
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xk); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 417, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_triggers, __pyx_n_s_xk); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 417, __pyx_L1_error)
+        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_count, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 418, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_1 = (__pyx_t_2 != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":418
+          /* "leakageSimulatorAESFurious.pyx":419
  *                         hw_leaks['sk'].append(strip_zero_trail(line))
  *                     elif count in triggers['xk']:
  *                         hw_leaks['xk'].append(strip_zero_trail(line))             # <<<<<<<<<<<<<<
  * 
  *                     t += 1
  */
-          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_xk); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 418, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_xk); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 419, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 418, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_strip_zero_trail); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 419, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_15);
           __pyx_t_22 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -12858,13 +12858,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_22) {
-            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 418, __pyx_L1_error)
+            __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_v_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 419, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_10);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 418, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 419, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
@@ -12872,29 +12872,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
               PyObject *__pyx_temp[2] = {__pyx_t_22, __pyx_v_line};
-              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 418, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 419, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
               __Pyx_GOTREF(__pyx_t_10);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 418, __pyx_L1_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 419, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_22); __pyx_t_22 = NULL;
               __Pyx_INCREF(__pyx_v_line);
               __Pyx_GIVEREF(__pyx_v_line);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_line);
-              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 418, __pyx_L1_error)
+              __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_16, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 419, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 418, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_Append(__pyx_t_3, __pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 419, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":417
+          /* "leakageSimulatorAESFurious.pyx":418
  *                     elif count in triggers['sk']:
  *                         hw_leaks['sk'].append(strip_zero_trail(line))
  *                     elif count in triggers['xk']:             # <<<<<<<<<<<<<<
@@ -12904,19 +12904,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
         __pyx_L29:;
 
-        /* "leakageSimulatorAESFurious.pyx":420
+        /* "leakageSimulatorAESFurious.pyx":421
  *                         hw_leaks['xk'].append(strip_zero_trail(line))
  * 
  *                     t += 1             # <<<<<<<<<<<<<<
  *                 count += 1
  * 
  */
-        __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_t, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 420, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_t, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 421, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF_SET(__pyx_v_t, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":397
+        /* "leakageSimulatorAESFurious.pyx":398
  * 
  *             for line in f:
  *                 if count in triggers['all']:             # <<<<<<<<<<<<<<
@@ -12925,19 +12925,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       }
 
-      /* "leakageSimulatorAESFurious.pyx":421
+      /* "leakageSimulatorAESFurious.pyx":422
  * 
  *                     t += 1
  *                 count += 1             # <<<<<<<<<<<<<<
  * 
  *             # Close the file
  */
-      __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 421, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_count, __pyx_int_1, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 422, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF_SET(__pyx_v_count, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":396
+      /* "leakageSimulatorAESFurious.pyx":397
  *             t = 0
  * 
  *             for line in f:             # <<<<<<<<<<<<<<
@@ -12947,14 +12947,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":424
+    /* "leakageSimulatorAESFurious.pyx":425
  * 
  *             # Close the file
  *             f.close()             # <<<<<<<<<<<<<<
  * 
  *             # for key_, value_ in hw_leaks.iteritems():
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_f, __pyx_n_s_close); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_f, __pyx_n_s_close); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 425, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_3 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -12967,33 +12967,33 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (__pyx_t_3) {
-      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 424, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 425, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
-      __pyx_t_7 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 424, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 425, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":430
+    /* "leakageSimulatorAESFurious.pyx":431
  * 
  *             # Get Plaintext Bytes
  *             if read_plaintexts:             # <<<<<<<<<<<<<<
  *                 p_backup = [0] * 16
  *                 try:
  */
-    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_read_plaintexts); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 430, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_read_plaintexts); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 431, __pyx_L1_error)
     if (__pyx_t_1) {
 
-      /* "leakageSimulatorAESFurious.pyx":431
+      /* "leakageSimulatorAESFurious.pyx":432
  *             # Get Plaintext Bytes
  *             if read_plaintexts:
  *                 p_backup = [0] * 16             # <<<<<<<<<<<<<<
  *                 try:
  *                     for i in range(1, 17):
  */
-      __pyx_t_7 = PyList_New(1 * 16); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 431, __pyx_L1_error)
+      __pyx_t_7 = PyList_New(1 * 16); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 432, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       { Py_ssize_t __pyx_temp;
         for (__pyx_temp=0; __pyx_temp < 16; __pyx_temp++) {
@@ -13005,7 +13005,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XDECREF_SET(__pyx_v_p_backup, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":432
+      /* "leakageSimulatorAESFurious.pyx":433
  *             if read_plaintexts:
  *                 p_backup = [0] * 16
  *                 try:             # <<<<<<<<<<<<<<
@@ -13021,22 +13021,22 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_XGOTREF(__pyx_t_12);
         /*try:*/ {
 
-          /* "leakageSimulatorAESFurious.pyx":433
+          /* "leakageSimulatorAESFurious.pyx":434
  *                 p_backup = [0] * 16
  *                 try:
  *                     for i in range(1, 17):             # <<<<<<<<<<<<<<
  *                         if local_leakage:
  *                             if hw_leakage_model:
  */
-          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L31_error)
+          __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 434, __pyx_L31_error)
           __Pyx_GOTREF(__pyx_t_7);
           if (likely(PyList_CheckExact(__pyx_t_7)) || PyTuple_CheckExact(__pyx_t_7)) {
             __pyx_t_10 = __pyx_t_7; __Pyx_INCREF(__pyx_t_10); __pyx_t_23 = 0;
             __pyx_t_24 = NULL;
           } else {
-            __pyx_t_23 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 433, __pyx_L31_error)
+            __pyx_t_23 = -1; __pyx_t_10 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 434, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_10);
-            __pyx_t_24 = Py_TYPE(__pyx_t_10)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 433, __pyx_L31_error)
+            __pyx_t_24 = Py_TYPE(__pyx_t_10)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 434, __pyx_L31_error)
           }
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           for (;;) {
@@ -13044,17 +13044,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               if (likely(PyList_CheckExact(__pyx_t_10))) {
                 if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_10)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_7 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_23); __Pyx_INCREF(__pyx_t_7); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 433, __pyx_L31_error)
+                __pyx_t_7 = PyList_GET_ITEM(__pyx_t_10, __pyx_t_23); __Pyx_INCREF(__pyx_t_7); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 434, __pyx_L31_error)
                 #else
-                __pyx_t_7 = PySequence_ITEM(__pyx_t_10, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L31_error)
+                __pyx_t_7 = PySequence_ITEM(__pyx_t_10, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 434, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 #endif
               } else {
                 if (__pyx_t_23 >= PyTuple_GET_SIZE(__pyx_t_10)) break;
                 #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-                __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_23); __Pyx_INCREF(__pyx_t_7); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 433, __pyx_L31_error)
+                __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_10, __pyx_t_23); __Pyx_INCREF(__pyx_t_7); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 434, __pyx_L31_error)
                 #else
-                __pyx_t_7 = PySequence_ITEM(__pyx_t_10, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 433, __pyx_L31_error)
+                __pyx_t_7 = PySequence_ITEM(__pyx_t_10, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 434, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 #endif
               }
@@ -13064,7 +13064,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 PyObject* exc_type = PyErr_Occurred();
                 if (exc_type) {
                   if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                  else __PYX_ERR(0, 433, __pyx_L31_error)
+                  else __PYX_ERR(0, 434, __pyx_L31_error)
                 }
                 break;
               }
@@ -13073,49 +13073,49 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
             __pyx_t_7 = 0;
 
-            /* "leakageSimulatorAESFurious.pyx":434
+            /* "leakageSimulatorAESFurious.pyx":435
  *                 try:
  *                     for i in range(1, 17):
  *                         if local_leakage:             # <<<<<<<<<<<<<<
  *                             if hw_leakage_model:
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))
  */
-            __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_local_leakage); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 434, __pyx_L31_error)
+            __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_local_leakage); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 435, __pyx_L31_error)
             if (__pyx_t_1) {
 
-              /* "leakageSimulatorAESFurious.pyx":435
+              /* "leakageSimulatorAESFurious.pyx":436
  *                     for i in range(1, 17):
  *                         if local_leakage:
  *                             if hw_leakage_model:             # <<<<<<<<<<<<<<
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))
  *                             else:
  */
-              __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 435, __pyx_L31_error)
+              __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 436, __pyx_L31_error)
               if (__pyx_t_1) {
 
-                /* "leakageSimulatorAESFurious.pyx":436
+                /* "leakageSimulatorAESFurious.pyx":437
  *                         if local_leakage:
  *                             if hw_leakage_model:
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))             # <<<<<<<<<<<<<<
  *                             else:
  *                                 line = linecache.getline(PATH_TO_LOCAL_ELMO + 'printdata.txt', i + ((trace+offset) * 16))
  */
-                __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_3);
-                __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_getline); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_getline); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_15);
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_HW); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_3);
-                __pyx_t_16 = PyNumber_Add(__pyx_t_3, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_16 = PyNumber_Add(__pyx_t_3, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_16);
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                __pyx_t_3 = PyNumber_Add(__pyx_v_trace, __pyx_v_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_3 = PyNumber_Add(__pyx_v_trace, __pyx_v_offset); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_3);
-                __pyx_t_22 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_22 = PyNumber_Multiply(__pyx_t_3, __pyx_int_16); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_22);
                 __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-                __pyx_t_3 = PyNumber_Add(__pyx_v_i, __pyx_t_22); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L31_error)
+                __pyx_t_3 = PyNumber_Add(__pyx_v_i, __pyx_t_22); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 437, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
                 __pyx_t_22 = NULL;
@@ -13133,7 +13133,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_15)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_22, __pyx_t_16, __pyx_t_3};
-                  __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 436, __pyx_L31_error)
+                  __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 437, __pyx_L31_error)
                   __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -13143,7 +13143,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_15)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_22, __pyx_t_16, __pyx_t_3};
-                  __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 436, __pyx_L31_error)
+                  __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_15, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 437, __pyx_L31_error)
                   __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -13151,7 +13151,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 } else
                 #endif
                 {
-                  __pyx_t_18 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 436, __pyx_L31_error)
+                  __pyx_t_18 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 437, __pyx_L31_error)
                   __Pyx_GOTREF(__pyx_t_18);
                   if (__pyx_t_22) {
                     __Pyx_GIVEREF(__pyx_t_22); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_22); __pyx_t_22 = NULL;
@@ -13162,7 +13162,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                   PyTuple_SET_ITEM(__pyx_t_18, 1+__pyx_t_9, __pyx_t_3);
                   __pyx_t_16 = 0;
                   __pyx_t_3 = 0;
-                  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_18, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 436, __pyx_L31_error)
+                  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_15, __pyx_t_18, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 437, __pyx_L31_error)
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
                 }
@@ -13170,7 +13170,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 __Pyx_XDECREF_SET(__pyx_v_line, __pyx_t_7);
                 __pyx_t_7 = 0;
 
-                /* "leakageSimulatorAESFurious.pyx":435
+                /* "leakageSimulatorAESFurious.pyx":436
  *                     for i in range(1, 17):
  *                         if local_leakage:
  *                             if hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -13180,7 +13180,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 goto __pyx_L42;
               }
 
-              /* "leakageSimulatorAESFurious.pyx":438
+              /* "leakageSimulatorAESFurious.pyx":439
  *                                 line = linecache.getline(PATH_TO_LOCAL_HW + 'printdata.txt', i + ((trace+offset) * 16))
  *                             else:
  *                                 line = linecache.getline(PATH_TO_LOCAL_ELMO + 'printdata.txt', i + ((trace+offset) * 16))             # <<<<<<<<<<<<<<
@@ -13188,22 +13188,22 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                             line = linecache.getline(PATH_TO_ELMO + 'output/printdata.txt', i + ((trace+offset) * 16))
  */
               /*else*/ {
-                __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_15);
-                __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_getline); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_getline); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_18);
                 __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_15 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_LOCAL_ELMO); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_15);
-                __pyx_t_3 = PyNumber_Add(__pyx_t_15, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_3 = PyNumber_Add(__pyx_t_15, __pyx_kp_s_printdata_txt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_3);
                 __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                __pyx_t_15 = PyNumber_Add(__pyx_v_trace, __pyx_v_offset); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_15 = PyNumber_Add(__pyx_v_trace, __pyx_v_offset); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_15);
-                __pyx_t_16 = PyNumber_Multiply(__pyx_t_15, __pyx_int_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_16 = PyNumber_Multiply(__pyx_t_15, __pyx_int_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_16);
                 __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-                __pyx_t_15 = PyNumber_Add(__pyx_v_i, __pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 438, __pyx_L31_error)
+                __pyx_t_15 = PyNumber_Add(__pyx_v_i, __pyx_t_16); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 439, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_15);
                 __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
                 __pyx_t_16 = NULL;
@@ -13221,7 +13221,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCALL
                 if (PyFunction_Check(__pyx_t_18)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_16, __pyx_t_3, __pyx_t_15};
-                  __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 438, __pyx_L31_error)
+                  __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 439, __pyx_L31_error)
                   __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -13231,7 +13231,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 #if CYTHON_FAST_PYCCALL
                 if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
                   PyObject *__pyx_temp[3] = {__pyx_t_16, __pyx_t_3, __pyx_t_15};
-                  __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 438, __pyx_L31_error)
+                  __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 439, __pyx_L31_error)
                   __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -13239,7 +13239,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 } else
                 #endif
                 {
-                  __pyx_t_22 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 438, __pyx_L31_error)
+                  __pyx_t_22 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 439, __pyx_L31_error)
                   __Pyx_GOTREF(__pyx_t_22);
                   if (__pyx_t_16) {
                     __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_16); __pyx_t_16 = NULL;
@@ -13250,7 +13250,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                   PyTuple_SET_ITEM(__pyx_t_22, 1+__pyx_t_9, __pyx_t_15);
                   __pyx_t_3 = 0;
                   __pyx_t_15 = 0;
-                  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_22, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 438, __pyx_L31_error)
+                  __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_22, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 439, __pyx_L31_error)
                   __Pyx_GOTREF(__pyx_t_7);
                   __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
                 }
@@ -13260,7 +13260,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               }
               __pyx_L42:;
 
-              /* "leakageSimulatorAESFurious.pyx":434
+              /* "leakageSimulatorAESFurious.pyx":435
  *                 try:
  *                     for i in range(1, 17):
  *                         if local_leakage:             # <<<<<<<<<<<<<<
@@ -13270,7 +13270,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               goto __pyx_L41;
             }
 
-            /* "leakageSimulatorAESFurious.pyx":440
+            /* "leakageSimulatorAESFurious.pyx":441
  *                                 line = linecache.getline(PATH_TO_LOCAL_ELMO + 'printdata.txt', i + ((trace+offset) * 16))
  *                         else:
  *                             line = linecache.getline(PATH_TO_ELMO + 'output/printdata.txt', i + ((trace+offset) * 16))             # <<<<<<<<<<<<<<
@@ -13278,22 +13278,22 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                         p_backup[i-1] = eval('0x' + line)
  */
             /*else*/ {
-              __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_linecache); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_18);
-              __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_getline); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_22 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_getline); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-              __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_18 = __Pyx_GetModuleGlobalName(__pyx_n_s_PATH_TO_ELMO); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_18);
-              __pyx_t_15 = PyNumber_Add(__pyx_t_18, __pyx_kp_s_output_printdata_txt); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_15 = PyNumber_Add(__pyx_t_18, __pyx_kp_s_output_printdata_txt); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_15);
               __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-              __pyx_t_18 = PyNumber_Add(__pyx_v_trace, __pyx_v_offset); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_18 = PyNumber_Add(__pyx_v_trace, __pyx_v_offset); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_18);
-              __pyx_t_3 = PyNumber_Multiply(__pyx_t_18, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_3 = PyNumber_Multiply(__pyx_t_18, __pyx_int_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-              __pyx_t_18 = PyNumber_Add(__pyx_v_i, __pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 440, __pyx_L31_error)
+              __pyx_t_18 = PyNumber_Add(__pyx_v_i, __pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L31_error)
               __Pyx_GOTREF(__pyx_t_18);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               __pyx_t_3 = NULL;
@@ -13311,7 +13311,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               #if CYTHON_FAST_PYCALL
               if (PyFunction_Check(__pyx_t_22)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_15, __pyx_t_18};
-                __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 440, __pyx_L31_error)
+                __pyx_t_7 = __Pyx_PyFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 441, __pyx_L31_error)
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -13321,7 +13321,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               #if CYTHON_FAST_PYCCALL
               if (__Pyx_PyFastCFunction_Check(__pyx_t_22)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_15, __pyx_t_18};
-                __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 440, __pyx_L31_error)
+                __pyx_t_7 = __Pyx_PyCFunction_FastCall(__pyx_t_22, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 441, __pyx_L31_error)
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
@@ -13329,7 +13329,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
               } else
               #endif
               {
-                __pyx_t_16 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 440, __pyx_L31_error)
+                __pyx_t_16 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 441, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_16);
                 if (__pyx_t_3) {
                   __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -13340,7 +13340,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
                 PyTuple_SET_ITEM(__pyx_t_16, 1+__pyx_t_9, __pyx_t_18);
                 __pyx_t_15 = 0;
                 __pyx_t_18 = 0;
-                __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_22, __pyx_t_16, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 440, __pyx_L31_error)
+                __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_22, __pyx_t_16, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 441, __pyx_L31_error)
                 __Pyx_GOTREF(__pyx_t_7);
                 __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
               }
@@ -13350,128 +13350,128 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
             __pyx_L41:;
 
-            /* "leakageSimulatorAESFurious.pyx":442
+            /* "leakageSimulatorAESFurious.pyx":443
  *                             line = linecache.getline(PATH_TO_ELMO + 'output/printdata.txt', i + ((trace+offset) * 16))
  *                         #print 'i = {}, val = 0x{} ({})'.format(i, line, eval('0x' + line))
  *                         p_backup[i-1] = eval('0x' + line)             # <<<<<<<<<<<<<<
  *                 except (IndexError, SyntaxError) as e:
  *                     print "Caught Error in leakageSimulatorAES: {}".format(e)
  */
-            __pyx_t_7 = PyNumber_Add(__pyx_kp_s_0x, __pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_7 = PyNumber_Add(__pyx_kp_s_0x, __pyx_v_line); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_7);
-            __pyx_t_22 = __Pyx_Globals(); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_22 = __Pyx_Globals(); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_22);
-            __pyx_t_16 = __Pyx_PyDict_NewPresized(35); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_16 = __Pyx_PyDict_NewPresized(35); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_16);
             if (__pyx_v_affect_with_noise) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_affect_with_noise, __pyx_v_affect_with_noise) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_affect_with_noise, __pyx_v_affect_with_noise) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_badly_leaking_nodes) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_badly_leaking_snr) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_badly_leaking_traces) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_count) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_count, __pyx_v_count) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_count, __pyx_v_count) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_dictionary) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_e) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_e, __pyx_v_e) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_e, __pyx_v_e) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_f) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_f, __pyx_v_f) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_f, __pyx_v_f) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
-            __pyx_t_18 = __Pyx_PyBool_FromLong(__pyx_v_first_only); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_18 = __Pyx_PyBool_FromLong(__pyx_v_first_only); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_18);
             if (__pyx_t_18) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_first_only, __pyx_t_18) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_first_only, __pyx_t_18) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
             if (__pyx_v_first_only_swap) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_first_only_swap, __pyx_v_first_only_swap) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_first_only_swap, __pyx_v_first_only_swap) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_hw_leakage_model) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_hw_leaks) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_hw_leaks, __pyx_v_hw_leaks) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_hw_leaks, __pyx_v_hw_leaks) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_i) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_i, __pyx_v_i) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_i, __pyx_v_i) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_key_variables) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_key_variables, __pyx_v_key_variables) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_key_variables, __pyx_v_key_variables) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_l) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_l, __pyx_v_l) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_l, __pyx_v_l) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_last_t) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_last_t, __pyx_v_last_t) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_last_t, __pyx_v_last_t) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_line) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_line, __pyx_v_line) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_line, __pyx_v_line) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_local_leakage) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_local_leakage, __pyx_v_local_leakage) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_local_leakage, __pyx_v_local_leakage) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_mix_column_swap3) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_mix_column_swap3, __pyx_v_mix_column_swap3) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_mix_column_swap3, __pyx_v_mix_column_swap3) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_mix_column_swap4) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_mix_column_swap4, __pyx_v_mix_column_swap4) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_mix_column_swap4, __pyx_v_mix_column_swap4) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_no_noise_nodes) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_offset) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_offset, __pyx_v_offset) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_offset, __pyx_v_offset) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_p_backup) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_p_backup, __pyx_v_p_backup) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_p_backup, __pyx_v_p_backup) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_read_plaintexts) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_read_plaintexts, __pyx_v_read_plaintexts) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_read_plaintexts, __pyx_v_read_plaintexts) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_self) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_self, __pyx_v_self) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_snr) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_snr, __pyx_v_snr) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_snr, __pyx_v_snr) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_standard_swap) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_standard_swap, __pyx_v_standard_swap) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_standard_swap, __pyx_v_standard_swap) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_swap_node) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_swap_node, __pyx_v_swap_node) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_swap_node, __pyx_v_swap_node) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_t) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_t, __pyx_v_t) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_t, __pyx_v_t) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_threshold) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_trace) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_trace, __pyx_v_trace) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_trace, __pyx_v_trace) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_trace_path) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_trace_path, __pyx_v_trace_path) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_trace_path, __pyx_v_trace_path) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_traces) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_traces, __pyx_v_traces) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_traces, __pyx_v_traces) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_triggers) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_triggers, __pyx_v_triggers) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_triggers, __pyx_v_triggers) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
             if (__pyx_v_variable) {
-              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_variable, __pyx_v_variable) < 0) __PYX_ERR(0, 442, __pyx_L31_error)
+              if (PyDict_SetItem(__pyx_t_16, __pyx_n_s_variable, __pyx_v_variable) < 0) __PYX_ERR(0, 443, __pyx_L31_error)
             }
-            __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_18);
             __Pyx_GIVEREF(__pyx_t_7);
             PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_7);
@@ -13482,16 +13482,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             __pyx_t_7 = 0;
             __pyx_t_22 = 0;
             __pyx_t_16 = 0;
-            __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_18, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_16 = __Pyx_PyObject_Call(__pyx_builtin_eval, __pyx_t_18, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_16);
             __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-            __pyx_t_18 = __Pyx_PyInt_SubtractObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 442, __pyx_L31_error)
+            __pyx_t_18 = __Pyx_PyInt_SubtractObjC(__pyx_v_i, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_GOTREF(__pyx_t_18);
-            if (unlikely(PyObject_SetItem(__pyx_v_p_backup, __pyx_t_18, __pyx_t_16) < 0)) __PYX_ERR(0, 442, __pyx_L31_error)
+            if (unlikely(PyObject_SetItem(__pyx_v_p_backup, __pyx_t_18, __pyx_t_16) < 0)) __PYX_ERR(0, 443, __pyx_L31_error)
             __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
             __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
 
-            /* "leakageSimulatorAESFurious.pyx":433
+            /* "leakageSimulatorAESFurious.pyx":434
  *                 p_backup = [0] * 16
  *                 try:
  *                     for i in range(1, 17):             # <<<<<<<<<<<<<<
@@ -13501,7 +13501,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":432
+          /* "leakageSimulatorAESFurious.pyx":433
  *             if read_plaintexts:
  *                 p_backup = [0] * 16
  *                 try:             # <<<<<<<<<<<<<<
@@ -13527,7 +13527,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
         __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":443
+        /* "leakageSimulatorAESFurious.pyx":444
  *                         #print 'i = {}, val = 0x{} ({})'.format(i, line, eval('0x' + line))
  *                         p_backup[i-1] = eval('0x' + line)
  *                 except (IndexError, SyntaxError) as e:             # <<<<<<<<<<<<<<
@@ -13537,21 +13537,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_IndexError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_SyntaxError);
         if (__pyx_t_9) {
           __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.elmo_simulation", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_10, &__pyx_t_16, &__pyx_t_18) < 0) __PYX_ERR(0, 443, __pyx_L33_except_error)
+          if (__Pyx_GetException(&__pyx_t_10, &__pyx_t_16, &__pyx_t_18) < 0) __PYX_ERR(0, 444, __pyx_L33_except_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GOTREF(__pyx_t_16);
           __Pyx_GOTREF(__pyx_t_18);
           __Pyx_INCREF(__pyx_t_16);
           __pyx_v_e = __pyx_t_16;
 
-          /* "leakageSimulatorAESFurious.pyx":444
+          /* "leakageSimulatorAESFurious.pyx":445
  *                         p_backup[i-1] = eval('0x' + line)
  *                 except (IndexError, SyntaxError) as e:
  *                     print "Caught Error in leakageSimulatorAES: {}".format(e)             # <<<<<<<<<<<<<<
  *                     raise
  *             else:
  */
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Caught_Error_in_leakageSimulator_2, __pyx_n_s_format); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 444, __pyx_L33_except_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Caught_Error_in_leakageSimulator_2, __pyx_n_s_format); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 445, __pyx_L33_except_error)
           __Pyx_GOTREF(__pyx_t_7);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -13564,13 +13564,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_15) {
-            __pyx_t_22 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_e); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 444, __pyx_L33_except_error)
+            __pyx_t_22 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_e); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 445, __pyx_L33_except_error)
             __Pyx_GOTREF(__pyx_t_22);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_7)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_e};
-              __pyx_t_22 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 444, __pyx_L33_except_error)
+              __pyx_t_22 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 445, __pyx_L33_except_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_22);
             } else
@@ -13578,28 +13578,28 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_e};
-              __pyx_t_22 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 444, __pyx_L33_except_error)
+              __pyx_t_22 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 445, __pyx_L33_except_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_22);
             } else
             #endif
             {
-              __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 444, __pyx_L33_except_error)
+              __pyx_t_3 = PyTuple_New(1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 445, __pyx_L33_except_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_15); __pyx_t_15 = NULL;
               __Pyx_INCREF(__pyx_v_e);
               __Pyx_GIVEREF(__pyx_v_e);
               PyTuple_SET_ITEM(__pyx_t_3, 0+1, __pyx_v_e);
-              __pyx_t_22 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_3, NULL); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 444, __pyx_L33_except_error)
+              __pyx_t_22 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_3, NULL); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 445, __pyx_L33_except_error)
               __Pyx_GOTREF(__pyx_t_22);
               __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (__Pyx_PrintOne(0, __pyx_t_22) < 0) __PYX_ERR(0, 444, __pyx_L33_except_error)
+          if (__Pyx_PrintOne(0, __pyx_t_22) < 0) __PYX_ERR(0, 445, __pyx_L33_except_error)
           __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":445
+          /* "leakageSimulatorAESFurious.pyx":446
  *                 except (IndexError, SyntaxError) as e:
  *                     print "Caught Error in leakageSimulatorAES: {}".format(e)
  *                     raise             # <<<<<<<<<<<<<<
@@ -13611,12 +13611,12 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_XGIVEREF(__pyx_t_18);
           __Pyx_ErrRestoreWithState(__pyx_t_10, __pyx_t_16, __pyx_t_18);
           __pyx_t_10 = 0; __pyx_t_16 = 0; __pyx_t_18 = 0; 
-          __PYX_ERR(0, 445, __pyx_L33_except_error)
+          __PYX_ERR(0, 446, __pyx_L33_except_error)
         }
         goto __pyx_L33_except_error;
         __pyx_L33_except_error:;
 
-        /* "leakageSimulatorAESFurious.pyx":432
+        /* "leakageSimulatorAESFurious.pyx":433
  *             if read_plaintexts:
  *                 p_backup = [0] * 16
  *                 try:             # <<<<<<<<<<<<<<
@@ -13631,7 +13631,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_L38_try_end:;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":430
+      /* "leakageSimulatorAESFurious.pyx":431
  * 
  *             # Get Plaintext Bytes
  *             if read_plaintexts:             # <<<<<<<<<<<<<<
@@ -13641,7 +13641,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       goto __pyx_L30;
     }
 
-    /* "leakageSimulatorAESFurious.pyx":447
+    /* "leakageSimulatorAESFurious.pyx":448
  *                     raise
  *             else:
  *                 p_backup = self.plaintext             # <<<<<<<<<<<<<<
@@ -13649,21 +13649,21 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             # print "'Trace' {}, read_plaintexts {}, p_backup: {}".format(trace, read_plaintexts, p_backup)
  */
     /*else*/ {
-      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plaintext); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 447, __pyx_L1_error)
+      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_plaintext); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 448, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_XDECREF_SET(__pyx_v_p_backup, __pyx_t_18);
       __pyx_t_18 = 0;
     }
     __pyx_L30:;
 
-    /* "leakageSimulatorAESFurious.pyx":452
+    /* "leakageSimulatorAESFurious.pyx":453
  * 
  *             # Change order of things that need changing
  *             standard_swap = ['s', 't', 'p', 'k']             # <<<<<<<<<<<<<<
  *             first_only_swap = ['k', 'p']
  * 
  */
-    __pyx_t_18 = PyList_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 452, __pyx_L1_error)
+    __pyx_t_18 = PyList_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 453, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_n_s_s);
     __Pyx_GIVEREF(__pyx_n_s_s);
@@ -13680,14 +13680,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_standard_swap, ((PyObject*)__pyx_t_18));
     __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":453
+    /* "leakageSimulatorAESFurious.pyx":454
  *             # Change order of things that need changing
  *             standard_swap = ['s', 't', 'p', 'k']
  *             first_only_swap = ['k', 'p']             # <<<<<<<<<<<<<<
  * 
  *             mix_column_swap4 = ['mc','xt','p','cm']
  */
-    __pyx_t_18 = PyList_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 453, __pyx_L1_error)
+    __pyx_t_18 = PyList_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_n_s_k);
     __Pyx_GIVEREF(__pyx_n_s_k);
@@ -13698,14 +13698,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_first_only_swap, ((PyObject*)__pyx_t_18));
     __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":455
+    /* "leakageSimulatorAESFurious.pyx":456
  *             first_only_swap = ['k', 'p']
  * 
  *             mix_column_swap4 = ['mc','xt','p','cm']             # <<<<<<<<<<<<<<
  *             mix_column_swap3 = ['h']
  * 
  */
-    __pyx_t_18 = PyList_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 455, __pyx_L1_error)
+    __pyx_t_18 = PyList_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_n_s_mc);
     __Pyx_GIVEREF(__pyx_n_s_mc);
@@ -13722,14 +13722,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_mix_column_swap4, ((PyObject*)__pyx_t_18));
     __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":456
+    /* "leakageSimulatorAESFurious.pyx":457
  * 
  *             mix_column_swap4 = ['mc','xt','p','cm']
  *             mix_column_swap3 = ['h']             # <<<<<<<<<<<<<<
  * 
  *             for swap_node in standard_swap:
  */
-    __pyx_t_18 = PyList_New(1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 456, __pyx_L1_error)
+    __pyx_t_18 = PyList_New(1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 457, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_n_s_h);
     __Pyx_GIVEREF(__pyx_n_s_h);
@@ -13737,7 +13737,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_mix_column_swap3, ((PyObject*)__pyx_t_18));
     __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":458
+    /* "leakageSimulatorAESFurious.pyx":459
  *             mix_column_swap3 = ['h']
  * 
  *             for swap_node in standard_swap:             # <<<<<<<<<<<<<<
@@ -13748,15 +13748,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     for (;;) {
       if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_18)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_16 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_16); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 458, __pyx_L1_error)
+      __pyx_t_16 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_16); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 459, __pyx_L1_error)
       #else
-      __pyx_t_16 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 458, __pyx_L1_error)
+      __pyx_t_16 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 459, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_swap_node, __pyx_t_16);
       __pyx_t_16 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":459
+      /* "leakageSimulatorAESFurious.pyx":460
  * 
  *             for swap_node in standard_swap:
  *                 first_only = False             # <<<<<<<<<<<<<<
@@ -13765,51 +13765,51 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       __pyx_v_first_only = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":460
+      /* "leakageSimulatorAESFurious.pyx":461
  *             for swap_node in standard_swap:
  *                 first_only = False
  *                 if swap_node in first_only_swap: first_only = True             # <<<<<<<<<<<<<<
  *                 hw_leaks[swap_node] = reverse_list(hw_leaks[swap_node], chunks = 16, first_only = first_only)
  * 
  */
-      __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_swap_node, __pyx_v_first_only_swap, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 460, __pyx_L1_error)
+      __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_swap_node, __pyx_v_first_only_swap, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 461, __pyx_L1_error)
       __pyx_t_2 = (__pyx_t_1 != 0);
       if (__pyx_t_2) {
         __pyx_v_first_only = 1;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":461
+      /* "leakageSimulatorAESFurious.pyx":462
  *                 first_only = False
  *                 if swap_node in first_only_swap: first_only = True
  *                 hw_leaks[swap_node] = reverse_list(hw_leaks[swap_node], chunks = 16, first_only = first_only)             # <<<<<<<<<<<<<<
  * 
  *             # Save first 16 bytes of p
  */
-      __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 461, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_swap_node); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 461, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_swap_node); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 461, __pyx_L1_error)
+      __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_10);
       __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 461, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_chunks, __pyx_int_16) < 0) __PYX_ERR(0, 461, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyBool_FromLong(__pyx_v_first_only); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 461, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_chunks, __pyx_int_16) < 0) __PYX_ERR(0, 462, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyBool_FromLong(__pyx_v_first_only); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_first_only, __pyx_t_7) < 0) __PYX_ERR(0, 461, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_first_only, __pyx_t_7) < 0) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_22, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 461, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_22, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_v_swap_node, __pyx_t_7) < 0)) __PYX_ERR(0, 461, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_v_swap_node, __pyx_t_7) < 0)) __PYX_ERR(0, 462, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":458
+      /* "leakageSimulatorAESFurious.pyx":459
  *             mix_column_swap3 = ['h']
  * 
  *             for swap_node in standard_swap:             # <<<<<<<<<<<<<<
@@ -13819,7 +13819,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":466
+    /* "leakageSimulatorAESFurious.pyx":467
  *             # p_backup = hw_leaks['p'][:16]
  * 
  *             for swap_node in mix_column_swap4:             # <<<<<<<<<<<<<<
@@ -13830,57 +13830,57 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     for (;;) {
       if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_18)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_7 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_7); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 466, __pyx_L1_error)
+      __pyx_t_7 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_7); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 467, __pyx_L1_error)
       #else
-      __pyx_t_7 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 466, __pyx_L1_error)
+      __pyx_t_7 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 467, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_swap_node, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":468
+      /* "leakageSimulatorAESFurious.pyx":469
  *             for swap_node in mix_column_swap4:
  *                 # Swap!
  *                 hw_leaks[swap_node] = reverse_list( reverse_list(hw_leaks[swap_node], chunks = 4), chunks = 16 )             # <<<<<<<<<<<<<<
  * 
  *             for swap_node in mix_column_swap3:
  */
-      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_22 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_swap_node); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_swap_node); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      __pyx_t_16 = PyTuple_New(1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_16 = PyTuple_New(1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_GIVEREF(__pyx_t_22);
       PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_22);
       __pyx_t_22 = 0;
-      __pyx_t_22 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_chunks, __pyx_int_4) < 0) __PYX_ERR(0, 468, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_16, __pyx_t_22); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 468, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_chunks, __pyx_int_4) < 0) __PYX_ERR(0, 469, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_16, __pyx_t_22); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-      __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 468, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_chunks, __pyx_int_16) < 0) __PYX_ERR(0, 468, __pyx_L1_error)
-      __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_22, __pyx_t_3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 468, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_chunks, __pyx_int_16) < 0) __PYX_ERR(0, 469, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_22, __pyx_t_3); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_v_swap_node, __pyx_t_16) < 0)) __PYX_ERR(0, 468, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_v_swap_node, __pyx_t_16) < 0)) __PYX_ERR(0, 469, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":466
+      /* "leakageSimulatorAESFurious.pyx":467
  *             # p_backup = hw_leaks['p'][:16]
  * 
  *             for swap_node in mix_column_swap4:             # <<<<<<<<<<<<<<
@@ -13890,7 +13890,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":470
+    /* "leakageSimulatorAESFurious.pyx":471
  *                 hw_leaks[swap_node] = reverse_list( reverse_list(hw_leaks[swap_node], chunks = 4), chunks = 16 )
  * 
  *             for swap_node in mix_column_swap3:             # <<<<<<<<<<<<<<
@@ -13901,57 +13901,57 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     for (;;) {
       if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_18)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_16 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_16); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 470, __pyx_L1_error)
+      __pyx_t_16 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_16); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 471, __pyx_L1_error)
       #else
-      __pyx_t_16 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 470, __pyx_L1_error)
+      __pyx_t_16 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 471, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_swap_node, __pyx_t_16);
       __pyx_t_16 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":472
+      /* "leakageSimulatorAESFurious.pyx":473
  *             for swap_node in mix_column_swap3:
  *                 # Swap!
  *                 hw_leaks[swap_node] = reverse_list( reverse_list(hw_leaks[swap_node], chunks = 3), chunks = 12 )             # <<<<<<<<<<<<<<
  * 
  *             # Replace first 16 bytes of p
  */
-      __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_reverse_list); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_22 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_swap_node); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_swap_node); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GIVEREF(__pyx_t_22);
       PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_22);
       __pyx_t_22 = 0;
-      __pyx_t_22 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_chunks, __pyx_int_3) < 0) __PYX_ERR(0, 472, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, __pyx_t_22); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 472, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_22, __pyx_n_s_chunks, __pyx_int_3) < 0) __PYX_ERR(0, 473, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_7, __pyx_t_22); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
-      __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_22 = PyTuple_New(1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
       __Pyx_GIVEREF(__pyx_t_10);
       PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_10);
       __pyx_t_10 = 0;
-      __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 472, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_chunks, __pyx_int_12) < 0) __PYX_ERR(0, 472, __pyx_L1_error)
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_22, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 472, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_10, __pyx_n_s_chunks, __pyx_int_12) < 0) __PYX_ERR(0, 473, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_16, __pyx_t_22, __pyx_t_10); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_v_swap_node, __pyx_t_7) < 0)) __PYX_ERR(0, 472, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_v_swap_node, __pyx_t_7) < 0)) __PYX_ERR(0, 473, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":470
+      /* "leakageSimulatorAESFurious.pyx":471
  *                 hw_leaks[swap_node] = reverse_list( reverse_list(hw_leaks[swap_node], chunks = 4), chunks = 16 )
  * 
  *             for swap_node in mix_column_swap3:             # <<<<<<<<<<<<<<
@@ -13961,58 +13961,58 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":475
+    /* "leakageSimulatorAESFurious.pyx":476
  * 
  *             # Replace first 16 bytes of p
  *             hw_leaks['p'][:16] = p_backup             # <<<<<<<<<<<<<<
  * 
  *             # Take last 16 bytes of t and append to p
  */
-    __pyx_t_18 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_p); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_p); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
-    if (__Pyx_PyObject_SetSlice(__pyx_t_18, __pyx_v_p_backup, 0, 16, NULL, NULL, &__pyx_slice__11, 0, 1, 1) < 0) __PYX_ERR(0, 475, __pyx_L1_error)
+    if (__Pyx_PyObject_SetSlice(__pyx_t_18, __pyx_v_p_backup, 0, 16, NULL, NULL, &__pyx_slice__11, 0, 1, 1) < 0) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":478
+    /* "leakageSimulatorAESFurious.pyx":479
  * 
  *             # Take last 16 bytes of t and append to p
  *             last_t = hw_leaks['t'][-16:]             # <<<<<<<<<<<<<<
  *             hw_leaks['t'] = hw_leaks['t'][:-16]
  *             hw_leaks['p'].extend(last_t)
  */
-    __pyx_t_18 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 478, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
-    __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_t_18, -16L, 0, NULL, NULL, &__pyx_slice__12, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 478, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetSlice(__pyx_t_18, -16L, 0, NULL, NULL, &__pyx_slice__12, 1, 0, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
     __Pyx_XDECREF_SET(__pyx_v_last_t, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":479
+    /* "leakageSimulatorAESFurious.pyx":480
  *             # Take last 16 bytes of t and append to p
  *             last_t = hw_leaks['t'][-16:]
  *             hw_leaks['t'] = hw_leaks['t'][:-16]             # <<<<<<<<<<<<<<
  *             hw_leaks['p'].extend(last_t)
  * 
  */
-    __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_t); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 479, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_t); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_18 = __Pyx_PyObject_GetSlice(__pyx_t_7, 0, -16L, NULL, NULL, &__pyx_slice__13, 0, 1, 1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 479, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyObject_GetSlice(__pyx_t_7, 0, -16L, NULL, NULL, &__pyx_slice__13, 0, 1, 1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_t, __pyx_t_18) < 0)) __PYX_ERR(0, 479, __pyx_L1_error)
+    if (unlikely(PyDict_SetItem(__pyx_v_hw_leaks, __pyx_n_s_t, __pyx_t_18) < 0)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":480
+    /* "leakageSimulatorAESFurious.pyx":481
  *             last_t = hw_leaks['t'][-16:]
  *             hw_leaks['t'] = hw_leaks['t'][:-16]
  *             hw_leaks['p'].extend(last_t)             # <<<<<<<<<<<<<<
  * 
  *             # Now all sorted, add to dictionary
  */
-    __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_p); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 480, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_n_s_p); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 481, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_extend); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 480, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_extend); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 481, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_7 = NULL;
@@ -14026,13 +14026,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_18 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_last_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 480, __pyx_L1_error)
+      __pyx_t_18 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_last_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 481, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_10)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_last_t};
-        __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 480, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 481, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_18);
       } else
@@ -14040,19 +14040,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_last_t};
-        __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 480, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 481, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_18);
       } else
       #endif
       {
-        __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 480, __pyx_L1_error)
+        __pyx_t_22 = PyTuple_New(1+1); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 481, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_22);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_22, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_INCREF(__pyx_v_last_t);
         __Pyx_GIVEREF(__pyx_v_last_t);
         PyTuple_SET_ITEM(__pyx_t_22, 0+1, __pyx_v_last_t);
-        __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_22, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 480, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_22, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 481, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       }
@@ -14060,27 +14060,27 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":485
+    /* "leakageSimulatorAESFurious.pyx":486
  * 
  *             # Keys
  *             if trace == 0:             # <<<<<<<<<<<<<<
  *                 key_variables = ['k','sk','xk']
  *                 for variable in key_variables:
  */
-    __pyx_t_18 = __Pyx_PyInt_EqObjC(__pyx_v_trace, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 485, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyInt_EqObjC(__pyx_v_trace, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 486, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 485, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 486, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
     if (__pyx_t_2) {
 
-      /* "leakageSimulatorAESFurious.pyx":486
+      /* "leakageSimulatorAESFurious.pyx":487
  *             # Keys
  *             if trace == 0:
  *                 key_variables = ['k','sk','xk']             # <<<<<<<<<<<<<<
  *                 for variable in key_variables:
  *                     dictionary[variable] = hw_leaks[variable]
  */
-      __pyx_t_18 = PyList_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 486, __pyx_L1_error)
+      __pyx_t_18 = PyList_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 487, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_INCREF(__pyx_n_s_k);
       __Pyx_GIVEREF(__pyx_n_s_k);
@@ -14094,7 +14094,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XDECREF_SET(__pyx_v_key_variables, ((PyObject*)__pyx_t_18));
       __pyx_t_18 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":487
+      /* "leakageSimulatorAESFurious.pyx":488
  *             if trace == 0:
  *                 key_variables = ['k','sk','xk']
  *                 for variable in key_variables:             # <<<<<<<<<<<<<<
@@ -14105,27 +14105,27 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       for (;;) {
         if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_18)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 487, __pyx_L1_error)
+        __pyx_t_10 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 488, __pyx_L1_error)
         #else
-        __pyx_t_10 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 487, __pyx_L1_error)
+        __pyx_t_10 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 488, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_variable, __pyx_t_10);
         __pyx_t_10 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":488
+        /* "leakageSimulatorAESFurious.pyx":489
  *                 key_variables = ['k','sk','xk']
  *                 for variable in key_variables:
  *                     dictionary[variable] = hw_leaks[variable]             # <<<<<<<<<<<<<<
  * 
  *             # Everything else
  */
-        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 488, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 489, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_v_variable, __pyx_t_10) < 0)) __PYX_ERR(0, 488, __pyx_L1_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_dictionary, __pyx_v_variable, __pyx_t_10) < 0)) __PYX_ERR(0, 489, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":487
+        /* "leakageSimulatorAESFurious.pyx":488
  *             if trace == 0:
  *                 key_variables = ['k','sk','xk']
  *                 for variable in key_variables:             # <<<<<<<<<<<<<<
@@ -14135,7 +14135,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":485
+      /* "leakageSimulatorAESFurious.pyx":486
  * 
  *             # Keys
  *             if trace == 0:             # <<<<<<<<<<<<<<
@@ -14144,14 +14144,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
     }
 
-    /* "leakageSimulatorAESFurious.pyx":491
+    /* "leakageSimulatorAESFurious.pyx":492
  * 
  *             # Everything else
  *             l = ['p','t','s','xt','cm','h','mc']             # <<<<<<<<<<<<<<
  *             for variable in l:
  *                 dictionary[variable][trace] = hw_leaks[variable]
  */
-    __pyx_t_18 = PyList_New(7); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 491, __pyx_L1_error)
+    __pyx_t_18 = PyList_New(7); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 492, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_n_s_p);
     __Pyx_GIVEREF(__pyx_n_s_p);
@@ -14177,7 +14177,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF_SET(__pyx_v_l, ((PyObject*)__pyx_t_18));
     __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":492
+    /* "leakageSimulatorAESFurious.pyx":493
  *             # Everything else
  *             l = ['p','t','s','xt','cm','h','mc']
  *             for variable in l:             # <<<<<<<<<<<<<<
@@ -14188,30 +14188,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     for (;;) {
       if (__pyx_t_23 >= PyList_GET_SIZE(__pyx_t_18)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_10 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 492, __pyx_L1_error)
+      __pyx_t_10 = PyList_GET_ITEM(__pyx_t_18, __pyx_t_23); __Pyx_INCREF(__pyx_t_10); __pyx_t_23++; if (unlikely(0 < 0)) __PYX_ERR(0, 493, __pyx_L1_error)
       #else
-      __pyx_t_10 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 492, __pyx_L1_error)
+      __pyx_t_10 = PySequence_ITEM(__pyx_t_18, __pyx_t_23); __pyx_t_23++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 493, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_variable, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":493
+      /* "leakageSimulatorAESFurious.pyx":494
  *             l = ['p','t','s','xt','cm','h','mc']
  *             for variable in l:
  *                 dictionary[variable][trace] = hw_leaks[variable]             # <<<<<<<<<<<<<<
  * 
  *             # TODO Check Categories!
  */
-      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_hw_leaks, __pyx_v_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_22 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 493, __pyx_L1_error)
+      __pyx_t_22 = __Pyx_PyDict_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_22);
-      if (unlikely(PyObject_SetItem(__pyx_t_22, __pyx_v_trace, __pyx_t_10) < 0)) __PYX_ERR(0, 493, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_t_22, __pyx_v_trace, __pyx_t_10) < 0)) __PYX_ERR(0, 494, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":492
+      /* "leakageSimulatorAESFurious.pyx":493
  *             # Everything else
  *             l = ['p','t','s','xt','cm','h','mc']
  *             for variable in l:             # <<<<<<<<<<<<<<
@@ -14221,7 +14221,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":364
+    /* "leakageSimulatorAESFurious.pyx":365
  * 
  *         # Open Each Trace File
  *         for trace in range (traces):             # <<<<<<<<<<<<<<
@@ -14231,54 +14231,54 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":512
+  /* "leakageSimulatorAESFurious.pyx":513
  * 
  *         # Save dictionary
  *         self.simulated_dictionary = dictionary             # <<<<<<<<<<<<<<
  * 
  *         # Affect with Noise
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 512, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 513, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":515
+  /* "leakageSimulatorAESFurious.pyx":516
  * 
  *         # Affect with Noise
  *         if affect_with_noise:             # <<<<<<<<<<<<<<
  *             self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_affect_with_noise); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 515, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_affect_with_noise); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 516, __pyx_L1_error)
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":516
+    /* "leakageSimulatorAESFurious.pyx":517
  *         # Affect with Noise
  *         if affect_with_noise:
  *             self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_dictionary_with_noise); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 516, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_dictionary_with_noise); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 517, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_18 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 516, __pyx_L1_error)
+    __pyx_t_18 = __Pyx_PyDict_NewPresized(8); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 517, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_snr, __pyx_v_snr) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
-    __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_average_key_nodes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 516, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_snr, __pyx_v_snr) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_badly_leaking_nodes, __pyx_v_badly_leaking_nodes) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_badly_leaking_traces, __pyx_v_badly_leaking_traces) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_no_noise_nodes, __pyx_v_no_noise_nodes) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_average_key_nodes); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 517, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_average_key_nodes, __pyx_t_10) < 0) __PYX_ERR(0, 516, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_18, __pyx_n_s_average_key_nodes, __pyx_t_10) < 0) __PYX_ERR(0, 517, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_18); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 516, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_empty_tuple, __pyx_t_18); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 517, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":515
+    /* "leakageSimulatorAESFurious.pyx":516
  * 
  *         # Affect with Noise
  *         if affect_with_noise:             # <<<<<<<<<<<<<<
@@ -14287,7 +14287,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":276
+  /* "leakageSimulatorAESFurious.pyx":277
  * 
  * 
  *     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):             # <<<<<<<<<<<<<<
@@ -14344,7 +14344,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":521
+/* "leakageSimulatorAESFurious.pyx":522
  * 
  * 
  *     def save_simulation(self):             # <<<<<<<<<<<<<<
@@ -14377,16 +14377,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("save_simulation", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":522
+  /* "leakageSimulatorAESFurious.pyx":523
  * 
  *     def save_simulation(self):
  *         save_leakage(self.simulated_dictionary, 'furious_dict')             # <<<<<<<<<<<<<<
  * 
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_save_leakage); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 522, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_save_leakage); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 523, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 522, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 523, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -14403,7 +14403,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_n_s_furious_dict};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -14412,14 +14412,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_4, __pyx_t_3, __pyx_n_s_furious_dict};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 522, __pyx_L1_error)
+    __pyx_t_6 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -14430,14 +14430,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_GIVEREF(__pyx_n_s_furious_dict);
     PyTuple_SET_ITEM(__pyx_t_6, 1+__pyx_t_5, __pyx_n_s_furious_dict);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 522, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 523, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":521
+  /* "leakageSimulatorAESFurious.pyx":522
  * 
  * 
  *     def save_simulation(self):             # <<<<<<<<<<<<<<
@@ -14462,7 +14462,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":524
+/* "leakageSimulatorAESFurious.pyx":525
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
@@ -14530,7 +14530,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_snr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_dictionary_with_noise", 0, 2, 9, 1); __PYX_ERR(0, 524, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_dictionary_with_noise", 0, 2, 9, 1); __PYX_ERR(0, 525, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -14576,7 +14576,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_dictionary_with_noise") < 0)) __PYX_ERR(0, 524, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_dictionary_with_noise") < 0)) __PYX_ERR(0, 525, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -14601,7 +14601,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     __pyx_v_self = values[0];
-    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 524, __pyx_L3_error)
+    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 525, __pyx_L3_error)
     __pyx_v_badly_leaking_nodes = values[2];
     __pyx_v_badly_leaking_traces = values[3];
     __pyx_v_badly_leaking_snr = values[4];
@@ -14612,7 +14612,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("affect_dictionary_with_noise", 0, 2, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 524, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("affect_dictionary_with_noise", 0, 2, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 525, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_dictionary_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -14657,7 +14657,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __Pyx_INCREF(__pyx_v_badly_leaking_traces);
   __Pyx_INCREF(__pyx_v_no_noise_nodes);
 
-  /* "leakageSimulatorAESFurious.pyx":526
+  /* "leakageSimulatorAESFurious.pyx":527
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
  * 
  *         if badly_leaking_nodes is None:             # <<<<<<<<<<<<<<
@@ -14668,19 +14668,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":527
+    /* "leakageSimulatorAESFurious.pyx":528
  * 
  *         if badly_leaking_nodes is None:
  *             badly_leaking_nodes = []             # <<<<<<<<<<<<<<
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 527, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 528, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_badly_leaking_nodes, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":526
+    /* "leakageSimulatorAESFurious.pyx":527
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
  * 
  *         if badly_leaking_nodes is None:             # <<<<<<<<<<<<<<
@@ -14689,7 +14689,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":528
+  /* "leakageSimulatorAESFurious.pyx":529
  *         if badly_leaking_nodes is None:
  *             badly_leaking_nodes = []
  *         if badly_leaking_traces is None:             # <<<<<<<<<<<<<<
@@ -14700,19 +14700,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "leakageSimulatorAESFurious.pyx":529
+    /* "leakageSimulatorAESFurious.pyx":530
  *             badly_leaking_nodes = []
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []             # <<<<<<<<<<<<<<
  *         if no_noise_nodes is None:
  *             no_noise_nodes = []
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 529, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 530, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_badly_leaking_traces, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":528
+    /* "leakageSimulatorAESFurious.pyx":529
  *         if badly_leaking_nodes is None:
  *             badly_leaking_nodes = []
  *         if badly_leaking_traces is None:             # <<<<<<<<<<<<<<
@@ -14721,7 +14721,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":530
+  /* "leakageSimulatorAESFurious.pyx":531
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []
  *         if no_noise_nodes is None:             # <<<<<<<<<<<<<<
@@ -14732,19 +14732,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":531
+    /* "leakageSimulatorAESFurious.pyx":532
  *             badly_leaking_traces = []
  *         if no_noise_nodes is None:
  *             no_noise_nodes = []             # <<<<<<<<<<<<<<
  * 
  *         dictionary = self.simulated_dictionary
  */
-    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 531, __pyx_L1_error)
+    __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 532, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_no_noise_nodes, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":530
+    /* "leakageSimulatorAESFurious.pyx":531
  *         if badly_leaking_traces is None:
  *             badly_leaking_traces = []
  *         if no_noise_nodes is None:             # <<<<<<<<<<<<<<
@@ -14753,26 +14753,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":533
+  /* "leakageSimulatorAESFurious.pyx":534
  *             no_noise_nodes = []
  * 
  *         dictionary = self.simulated_dictionary             # <<<<<<<<<<<<<<
  * 
  *         # print "* Affecting with noise, HW Leakage Model: {}".format(hw_leakage_model)
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 533, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 534, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_dictionary = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":541
+  /* "leakageSimulatorAESFurious.pyx":542
  *         # key_variables = ['k','sk','xk']
  *         # variables = ['p','t','s','mc','xt','cm','h']
  *         variables = ['k','sk','xk','p','t','s','mc','xt','cm','h']             # <<<<<<<<<<<<<<
  * 
  *         traces = len(dictionary['p'])
  */
-  __pyx_t_3 = PyList_New(10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 541, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(10); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 542, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_n_s_k);
   __Pyx_GIVEREF(__pyx_n_s_k);
@@ -14807,51 +14807,51 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_v_variables = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":543
+  /* "leakageSimulatorAESFurious.pyx":544
  *         variables = ['k','sk','xk','p','t','s','mc','xt','cm','h']
  * 
  *         traces = len(dictionary['p'])             # <<<<<<<<<<<<<<
  * 
  *         if len(badly_leaking_traces) == 0:
  */
-  __pyx_t_3 = PyObject_GetItem(__pyx_v_dictionary, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
+  __pyx_t_3 = PyObject_GetItem(__pyx_v_dictionary, __pyx_n_s_p); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 543, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 544, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_traces = __pyx_t_4;
 
-  /* "leakageSimulatorAESFurious.pyx":545
+  /* "leakageSimulatorAESFurious.pyx":546
  *         traces = len(dictionary['p'])
  * 
  *         if len(badly_leaking_traces) == 0:             # <<<<<<<<<<<<<<
  *             badly_leaking_traces = range(traces)
  * 
  */
-  __pyx_t_4 = PyObject_Length(__pyx_v_badly_leaking_traces); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_4 = PyObject_Length(__pyx_v_badly_leaking_traces); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 546, __pyx_L1_error)
   __pyx_t_2 = ((__pyx_t_4 == 0) != 0);
   if (__pyx_t_2) {
 
-    /* "leakageSimulatorAESFurious.pyx":546
+    /* "leakageSimulatorAESFurious.pyx":547
  * 
  *         if len(badly_leaking_traces) == 0:
  *             badly_leaking_traces = range(traces)             # <<<<<<<<<<<<<<
  * 
  *         # Non-key bytes
  */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_traces); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 547, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_badly_leaking_traces, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":545
+    /* "leakageSimulatorAESFurious.pyx":546
  *         traces = len(dictionary['p'])
  * 
  *         if len(badly_leaking_traces) == 0:             # <<<<<<<<<<<<<<
@@ -14860,7 +14860,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":549
+  /* "leakageSimulatorAESFurious.pyx":550
  * 
  *         # Non-key bytes
  *         for trace in range(traces):             # <<<<<<<<<<<<<<
@@ -14871,7 +14871,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_trace = __pyx_t_7;
 
-    /* "leakageSimulatorAESFurious.pyx":551
+    /* "leakageSimulatorAESFurious.pyx":552
  *         for trace in range(traces):
  * 
  *             print_out = False             # <<<<<<<<<<<<<<
@@ -14880,7 +14880,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
     __pyx_v_print_out = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":553
+    /* "leakageSimulatorAESFurious.pyx":554
  *             print_out = False
  * 
  *             if print_out:             # <<<<<<<<<<<<<<
@@ -14890,16 +14890,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_2 = (__pyx_v_print_out != 0);
     if (__pyx_t_2) {
 
-      /* "leakageSimulatorAESFurious.pyx":554
+      /* "leakageSimulatorAESFurious.pyx":555
  * 
  *             if print_out:
  *                 print "Leakage Simulator: Adding Noise to Trace {}".format(trace)             # <<<<<<<<<<<<<<
  * 
  *             for variable in variables:
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Leakage_Simulator_Adding_Noise_t, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 554, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Leakage_Simulator_Adding_Noise_t, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 555, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 554, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 555, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_9 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
@@ -14912,14 +14912,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (!__pyx_t_9) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_3);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_8};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -14928,29 +14928,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
           PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_t_8};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else
         #endif
         {
-          __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 554, __pyx_L1_error)
+          __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 555, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_9); __pyx_t_9 = NULL;
           __Pyx_GIVEREF(__pyx_t_8);
           PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_8);
           __pyx_t_8 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 554, __pyx_L1_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 555, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 554, __pyx_L1_error)
+      if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 555, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":553
+      /* "leakageSimulatorAESFurious.pyx":554
  *             print_out = False
  * 
  *             if print_out:             # <<<<<<<<<<<<<<
@@ -14959,7 +14959,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
     }
 
-    /* "leakageSimulatorAESFurious.pyx":556
+    /* "leakageSimulatorAESFurious.pyx":557
  *                 print "Leakage Simulator: Adding Noise to Trace {}".format(trace)
  * 
  *             for variable in variables:             # <<<<<<<<<<<<<<
@@ -14970,26 +14970,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     for (;;) {
       if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 556, __pyx_L1_error)
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 557, __pyx_L1_error)
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 556, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 557, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_variable, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":558
+      /* "leakageSimulatorAESFurious.pyx":559
  *             for variable in variables:
  * 
  *                 if variable in no_noise_nodes:             # <<<<<<<<<<<<<<
  *                     if print_out:
  *                         print "+++ NO NOISE for Variable {}".format(variable)
  */
-      __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_variable, __pyx_v_no_noise_nodes, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 558, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_v_variable, __pyx_v_no_noise_nodes, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 559, __pyx_L1_error)
       __pyx_t_1 = (__pyx_t_2 != 0);
       if (__pyx_t_1) {
 
-        /* "leakageSimulatorAESFurious.pyx":559
+        /* "leakageSimulatorAESFurious.pyx":560
  * 
  *                 if variable in no_noise_nodes:
  *                     if print_out:             # <<<<<<<<<<<<<<
@@ -14999,14 +14999,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_1 = (__pyx_v_print_out != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":560
+          /* "leakageSimulatorAESFurious.pyx":561
  *                 if variable in no_noise_nodes:
  *                     if print_out:
  *                         print "+++ NO NOISE for Variable {}".format(variable)             # <<<<<<<<<<<<<<
  *                     pass
  *                 else:
  */
-          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_NO_NOISE_for_Variable, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 560, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_NO_NOISE_for_Variable, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 561, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_8 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -15019,13 +15019,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_8) {
-            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_variable); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 560, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_variable); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 561, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_10)) {
               PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_variable};
-              __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 560, __pyx_L1_error)
+              __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 561, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_GOTREF(__pyx_t_5);
             } else
@@ -15033,28 +15033,28 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
               PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_variable};
-              __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 560, __pyx_L1_error)
+              __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 561, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
               __Pyx_GOTREF(__pyx_t_5);
             } else
             #endif
             {
-              __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 560, __pyx_L1_error)
+              __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 561, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_9);
               __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
               __Pyx_INCREF(__pyx_v_variable);
               __Pyx_GIVEREF(__pyx_v_variable);
               PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_v_variable);
-              __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 560, __pyx_L1_error)
+              __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 561, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_5);
               __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (__Pyx_PrintOne(0, __pyx_t_5) < 0) __PYX_ERR(0, 560, __pyx_L1_error)
+          if (__Pyx_PrintOne(0, __pyx_t_5) < 0) __PYX_ERR(0, 561, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":559
+          /* "leakageSimulatorAESFurious.pyx":560
  * 
  *                 if variable in no_noise_nodes:
  *                     if print_out:             # <<<<<<<<<<<<<<
@@ -15063,7 +15063,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
         }
 
-        /* "leakageSimulatorAESFurious.pyx":558
+        /* "leakageSimulatorAESFurious.pyx":559
  *             for variable in variables:
  * 
  *                 if variable in no_noise_nodes:             # <<<<<<<<<<<<<<
@@ -15073,7 +15073,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L12;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":564
+      /* "leakageSimulatorAESFurious.pyx":565
  *                 else:
  * 
  *                     if print_out:             # <<<<<<<<<<<<<<
@@ -15084,41 +15084,12 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_1 = (__pyx_v_print_out != 0);
         if (__pyx_t_1) {
 
-          /* "leakageSimulatorAESFurious.pyx":565
+          /* "leakageSimulatorAESFurious.pyx":566
  * 
  *                     if print_out:
  *                         print_new_line()             # <<<<<<<<<<<<<<
  *                         print_new_line()
  *                         print "*** NOISE FOR VARIABLE {}".format(variable)
- */
-          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 565, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_9 = NULL;
-          if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
-            __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_10);
-            if (likely(__pyx_t_9)) {
-              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-              __Pyx_INCREF(__pyx_t_9);
-              __Pyx_INCREF(function);
-              __Pyx_DECREF_SET(__pyx_t_10, function);
-            }
-          }
-          if (__pyx_t_9) {
-            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 565, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          } else {
-            __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 565, __pyx_L1_error)
-          }
-          __Pyx_GOTREF(__pyx_t_5);
-          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-          /* "leakageSimulatorAESFurious.pyx":566
- *                     if print_out:
- *                         print_new_line()
- *                         print_new_line()             # <<<<<<<<<<<<<<
- *                         print "*** NOISE FOR VARIABLE {}".format(variable)
- *                         print_new_line()
  */
           __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 566, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
@@ -15143,13 +15114,42 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
           /* "leakageSimulatorAESFurious.pyx":567
+ *                     if print_out:
+ *                         print_new_line()
+ *                         print_new_line()             # <<<<<<<<<<<<<<
+ *                         print "*** NOISE FOR VARIABLE {}".format(variable)
+ *                         print_new_line()
+ */
+          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 567, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __pyx_t_9 = NULL;
+          if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
+            __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_10);
+            if (likely(__pyx_t_9)) {
+              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+              __Pyx_INCREF(__pyx_t_9);
+              __Pyx_INCREF(function);
+              __Pyx_DECREF_SET(__pyx_t_10, function);
+            }
+          }
+          if (__pyx_t_9) {
+            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+          } else {
+            __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+          }
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+          /* "leakageSimulatorAESFurious.pyx":568
  *                         print_new_line()
  *                         print_new_line()
  *                         print "*** NOISE FOR VARIABLE {}".format(variable)             # <<<<<<<<<<<<<<
  *                         print_new_line()
  *                         print_new_line()
  */
-          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_NOISE_FOR_VARIABLE, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 567, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_NOISE_FOR_VARIABLE, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 568, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_9 = NULL;
           if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -15162,13 +15162,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_9) {
-            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_variable); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_v_variable); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_10)) {
               PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_variable};
-              __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+              __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
               __Pyx_GOTREF(__pyx_t_5);
             } else
@@ -15176,62 +15176,33 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
               PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_variable};
-              __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+              __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
               __Pyx_GOTREF(__pyx_t_5);
             } else
             #endif
             {
-              __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 567, __pyx_L1_error)
+              __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 568, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_8);
               __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
               __Pyx_INCREF(__pyx_v_variable);
               __Pyx_GIVEREF(__pyx_v_variable);
               PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_variable);
-              __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+              __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_8, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_5);
               __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (__Pyx_PrintOne(0, __pyx_t_5) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-          /* "leakageSimulatorAESFurious.pyx":568
- *                         print_new_line()
- *                         print "*** NOISE FOR VARIABLE {}".format(variable)
- *                         print_new_line()             # <<<<<<<<<<<<<<
- *                         print_new_line()
- * 
- */
-          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 568, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_8 = NULL;
-          if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
-            __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
-            if (likely(__pyx_t_8)) {
-              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
-              __Pyx_INCREF(__pyx_t_8);
-              __Pyx_INCREF(function);
-              __Pyx_DECREF_SET(__pyx_t_10, function);
-            }
-          }
-          if (__pyx_t_8) {
-            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
-            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          } else {
-            __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
-          }
-          __Pyx_GOTREF(__pyx_t_5);
-          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+          if (__Pyx_PrintOne(0, __pyx_t_5) < 0) __PYX_ERR(0, 568, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
           /* "leakageSimulatorAESFurious.pyx":569
- *                         print "*** NOISE FOR VARIABLE {}".format(variable)
  *                         print_new_line()
+ *                         print "*** NOISE FOR VARIABLE {}".format(variable)
  *                         print_new_line()             # <<<<<<<<<<<<<<
+ *                         print_new_line()
  * 
- *                     badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes)
  */
           __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 569, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
@@ -15255,7 +15226,36 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":564
+          /* "leakageSimulatorAESFurious.pyx":570
+ *                         print "*** NOISE FOR VARIABLE {}".format(variable)
+ *                         print_new_line()
+ *                         print_new_line()             # <<<<<<<<<<<<<<
+ * 
+ *                     badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes)
+ */
+          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_print_new_line); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 570, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_10);
+          __pyx_t_8 = NULL;
+          if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_10))) {
+            __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_10);
+            if (likely(__pyx_t_8)) {
+              PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+              __Pyx_INCREF(__pyx_t_8);
+              __Pyx_INCREF(function);
+              __Pyx_DECREF_SET(__pyx_t_10, function);
+            }
+          }
+          if (__pyx_t_8) {
+            __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 570, __pyx_L1_error)
+            __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+          } else {
+            __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 570, __pyx_L1_error)
+          }
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+          __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+
+          /* "leakageSimulatorAESFurious.pyx":565
  *                 else:
  * 
  *                     if print_out:             # <<<<<<<<<<<<<<
@@ -15264,27 +15264,27 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
         }
 
-        /* "leakageSimulatorAESFurious.pyx":571
+        /* "leakageSimulatorAESFurious.pyx":572
  *                         print_new_line()
  * 
  *                     badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes)             # <<<<<<<<<<<<<<
  * 
  *                     if variable is 'p':
  */
-        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 571, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyInt_From_int(__pyx_v_trace); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_t_10, __pyx_v_badly_leaking_traces, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 571, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_t_10, __pyx_v_badly_leaking_traces, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
         if (__pyx_t_1) {
         } else {
-          __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 571, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 572, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __pyx_t_5 = __pyx_t_10;
           __pyx_t_10 = 0;
           goto __pyx_L15_bool_binop_done;
         }
-        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_variable, __pyx_v_badly_leaking_nodes, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 571, __pyx_L1_error)
-        __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 571, __pyx_L1_error)
+        __pyx_t_1 = (__Pyx_PySequence_ContainsTF(__pyx_v_variable, __pyx_v_badly_leaking_nodes, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 572, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 572, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __pyx_t_5 = __pyx_t_10;
         __pyx_t_10 = 0;
@@ -15292,7 +15292,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_XDECREF_SET(__pyx_v_badly_leaking_node, __pyx_t_5);
         __pyx_t_5 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":573
+        /* "leakageSimulatorAESFurious.pyx":574
  *                     badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes)
  * 
  *                     if variable is 'p':             # <<<<<<<<<<<<<<
@@ -15303,45 +15303,45 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_2 = (__pyx_t_1 != 0);
         if (__pyx_t_2) {
 
-          /* "leakageSimulatorAESFurious.pyx":574
+          /* "leakageSimulatorAESFurious.pyx":575
  * 
  *                     if variable is 'p':
  *                         dictionary[variable][trace] = np.append(dictionary[variable][trace][:16][:], self.affect_array_with_noise(dictionary[variable][trace][16:][:], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr))             # <<<<<<<<<<<<<<
  *                     else:
  *                         # print "* Noise for Variable {} Trace {} *".format(variable, trace)
  */
-          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_append); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_append); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_10 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_trace, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_GetItemInt(__pyx_t_10, __pyx_v_trace, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_9, 0, 16, NULL, NULL, &__pyx_slice__14, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetSlice(__pyx_t_9, 0, 16, NULL, NULL, &__pyx_slice__14, 0, 1, 1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_t_10, 0, 0, NULL, NULL, &__pyx_slice__15, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_t_10, 0, 0, NULL, NULL, &__pyx_slice__15, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_array_with_noise); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_array_with_noise); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_10);
-          __pyx_t_11 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_11 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_trace, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_trace, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_t_12, 16, 0, NULL, NULL, &__pyx_slice__16, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyObject_GetSlice(__pyx_t_12, 16, 0, NULL, NULL, &__pyx_slice__16, 1, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_12 = __Pyx_PyObject_GetSlice(__pyx_t_11, 0, 0, NULL, NULL, &__pyx_slice__17, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_GetSlice(__pyx_t_11, 0, 0, NULL, NULL, &__pyx_slice__17, 0, 0, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          __pyx_t_11 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_11 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_13 = PyTuple_New(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_GIVEREF(__pyx_t_12);
           PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_12);
@@ -15349,11 +15349,11 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           PyTuple_SET_ITEM(__pyx_t_13, 1, __pyx_t_11);
           __pyx_t_12 = 0;
           __pyx_t_11 = 0;
-          __pyx_t_11 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 574, __pyx_L1_error)
-          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 574, __pyx_L1_error)
-          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_category); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 574, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_category); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_15 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_14))) {
@@ -15366,13 +15366,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_15) {
-            __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_variable); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_v_variable); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_12);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_variable};
-              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_12);
             } else
@@ -15380,29 +15380,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_14)) {
               PyObject *__pyx_temp[2] = {__pyx_t_15, __pyx_v_variable};
-              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_14, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
               __Pyx_GOTREF(__pyx_t_12);
             } else
             #endif
             {
-              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 574, __pyx_L1_error)
+              __pyx_t_16 = PyTuple_New(1+1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 575, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_16);
               __Pyx_GIVEREF(__pyx_t_15); PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_15); __pyx_t_15 = NULL;
               __Pyx_INCREF(__pyx_v_variable);
               __Pyx_GIVEREF(__pyx_v_variable);
               PyTuple_SET_ITEM(__pyx_t_16, 0+1, __pyx_v_variable);
-              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+              __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_16, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_12);
               __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_category, __pyx_t_12) < 0) __PYX_ERR(0, 574, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_category, __pyx_t_12) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_bad_leak, __pyx_v_badly_leaking_node) < 0) __PYX_ERR(0, 574, __pyx_L1_error)
-          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 574, __pyx_L1_error)
-          __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_13, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 574, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_bad_leak, __pyx_v_badly_leaking_node) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_11, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 575, __pyx_L1_error)
+          __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_13, __pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
@@ -15422,7 +15422,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_8)) {
             PyObject *__pyx_temp[3] = {__pyx_t_11, __pyx_t_9, __pyx_t_12};
-            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_17, 2+__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_17, 2+__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 575, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -15432,7 +15432,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
             PyObject *__pyx_temp[3] = {__pyx_t_11, __pyx_t_9, __pyx_t_12};
-            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_17, 2+__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-__pyx_t_17, 2+__pyx_t_17); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 575, __pyx_L1_error)
             __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -15440,7 +15440,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           } else
           #endif
           {
-            __pyx_t_13 = PyTuple_New(2+__pyx_t_17); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_13 = PyTuple_New(2+__pyx_t_17); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 575, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_13);
             if (__pyx_t_11) {
               __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -15451,18 +15451,18 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             PyTuple_SET_ITEM(__pyx_t_13, 1+__pyx_t_17, __pyx_t_12);
             __pyx_t_9 = 0;
             __pyx_t_12 = 0;
-            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_13, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 574, __pyx_L1_error)
+            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_13, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 575, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           }
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __pyx_t_8 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 574, __pyx_L1_error)
+          __pyx_t_8 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          if (unlikely(__Pyx_SetItemInt(__pyx_t_8, __pyx_v_trace, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 574, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_t_8, __pyx_v_trace, __pyx_t_5, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 575, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-          /* "leakageSimulatorAESFurious.pyx":573
+          /* "leakageSimulatorAESFurious.pyx":574
  *                     badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes)
  * 
  *                     if variable is 'p':             # <<<<<<<<<<<<<<
@@ -15472,7 +15472,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           goto __pyx_L17;
         }
 
-        /* "leakageSimulatorAESFurious.pyx":578
+        /* "leakageSimulatorAESFurious.pyx":579
  *                         # print "* Noise for Variable {} Trace {} *".format(variable, trace)
  *                         # print "Before:\n{}\n".format(dictionary[variable][trace])
  *                         dictionary[variable][trace] = self.affect_array_with_noise(dictionary[variable][trace][:], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), print_out = print_out, bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr)             # <<<<<<<<<<<<<<
@@ -15480,19 +15480,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  * 
  */
         /*else*/ {
-          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_array_with_noise); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_array_with_noise); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_8 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_8 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_8, __pyx_v_trace, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_8, __pyx_v_trace, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_t_13, 0, 0, NULL, NULL, &__pyx_slice__18, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyObject_GetSlice(__pyx_t_13, 0, 0, NULL, NULL, &__pyx_slice__18, 0, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          __pyx_t_13 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_13 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
-          __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_GIVEREF(__pyx_t_8);
           PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_8);
@@ -15500,11 +15500,11 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_13);
           __pyx_t_8 = 0;
           __pyx_t_13 = 0;
-          __pyx_t_13 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_13 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
-          __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_category); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 578, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_hw_leakage_model, __pyx_v_hw_leakage_model) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_category); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
           __pyx_t_11 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -15517,13 +15517,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             }
           }
           if (!__pyx_t_11) {
-            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_variable); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+            __pyx_t_8 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_variable); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_8);
           } else {
             #if CYTHON_FAST_PYCALL
             if (PyFunction_Check(__pyx_t_9)) {
               PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_v_variable};
-              __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+              __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_GOTREF(__pyx_t_8);
             } else
@@ -15531,40 +15531,40 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
             #if CYTHON_FAST_PYCCALL
             if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
               PyObject *__pyx_temp[2] = {__pyx_t_11, __pyx_v_variable};
-              __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+              __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
               __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
               __Pyx_GOTREF(__pyx_t_8);
             } else
             #endif
             {
-              __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 578, __pyx_L1_error)
+              __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 579, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_11); __pyx_t_11 = NULL;
               __Pyx_INCREF(__pyx_v_variable);
               __Pyx_GIVEREF(__pyx_v_variable);
               PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_v_variable);
-              __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_10, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+              __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_10, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_8);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             }
           }
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_category, __pyx_t_8) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_category, __pyx_t_8) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_v_print_out); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyBool_FromLong(__pyx_v_print_out); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_print_out, __pyx_t_8) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_print_out, __pyx_t_8) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_bad_leak, __pyx_v_badly_leaking_node) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
-          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 578, __pyx_L1_error)
-          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 578, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_bad_leak, __pyx_v_badly_leaking_node) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
+          if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 579, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          __pyx_t_13 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 578, __pyx_L1_error)
+          __pyx_t_13 = PyObject_GetItem(__pyx_v_dictionary, __pyx_v_variable); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
-          if (unlikely(__Pyx_SetItemInt(__pyx_t_13, __pyx_v_trace, __pyx_t_8, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 578, __pyx_L1_error)
+          if (unlikely(__Pyx_SetItemInt(__pyx_t_13, __pyx_v_trace, __pyx_t_8, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 579, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         }
@@ -15572,7 +15572,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
       __pyx_L12:;
 
-      /* "leakageSimulatorAESFurious.pyx":556
+      /* "leakageSimulatorAESFurious.pyx":557
  *                 print "Leakage Simulator: Adding Noise to Trace {}".format(trace)
  * 
  *             for variable in variables:             # <<<<<<<<<<<<<<
@@ -15583,16 +15583,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "leakageSimulatorAESFurious.pyx":603
+  /* "leakageSimulatorAESFurious.pyx":604
  * 
  * 
  *         self.simulated_dictionary = dictionary             # <<<<<<<<<<<<<<
  * 
  *     def affect_key_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, traces = 1):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 603, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary, __pyx_v_dictionary) < 0) __PYX_ERR(0, 604, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":524
+  /* "leakageSimulatorAESFurious.pyx":525
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
@@ -15630,7 +15630,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":605
+/* "leakageSimulatorAESFurious.pyx":606
  *         self.simulated_dictionary = dictionary
  * 
  *     def affect_key_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, traces = 1):             # <<<<<<<<<<<<<<
@@ -15701,13 +15701,13 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_array)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_key_array_with_noise", 0, 3, 10, 1); __PYX_ERR(0, 605, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_key_array_with_noise", 0, 3, 10, 1); __PYX_ERR(0, 606, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_snr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_key_array_with_noise", 0, 3, 10, 2); __PYX_ERR(0, 605, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_key_array_with_noise", 0, 3, 10, 2); __PYX_ERR(0, 606, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -15753,7 +15753,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_key_array_with_noise") < 0)) __PYX_ERR(0, 605, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_key_array_with_noise") < 0)) __PYX_ERR(0, 606, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -15780,7 +15780,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __pyx_v_self = values[0];
     __pyx_v_array = values[1];
-    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 605, __pyx_L3_error)
+    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 606, __pyx_L3_error)
     __pyx_v_threshold = values[3];
     __pyx_v_hw_leakage_model = values[4];
     __pyx_v_category = values[5];
@@ -15791,7 +15791,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("affect_key_array_with_noise", 0, 3, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 605, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("affect_key_array_with_noise", 0, 3, 10, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 606, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_key_array_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -15821,44 +15821,44 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_10 = NULL;
   __Pyx_RefNannySetupContext("affect_key_array_with_noise", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":609
+  /* "leakageSimulatorAESFurious.pyx":610
  *         # cdef DTYPE_t i
  *         # print "affecting with noise:\n{}\n".format(array)
  *         a = np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr, average = traces) for i in array])             # <<<<<<<<<<<<<<
  *         # print "\nnow:\n{}\n\n".format(a)
  *         return a
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 610, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_v_array)) || PyTuple_CheckExact(__pyx_v_array)) {
     __pyx_t_4 = __pyx_v_array; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_v_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 610, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
       if (likely(PyList_CheckExact(__pyx_t_4))) {
         if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
+        __pyx_t_7 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 610, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 609, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 610, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       } else {
         if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 609, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_7); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 610, __pyx_L1_error)
         #else
-        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 609, __pyx_L1_error)
+        __pyx_t_7 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 610, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         #endif
       }
@@ -15868,7 +15868,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 609, __pyx_L1_error)
+          else __PYX_ERR(0, 610, __pyx_L1_error)
         }
         break;
       }
@@ -15876,11 +15876,11 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_7);
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_elmo_value_with_noise); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_elmo_value_with_noise); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_8 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_INCREF(__pyx_v_i);
     __Pyx_GIVEREF(__pyx_v_i);
@@ -15888,20 +15888,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_GIVEREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_category, __pyx_v_category) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_print_out, __pyx_v_print_out) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_bad_leak, __pyx_v_bad_leak) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_average, __pyx_v_traces) < 0) __PYX_ERR(0, 609, __pyx_L1_error)
-    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 609, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_category, __pyx_v_category) < 0) __PYX_ERR(0, 610, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 610, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_print_out, __pyx_v_print_out) < 0) __PYX_ERR(0, 610, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_bad_leak, __pyx_v_bad_leak) < 0) __PYX_ERR(0, 610, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 610, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_average, __pyx_v_traces) < 0) __PYX_ERR(0, 610, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_10))) __PYX_ERR(0, 609, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_10))) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -15916,14 +15916,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -15932,20 +15932,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 610, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
@@ -15954,7 +15954,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_v_a = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":611
+  /* "leakageSimulatorAESFurious.pyx":612
  *         a = np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr, average = traces) for i in array])
  *         # print "\nnow:\n{}\n\n".format(a)
  *         return a             # <<<<<<<<<<<<<<
@@ -15966,7 +15966,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "leakageSimulatorAESFurious.pyx":605
+  /* "leakageSimulatorAESFurious.pyx":606
  *         self.simulated_dictionary = dictionary
  * 
  *     def affect_key_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, traces = 1):             # <<<<<<<<<<<<<<
@@ -15994,7 +15994,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":614
+/* "leakageSimulatorAESFurious.pyx":615
  *         # return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr, average = traces) for i in array])
  * 
  *     def affect_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
@@ -16061,13 +16061,13 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_array)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_array_with_noise", 0, 3, 9, 1); __PYX_ERR(0, 614, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_array_with_noise", 0, 3, 9, 1); __PYX_ERR(0, 615, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_snr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_array_with_noise", 0, 3, 9, 2); __PYX_ERR(0, 614, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_array_with_noise", 0, 3, 9, 2); __PYX_ERR(0, 615, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -16107,7 +16107,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_array_with_noise") < 0)) __PYX_ERR(0, 614, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_array_with_noise") < 0)) __PYX_ERR(0, 615, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -16132,7 +16132,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __pyx_v_self = values[0];
     __pyx_v_array = values[1];
-    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 614, __pyx_L3_error)
+    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 615, __pyx_L3_error)
     __pyx_v_threshold = values[3];
     __pyx_v_hw_leakage_model = values[4];
     __pyx_v_category = values[5];
@@ -16142,7 +16142,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("affect_array_with_noise", 0, 3, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 614, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("affect_array_with_noise", 0, 3, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 615, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_array_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -16172,26 +16172,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_11 = NULL;
   __Pyx_RefNannySetupContext("affect_array_with_noise", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":616
+  /* "leakageSimulatorAESFurious.pyx":617
  *     def affect_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1):
  *         # cdef DTYPE_t i
  *         if hw_leakage_model:             # <<<<<<<<<<<<<<
  *             print "!!! Removed support for hw_leakage_model in array noise!"
  *             raise ValueError
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_hw_leakage_model); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 617, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "leakageSimulatorAESFurious.pyx":617
+    /* "leakageSimulatorAESFurious.pyx":618
  *         # cdef DTYPE_t i
  *         if hw_leakage_model:
  *             print "!!! Removed support for hw_leakage_model in array noise!"             # <<<<<<<<<<<<<<
  *             raise ValueError
  *         if print_out:
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s_Removed_support_for_hw_leakage) < 0) __PYX_ERR(0, 617, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_kp_s_Removed_support_for_hw_leakage) < 0) __PYX_ERR(0, 618, __pyx_L1_error)
 
-    /* "leakageSimulatorAESFurious.pyx":618
+    /* "leakageSimulatorAESFurious.pyx":619
  *         if hw_leakage_model:
  *             print "!!! Removed support for hw_leakage_model in array noise!"
  *             raise ValueError             # <<<<<<<<<<<<<<
@@ -16199,9 +16199,9 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             print "Affecting Array with Noise"
  */
     __Pyx_Raise(__pyx_builtin_ValueError, 0, 0, 0);
-    __PYX_ERR(0, 618, __pyx_L1_error)
+    __PYX_ERR(0, 619, __pyx_L1_error)
 
-    /* "leakageSimulatorAESFurious.pyx":616
+    /* "leakageSimulatorAESFurious.pyx":617
  *     def affect_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1):
  *         # cdef DTYPE_t i
  *         if hw_leakage_model:             # <<<<<<<<<<<<<<
@@ -16210,26 +16210,26 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":619
+  /* "leakageSimulatorAESFurious.pyx":620
  *             print "!!! Removed support for hw_leakage_model in array noise!"
  *             raise ValueError
  *         if print_out:             # <<<<<<<<<<<<<<
  *             print "Affecting Array with Noise"
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_print_out); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 619, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_print_out); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 620, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "leakageSimulatorAESFurious.pyx":620
+    /* "leakageSimulatorAESFurious.pyx":621
  *             raise ValueError
  *         if print_out:
  *             print "Affecting Array with Noise"             # <<<<<<<<<<<<<<
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])
  * 
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s_Affecting_Array_with_Noise) < 0) __PYX_ERR(0, 620, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_kp_s_Affecting_Array_with_Noise) < 0) __PYX_ERR(0, 621, __pyx_L1_error)
 
-    /* "leakageSimulatorAESFurious.pyx":619
+    /* "leakageSimulatorAESFurious.pyx":620
  *             print "!!! Removed support for hw_leakage_model in array noise!"
  *             raise ValueError
  *         if print_out:             # <<<<<<<<<<<<<<
@@ -16238,7 +16238,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":621
+  /* "leakageSimulatorAESFurious.pyx":622
  *         if print_out:
  *             print "Affecting Array with Noise"
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])             # <<<<<<<<<<<<<<
@@ -16246,37 +16246,37 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *     def affect_hw_value_with_noise(self, int value, float snr, threshold = None, bad_leak = False, badly_leaking_snr = 0.1):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 621, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 622, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 621, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 622, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 621, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 622, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   if (likely(PyList_CheckExact(__pyx_v_array)) || PyTuple_CheckExact(__pyx_v_array)) {
     __pyx_t_5 = __pyx_v_array; __Pyx_INCREF(__pyx_t_5); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 622, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_7)) {
       if (likely(PyList_CheckExact(__pyx_t_5))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_8); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 621, __pyx_L1_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_8); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 622, __pyx_L1_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 621, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 622, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_8); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 621, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_8); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 622, __pyx_L1_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 621, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 622, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
       }
@@ -16286,7 +16286,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 621, __pyx_L1_error)
+          else __PYX_ERR(0, 622, __pyx_L1_error)
         }
         break;
       }
@@ -16294,11 +16294,11 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_elmo_value_with_noise); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_affect_elmo_value_with_noise); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_9 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_INCREF(__pyx_v_i);
     __Pyx_GIVEREF(__pyx_v_i);
@@ -16306,19 +16306,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_GIVEREF(__pyx_t_9);
     PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_9);
     __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_NewPresized(5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_category, __pyx_v_category) < 0) __PYX_ERR(0, 621, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 621, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_print_out, __pyx_v_print_out) < 0) __PYX_ERR(0, 621, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_bad_leak, __pyx_v_bad_leak) < 0) __PYX_ERR(0, 621, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 621, __pyx_L1_error)
-    __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 621, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_category, __pyx_v_category) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_threshold, __pyx_v_threshold) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_print_out, __pyx_v_print_out) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_bad_leak, __pyx_v_bad_leak) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_badly_leaking_snr, __pyx_v_badly_leaking_snr) < 0) __PYX_ERR(0, 622, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_10, __pyx_t_9); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 621, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -16333,14 +16333,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 621, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 621, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -16349,20 +16349,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 621, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 621, __pyx_L1_error)
+      __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 622, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 621, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 622, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     }
@@ -16372,7 +16372,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "leakageSimulatorAESFurious.pyx":614
+  /* "leakageSimulatorAESFurious.pyx":615
  *         # return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr, average = traces) for i in array])
  * 
  *     def affect_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
@@ -16399,7 +16399,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":623
+/* "leakageSimulatorAESFurious.pyx":624
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])
  * 
  *     def affect_hw_value_with_noise(self, int value, float snr, threshold = None, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
@@ -16454,13 +16454,13 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_hw_value_with_noise", 0, 3, 6, 1); __PYX_ERR(0, 623, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_hw_value_with_noise", 0, 3, 6, 1); __PYX_ERR(0, 624, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_snr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_hw_value_with_noise", 0, 3, 6, 2); __PYX_ERR(0, 623, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_hw_value_with_noise", 0, 3, 6, 2); __PYX_ERR(0, 624, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -16482,7 +16482,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_hw_value_with_noise") < 0)) __PYX_ERR(0, 623, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_hw_value_with_noise") < 0)) __PYX_ERR(0, 624, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -16500,15 +16500,15 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     __pyx_v_self = values[0];
-    __pyx_v_value = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_value == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 623, __pyx_L3_error)
-    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 623, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_value == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 624, __pyx_L3_error)
+    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 624, __pyx_L3_error)
     __pyx_v_threshold = values[3];
     __pyx_v_bad_leak = values[4];
     __pyx_v_badly_leaking_snr = values[5];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("affect_hw_value_with_noise", 0, 3, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 623, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("affect_hw_value_with_noise", 0, 3, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 624, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_hw_value_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -16546,16 +16546,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_17 = NULL;
   __Pyx_RefNannySetupContext("affect_hw_value_with_noise", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":625
+  /* "leakageSimulatorAESFurious.pyx":626
  *     def affect_hw_value_with_noise(self, int value, float snr, threshold = None, bad_leak = False, badly_leaking_snr = 0.1):
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr)             # <<<<<<<<<<<<<<
  *         if sigma <= 0:
  *             return value
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 625, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 625, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -16568,14 +16568,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 625, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -16584,30 +16584,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 626, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 625, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 625, __pyx_L1_error)
+  __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_1); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 626, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_sigma = __pyx_t_6;
 
-  /* "leakageSimulatorAESFurious.pyx":626
+  /* "leakageSimulatorAESFurious.pyx":627
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr)
  *         if sigma <= 0:             # <<<<<<<<<<<<<<
@@ -16617,7 +16617,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_7 = ((__pyx_v_sigma <= 0.0) != 0);
   if (__pyx_t_7) {
 
-    /* "leakageSimulatorAESFurious.pyx":627
+    /* "leakageSimulatorAESFurious.pyx":628
  *         sigma = get_sigma(snr)
  *         if sigma <= 0:
  *             return value             # <<<<<<<<<<<<<<
@@ -16625,13 +16625,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             noise = np.random.normal(0, sigma, 1)[0]
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 627, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 628, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "leakageSimulatorAESFurious.pyx":626
+    /* "leakageSimulatorAESFurious.pyx":627
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr)
  *         if sigma <= 0:             # <<<<<<<<<<<<<<
@@ -16640,7 +16640,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":628
+  /* "leakageSimulatorAESFurious.pyx":629
  *         if sigma <= 0:
  *             return value
  *         try:             # <<<<<<<<<<<<<<
@@ -16656,22 +16656,22 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "leakageSimulatorAESFurious.pyx":629
+      /* "leakageSimulatorAESFurious.pyx":630
  *             return value
  *         try:
  *             noise = np.random.normal(0, sigma, 1)[0]             # <<<<<<<<<<<<<<
  *             # TODO
  *             temp = value + noise
  */
-      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 629, __pyx_L4_error)
+      __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 630, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 629, __pyx_L4_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 630, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 629, __pyx_L4_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 630, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 629, __pyx_L4_error)
+      __pyx_t_5 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 630, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_3 = NULL;
       __pyx_t_11 = 0;
@@ -16688,7 +16688,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_int_0, __pyx_t_5, __pyx_int_1};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 629, __pyx_L4_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 630, __pyx_L4_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -16697,14 +16697,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
         PyObject *__pyx_temp[4] = {__pyx_t_3, __pyx_int_0, __pyx_t_5, __pyx_int_1};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 629, __pyx_L4_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 630, __pyx_L4_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else
       #endif
       {
-        __pyx_t_4 = PyTuple_New(3+__pyx_t_11); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 629, __pyx_L4_error)
+        __pyx_t_4 = PyTuple_New(3+__pyx_t_11); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 630, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_4);
         if (__pyx_t_3) {
           __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -16718,19 +16718,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __Pyx_GIVEREF(__pyx_int_1);
         PyTuple_SET_ITEM(__pyx_t_4, 2+__pyx_t_11, __pyx_int_1);
         __pyx_t_5 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 629, __pyx_L4_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 630, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 629, __pyx_L4_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 630, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 629, __pyx_L4_error)
+      __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_2); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 630, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_noise = __pyx_t_6;
 
-      /* "leakageSimulatorAESFurious.pyx":631
+      /* "leakageSimulatorAESFurious.pyx":632
  *             noise = np.random.normal(0, sigma, 1)[0]
  *             # TODO
  *             temp = value + noise             # <<<<<<<<<<<<<<
@@ -16739,28 +16739,28 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       __pyx_v_temp = (__pyx_v_value + __pyx_v_noise);
 
-      /* "leakageSimulatorAESFurious.pyx":632
+      /* "leakageSimulatorAESFurious.pyx":633
  *             # TODO
  *             temp = value + noise
  *             if bad_leak:             # <<<<<<<<<<<<<<
  *                 temp = temp - value + getHW(getRandomByte())
  *             if temp < 0: temp = 0
  */
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_bad_leak); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 632, __pyx_L4_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_v_bad_leak); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 633, __pyx_L4_error)
       if (__pyx_t_7) {
 
-        /* "leakageSimulatorAESFurious.pyx":633
+        /* "leakageSimulatorAESFurious.pyx":634
  *             temp = value + noise
  *             if bad_leak:
  *                 temp = temp - value + getHW(getRandomByte())             # <<<<<<<<<<<<<<
  *             if temp < 0: temp = 0
  *             if temp > 8: temp = 8
  */
-        __pyx_t_2 = PyFloat_FromDouble((__pyx_v_temp - __pyx_v_value)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 633, __pyx_L4_error)
+        __pyx_t_2 = PyFloat_FromDouble((__pyx_v_temp - __pyx_v_value)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 634, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_getHW); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 633, __pyx_L4_error)
+        __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_getHW); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 634, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_getRandomByte); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 633, __pyx_L4_error)
+        __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_getRandomByte); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 634, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_12 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -16773,10 +16773,10 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (__pyx_t_12) {
-          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_12); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 633, __pyx_L4_error)
+          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_12); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 634, __pyx_L4_error)
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         } else {
-          __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 633, __pyx_L4_error)
+          __pyx_t_5 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 634, __pyx_L4_error)
         }
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -16791,14 +16791,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_3) {
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 633, __pyx_L4_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 634, __pyx_L4_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_1);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_4)) {
             PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_5};
-            __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 633, __pyx_L4_error)
+            __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 634, __pyx_L4_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -16807,34 +16807,34 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
             PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_5};
-            __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 633, __pyx_L4_error)
+            __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 634, __pyx_L4_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           } else
           #endif
           {
-            __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 633, __pyx_L4_error)
+            __pyx_t_12 = PyTuple_New(1+1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 634, __pyx_L4_error)
             __Pyx_GOTREF(__pyx_t_12);
             __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_3); __pyx_t_3 = NULL;
             __Pyx_GIVEREF(__pyx_t_5);
             PyTuple_SET_ITEM(__pyx_t_12, 0+1, __pyx_t_5);
             __pyx_t_5 = 0;
-            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 633, __pyx_L4_error)
+            __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_12, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 634, __pyx_L4_error)
             __Pyx_GOTREF(__pyx_t_1);
             __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 633, __pyx_L4_error)
+        __pyx_t_4 = PyNumber_Add(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 634, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 633, __pyx_L4_error)
+        __pyx_t_6 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_6 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 634, __pyx_L4_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_v_temp = __pyx_t_6;
 
-        /* "leakageSimulatorAESFurious.pyx":632
+        /* "leakageSimulatorAESFurious.pyx":633
  *             # TODO
  *             temp = value + noise
  *             if bad_leak:             # <<<<<<<<<<<<<<
@@ -16843,7 +16843,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       }
 
-      /* "leakageSimulatorAESFurious.pyx":634
+      /* "leakageSimulatorAESFurious.pyx":635
  *             if bad_leak:
  *                 temp = temp - value + getHW(getRandomByte())
  *             if temp < 0: temp = 0             # <<<<<<<<<<<<<<
@@ -16855,7 +16855,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_v_temp = 0.0;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":635
+      /* "leakageSimulatorAESFurious.pyx":636
  *                 temp = temp - value + getHW(getRandomByte())
  *             if temp < 0: temp = 0
  *             if temp > 8: temp = 8             # <<<<<<<<<<<<<<
@@ -16867,7 +16867,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_v_temp = 8.0;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":636
+      /* "leakageSimulatorAESFurious.pyx":637
  *             if temp < 0: temp = 0
  *             if temp > 8: temp = 8
  *             if threshold is not None and (abs(noise) > threshold):             # <<<<<<<<<<<<<<
@@ -16881,17 +16881,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_7 = __pyx_t_14;
         goto __pyx_L14_bool_binop_done;
       }
-      __pyx_t_4 = PyFloat_FromDouble(fabsf(__pyx_v_noise)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 636, __pyx_L4_error)
+      __pyx_t_4 = PyFloat_FromDouble(fabsf(__pyx_v_noise)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 637, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = PyObject_RichCompare(__pyx_t_4, __pyx_v_threshold, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 636, __pyx_L4_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_t_4, __pyx_v_threshold, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 637, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 636, __pyx_L4_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 637, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_7 = __pyx_t_14;
       __pyx_L14_bool_binop_done:;
       if (__pyx_t_7) {
 
-        /* "leakageSimulatorAESFurious.pyx":637
+        /* "leakageSimulatorAESFurious.pyx":638
  *             if temp > 8: temp = 8
  *             if threshold is not None and (abs(noise) > threshold):
  *                 return -1             # <<<<<<<<<<<<<<
@@ -16903,7 +16903,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_r = __pyx_int_neg_1;
         goto __pyx_L8_try_return;
 
-        /* "leakageSimulatorAESFurious.pyx":636
+        /* "leakageSimulatorAESFurious.pyx":637
  *             if temp < 0: temp = 0
  *             if temp > 8: temp = 8
  *             if threshold is not None and (abs(noise) > threshold):             # <<<<<<<<<<<<<<
@@ -16912,7 +16912,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       }
 
-      /* "leakageSimulatorAESFurious.pyx":642
+      /* "leakageSimulatorAESFurious.pyx":643
  *             #     print "NOISE GREATER THAN 1: Value = {}, Noise = {}, New Value = {}".format(value, noise, temp)
  * 
  *             return temp             # <<<<<<<<<<<<<<
@@ -16920,13 +16920,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             print "Error with affect_hw_value_with_noise: value = {}, sigma = {}, threshold = {}".format(value, sigma, threshold)
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 642, __pyx_L4_error)
+      __pyx_t_1 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_r = __pyx_t_1;
       __pyx_t_1 = 0;
       goto __pyx_L8_try_return;
 
-      /* "leakageSimulatorAESFurious.pyx":628
+      /* "leakageSimulatorAESFurious.pyx":629
  *         if sigma <= 0:
  *             return value
  *         try:             # <<<<<<<<<<<<<<
@@ -16942,7 +16942,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":643
+    /* "leakageSimulatorAESFurious.pyx":644
  * 
  *             return temp
  *         except ValueError:             # <<<<<<<<<<<<<<
@@ -16952,23 +16952,23 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
     if (__pyx_t_11) {
       __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_hw_value_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_2) < 0) __PYX_ERR(0, 643, __pyx_L6_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_4, &__pyx_t_2) < 0) __PYX_ERR(0, 644, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_2);
 
-      /* "leakageSimulatorAESFurious.pyx":644
+      /* "leakageSimulatorAESFurious.pyx":645
  *             return temp
  *         except ValueError:
  *             print "Error with affect_hw_value_with_noise: value = {}, sigma = {}, threshold = {}".format(value, sigma, threshold)             # <<<<<<<<<<<<<<
  *             raise
  * 
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Error_with_affect_hw_value_with, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Error_with_affect_hw_value_with, __pyx_n_s_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 645, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+      __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_15 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+      __pyx_t_15 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 645, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_15);
       __pyx_t_16 = NULL;
       __pyx_t_11 = 0;
@@ -16985,7 +16985,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[4] = {__pyx_t_16, __pyx_t_3, __pyx_t_15, __pyx_v_threshold};
-        __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+        __pyx_t_12 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 645, __pyx_L6_except_error)
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -16995,7 +16995,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
         PyObject *__pyx_temp[4] = {__pyx_t_16, __pyx_t_3, __pyx_t_15, __pyx_v_threshold};
-        __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+        __pyx_t_12 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_11, 3+__pyx_t_11); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 645, __pyx_L6_except_error)
         __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -17003,7 +17003,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       } else
       #endif
       {
-        __pyx_t_17 = PyTuple_New(3+__pyx_t_11); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+        __pyx_t_17 = PyTuple_New(3+__pyx_t_11); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 645, __pyx_L6_except_error)
         __Pyx_GOTREF(__pyx_t_17);
         if (__pyx_t_16) {
           __Pyx_GIVEREF(__pyx_t_16); PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_16); __pyx_t_16 = NULL;
@@ -17017,15 +17017,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         PyTuple_SET_ITEM(__pyx_t_17, 2+__pyx_t_11, __pyx_v_threshold);
         __pyx_t_3 = 0;
         __pyx_t_15 = 0;
-        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_17, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 644, __pyx_L6_except_error)
+        __pyx_t_12 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_17, NULL); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 645, __pyx_L6_except_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_12) < 0) __PYX_ERR(0, 644, __pyx_L6_except_error)
+      if (__Pyx_PrintOne(0, __pyx_t_12) < 0) __PYX_ERR(0, 645, __pyx_L6_except_error)
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":645
+      /* "leakageSimulatorAESFurious.pyx":646
  *         except ValueError:
  *             print "Error with affect_hw_value_with_noise: value = {}, sigma = {}, threshold = {}".format(value, sigma, threshold)
  *             raise             # <<<<<<<<<<<<<<
@@ -17037,12 +17037,12 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XGIVEREF(__pyx_t_2);
       __Pyx_ErrRestoreWithState(__pyx_t_1, __pyx_t_4, __pyx_t_2);
       __pyx_t_1 = 0; __pyx_t_4 = 0; __pyx_t_2 = 0; 
-      __PYX_ERR(0, 645, __pyx_L6_except_error)
+      __PYX_ERR(0, 646, __pyx_L6_except_error)
     }
     goto __pyx_L6_except_error;
     __pyx_L6_except_error:;
 
-    /* "leakageSimulatorAESFurious.pyx":628
+    /* "leakageSimulatorAESFurious.pyx":629
  *         if sigma <= 0:
  *             return value
  *         try:             # <<<<<<<<<<<<<<
@@ -17062,7 +17062,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     goto __pyx_L0;
   }
 
-  /* "leakageSimulatorAESFurious.pyx":623
+  /* "leakageSimulatorAESFurious.pyx":624
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])
  * 
  *     def affect_hw_value_with_noise(self, int value, float snr, threshold = None, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
@@ -17089,7 +17089,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":647
+/* "leakageSimulatorAESFurious.pyx":648
  *             raise
  * 
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):             # <<<<<<<<<<<<<<
@@ -17155,19 +17155,19 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, 1); __PYX_ERR(0, 647, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, 1); __PYX_ERR(0, 648, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_snr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, 2); __PYX_ERR(0, 647, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, 2); __PYX_ERR(0, 648, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_category)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, 3); __PYX_ERR(0, 647, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, 3); __PYX_ERR(0, 648, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -17201,7 +17201,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_elmo_value_with_noise") < 0)) __PYX_ERR(0, 647, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "affect_elmo_value_with_noise") < 0)) __PYX_ERR(0, 648, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -17224,9 +17224,9 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     __pyx_v_self = values[0];
-    __pyx_v_value = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 647, __pyx_L3_error)
-    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 647, __pyx_L3_error)
-    __pyx_v_category = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_category == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 647, __pyx_L3_error)
+    __pyx_v_value = __pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_value == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 648, __pyx_L3_error)
+    __pyx_v_snr = __pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_snr == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 648, __pyx_L3_error)
+    __pyx_v_category = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_category == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 648, __pyx_L3_error)
     __pyx_v_threshold = values[4];
     __pyx_v_print_out = values[5];
     __pyx_v_bad_leak = values[6];
@@ -17235,7 +17235,7 @@ static PyObject *__pyx_pw_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 647, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("affect_elmo_value_with_noise", 0, 4, 9, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 648, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_elmo_value_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -17274,7 +17274,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_18 = NULL;
   __Pyx_RefNannySetupContext("affect_elmo_value_with_noise", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":648
+  /* "leakageSimulatorAESFurious.pyx":649
  * 
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):
  *         if category > 4:             # <<<<<<<<<<<<<<
@@ -17284,16 +17284,16 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_1 = ((__pyx_v_category > 4) != 0);
   if (__pyx_t_1) {
 
-    /* "leakageSimulatorAESFurious.pyx":649
+    /* "leakageSimulatorAESFurious.pyx":650
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):
  *         if category > 4:
  *             print "ERROR: Category must be between 0 and 4, cannot be {}!".format(category)             # <<<<<<<<<<<<<<
  *             raise ValueError
  *         cdef float noise, temp, sigma
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_ERROR_Category_must_be_between_0, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 649, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_ERROR_Category_must_be_between_0, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 650, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_category); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 649, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_category); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 650, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -17306,14 +17306,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_4};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -17322,29 +17322,29 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
         PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_4};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 649, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 650, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_4);
         __pyx_t_4 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 649, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 650, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 649, __pyx_L1_error)
+    if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(0, 650, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":650
+    /* "leakageSimulatorAESFurious.pyx":651
  *         if category > 4:
  *             print "ERROR: Category must be between 0 and 4, cannot be {}!".format(category)
  *             raise ValueError             # <<<<<<<<<<<<<<
@@ -17352,9 +17352,9 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *         sigma = get_sigma(snr, hw = False, category = category)
  */
     __Pyx_Raise(__pyx_builtin_ValueError, 0, 0, 0);
-    __PYX_ERR(0, 650, __pyx_L1_error)
+    __PYX_ERR(0, 651, __pyx_L1_error)
 
-    /* "leakageSimulatorAESFurious.pyx":648
+    /* "leakageSimulatorAESFurious.pyx":649
  * 
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):
  *         if category > 4:             # <<<<<<<<<<<<<<
@@ -17363,39 +17363,39 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":652
+  /* "leakageSimulatorAESFurious.pyx":653
  *             raise ValueError
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr, hw = False, category = category)             # <<<<<<<<<<<<<<
  *         if sigma <= 0:
  *             return value
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_3 = PyFloat_FromDouble(__pyx_v_snr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_hw, Py_False) < 0) __PYX_ERR(0, 652, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_category); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 652, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_hw, Py_False) < 0) __PYX_ERR(0, 653, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_category); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_category, __pyx_t_4) < 0) __PYX_ERR(0, 652, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_category, __pyx_t_4) < 0) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 653, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_sigma = __pyx_t_7;
 
-  /* "leakageSimulatorAESFurious.pyx":653
+  /* "leakageSimulatorAESFurious.pyx":654
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr, hw = False, category = category)
  *         if sigma <= 0:             # <<<<<<<<<<<<<<
@@ -17405,7 +17405,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_t_1 = ((__pyx_v_sigma <= 0.0) != 0);
   if (__pyx_t_1) {
 
-    /* "leakageSimulatorAESFurious.pyx":654
+    /* "leakageSimulatorAESFurious.pyx":655
  *         sigma = get_sigma(snr, hw = False, category = category)
  *         if sigma <= 0:
  *             return value             # <<<<<<<<<<<<<<
@@ -17413,13 +17413,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *             if bad_leak:
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 654, __pyx_L1_error)
+    __pyx_t_4 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 655, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_r = __pyx_t_4;
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "leakageSimulatorAESFurious.pyx":653
+    /* "leakageSimulatorAESFurious.pyx":654
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr, hw = False, category = category)
  *         if sigma <= 0:             # <<<<<<<<<<<<<<
@@ -17428,7 +17428,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
   }
 
-  /* "leakageSimulatorAESFurious.pyx":655
+  /* "leakageSimulatorAESFurious.pyx":656
  *         if sigma <= 0:
  *             return value
  *         try:             # <<<<<<<<<<<<<<
@@ -17444,37 +17444,37 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "leakageSimulatorAESFurious.pyx":656
+      /* "leakageSimulatorAESFurious.pyx":657
  *             return value
  *         try:
  *             if bad_leak:             # <<<<<<<<<<<<<<
  *                 noise = np.mean(np.random.normal(0, get_sigma(badly_leaking_snr), average))
  *             else:
  */
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_bad_leak); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 656, __pyx_L5_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_bad_leak); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 657, __pyx_L5_error)
       if (__pyx_t_1) {
 
-        /* "leakageSimulatorAESFurious.pyx":657
+        /* "leakageSimulatorAESFurious.pyx":658
  *         try:
  *             if bad_leak:
  *                 noise = np.mean(np.random.normal(0, get_sigma(badly_leaking_snr), average))             # <<<<<<<<<<<<<<
  *             else:
  *                 # TEST
  */
-        __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_mean); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_mean); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_random); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_normal); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_sigma); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_11 = __Pyx_GetModuleGlobalName(__pyx_n_s_get_sigma); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_11);
         __pyx_t_12 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
@@ -17487,13 +17487,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_12) {
-          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_badly_leaking_snr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 657, __pyx_L5_error)
+          __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_badly_leaking_snr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_11)) {
             PyObject *__pyx_temp[2] = {__pyx_t_12, __pyx_v_badly_leaking_snr};
-            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
             __Pyx_GOTREF(__pyx_t_5);
           } else
@@ -17501,19 +17501,19 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
             PyObject *__pyx_temp[2] = {__pyx_t_12, __pyx_v_badly_leaking_snr};
-            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
             __Pyx_GOTREF(__pyx_t_5);
           } else
           #endif
           {
-            __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_GIVEREF(__pyx_t_12); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_12); __pyx_t_12 = NULL;
             __Pyx_INCREF(__pyx_v_badly_leaking_snr);
             __Pyx_GIVEREF(__pyx_v_badly_leaking_snr);
             PyTuple_SET_ITEM(__pyx_t_13, 0+1, __pyx_v_badly_leaking_snr);
-            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_13, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_13, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_5);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           }
@@ -17534,7 +17534,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[4] = {__pyx_t_11, __pyx_int_0, __pyx_t_5, __pyx_v_average};
-          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 657, __pyx_L5_error)
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -17543,14 +17543,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
           PyObject *__pyx_temp[4] = {__pyx_t_11, __pyx_int_0, __pyx_t_5, __pyx_v_average};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 657, __pyx_L5_error)
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else
         #endif
         {
-          __pyx_t_13 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 657, __pyx_L5_error)
+          __pyx_t_13 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 658, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_13);
           if (__pyx_t_11) {
             __Pyx_GIVEREF(__pyx_t_11); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_11); __pyx_t_11 = NULL;
@@ -17564,7 +17564,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_GIVEREF(__pyx_v_average);
           PyTuple_SET_ITEM(__pyx_t_13, 2+__pyx_t_14, __pyx_v_average);
           __pyx_t_5 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 657, __pyx_L5_error)
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_13, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 658, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         }
@@ -17580,14 +17580,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_2) {
-          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 657, __pyx_L5_error)
+          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L5_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_6)) {
             PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-            __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -17596,30 +17596,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
             PyObject *__pyx_temp[2] = {__pyx_t_2, __pyx_t_3};
-            __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           } else
           #endif
           {
-            __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_13 = PyTuple_New(1+1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_13);
             __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_2); __pyx_t_2 = NULL;
             __Pyx_GIVEREF(__pyx_t_3);
             PyTuple_SET_ITEM(__pyx_t_13, 0+1, __pyx_t_3);
             __pyx_t_3 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 657, __pyx_L5_error)
+            __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_13, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 658, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 657, __pyx_L5_error)
+        __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 658, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_v_noise = __pyx_t_7;
 
-        /* "leakageSimulatorAESFurious.pyx":656
+        /* "leakageSimulatorAESFurious.pyx":657
  *             return value
  *         try:
  *             if bad_leak:             # <<<<<<<<<<<<<<
@@ -17629,7 +17629,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         goto __pyx_L11;
       }
 
-      /* "leakageSimulatorAESFurious.pyx":660
+      /* "leakageSimulatorAESFurious.pyx":661
  *             else:
  *                 # TEST
  *                 noise = np.mean(np.random.normal(0, sigma, average))             # <<<<<<<<<<<<<<
@@ -17637,20 +17637,20 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *                 # noise = np.mean(noisy_bits)
  */
       /*else*/ {
-        __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_mean); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_mean); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_13);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_random); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_normal); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_normal); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_5 = NULL;
         __pyx_t_14 = 0;
@@ -17667,7 +17667,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_int_0, __pyx_t_2, __pyx_v_average};
-          __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 660, __pyx_L5_error)
+          __pyx_t_6 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 661, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -17676,14 +17676,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[4] = {__pyx_t_5, __pyx_int_0, __pyx_t_2, __pyx_v_average};
-          __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 660, __pyx_L5_error)
+          __pyx_t_6 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 661, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else
         #endif
         {
-          __pyx_t_11 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 660, __pyx_L5_error)
+          __pyx_t_11 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 661, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_11);
           if (__pyx_t_5) {
             __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -17697,7 +17697,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __Pyx_GIVEREF(__pyx_v_average);
           PyTuple_SET_ITEM(__pyx_t_11, 2+__pyx_t_14, __pyx_v_average);
           __pyx_t_2 = 0;
-          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 660, __pyx_L5_error)
+          __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 661, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_6);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
@@ -17713,14 +17713,14 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           }
         }
         if (!__pyx_t_3) {
-          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 660, __pyx_L5_error)
+          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 661, __pyx_L5_error)
           __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           __Pyx_GOTREF(__pyx_t_4);
         } else {
           #if CYTHON_FAST_PYCALL
           if (PyFunction_Check(__pyx_t_13)) {
             PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_6};
-            __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 660, __pyx_L5_error)
+            __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 661, __pyx_L5_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -17729,32 +17729,32 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           #if CYTHON_FAST_PYCCALL
           if (__Pyx_PyFastCFunction_Check(__pyx_t_13)) {
             PyObject *__pyx_temp[2] = {__pyx_t_3, __pyx_t_6};
-            __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 660, __pyx_L5_error)
+            __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 661, __pyx_L5_error)
             __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
           } else
           #endif
           {
-            __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 660, __pyx_L5_error)
+            __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 661, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_11);
             __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_3); __pyx_t_3 = NULL;
             __Pyx_GIVEREF(__pyx_t_6);
             PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_6);
             __pyx_t_6 = 0;
-            __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 660, __pyx_L5_error)
+            __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 661, __pyx_L5_error)
             __Pyx_GOTREF(__pyx_t_4);
             __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
           }
         }
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 660, __pyx_L5_error)
+        __pyx_t_7 = __pyx_PyFloat_AsFloat(__pyx_t_4); if (unlikely((__pyx_t_7 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 661, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __pyx_v_noise = __pyx_t_7;
       }
       __pyx_L11:;
 
-      /* "leakageSimulatorAESFurious.pyx":667
+      /* "leakageSimulatorAESFurious.pyx":668
  * 
  *             # TODO
  *             temp = value + noise             # <<<<<<<<<<<<<<
@@ -17763,30 +17763,30 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       __pyx_v_temp = (__pyx_v_value + __pyx_v_noise);
 
-      /* "leakageSimulatorAESFurious.pyx":672
+      /* "leakageSimulatorAESFurious.pyx":673
  *                 # print "Now adding noise to a key var\nNoisyBits: {}\nMean: {}\nso {} + {} = {}".format(noisy_bits, noise, value, noise, temp)
  * 
  *             if print_out:             # <<<<<<<<<<<<<<
  *                 print "--------> noise {} + value {} = {}".format(noise, value, temp)
  * 
  */
-      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_print_out); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 672, __pyx_L5_error)
+      __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_print_out); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 673, __pyx_L5_error)
       if (__pyx_t_1) {
 
-        /* "leakageSimulatorAESFurious.pyx":673
+        /* "leakageSimulatorAESFurious.pyx":674
  * 
  *             if print_out:
  *                 print "--------> noise {} + value {} = {}".format(noise, value, temp)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_noise_value, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 673, __pyx_L5_error)
+        __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_noise_value, __pyx_n_s_format); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 674, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_11 = PyFloat_FromDouble(__pyx_v_noise); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 673, __pyx_L5_error)
+        __pyx_t_11 = PyFloat_FromDouble(__pyx_v_noise); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 674, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 673, __pyx_L5_error)
+        __pyx_t_6 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 674, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 673, __pyx_L5_error)
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 674, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_2 = NULL;
         __pyx_t_14 = 0;
@@ -17803,7 +17803,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_13)) {
           PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_t_11, __pyx_t_6, __pyx_t_3};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 673, __pyx_L5_error)
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -17814,7 +17814,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_13)) {
           PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_t_11, __pyx_t_6, __pyx_t_3};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 673, __pyx_L5_error)
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_14, 3+__pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L5_error)
           __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -17823,7 +17823,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         } else
         #endif
         {
-          __pyx_t_5 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 673, __pyx_L5_error)
+          __pyx_t_5 = PyTuple_New(3+__pyx_t_14); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 674, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           if (__pyx_t_2) {
             __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -17837,15 +17837,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
           __pyx_t_11 = 0;
           __pyx_t_6 = 0;
           __pyx_t_3 = 0;
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 673, __pyx_L5_error)
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 674, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 673, __pyx_L5_error)
+        if (__Pyx_PrintOne(0, __pyx_t_4) < 0) __PYX_ERR(0, 674, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "leakageSimulatorAESFurious.pyx":672
+        /* "leakageSimulatorAESFurious.pyx":673
  *                 # print "Now adding noise to a key var\nNoisyBits: {}\nMean: {}\nso {} + {} = {}".format(noisy_bits, noise, value, noise, temp)
  * 
  *             if print_out:             # <<<<<<<<<<<<<<
@@ -17854,7 +17854,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       }
 
-      /* "leakageSimulatorAESFurious.pyx":676
+      /* "leakageSimulatorAESFurious.pyx":677
  * 
  * 
  *             if threshold is not None and (abs(noise) > threshold):             # <<<<<<<<<<<<<<
@@ -17868,17 +17868,17 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_1 = __pyx_t_16;
         goto __pyx_L14_bool_binop_done;
       }
-      __pyx_t_4 = PyFloat_FromDouble(fabsf(__pyx_v_noise)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 676, __pyx_L5_error)
+      __pyx_t_4 = PyFloat_FromDouble(fabsf(__pyx_v_noise)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 677, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_13 = PyObject_RichCompare(__pyx_t_4, __pyx_v_threshold, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 676, __pyx_L5_error)
+      __pyx_t_13 = PyObject_RichCompare(__pyx_t_4, __pyx_v_threshold, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 677, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 676, __pyx_L5_error)
+      __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 677, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __pyx_t_1 = __pyx_t_16;
       __pyx_L14_bool_binop_done:;
       if (__pyx_t_1) {
 
-        /* "leakageSimulatorAESFurious.pyx":677
+        /* "leakageSimulatorAESFurious.pyx":678
  * 
  *             if threshold is not None and (abs(noise) > threshold):
  *                 return -1             # <<<<<<<<<<<<<<
@@ -17890,7 +17890,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_r = __pyx_int_neg_1;
         goto __pyx_L9_try_return;
 
-        /* "leakageSimulatorAESFurious.pyx":676
+        /* "leakageSimulatorAESFurious.pyx":677
  * 
  * 
  *             if threshold is not None and (abs(noise) > threshold):             # <<<<<<<<<<<<<<
@@ -17899,7 +17899,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  */
       }
 
-      /* "leakageSimulatorAESFurious.pyx":682
+      /* "leakageSimulatorAESFurious.pyx":683
  *             #     print "NOISE GREATER THAN 1: Value = {}, Noise = {}, New Value = {}".format(value, noise, temp)
  * 
  *             return temp             # <<<<<<<<<<<<<<
@@ -17907,13 +17907,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *         except ValueError:
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_13 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 682, __pyx_L5_error)
+      __pyx_t_13 = PyFloat_FromDouble(__pyx_v_temp); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 683, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_13);
       __pyx_r = __pyx_t_13;
       __pyx_t_13 = 0;
       goto __pyx_L9_try_return;
 
-      /* "leakageSimulatorAESFurious.pyx":655
+      /* "leakageSimulatorAESFurious.pyx":656
  *         if sigma <= 0:
  *             return value
  *         try:             # <<<<<<<<<<<<<<
@@ -17931,7 +17931,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":684
+    /* "leakageSimulatorAESFurious.pyx":685
  *             return temp
  * 
  *         except ValueError:             # <<<<<<<<<<<<<<
@@ -17941,25 +17941,25 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     __pyx_t_14 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError);
     if (__pyx_t_14) {
       __Pyx_AddTraceback("leakageSimulatorAESFurious.LeakageSimulatorAESFurious.affect_elmo_value_with_noise", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_13, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 684, __pyx_L7_except_error)
+      if (__Pyx_GetException(&__pyx_t_13, &__pyx_t_4, &__pyx_t_5) < 0) __PYX_ERR(0, 685, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GOTREF(__pyx_t_5);
 
-      /* "leakageSimulatorAESFurious.pyx":685
+      /* "leakageSimulatorAESFurious.pyx":686
  * 
  *         except ValueError:
  *             print "Error with affect_elmo_value_with_noise: value = {}, sigma = {}, category = {}, threshold = {}".format(value, sigma, category, threshold)             # <<<<<<<<<<<<<<
  *             raise
  * 
  */
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Error_with_affect_elmo_value_wit, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Error_with_affect_elmo_value_wit, __pyx_n_s_format); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 686, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_11 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+      __pyx_t_11 = PyFloat_FromDouble(__pyx_v_value); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 686, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+      __pyx_t_2 = PyFloat_FromDouble(__pyx_v_sigma); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 686, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_category); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+      __pyx_t_12 = __Pyx_PyInt_From_int(__pyx_v_category); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 686, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_17 = NULL;
       __pyx_t_14 = 0;
@@ -17976,7 +17976,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[5] = {__pyx_t_17, __pyx_t_11, __pyx_t_2, __pyx_t_12, __pyx_v_threshold};
-        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_14, 4+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_14, 4+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 686, __pyx_L7_except_error)
         __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -17987,7 +17987,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[5] = {__pyx_t_17, __pyx_t_11, __pyx_t_2, __pyx_t_12, __pyx_v_threshold};
-        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_14, 4+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_14, 4+__pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 686, __pyx_L7_except_error)
         __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
@@ -17996,7 +17996,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       } else
       #endif
       {
-        __pyx_t_18 = PyTuple_New(4+__pyx_t_14); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+        __pyx_t_18 = PyTuple_New(4+__pyx_t_14); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 686, __pyx_L7_except_error)
         __Pyx_GOTREF(__pyx_t_18);
         if (__pyx_t_17) {
           __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_17); __pyx_t_17 = NULL;
@@ -18013,15 +18013,15 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
         __pyx_t_11 = 0;
         __pyx_t_2 = 0;
         __pyx_t_12 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 685, __pyx_L7_except_error)
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 686, __pyx_L7_except_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       }
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 685, __pyx_L7_except_error)
+      if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 686, __pyx_L7_except_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "leakageSimulatorAESFurious.pyx":686
+      /* "leakageSimulatorAESFurious.pyx":687
  *         except ValueError:
  *             print "Error with affect_elmo_value_with_noise: value = {}, sigma = {}, category = {}, threshold = {}".format(value, sigma, category, threshold)
  *             raise             # <<<<<<<<<<<<<<
@@ -18033,12 +18033,12 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
       __Pyx_XGIVEREF(__pyx_t_5);
       __Pyx_ErrRestoreWithState(__pyx_t_13, __pyx_t_4, __pyx_t_5);
       __pyx_t_13 = 0; __pyx_t_4 = 0; __pyx_t_5 = 0; 
-      __PYX_ERR(0, 686, __pyx_L7_except_error)
+      __PYX_ERR(0, 687, __pyx_L7_except_error)
     }
     goto __pyx_L7_except_error;
     __pyx_L7_except_error:;
 
-    /* "leakageSimulatorAESFurious.pyx":655
+    /* "leakageSimulatorAESFurious.pyx":656
  *         if sigma <= 0:
  *             return value
  *         try:             # <<<<<<<<<<<<<<
@@ -18058,7 +18058,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
     goto __pyx_L0;
   }
 
-  /* "leakageSimulatorAESFurious.pyx":647
+  /* "leakageSimulatorAESFurious.pyx":648
  *             raise
  * 
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):             # <<<<<<<<<<<<<<
@@ -18086,7 +18086,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":688
+/* "leakageSimulatorAESFurious.pyx":689
  *             raise
  * 
  *     def get_leakage_dictionary(self):             # <<<<<<<<<<<<<<
@@ -18114,7 +18114,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("get_leakage_dictionary", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":689
+  /* "leakageSimulatorAESFurious.pyx":690
  * 
  *     def get_leakage_dictionary(self):
  *         return self.simulated_dictionary             # <<<<<<<<<<<<<<
@@ -18122,13 +18122,13 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
  *     def load_simulation(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 689, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_simulated_dictionary); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 690, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "leakageSimulatorAESFurious.pyx":688
+  /* "leakageSimulatorAESFurious.pyx":689
  *             raise
  * 
  *     def get_leakage_dictionary(self):             # <<<<<<<<<<<<<<
@@ -18147,7 +18147,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   return __pyx_r;
 }
 
-/* "leakageSimulatorAESFurious.pyx":691
+/* "leakageSimulatorAESFurious.pyx":692
  *         return self.simulated_dictionary
  * 
  *     def load_simulation(self):             # <<<<<<<<<<<<<<
@@ -18177,22 +18177,22 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("load_simulation", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":692
+  /* "leakageSimulatorAESFurious.pyx":693
  * 
  *     def load_simulation(self):
  *         dictionary = load_leakage('test_dict')             # <<<<<<<<<<<<<<
  *         return dictionary
  * 
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_load_leakage); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_load_leakage); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_dictionary = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":693
+  /* "leakageSimulatorAESFurious.pyx":694
  *     def load_simulation(self):
  *         dictionary = load_leakage('test_dict')
  *         return dictionary             # <<<<<<<<<<<<<<
@@ -18204,7 +18204,7 @@ static PyObject *__pyx_pf_26leakageSimulatorAESFurious_26LeakageSimulatorAESFuri
   __pyx_r = __pyx_v_dictionary;
   goto __pyx_L0;
 
-  /* "leakageSimulatorAESFurious.pyx":691
+  /* "leakageSimulatorAESFurious.pyx":692
  *         return self.simulated_dictionary
  * 
  *     def load_simulation(self):             # <<<<<<<<<<<<<<
@@ -21330,12 +21330,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 32, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 70, __pyx_L1_error)
-  __pyx_builtin_eval = __Pyx_GetBuiltinName(__pyx_n_s_eval); if (!__pyx_builtin_eval) __PYX_ERR(0, 132, __pyx_L1_error)
-  __pyx_builtin_SyntaxError = __Pyx_GetBuiltinName(__pyx_n_s_SyntaxError); if (!__pyx_builtin_SyntaxError) __PYX_ERR(0, 133, __pyx_L1_error)
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 288, __pyx_L1_error)
-  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) __PYX_ERR(0, 376, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 618, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_builtin_eval = __Pyx_GetBuiltinName(__pyx_n_s_eval); if (!__pyx_builtin_eval) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_builtin_SyntaxError = __Pyx_GetBuiltinName(__pyx_n_s_SyntaxError); if (!__pyx_builtin_SyntaxError) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 289, __pyx_L1_error)
+  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) __PYX_ERR(0, 377, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 619, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 823, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1013, __pyx_L1_error)
   return 0;
@@ -21347,180 +21347,180 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "leakageSimulatorAESFurious.pyx":121
+  /* "leakageSimulatorAESFurious.pyx":122
  *             # Get Plaintext Bytes
  *             if read_plaintexts:
  *                 p_backup = np.zeros(16)             # <<<<<<<<<<<<<<
  *                 try:
  *                     for i in range(1, 17):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_int_16); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_int_16); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "leakageSimulatorAESFurious.pyx":208
+  /* "leakageSimulatorAESFurious.pyx":209
  * 
  *             if print_all:
  *                 print "Key:         {}".format(k[:16])             # <<<<<<<<<<<<<<
  *                 print "Plaintext:   {}".format(p[:16])
  *                 print "Ciphertext:  {}".format(p[-16:])
  */
-  __pyx_slice__2 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_slice__2 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 209, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
 
-  /* "leakageSimulatorAESFurious.pyx":209
+  /* "leakageSimulatorAESFurious.pyx":210
  *             if print_all:
  *                 print "Key:         {}".format(k[:16])
  *                 print "Plaintext:   {}".format(p[:16])             # <<<<<<<<<<<<<<
  *                 print "Ciphertext:  {}".format(p[-16:])
  *                 print_new_line()
  */
-  __pyx_slice__3 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 209, __pyx_L1_error)
+  __pyx_slice__3 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__3)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__3);
   __Pyx_GIVEREF(__pyx_slice__3);
 
-  /* "leakageSimulatorAESFurious.pyx":210
+  /* "leakageSimulatorAESFurious.pyx":211
  *                 print "Key:         {}".format(k[:16])
  *                 print "Plaintext:   {}".format(p[:16])
  *                 print "Ciphertext:  {}".format(p[-16:])             # <<<<<<<<<<<<<<
  *                 print_new_line()
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  */
-  __pyx_slice__4 = PySlice_New(__pyx_int_neg_16, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_slice__4 = PySlice_New(__pyx_int_neg_16, Py_None, Py_None); if (unlikely(!__pyx_slice__4)) __PYX_ERR(0, 211, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__4);
   __Pyx_GIVEREF(__pyx_slice__4);
 
-  /* "leakageSimulatorAESFurious.pyx":212
+  /* "leakageSimulatorAESFurious.pyx":213
  *                 print "Ciphertext:  {}".format(p[-16:])
  *                 print_new_line()
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))             # <<<<<<<<<<<<<<
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))
  *                 print "Ciphertext:  {}".format(get_list_as_hex_string(p[-16:]))
  */
-  __pyx_slice__5 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_slice__5 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__5)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__5);
   __Pyx_GIVEREF(__pyx_slice__5);
 
-  /* "leakageSimulatorAESFurious.pyx":213
+  /* "leakageSimulatorAESFurious.pyx":214
  *                 print_new_line()
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))             # <<<<<<<<<<<<<<
  *                 print "Ciphertext:  {}".format(get_list_as_hex_string(p[-16:]))
  *                 # print "expected: {}".format(hexStringToIntArray('3ad77bb40d7a3660a89ecaf32466ef97'))
  */
-  __pyx_slice__6 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_slice__6 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__6)) __PYX_ERR(0, 214, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__6);
   __Pyx_GIVEREF(__pyx_slice__6);
 
-  /* "leakageSimulatorAESFurious.pyx":214
+  /* "leakageSimulatorAESFurious.pyx":215
  *                 print "Key:         {}".format(get_list_as_hex_string(k[:16]))
  *                 print "Plaintext:   {}".format(get_list_as_hex_string(p[:16]))
  *                 print "Ciphertext:  {}".format(get_list_as_hex_string(p[-16:]))             # <<<<<<<<<<<<<<
  *                 # print "expected: {}".format(hexStringToIntArray('3ad77bb40d7a3660a89ecaf32466ef97'))
  * 
  */
-  __pyx_slice__7 = PySlice_New(__pyx_int_neg_16, Py_None, Py_None); if (unlikely(!__pyx_slice__7)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_slice__7 = PySlice_New(__pyx_int_neg_16, Py_None, Py_None); if (unlikely(!__pyx_slice__7)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__7);
   __Pyx_GIVEREF(__pyx_slice__7);
 
-  /* "leakageSimulatorAESFurious.pyx":231
+  /* "leakageSimulatorAESFurious.pyx":232
  *                 p_ham = linear_get_elmo_values(p, 'p')
  * 
  *             p_ham[:16] = p[:16]             # <<<<<<<<<<<<<<
  *             dictionary['p'] [trace]     = p_ham
  * 
  */
-  __pyx_slice__8 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__8)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_slice__8 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__8)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__8);
   __Pyx_GIVEREF(__pyx_slice__8);
-  __pyx_slice__9 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 231, __pyx_L1_error)
+  __pyx_slice__9 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__9)) __PYX_ERR(0, 232, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__9);
   __Pyx_GIVEREF(__pyx_slice__9);
 
-  /* "leakageSimulatorAESFurious.pyx":433
+  /* "leakageSimulatorAESFurious.pyx":434
  *                 p_backup = [0] * 16
  *                 try:
  *                     for i in range(1, 17):             # <<<<<<<<<<<<<<
  *                         if local_leakage:
  *                             if hw_leakage_model:
  */
-  __pyx_tuple__10 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_17); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 433, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(2, __pyx_int_1, __pyx_int_17); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 434, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "leakageSimulatorAESFurious.pyx":475
+  /* "leakageSimulatorAESFurious.pyx":476
  * 
  *             # Replace first 16 bytes of p
  *             hw_leaks['p'][:16] = p_backup             # <<<<<<<<<<<<<<
  * 
  *             # Take last 16 bytes of t and append to p
  */
-  __pyx_slice__11 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 475, __pyx_L1_error)
+  __pyx_slice__11 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__11)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__11);
   __Pyx_GIVEREF(__pyx_slice__11);
 
-  /* "leakageSimulatorAESFurious.pyx":478
+  /* "leakageSimulatorAESFurious.pyx":479
  * 
  *             # Take last 16 bytes of t and append to p
  *             last_t = hw_leaks['t'][-16:]             # <<<<<<<<<<<<<<
  *             hw_leaks['t'] = hw_leaks['t'][:-16]
  *             hw_leaks['p'].extend(last_t)
  */
-  __pyx_slice__12 = PySlice_New(__pyx_int_neg_16, Py_None, Py_None); if (unlikely(!__pyx_slice__12)) __PYX_ERR(0, 478, __pyx_L1_error)
+  __pyx_slice__12 = PySlice_New(__pyx_int_neg_16, Py_None, Py_None); if (unlikely(!__pyx_slice__12)) __PYX_ERR(0, 479, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__12);
   __Pyx_GIVEREF(__pyx_slice__12);
 
-  /* "leakageSimulatorAESFurious.pyx":479
+  /* "leakageSimulatorAESFurious.pyx":480
  *             # Take last 16 bytes of t and append to p
  *             last_t = hw_leaks['t'][-16:]
  *             hw_leaks['t'] = hw_leaks['t'][:-16]             # <<<<<<<<<<<<<<
  *             hw_leaks['p'].extend(last_t)
  * 
  */
-  __pyx_slice__13 = PySlice_New(Py_None, __pyx_int_neg_16, Py_None); if (unlikely(!__pyx_slice__13)) __PYX_ERR(0, 479, __pyx_L1_error)
+  __pyx_slice__13 = PySlice_New(Py_None, __pyx_int_neg_16, Py_None); if (unlikely(!__pyx_slice__13)) __PYX_ERR(0, 480, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__13);
   __Pyx_GIVEREF(__pyx_slice__13);
 
-  /* "leakageSimulatorAESFurious.pyx":574
+  /* "leakageSimulatorAESFurious.pyx":575
  * 
  *                     if variable is 'p':
  *                         dictionary[variable][trace] = np.append(dictionary[variable][trace][:16][:], self.affect_array_with_noise(dictionary[variable][trace][16:][:], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr))             # <<<<<<<<<<<<<<
  *                     else:
  *                         # print "* Noise for Variable {} Trace {} *".format(variable, trace)
  */
-  __pyx_slice__14 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__14)) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_slice__14 = PySlice_New(Py_None, __pyx_int_16, Py_None); if (unlikely(!__pyx_slice__14)) __PYX_ERR(0, 575, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__14);
   __Pyx_GIVEREF(__pyx_slice__14);
-  __pyx_slice__15 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__15)) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_slice__15 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__15)) __PYX_ERR(0, 575, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__15);
   __Pyx_GIVEREF(__pyx_slice__15);
-  __pyx_slice__16 = PySlice_New(__pyx_int_16, Py_None, Py_None); if (unlikely(!__pyx_slice__16)) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_slice__16 = PySlice_New(__pyx_int_16, Py_None, Py_None); if (unlikely(!__pyx_slice__16)) __PYX_ERR(0, 575, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__16);
   __Pyx_GIVEREF(__pyx_slice__16);
-  __pyx_slice__17 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__17)) __PYX_ERR(0, 574, __pyx_L1_error)
+  __pyx_slice__17 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__17)) __PYX_ERR(0, 575, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__17);
   __Pyx_GIVEREF(__pyx_slice__17);
 
-  /* "leakageSimulatorAESFurious.pyx":578
+  /* "leakageSimulatorAESFurious.pyx":579
  *                         # print "* Noise for Variable {} Trace {} *".format(variable, trace)
  *                         # print "Before:\n{}\n".format(dictionary[variable][trace])
  *                         dictionary[variable][trace] = self.affect_array_with_noise(dictionary[variable][trace][:], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), print_out = print_out, bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr)             # <<<<<<<<<<<<<<
  *                         # print "After:\n{}\n\n".format(dictionary[variable][trace])
  * 
  */
-  __pyx_slice__18 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__18)) __PYX_ERR(0, 578, __pyx_L1_error)
+  __pyx_slice__18 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__18)) __PYX_ERR(0, 579, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__18);
   __Pyx_GIVEREF(__pyx_slice__18);
 
-  /* "leakageSimulatorAESFurious.pyx":692
+  /* "leakageSimulatorAESFurious.pyx":693
  * 
  *     def load_simulation(self):
  *         dictionary = load_leakage('test_dict')             # <<<<<<<<<<<<<<
  *         return dictionary
  * 
  */
-  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_n_s_test_dict); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 692, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_n_s_test_dict); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 693, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
@@ -21699,131 +21699,131 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__42);
   __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(18, 0, 39, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__42, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_simulate, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(0, 42, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":276
+  /* "leakageSimulatorAESFurious.pyx":277
  * 
  * 
  *     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
-  __pyx_tuple__44 = PyTuple_Pack(35, __pyx_n_s_self, __pyx_n_s_snr, __pyx_n_s_traces, __pyx_n_s_offset, __pyx_n_s_read_plaintexts, __pyx_n_s_badly_leaking_nodes, __pyx_n_s_badly_leaking_traces, __pyx_n_s_badly_leaking_snr, __pyx_n_s_no_noise_nodes, __pyx_n_s_threshold, __pyx_n_s_local_leakage, __pyx_n_s_affect_with_noise, __pyx_n_s_hw_leakage_model, __pyx_n_s_f, __pyx_n_s_triggers, __pyx_n_s_count, __pyx_n_s_line, __pyx_n_s_dictionary, __pyx_n_s_trace, __pyx_n_s_trace_path, __pyx_n_s_hw_leaks, __pyx_n_s_t, __pyx_n_s_p_backup, __pyx_n_s_i, __pyx_n_s_e, __pyx_n_s_standard_swap, __pyx_n_s_first_only_swap, __pyx_n_s_mix_column_swap4, __pyx_n_s_mix_column_swap3, __pyx_n_s_swap_node, __pyx_n_s_first_only, __pyx_n_s_last_t, __pyx_n_s_key_variables, __pyx_n_s_variable, __pyx_n_s_l); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(35, __pyx_n_s_self, __pyx_n_s_snr, __pyx_n_s_traces, __pyx_n_s_offset, __pyx_n_s_read_plaintexts, __pyx_n_s_badly_leaking_nodes, __pyx_n_s_badly_leaking_traces, __pyx_n_s_badly_leaking_snr, __pyx_n_s_no_noise_nodes, __pyx_n_s_threshold, __pyx_n_s_local_leakage, __pyx_n_s_affect_with_noise, __pyx_n_s_hw_leakage_model, __pyx_n_s_f, __pyx_n_s_triggers, __pyx_n_s_count, __pyx_n_s_line, __pyx_n_s_dictionary, __pyx_n_s_trace, __pyx_n_s_trace_path, __pyx_n_s_hw_leaks, __pyx_n_s_t, __pyx_n_s_p_backup, __pyx_n_s_i, __pyx_n_s_e, __pyx_n_s_standard_swap, __pyx_n_s_first_only_swap, __pyx_n_s_mix_column_swap4, __pyx_n_s_mix_column_swap3, __pyx_n_s_swap_node, __pyx_n_s_first_only, __pyx_n_s_last_t, __pyx_n_s_key_variables, __pyx_n_s_variable, __pyx_n_s_l); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(0, 277, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__44);
   __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(13, 0, 35, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_elmo_simulation, 276, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 276, __pyx_L1_error)
-  __pyx_tuple__46 = PyTuple_Pack(12, ((PyObject*)__pyx_float_32_0), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_0), ((PyObject *)Py_True), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_0_1), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)Py_True), ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(13, 0, 35, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_elmo_simulation, 277, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(0, 277, __pyx_L1_error)
+  __pyx_tuple__46 = PyTuple_Pack(12, ((PyObject*)__pyx_float_32_0), ((PyObject *)__pyx_int_1), ((PyObject *)__pyx_int_0), ((PyObject *)Py_True), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_0_1), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)Py_True), ((PyObject *)Py_True)); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(0, 277, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
 
-  /* "leakageSimulatorAESFurious.pyx":521
+  /* "leakageSimulatorAESFurious.pyx":522
  * 
  * 
  *     def save_simulation(self):             # <<<<<<<<<<<<<<
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
  */
-  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_tuple__47 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__47)) __PYX_ERR(0, 522, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__47);
   __Pyx_GIVEREF(__pyx_tuple__47);
-  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_save_simulation, 521, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_codeobj__48 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__47, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_save_simulation, 522, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__48)) __PYX_ERR(0, 522, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":524
+  /* "leakageSimulatorAESFurious.pyx":525
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
-  __pyx_tuple__49 = PyTuple_Pack(16, __pyx_n_s_self, __pyx_n_s_snr, __pyx_n_s_badly_leaking_nodes, __pyx_n_s_badly_leaking_traces, __pyx_n_s_badly_leaking_snr, __pyx_n_s_no_noise_nodes, __pyx_n_s_threshold, __pyx_n_s_hw_leakage_model, __pyx_n_s_average_key_nodes, __pyx_n_s_dictionary, __pyx_n_s_traces, __pyx_n_s_trace, __pyx_n_s_variables, __pyx_n_s_print_out, __pyx_n_s_variable, __pyx_n_s_badly_leaking_node); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 524, __pyx_L1_error)
+  __pyx_tuple__49 = PyTuple_Pack(16, __pyx_n_s_self, __pyx_n_s_snr, __pyx_n_s_badly_leaking_nodes, __pyx_n_s_badly_leaking_traces, __pyx_n_s_badly_leaking_snr, __pyx_n_s_no_noise_nodes, __pyx_n_s_threshold, __pyx_n_s_hw_leakage_model, __pyx_n_s_average_key_nodes, __pyx_n_s_dictionary, __pyx_n_s_traces, __pyx_n_s_trace, __pyx_n_s_variables, __pyx_n_s_print_out, __pyx_n_s_variable, __pyx_n_s_badly_leaking_node); if (unlikely(!__pyx_tuple__49)) __PYX_ERR(0, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__49);
   __Pyx_GIVEREF(__pyx_tuple__49);
-  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(9, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_dictionary_with_noise, 524, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 524, __pyx_L1_error)
-  __pyx_tuple__51 = PyTuple_Pack(7, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_0_1), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 524, __pyx_L1_error)
+  __pyx_codeobj__50 = (PyObject*)__Pyx_PyCode_New(9, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__49, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_dictionary_with_noise, 525, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__50)) __PYX_ERR(0, 525, __pyx_L1_error)
+  __pyx_tuple__51 = PyTuple_Pack(7, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject*)__pyx_float_0_1), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False)); if (unlikely(!__pyx_tuple__51)) __PYX_ERR(0, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__51);
   __Pyx_GIVEREF(__pyx_tuple__51);
 
-  /* "leakageSimulatorAESFurious.pyx":605
+  /* "leakageSimulatorAESFurious.pyx":606
  *         self.simulated_dictionary = dictionary
  * 
  *     def affect_key_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, traces = 1):             # <<<<<<<<<<<<<<
  *         # Average out noise and apply
  *         # cdef DTYPE_t i
  */
-  __pyx_tuple__52 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_array, __pyx_n_s_snr, __pyx_n_s_threshold, __pyx_n_s_hw_leakage_model, __pyx_n_s_category, __pyx_n_s_print_out, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_traces, __pyx_n_s_a, __pyx_n_s_i); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_tuple__52 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_array, __pyx_n_s_snr, __pyx_n_s_threshold, __pyx_n_s_hw_leakage_model, __pyx_n_s_category, __pyx_n_s_print_out, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_traces, __pyx_n_s_a, __pyx_n_s_i); if (unlikely(!__pyx_tuple__52)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__52);
   __Pyx_GIVEREF(__pyx_tuple__52);
-  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(10, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_key_array_with_noise, 605, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 605, __pyx_L1_error)
-  __pyx_tuple__54 = PyTuple_Pack(7, ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)__pyx_int_1), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(10, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_key_array_with_noise, 606, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 606, __pyx_L1_error)
+  __pyx_tuple__54 = PyTuple_Pack(7, ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)__pyx_int_1), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__54);
   __Pyx_GIVEREF(__pyx_tuple__54);
 
-  /* "leakageSimulatorAESFurious.pyx":614
+  /* "leakageSimulatorAESFurious.pyx":615
  *         # return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr, average = traces) for i in array])
  * 
  *     def affect_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
  *         # cdef DTYPE_t i
  *         if hw_leakage_model:
  */
-  __pyx_tuple__55 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_array, __pyx_n_s_snr, __pyx_n_s_threshold, __pyx_n_s_hw_leakage_model, __pyx_n_s_category, __pyx_n_s_print_out, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_i); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(0, 614, __pyx_L1_error)
+  __pyx_tuple__55 = PyTuple_Pack(10, __pyx_n_s_self, __pyx_n_s_array, __pyx_n_s_snr, __pyx_n_s_threshold, __pyx_n_s_hw_leakage_model, __pyx_n_s_category, __pyx_n_s_print_out, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_i); if (unlikely(!__pyx_tuple__55)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__55);
   __Pyx_GIVEREF(__pyx_tuple__55);
-  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(9, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_array_with_noise, 614, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 614, __pyx_L1_error)
-  __pyx_tuple__57 = PyTuple_Pack(6, ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)__pyx_int_1), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1)); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(0, 614, __pyx_L1_error)
+  __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(9, 0, 10, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__55, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_array_with_noise, 615, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_tuple__57 = PyTuple_Pack(6, ((PyObject *)Py_None), ((PyObject *)Py_True), ((PyObject *)__pyx_int_1), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1)); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__57);
   __Pyx_GIVEREF(__pyx_tuple__57);
 
-  /* "leakageSimulatorAESFurious.pyx":623
+  /* "leakageSimulatorAESFurious.pyx":624
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])
  * 
  *     def affect_hw_value_with_noise(self, int value, float snr, threshold = None, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr)
  */
-  __pyx_tuple__58 = PyTuple_Pack(9, __pyx_n_s_self, __pyx_n_s_value, __pyx_n_s_snr, __pyx_n_s_threshold, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_noise, __pyx_n_s_temp, __pyx_n_s_sigma); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_tuple__58 = PyTuple_Pack(9, __pyx_n_s_self, __pyx_n_s_value, __pyx_n_s_snr, __pyx_n_s_threshold, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_noise, __pyx_n_s_temp, __pyx_n_s_sigma); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__58);
   __Pyx_GIVEREF(__pyx_tuple__58);
-  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(6, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_hw_value_with_noise, 623, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 623, __pyx_L1_error)
-  __pyx_tuple__60 = PyTuple_Pack(3, ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1)); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(6, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_hw_value_with_noise, 624, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 624, __pyx_L1_error)
+  __pyx_tuple__60 = PyTuple_Pack(3, ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1)); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__60);
   __Pyx_GIVEREF(__pyx_tuple__60);
 
-  /* "leakageSimulatorAESFurious.pyx":647
+  /* "leakageSimulatorAESFurious.pyx":648
  *             raise
  * 
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):             # <<<<<<<<<<<<<<
  *         if category > 4:
  *             print "ERROR: Category must be between 0 and 4, cannot be {}!".format(category)
  */
-  __pyx_tuple__61 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_value, __pyx_n_s_snr, __pyx_n_s_category, __pyx_n_s_threshold, __pyx_n_s_print_out, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_average, __pyx_n_s_noise, __pyx_n_s_temp, __pyx_n_s_sigma); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_tuple__61 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_value, __pyx_n_s_snr, __pyx_n_s_category, __pyx_n_s_threshold, __pyx_n_s_print_out, __pyx_n_s_bad_leak, __pyx_n_s_badly_leaking_snr, __pyx_n_s_average, __pyx_n_s_noise, __pyx_n_s_temp, __pyx_n_s_sigma); if (unlikely(!__pyx_tuple__61)) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__61);
   __Pyx_GIVEREF(__pyx_tuple__61);
-  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(9, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_elmo_value_with_noise, 647, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(0, 647, __pyx_L1_error)
-  __pyx_tuple__63 = PyTuple_Pack(5, ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_codeobj__62 = (PyObject*)__Pyx_PyCode_New(9, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__61, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_affect_elmo_value_with_noise, 648, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__62)) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_tuple__63 = PyTuple_Pack(5, ((PyObject *)Py_None), ((PyObject *)Py_False), ((PyObject *)Py_False), ((PyObject*)__pyx_float_0_1), ((PyObject *)__pyx_int_1)); if (unlikely(!__pyx_tuple__63)) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__63);
   __Pyx_GIVEREF(__pyx_tuple__63);
 
-  /* "leakageSimulatorAESFurious.pyx":688
+  /* "leakageSimulatorAESFurious.pyx":689
  *             raise
  * 
  *     def get_leakage_dictionary(self):             # <<<<<<<<<<<<<<
  *         return self.simulated_dictionary
  * 
  */
-  __pyx_tuple__64 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_tuple__64 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__64)) __PYX_ERR(0, 689, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__64);
   __Pyx_GIVEREF(__pyx_tuple__64);
-  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_get_leakage_dictionary, 688, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_codeobj__65 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__64, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_get_leakage_dictionary, 689, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__65)) __PYX_ERR(0, 689, __pyx_L1_error)
 
-  /* "leakageSimulatorAESFurious.pyx":691
+  /* "leakageSimulatorAESFurious.pyx":692
  *         return self.simulated_dictionary
  * 
  *     def load_simulation(self):             # <<<<<<<<<<<<<<
  *         dictionary = load_leakage('test_dict')
  *         return dictionary
  */
-  __pyx_tuple__66 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_dictionary); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_tuple__66 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_dictionary); if (unlikely(!__pyx_tuple__66)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__66);
   __Pyx_GIVEREF(__pyx_tuple__66);
-  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_load_simulation, 691, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_leakag, __pyx_n_s_load_simulation, 692, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -22343,118 +22343,118 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
   if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_simulate, __pyx_t_8) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":276
+  /* "leakageSimulatorAESFurious.pyx":277
  * 
  * 
  *     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_13elmo_simulation, 0, __pyx_n_s_LeakageSimulatorAESFurious_elmo, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 276, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_13elmo_simulation, 0, __pyx_n_s_LeakageSimulatorAESFurious_elmo, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 277, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_8, __pyx_tuple__46);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_elmo_simulation, __pyx_t_8) < 0) __PYX_ERR(0, 276, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_elmo_simulation, __pyx_t_8) < 0) __PYX_ERR(0, 277, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":521
+  /* "leakageSimulatorAESFurious.pyx":522
  * 
  * 
  *     def save_simulation(self):             # <<<<<<<<<<<<<<
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_15save_simulation, 0, __pyx_n_s_LeakageSimulatorAESFurious_save, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 521, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_15save_simulation, 0, __pyx_n_s_LeakageSimulatorAESFurious_save, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__48)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 522, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_save_simulation, __pyx_t_8) < 0) __PYX_ERR(0, 521, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_save_simulation, __pyx_t_8) < 0) __PYX_ERR(0, 522, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":524
+  /* "leakageSimulatorAESFurious.pyx":525
  *         save_leakage(self.simulated_dictionary, 'furious_dict')
  * 
  *     def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):             # <<<<<<<<<<<<<<
  * 
  *         if badly_leaking_nodes is None:
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_17affect_dictionary_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 524, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_17affect_dictionary_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__50)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 525, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_8, __pyx_tuple__51);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_dictionary_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 524, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_dictionary_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 525, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":605
+  /* "leakageSimulatorAESFurious.pyx":606
  *         self.simulated_dictionary = dictionary
  * 
  *     def affect_key_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, traces = 1):             # <<<<<<<<<<<<<<
  *         # Average out noise and apply
  *         # cdef DTYPE_t i
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_19affect_key_array_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_2, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_19affect_key_array_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_2, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__53)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_8, __pyx_tuple__54);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_key_array_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 605, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_key_array_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 606, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":614
+  /* "leakageSimulatorAESFurious.pyx":615
  *         # return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr, average = traces) for i in array])
  * 
  *     def affect_array_with_noise(self, array, float snr, threshold = None, hw_leakage_model = True, category = 1, print_out = False, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
  *         # cdef DTYPE_t i
  *         if hw_leakage_model:
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_21affect_array_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_3, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 614, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_21affect_array_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_3, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__56)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_8, __pyx_tuple__57);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_array_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 614, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_array_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 615, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":623
+  /* "leakageSimulatorAESFurious.pyx":624
  *         return np.array([self.affect_elmo_value_with_noise(i, snr, category = category, threshold = threshold, print_out = print_out, bad_leak = bad_leak, badly_leaking_snr = badly_leaking_snr) for i in array])
  * 
  *     def affect_hw_value_with_noise(self, int value, float snr, threshold = None, bad_leak = False, badly_leaking_snr = 0.1):             # <<<<<<<<<<<<<<
  *         cdef float noise, temp, sigma
  *         sigma = get_sigma(snr)
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_23affect_hw_value_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_4, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 623, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_23affect_hw_value_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_4, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_8, __pyx_tuple__60);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_hw_value_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 623, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_hw_value_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 624, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":647
+  /* "leakageSimulatorAESFurious.pyx":648
  *             raise
  * 
  *     def affect_elmo_value_with_noise(self, float value, float snr, int category, threshold = None, print_out = False, bad_leak = False, badly_leaking_snr = 0.1, average = 1):             # <<<<<<<<<<<<<<
  *         if category > 4:
  *             print "ERROR: Category must be between 0 and 4, cannot be {}!".format(category)
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_25affect_elmo_value_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_5, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__62)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 647, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_25affect_elmo_value_with_noise, 0, __pyx_n_s_LeakageSimulatorAESFurious_affec_5, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__62)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_8, __pyx_tuple__63);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_elmo_value_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 647, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_affect_elmo_value_with_noise, __pyx_t_8) < 0) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":688
+  /* "leakageSimulatorAESFurious.pyx":689
  *             raise
  * 
  *     def get_leakage_dictionary(self):             # <<<<<<<<<<<<<<
  *         return self.simulated_dictionary
  * 
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_27get_leakage_dictionary, 0, __pyx_n_s_LeakageSimulatorAESFurious_get_l, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 688, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_27get_leakage_dictionary, 0, __pyx_n_s_LeakageSimulatorAESFurious_get_l, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__65)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 689, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_get_leakage_dictionary, __pyx_t_8) < 0) __PYX_ERR(0, 688, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_get_leakage_dictionary, __pyx_t_8) < 0) __PYX_ERR(0, 689, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":691
+  /* "leakageSimulatorAESFurious.pyx":692
  *         return self.simulated_dictionary
  * 
  *     def load_simulation(self):             # <<<<<<<<<<<<<<
  *         dictionary = load_leakage('test_dict')
  *         return dictionary
  */
-  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_29load_simulation, 0, __pyx_n_s_LeakageSimulatorAESFurious_load, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 691, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_NewEx(&__pyx_mdef_26leakageSimulatorAESFurious_26LeakageSimulatorAESFurious_29load_simulation, 0, __pyx_n_s_LeakageSimulatorAESFurious_load, NULL, __pyx_n_s_leakageSimulatorAESFurious, __pyx_d, ((PyObject *)__pyx_codeobj__67)); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_load_simulation, __pyx_t_8) < 0) __PYX_ERR(0, 691, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_1, __pyx_n_s_load_simulation, __pyx_t_8) < 0) __PYX_ERR(0, 692, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
   /* "leakageSimulatorAESFurious.pyx":14
@@ -22470,27 +22470,27 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "leakageSimulatorAESFurious.pyx":697
+  /* "leakageSimulatorAESFurious.pyx":698
  * 
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
  * 
  *     # TEST
  */
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 698, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 697, __pyx_L1_error)
+  __pyx_t_10 = (__Pyx_PyString_Equals(__pyx_t_1, __pyx_n_s_main, Py_EQ)); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 698, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_10) {
 
-    /* "leakageSimulatorAESFurious.pyx":700
+    /* "leakageSimulatorAESFurious.pyx":701
  * 
  *     # TEST
  *     test_key = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]             # <<<<<<<<<<<<<<
  *     test_plaintext = [105, 216, 224, 59, 183, 59, 85, 189, 197, 89, 45, 141, 228, 36, 137, 228]
  * 
  */
-    __pyx_t_1 = PyList_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 700, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_int_84);
     __Pyx_GIVEREF(__pyx_int_84);
@@ -22540,17 +22540,17 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
     __Pyx_INCREF(__pyx_int_117);
     __Pyx_GIVEREF(__pyx_int_117);
     PyList_SET_ITEM(__pyx_t_1, 15, __pyx_int_117);
-    if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_key, __pyx_t_1) < 0) __PYX_ERR(0, 700, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_key, __pyx_t_1) < 0) __PYX_ERR(0, 701, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":701
+    /* "leakageSimulatorAESFurious.pyx":702
  *     # TEST
  *     test_key = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
  *     test_plaintext = [105, 216, 224, 59, 183, 59, 85, 189, 197, 89, 45, 141, 228, 36, 137, 228]             # <<<<<<<<<<<<<<
  * 
  *     l_sim = LeakageSimulatorAESFurious()
  */
-    __pyx_t_1 = PyList_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 701, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(16); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 702, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_int_105);
     __Pyx_GIVEREF(__pyx_int_105);
@@ -22600,17 +22600,17 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
     __Pyx_INCREF(__pyx_int_228);
     __Pyx_GIVEREF(__pyx_int_228);
     PyList_SET_ITEM(__pyx_t_1, 15, __pyx_int_228);
-    if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_plaintext, __pyx_t_1) < 0) __PYX_ERR(0, 701, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_d, __pyx_n_s_test_plaintext, __pyx_t_1) < 0) __PYX_ERR(0, 702, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":703
+    /* "leakageSimulatorAESFurious.pyx":704
  *     test_plaintext = [105, 216, 224, 59, 183, 59, 85, 189, 197, 89, 45, 141, 228, 36, 137, 228]
  * 
  *     l_sim = LeakageSimulatorAESFurious()             # <<<<<<<<<<<<<<
  *     l_sim.fix_key(test_key)
  *     l_sim.fix_plaintext(test_plaintext)
  */
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_LeakageSimulatorAESFurious); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 703, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_LeakageSimulatorAESFurious); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -22623,29 +22623,29 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
       }
     }
     if (__pyx_t_9) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 703, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     } else {
-      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 703, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
     }
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (PyDict_SetItem(__pyx_d, __pyx_n_s_l_sim, __pyx_t_1) < 0) __PYX_ERR(0, 703, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_d, __pyx_n_s_l_sim, __pyx_t_1) < 0) __PYX_ERR(0, 704, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":704
+    /* "leakageSimulatorAESFurious.pyx":705
  * 
  *     l_sim = LeakageSimulatorAESFurious()
  *     l_sim.fix_key(test_key)             # <<<<<<<<<<<<<<
  *     l_sim.fix_plaintext(test_plaintext)
  * 
  */
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_l_sim); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 704, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_l_sim); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_fix_key); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 704, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_fix_key); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_test_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 704, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetModuleGlobalName(__pyx_n_s_test_key); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 705, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_9))) {
@@ -22658,14 +22658,14 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_8};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -22674,20 +22674,20 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_9)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_t_8};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_9, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else
       #endif
       {
-        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 704, __pyx_L1_error)
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 705, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_GIVEREF(__pyx_t_8);
         PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_8);
         __pyx_t_8 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 704, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
@@ -22695,19 +22695,19 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":705
+    /* "leakageSimulatorAESFurious.pyx":706
  *     l_sim = LeakageSimulatorAESFurious()
  *     l_sim.fix_key(test_key)
  *     l_sim.fix_plaintext(test_plaintext)             # <<<<<<<<<<<<<<
  * 
  *     l_sim.simulate(read_plaintexts = 0, print_all = 0, affect_with_noise = False, hw_leakage_model = False)
  */
-    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_l_sim); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 705, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_l_sim); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 706, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_fix_plaintext); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 705, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_fix_plaintext); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 706, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_test_plaintext); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 705, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_GetModuleGlobalName(__pyx_n_s_test_plaintext); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 706, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -22720,14 +22720,14 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
       }
     }
     if (!__pyx_t_8) {
-      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_9};
-        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -22736,20 +22736,20 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_t_9};
-        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 705, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 706, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_8); __pyx_t_8 = NULL;
         __Pyx_GIVEREF(__pyx_t_9);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_9);
         __pyx_t_9 = 0;
-        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
@@ -22757,29 +22757,29 @@ static int __pyx_pymod_exec_leakageSimulatorAESFurious(PyObject *__pyx_pyinit_mo
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":707
+    /* "leakageSimulatorAESFurious.pyx":708
  *     l_sim.fix_plaintext(test_plaintext)
  * 
  *     l_sim.simulate(read_plaintexts = 0, print_all = 0, affect_with_noise = False, hw_leakage_model = False)             # <<<<<<<<<<<<<<
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_l_sim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 707, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_l_sim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_simulate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 707, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_simulate); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 708, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 707, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 708, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_read_plaintexts, __pyx_int_0) < 0) __PYX_ERR(0, 707, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_print_all, __pyx_int_0) < 0) __PYX_ERR(0, 707, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_affect_with_noise, Py_False) < 0) __PYX_ERR(0, 707, __pyx_L1_error)
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_hw_leakage_model, Py_False) < 0) __PYX_ERR(0, 707, __pyx_L1_error)
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 707, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_read_plaintexts, __pyx_int_0) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_print_all, __pyx_int_0) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_affect_with_noise, Py_False) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_hw_leakage_model, Py_False) < 0) __PYX_ERR(0, 708, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 708, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "leakageSimulatorAESFurious.pyx":697
+    /* "leakageSimulatorAESFurious.pyx":698
  * 
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<

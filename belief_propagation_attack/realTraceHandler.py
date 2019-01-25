@@ -81,8 +81,8 @@ class RealTraceHandler:
                 tprange = TPRANGE_LDA
             elif best == 'nn':
                 tprange = TPRANGE_NN
-            if not self.no_print:
-                print 'Best Template for {}: {}'.format(variable, best)
+            # if not self.no_print:
+                # print 'Best Template for {}: {}'.format(variable, best)
 
         nn_normalise = True if (best == 'nn' or (best is None and self.use_nn)) else False
 

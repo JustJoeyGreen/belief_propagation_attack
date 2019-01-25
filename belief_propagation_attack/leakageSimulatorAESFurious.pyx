@@ -62,6 +62,7 @@ class LeakageSimulatorAESFurious:
 
 
         # Key
+        # print 'DEBUGGING IN LSIM: ', self.key, len(self.key), k
         k[:len(self.key)] = self.key
 
         # All Round Keys

@@ -477,7 +477,7 @@ class FactorGraphAES:
         cdef int i
         for i in range(len(self.key_nodes)):
             k = 'k{}-K'.format(pad_string_zeros(str(i + 1)))
-            self.set_initial_distribution(k, key_distributions[i])
+            self.set_initial_distribution(k, key_distributions[i].astype(DTYPE))
 
     def fabricate_key_scheduling_leakage(self):
         if 'k017-K' in self.variables:
@@ -1593,7 +1593,6 @@ class FactorGraphAES:
         print_new_line()
 
     def get_final_key_rank(self, martin=False, supplied_dist = None):
-        key_names = self.key_nodes
         if martin:
             all_dists = self.get_marginal_distributions_of_key_bytes()
             print "...computing Martin Key Rank, please wait..."
@@ -1601,11 +1600,12 @@ class FactorGraphAES:
         else:
             # Container
             rank_product = 1
-            key_names = self.key_nodes
 
-            for i in range(len(key_names)):
+            for i in range(1,len(self.key_nodes) + 1):
+                index = pad_string_zeros(i, 3)
                 rank, duplicate, value = self.get_key_rank(i, supplied_dist)
                 rank_product *= (rank+duplicate)
+                # print 'Rank {}, Duplicate {}, Value {}, New Rank Product: {}'.format(rank, duplicate, value, rank_product)
 
             return rank_product
 

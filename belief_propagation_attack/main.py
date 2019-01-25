@@ -137,7 +137,7 @@ def run_belief_propagation_attack(margdist=None):
     for method in connecting_methods:
 
         if not NO_PRINT:
-            print print_fill_1, "Starting {}{}".format(connecting_dict[method], ', Key Averaging {}'.format(INDEPENDENT_AVERAGE) if method == "IND" else ''), print_fill_1
+            print print_fill_1, "Starting {}{}".format(connecting_dict[method], ', Key Averaging {}'.format(KEY_POWER_VALUE_AVERAGE) if (method == "IND" or method == "SEQ") else ''), print_fill_1
             print_new_line()
 
         final_key_ranks = []
@@ -177,7 +177,7 @@ def run_belief_propagation_attack(margdist=None):
             # Container to hold distributions of key bytes
             key_distributions = np.array([get_no_knowledge_array() for i in range(16)])  # 16 Key Bytes
             key_distributions_sum = np.array([get_no_knowledge_array() for i in range(16)])
-            if INDEPENDENT_AVERAGE:
+            if KEY_POWER_VALUE_AVERAGE:
                 my_graph.compute_averaged_key_values(averaged_traces = TRACES, no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
                     elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
                     no_noise=NO_NOISE, offset=(rep*TRACES), ignore_bad=IGNORE_BAD_TEMPLATES)
@@ -236,21 +236,20 @@ def run_belief_propagation_attack(margdist=None):
                     exit(1)
 
                 # Handle SEQ
-                if (method == "SEQ") and (trace > 0):
-                    # print "SEQ: Setting Key Distributions:\n\n{}\n\n".format(key_distributions)
+                if (method == "SEQ") and (trace > 0) and not KEY_POWER_VALUE_AVERAGE:
+                    key_distributions = array_2d_multiply(key_distributions,
+                                                          my_graph.get_all_key_initial_distributions())
+                    # print key_distributions.shape, key_distributions
                     my_graph.set_key_distributions(key_distributions)
-                # elif (method == "IND") and not INDEPENDENT_AVERAGE and (trace == 0):
-                #     # Container to hold Incoming Messages of key bytes, starts by being Leakage on Key Bytes
-                #     key_distributions = my_graph.get_all_key_initial_distributions()
-                #
-                #     key_distributions_sum = my_graph.get_all_key_initial_distributions()
-                elif (method == "IND") and not INDEPENDENT_AVERAGE:
+                elif (method == "SEQ") and (trace == 0) and KEY_POWER_VALUE_AVERAGE:
+                    key_distributions = my_graph.get_all_key_initial_distributions()
+                elif (method == "IND") and not KEY_POWER_VALUE_AVERAGE:
                     # Multiply incoming messages to key_distributions
                     key_distributions = array_2d_multiply(key_distributions,
                                                           my_graph.get_all_key_initial_distributions())
                     key_distributions_sum = array_2d_add(key_distributions_sum,
                                                          my_graph.get_all_key_initial_distributions())
-                elif (method == "IND") and INDEPENDENT_AVERAGE and (trace == 0):
+                elif (method == "IND") and KEY_POWER_VALUE_AVERAGE and (trace == 0):
                     key_initial_distributions = my_graph.get_all_key_initial_distributions()
 
                 # Start Timer
@@ -296,6 +295,8 @@ def run_belief_propagation_attack(margdist=None):
                 convergence_holder.append(round_converged)
                 # print "convergence_holder: {}".format(convergence_holder)
 
+
+                ################# PRINT FINAL KEY RANKS FOR CURRENT TRACE #################
                 if (method == "IND" or method == "SEQ") and PRINT_EVERY_TRACE and not NO_PRINT:
                     print print_fill_2, "Final Key Ranks (Repeat {} Trace {})".format(rep, trace), print_fill_2
                     print_new_line()
@@ -310,9 +311,11 @@ def run_belief_propagation_attack(margdist=None):
                         not my_graph.check_failure_on_specific_byte('t', debug_mode=False)):
 
                     # Update Key Distribution Depending
-                    if method == "SEQ":
+                    if method == "SEQ" and KEY_POWER_VALUE_AVERAGE:
+                        key_distributions = array_2d_multiply(key_distributions, my_graph.get_all_key_incoming_messages())
+                    elif method == "SEQ":
                         key_distributions = my_graph.get_marginal_distributions_of_key_bytes()
-                    elif method == "IND" and not INDEPENDENT_AVERAGE:
+                    elif method == "IND" and not KEY_POWER_VALUE_AVERAGE:
                         # Multiply incoming messages to key_distributions
                         key_distributions = array_2d_multiply(key_distributions,
                                                               my_graph.get_all_key_incoming_messages())
@@ -326,7 +329,7 @@ def run_belief_propagation_attack(margdist=None):
                         for i_ in range(16):
                             for j_ in range(256):
                                 incoming_messages_list[i_][j_][trace] = incoming_messages[i_][j_]
-                    elif method == "IND" and INDEPENDENT_AVERAGE:
+                    elif method == "IND" and KEY_POWER_VALUE_AVERAGE:
                         # Multiply the incoming messages
                         current_incoming_key_messages = array_2d_multiply(current_incoming_key_messages,
                                                               my_graph.get_all_key_incoming_messages())
@@ -357,12 +360,12 @@ def run_belief_propagation_attack(margdist=None):
                     rank_after_each_trace[rep][trace] = bit_length(
                         my_graph.get_final_key_rank(supplied_dist=key_distributions))
 
-                # End of Trace
+                ################## End of Trace ##################
 
                 # TODO
                 # exit(1)
 
-            # After all Traces done:
+            ########## After all Traces done:
 
             # If found correct key, add it to found_holder
             if (((method == 'IND' or method == 'SEQ') and (my_graph.found_key(supplied_dist=key_distributions))) or (
@@ -377,7 +380,7 @@ def run_belief_propagation_attack(margdist=None):
                 if not ONLY_END and not NO_PRINT:
                     print "!!!+!+!!! All Traces Failed in this Repeat, Not Adding to Statistic !!!+!+!!!"
             else:
-                if method == "IND":
+                if method == "IND" or method == "SEQ":
                     final_key_ranks.append(my_graph.get_final_key_rank(supplied_dist=key_distributions))
                     for i in range(len(key_distributions_sum)):
                         key_distributions_sum[i] = normalise_array(key_distributions_sum[i].astype(np.float32))
@@ -387,6 +390,7 @@ def run_belief_propagation_attack(margdist=None):
                                                                              supplied_dist=key_distributions)
                 else:
                     final_key_ranks.append(my_graph.get_final_key_rank())
+                    # print "\n\n\n! TEST KEY RANK HERE (APPEND FINAL): {}\n\n\n".format(my_graph.get_key_rank(1)) #debug
                     if MARTIN_RANK:
                         final_key_rank_martin += my_graph.get_final_key_rank(martin=MARTIN_RANK, factor=1000000)
 
@@ -516,6 +520,7 @@ def run_belief_propagation_attack(margdist=None):
                 worst_case = (max(convergence_statistics))
                 avg_case = (get_average(convergence_statistics))
                 variance = (array_variance(convergence_statistics))
+
             failed_percentage = (not_converged / (OUTOF + 0.0) * 100)
 
             # first_round_string = "True" if FIRST_ROUND else "False"
@@ -547,7 +552,7 @@ def run_belief_propagation_attack(margdist=None):
 
             best_case = bit_length(min(final_key_ranks))
             worst_case = bit_length(max(final_key_ranks))
-            median_case = arrayMEDIAN(get_log_list(final_key_ranks))
+            median_case = array_median(np.array(get_log_list(final_key_ranks)))
 
             if len(round_found_statistics) == 0:
                 best_found = None
@@ -558,14 +563,39 @@ def run_belief_propagation_attack(margdist=None):
                 worst_found = max(round_found_statistics)
                 average_found = get_average(round_found_statistics)
 
-            csv_string = "{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(
-                TEST_NAME, TRACES, REPEAT, ROUNDS, method,
-                SNR_exp, round_string, no_cycle_string, no_mc,
-                OUTOF, successful_attacks, ((successful_attacks / (REPEAT + 0.0)) * 100), best_case,
-                worst_case, median_case, total_epsilon_exhaustion, total_maxed_iterations,
-                total_failures, best_found, worst_found, average_found)
+            timer_holder_min = min(timer_holder)
+            timer_holder_max = max(timer_holder)
+            timer_holder_avg = get_average(timer_holder)
 
-            f = open('output/BPAResults.csv'.format(no_cycle_string, no_mc), 'a+')
+            # csv_string = "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(
+            #     TEST_NAME, TRACES, REPEAT, ROUNDS, method,
+            #     SNR_exp, round_string, no_cycle_string, no_mc,
+            #     OUTOF, successful_attacks, ((successful_attacks / (REPEAT + 0.0)) * 100), best_case,
+            #     worst_case, median_case, total_epsilon_exhaustion, total_maxed_iterations,
+            #     total_failures, best_found, worst_found, average_found,
+            #     timer_holder_min,timer_holder_max,timer_holder_avg)
+
+            csv_string = "{};".format(TEST_NAME)
+            for parakey, paravalue in args.__dict__.iteritems():
+                csv_string += str(paravalue) + ";"
+            for value_to_store in [successful_attacks, ((successful_attacks / (REPEAT + 0.0)) * 100),
+                best_case, worst_case, median_case, total_epsilon_exhaustion, total_maxed_iterations,
+                total_failures, best_found, worst_found, average_found,
+                timer_holder_min,timer_holder_max,timer_holder_avg]:
+                csv_string += str(value_to_store) + ";"
+
+            dump_file = 'output/results_dump.csv'
+
+            if not check_file_exists(dump_file):
+                header = "TestName;"
+                for parakey, paravalue in args.__dict__.iteritems():
+                    header += str(parakey) + ";"
+                header += "SuccessfulAttacks;PercentageSuccess;BestCase;WorstCase;MedianCase;TotalEpsilonExhaustion;TotalTMax;TotalFailures;BestRoundFound;WorstRoundFound;AverageRoundFound;MinTraceTime;MaxTraceTime;AvgTraceTime;"
+                f = open(dump_file, 'a+')
+                f.write("{}\n".format(header))
+                f.close()
+
+            f = open(dump_file, 'a+')
             f.write("{}\n".format(csv_string))
             f.close()
 
@@ -620,6 +650,7 @@ def run_belief_propagation_attack(margdist=None):
                     g_string += "Aprime"
                 else:
                     g_string += "A"
+            connection_string = "{}_".format(method)
             lda_string = "LDA{}_".format(TPRANGE) if USE_LDA else ""
             nn_string = "NN{}_".format(TPRANGE) if USE_NN else ""
             best_string = "BEST_" if USE_BEST else ""
@@ -627,8 +658,9 @@ def run_belief_propagation_attack(margdist=None):
             ks_string = "KS_" if INCLUDE_KEY_SCHEDULING else ""
             # np.save("{}_{}_{}.npy".format(OUTPUT_FILE_PREFIX, g_string, TRACES), rank_after_each_trace)
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
+            kavg_string = "KEYAVG_" if KEY_POWER_VALUE_AVERAGE else ""
             Pickle.dump(rank_after_each_trace,
-                        open("{}_{}{}{}{}{}_{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, lda_string, nn_string, best_string, ignore_string, g_string,
+                        open("{}_{}{}{}{}{}{}_{}{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, connection_string, lda_string, nn_string, best_string, ignore_string, g_string, kavg_string,
                                                             ks_string, TRACES, ROUNDS, snr_string), "wb"))
             if PLOT:
 
@@ -726,8 +758,8 @@ if __name__ == "__main__":
                         help='Toggles Sequential Graph On (default: False)', default=False)
     parser.add_argument('--ING', '--IND', '--IFG', action="store_false", dest="INDEPENDENT_GRAPHS",
                         help='Toggles Independent Graph Off (default: True)', default=True)
-    parser.add_argument('--INGAVG', '--INDAVG', '--IFGAVG', '--IAVG', action="store_false", dest="INDEPENDENT_AVERAGE",
-                        help='Toggles Independent Graph Key Power Value Averaging Off (default: True)', default=True)
+    parser.add_argument('--KEYAVG', '--KAVG', '--KPAVG', action="store_false", dest="KEY_POWER_VALUE_AVERAGE",
+                        help='Toggles Key Power Value Averaging Off (default: True)', default=True)
     parser.add_argument('--KS', action="store_true", dest="KEY_SCHEDULING",
                         help='Toggles Key Scheduling On (default: False)', default=False)
     parser.add_argument('--ELMO', action="store_true", dest="ELMO_POWER_MODEL",
@@ -881,6 +913,8 @@ if __name__ == "__main__":
                         help="Doesn't leak on Key Schedule (default: False)", default=False)
 
     args = parser.parse_args()
+    # print args
+    # exit(1)
 
     MY_KEY = args.MY_KEY
     TRACES = args.TRACES
@@ -957,7 +991,7 @@ if __name__ == "__main__":
     IGNORE_BAD_TEMPLATES = args.IGNORE_BAD_TEMPLATES
     USE_BEST = args.USE_BEST
     SHIFT_ATTACK_TRACES = args.SHIFT_ATTACK_TRACES
-    INDEPENDENT_AVERAGE = args.INDEPENDENT_AVERAGE
+    KEY_POWER_VALUE_AVERAGE = args.KEY_POWER_VALUE_AVERAGE
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)
@@ -1022,6 +1056,11 @@ if __name__ == "__main__":
         if not NO_PRINT:
             print "|| Neural Networks only uses window size 700 - setting TPRANGE to 700"
         TPRANGE = 700
+
+    if USE_LDA and TPRANGE == 1:
+        if not NO_PRINT:
+            print "|| LDA doesn't like being set to 1 - setting TPRANGE to 200"
+        TPRANGE = 200
 
     if REAL_TRACES:
         if not NO_PRINT:
