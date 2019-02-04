@@ -6,7 +6,9 @@ import argparse
 import matplotlib.pyplot as plt
 import trsfile
 import operator
-
+from fastdtw import fastdtw
+from scipy.spatial.distance import euclidean
+import timing
 
 parser = argparse.ArgumentParser(description='Trains Neural Network Models')
 parser.add_argument('-t', '-traces', '-test_traces', action="store", dest="TRACES",
@@ -21,47 +23,116 @@ TEST = False
 USE_REAL_TRACE_HANDLER = False
 
 SHIFT_TRACES = True
-SHIFT_VAL = 50
+SHIFT_VAL = 2
 SHIFT_EXTRA = False
 
+def get_first_occurance_in_path(path, j):
+    # First, try path[j]
+    location = j
+    while path[location][0] != j:
+        # print 'Path at location {}: {} (not {})'.format(location, path[location][0], j)
+        location = location + j - path[location][0]
+        # print '> location now {}'.format(location)
+    return location
 
+def get_y_values_from_path(path, j):
+    y_vals = list()
+    count = get_first_occurance_in_path(path, j)
+    # Will only be right from there
+    while count < len(path) and path[count][0] == j:
+        y_vals.append(path[count][1])
+        count += 1
+    return y_vals
 
-# Try leakage sim
-leakage_simulator = lSimF.LeakageSimulatorAESFurious()
-leakage_simulator.simulate(traces = 1)
-leakage = leakage_simulator.get_leakage_dictionary()
+def realign_trace(base_trace,target_trace):
+    _, path = fastdtw(base_trace, target_trace, dist=euclidean)
+    realigned_trace = np.zeros(target_trace.shape)
+    for sample in range(target_trace.shape[0]):
+        y_vals = get_y_values_from_path(path, sample)
+        total = 0
+        for count, index in enumerate(y_vals):
+            total += target_trace[index]
+        realigned_trace[sample] = total / (len(y_vals) + 0.0)
+    return realigned_trace
 
-vars = ['p','t','s','k']
-for v in vars:
-    print '{}: {}'.format(v, len(leakage[v][0]))
+def get_realigned_tracedata_filepath(extra=False,shifted=50):
+    return TRACEDATA_FOLDER + '{}tracedata_realigned{}.npy'.format('extra' if extra else '', shifted)
+
+def realign_traces(extra=True, shifted=2):
+    # Load original trace data and shifted trace data
+    print "REALIGNING!"
+    single_nonjitter_trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)[0]
+    jittery_trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=extra, shifted=shifted))
+    traces, samples = jittery_trace_data.shape
+    _, _, _, coding = load_meta()
+    realigned_filepath = get_realigned_tracedata_filepath(extra=extra, shifted=shifted)
+    realigned_data = np.memmap(realigned_filepath, shape=(traces, samples), mode='w+', dtype=coding)
+    print "Extra: {}, Shifted: {}, Filepath: {}".format(extra, shifted, realigned_filepath)
+    for t in range(traces):
+        if ((t % (traces/100)) == 0):
+            print "{}% Complete".format(t*100 / (traces + 0.0))
+        if t<10:
+            print 'Trace {} Realigned!'.format(t)
+        realigned_data[t] = realign_trace(single_nonjitter_trace_data, jittery_trace_data[t])
+    del realigned_data
+
+for shifted in [2,10,50,100,500,1000]:
+    for extra in [True]:
+        realign_traces(extra=extra, shifted=shifted)
+
+print "All done!"
+exit(1)
+
+my_length = 3
+plot_start = 2000
+plot_length = 1000
+
+non_jitter = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH)[:my_length]
+jitter = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=True, shifted=1000))[:my_length]
+realigned = [0] * my_length
+for i in range(0,my_length):
+    realigned[i] = realign_trace(non_jitter[0], jitter[i])
+realigned = np.array(realigned)
+
+print 'non_jitter:\n{}, {}'.format(non_jitter[-1][:10], non_jitter[-1][-10:])
+print 'jitter:\n{}, {}'.format(jitter[-1][:10], jitter[-1][-10:])
+print 'realigned:\n{}, {}'.format(realigned[-1][:10], realigned[-1][-10:])
+
+plt.subplot(1, my_length, 1)
+for i in range(my_length):
+    plt.plot(non_jitter[i][plot_start:plot_start+plot_length])
+plt.subplot(1, my_length, 2)
+for i in range(my_length):
+    plt.plot(jitter[i][plot_start:plot_start+plot_length])
+plt.subplot(1, my_length, 3)
+for i in range(my_length):
+    plt.plot(realigned[i][plot_start:plot_start+plot_length])
+plt.show()
+
 exit(1)
 
 
 
-def shift_traces(extra=SHIFT_EXTRA, shifted=SHIFT_VAL):
-    # Load trace data
-    trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)
-    traces, samples = trace_data.shape
-    _, _, _, coding = load_meta()
-    shifted_filepath = get_shifted_tracedata_filepath(extra=extra, shifted=shifted)
-    print "Extra: {}, Shifted: {}, Filepath: {}".format(extra, shifted, shifted_filepath)
-    # New path
-    shifted_data = np.memmap(shifted_filepath, shape=(traces, samples), mode='w+', dtype=coding)
-    for t in range(traces):
-        if ((t % (traces/100)) == 0):
-            print "{}% Complete".format(t*100 / (traces + 0.0))
-        randint = np.random.randint(-SHIFT_VAL/2, SHIFT_VAL/2)
-        shifted_data[t] = roll_and_pad(trace_data[t], randint)
-    del shifted_data
 
-# for shift_val in [50,100]:
+
+# for shift_val in [2,10,50,100,500,1000]:
 #     for shift_extra in [False, True]:
 #         shift_traces(extra=shift_extra, shifted=shift_val)
 
-a = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=SHIFT_EXTRA, shifted=SHIFT_VAL))
-for i in range(20):
-    plt.plot(a[i][1000:2000])
-plt.show()
+a = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH)
+
+for shift_val in [2,10,50,100,500,1000]:
+    b = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=True, shifted=shift_val))
+    plt.subplot(1, 2, 1)
+    for i in range(20):
+        print 'A {}: {}'.format(i, a[i][1000:1010])
+        plt.plot(a[i][1000:2000])
+    plt.subplot(1, 2, 2)
+    for i in range(20):
+        print 'B {}: {}'.format(i, b[i][1000:1010])
+        plt.plot(b[i][1000:2000])
+    plt.title('Shift Val {}'.format(shift_val))
+    plt.show()
 exit(1)
 
 

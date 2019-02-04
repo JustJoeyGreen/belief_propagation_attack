@@ -226,6 +226,9 @@ def my_mult2(v1, v2, v3):
 def get_shifted_tracedata_filepath(extra=False,shifted=50):
     return TRACEDATA_FOLDER + '{}tracedata_shifted{}.npy'.format('extra' if extra else '', shifted)
 
+def get_realigned_tracedata_filepath(extra=False,shifted=50):
+    return TRACEDATA_FOLDER + '{}tracedata_realigned{}.npy'.format('extra' if extra else '', shifted)
+
 def string_contains(string, substr):
     """Returns true if substr is a substring of string"""
     return substr in string
@@ -1597,10 +1600,7 @@ def parmap(f, X, nprocs=multiprocessing.cpu_count()):
 def load_trace_data(filepath=TRACEDATA_FILEPATH, memory_mapped=True, no_print=True):
     if memory_mapped:
         profile_traces, attack_traces, samples, coding = load_meta()
-        if string_contains(filepath, 'extra'):
-            used_traces = attack_traces
-        else:
-            used_traces = profile_traces
+        used_traces = attack_traces if string_contains(filepath, 'extra') else profile_traces
         if not no_print:
             print ">>> Loading Trace Data, used_traces = {}, memory_mapped: {}".format(used_traces, memory_mapped)
         return np.memmap(filepath, dtype=coding, mode='r+', shape=(used_traces, samples))
@@ -1749,6 +1749,31 @@ def get_training_traces(str):
         return int(re.search('^.*_traces(\d+).*', str).group(1))
     except AttributeError:
         return 50000
+
+def shift_traces(extra=True, shifted=2):
+    # Load trace data
+    trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)
+    traces, samples = trace_data.shape
+    _, _, _, coding = load_meta()
+    shifted_filepath = get_shifted_tracedata_filepath(extra=extra, shifted=shifted)
+    print "Extra: {}, Shifted: {}, Filepath: {}".format(extra, shifted, shifted_filepath)
+    # New path
+    shifted_data = np.memmap(shifted_filepath, shape=(traces, samples), mode='w+', dtype=coding)
+    for t in range(traces):
+        if ((t % (traces/100)) == 0):
+            print "{}% Complete".format(t*100 / (traces + 0.0))
+        randint = np.random.randint(-shifted/2, shifted/2)
+
+        if t<10:
+            print '{}: {}'.format(t, randint)
+            print "WAS: {}".format(trace_data[t][:10])
+            print "NOW: {}".format(roll_and_pad(trace_data[t], randint)[:10])
+        shifted_data[t] = roll_and_pad(trace_data[t], randint)
+    del shifted_data
+
+
+
+
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]

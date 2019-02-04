@@ -11,11 +11,11 @@ TPRANGE_LDA = 200
 
 class RealTraceHandler:
 
-    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, shift_attack = None):
+    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, jitter = None):
         self.no_print = no_print
         if not no_print:
             print "Preloading Matrix real_trace_data, may take a while..."
-        self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if shift_attack is None else get_shifted_tracedata_filepath(extra=True, shifted=shift_attack), memory_mapped=memory_mapped)
+        self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if jitter is None else get_shifted_tracedata_filepath(extra=True, shifted=jitter), memory_mapped=memory_mapped)
         self.real_trace_data_maxtraces, self.real_trace_data_len = self.real_trace_data.shape
         self.plaintexts = np.load(PLAINTEXT_EXTRA_FILEPATH)
 

@@ -99,7 +99,7 @@ def run_belief_propagation_attack(margdist=None):
             print "Fixed Node: {}, Fixed Value: {}".format(FIXED_VALUE_NODE, fixed_node_tuple[1])
         print "snr = 2^{} = {} (sigma = {}), Threshold: {}".format(SNR_exp, snr, sigma, THRESHOLD)
         print "Epsilon = {}, Epsilon Successions: {}".format(EPSILON, EPSILON_S)
-        print "Using REAL TRACES: {}".format(REAL_TRACES)
+        print "Using REAL TRACES: {} (Jitter {})".format(REAL_TRACES, JITTER)
         print "Using LDA: {}, Using Neural Networks: {} (Window Size {}), Using Best Template: {}".format(USE_LDA, USE_NN, TPRANGE, USE_BEST)
         if REAL_TRACES:
             print "Correlation Threshold: {}".format(CORRELATION_THRESHOLD)
@@ -163,7 +163,7 @@ def run_belief_propagation_attack(margdist=None):
                                      key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
                                      rounds_of_aes=ROUNDS_OF_AES,
                                      remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
-                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, shift_attack=SHIFT_ATTACK_TRACES)
+                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, jitter=JITTER)
 
         for rep in range(REPEAT):
 
@@ -200,15 +200,15 @@ def run_belief_propagation_attack(margdist=None):
 
             for trace in range(TRACES): # but only done once if LFG, as it breaks early
 
-                not_allowed_traces = [7, 8, 11, 14, 19, 24, 26, 28, 29, 30, 38, 39, 42, 44, 47, 54, 55, 57, 60, 64, 65,
-                                      66, 67, 68, 69, 74, 77, 81, 82, 88, 89, 97, 99, 101, 102, 103, 106, 112, 118,
-                                      120, 124, 126, 131, 132, 134, 137, 140, 146, 147, 150, 151, 153, 155, 160, 161,
-                                      164, 175, 177, 182, 185, 188, 190, 197, 198, 199]
-
-                # if TEST2 and (trace not in allowed_traces):
+                # not_allowed_traces = [7, 8, 11, 14, 19, 24, 26, 28, 29, 30, 38, 39, 42, 44, 47, 54, 55, 57, 60, 64, 65,
+                #                       66, 67, 68, 69, 74, 77, 81, 82, 88, 89, 97, 99, 101, 102, 103, 106, 112, 118,
+                #                       120, 124, 126, 131, 132, 134, 137, 140, 146, 147, 150, 151, 153, 155, 160, 161,
+                #                       164, 175, 177, 182, 185, 188, 190, 197, 198, 199]
+                #
+                # # if TEST2 and (trace not in allowed_traces):
+                # #     continue
+                # if TEST2 and (trace in not_allowed_traces):
                 #     continue
-                if TEST2 and (trace in not_allowed_traces):
-                    continue
 
                 # Clear edges
                 my_graph.initialise_edges()
@@ -685,17 +685,6 @@ def run_belief_propagation_attack(margdist=None):
                 key_distributions = my_graph.get_marginal_distributions_of_key_bytes()
             return key_distributions
 
-        if TESTING:
-            print "Graph {}, Iterations {}\n" \
-                  "FOSR: {}%, Best Rank: {}\n".format(graph_string, ROUNDS,
-                                                      (successful_attacks / (REPEAT + 0.0) * 100),
-                                                      bit_length(min(final_key_ranks)))
-
-            fd = open('output/iterations.csv', 'a')
-            fd.write("{},{},{},{},\n".format(graph_string, ROUNDS, (successful_attacks / (REPEAT + 0.0) * 100),
-                                             bit_length(min(final_key_ranks))))
-            fd.close()
-
     # Finally, return key_distributions
     if len(connecting_methods) > 0:
         return key_distributions
@@ -745,6 +734,9 @@ if __name__ == "__main__":
     parser.add_argument('-tp', '-trace_range', action="store", dest="TPRANGE",
                         help='Window of Power Values over Timepoint (default: 1)',
                         type=int, default=1)
+    parser.add_argument('-j', '-jitter', action="store", dest="JITTER",
+                        help='Clock Jitter to use on real traces (default: None)',
+                        type=int, default=None)
 
     parser.add_argument('-ct', '-cthresh', action="store", dest="CORRELATION_THRESHOLD",
                         help='Threshold for refusing bad point of interest detected nodes (default: None)', type=float, default=None)
@@ -793,16 +785,10 @@ if __name__ == "__main__":
                         help='Prints out Convergence Statistics (default: False)', default=False)
     parser.add_argument('--CURRENT_TEST', action="store_true", dest="CURRENT_TEST",
                         help='Alters values to match current test statistic (default: False)', default=False)
-    parser.add_argument('--TEST', action="store_true", dest="TEST", help='Runs Test Code Instead (default: False)',
-                        default=False)
-    parser.add_argument('--TEST2', action="store_true", dest="TEST2", help='Runs Test 2 Code Instead (default: False)',
-                        default=False)
-
     parser.add_argument('--TRACE_NPY', action="store_true", dest="TRACE_NPY",
                         help='Store Trace Values as npy (default: False)', default=False)
     parser.add_argument('--PLOT', action="store_true", dest="PLOT",
                         help='Plot Final Key Ranks (default: False)', default=False)
-
     parser.add_argument('--DUMP_RESULT', '--DATA_DUMP', action="store_true", dest="DUMP_RESULT",
                         help='Dumps Result in output/data_dump.txt (default: False)', default=False)
     parser.add_argument('--TRACE_CSV', action="store_true", dest="TRACE_CSV",
@@ -860,7 +846,7 @@ if __name__ == "__main__":
     parser.add_argument('--REAL_TRACES', '--REAL', action="store_true", dest="REAL_TRACES",
                         help='Attacks a Real Trace (default: False)', default=False)
 
-    parser.add_argument('--REMOVE_CYCLE', '--RM_C', action="store_true", dest="REMOVE_CYCLE",
+    parser.add_argument('--REMOVE_CYCLE', '--RM_C', '--ACYCLIC', action="store_true", dest="REMOVE_CYCLE",
                         help='Removes cycle in MixColumns step (default: False)', default=False)
 
     parser.add_argument('--MARTIN', '--MARTIN_RANK', action="store_true", dest="MARTIN_RANK",
@@ -904,9 +890,6 @@ if __name__ == "__main__":
     parser.add_argument('-fix', action="store", dest="FIXED_VALUE_NODE",
                         help='Fix Variable node to get Marginal Distance to Key Bytes (default: None)', default=None)
 
-    parser.add_argument('-shift', '-sa', action="store", dest="SHIFT_ATTACK_TRACES",
-                        help='Shift Attack Traces by random amount (default: None)', default=None)
-
     parser.add_argument('--CL', '--CHECK_LEAKAGE', action="store_true", dest="CHECK_LEAKAGE",
                         help='Checks Initial Leakage (default: False)', default=False)
     parser.add_argument('--NLKS', '--NO_LEAK_KEY_SCHEDULE', action="store_true", dest="NO_LEAK_KEY_SCHEDULE",
@@ -947,8 +930,6 @@ if __name__ == "__main__":
     LEAKAGE_ON_THE_FLY = args.LEAKAGE_ON_THE_FLY
     # FIXED_VALUE_NODES       = dict(args.FIXED_VALUE_NODES)
     FIXED_VALUE_NODE = args.FIXED_VALUE_NODE
-    TESTING = args.TEST
-    TEST2 = args.TEST2
     USE_ARM_AES = args.USE_ARM_AES
     READ_PLAINTEXTS = args.READ_PLAINTEXTS
     TRACE_CSV = args.TRACE_CSV
@@ -990,8 +971,8 @@ if __name__ == "__main__":
     CORRELATION_THRESHOLD = args.CORRELATION_THRESHOLD
     IGNORE_BAD_TEMPLATES = args.IGNORE_BAD_TEMPLATES
     USE_BEST = args.USE_BEST
-    SHIFT_ATTACK_TRACES = args.SHIFT_ATTACK_TRACES
     KEY_POWER_VALUE_AVERAGE = args.KEY_POWER_VALUE_AVERAGE
+    JITTER = args.JITTER
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)
