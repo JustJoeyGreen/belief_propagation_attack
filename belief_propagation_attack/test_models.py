@@ -9,6 +9,7 @@ from utility import *
 from random import shuffle
 import realTraceHandler as rTH
 
+
 ###########################################################################
 
 ###########################################################################
@@ -31,6 +32,9 @@ AES_Sbox = np.array([
             0xE1, 0xF8, 0x98, 0x11, 0x69, 0xD9, 0x8E, 0x94, 0x9B, 0x1E, 0x87, 0xE9, 0xCE, 0x55, 0x28, 0xDF,
             0x8C, 0xA1, 0x89, 0x0D, 0xBF, 0xE6, 0x42, 0x68, 0x41, 0x99, 0x2D, 0x0F, 0xB0, 0x54, 0xBB, 0x16
             ])
+
+# Real Trave Handler
+global_real_trace_handler = rTH.RealTraceHandler(no_print = True, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True)
 
 # Compute the rank of the real key for a give set of predictions
 def rank(predictions, real_key, min_trace_idx, max_trace_idx, last_key_bytes_proba):
@@ -266,14 +270,16 @@ def full_ranks(model_name, model, dataset, labels, min_trace_idx, max_trace_idx,
 # Check a saved model against one of the bpann databases Attack traces
 def check_model(model_file, num_traces=10000, template_attack=False):
 
-    # Real Trave Handler
-    rth = rTH.RealTraceHandler(no_print = False, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True)
-
     try:
-        rank_list = rth.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces)
-        print_statistics(rank_list)
-    except:
-        print "! Uh oh, couldn't check the model! Need to resubmit. PASSING OVER..."
+        rank_list, predicted_values = global_real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces)
+        if rank_list is not None:
+            print "Model: {}".format(model_file)
+            print_statistics(rank_list)
+            print "> Top Predicted Indices:"
+            print_statistics(predicted_values)
+    except Exception as e:
+        print "! Uh oh, couldn't check the model! Need to resubmit." #PASSING OVER..."
+        print e
 
     # model_name = model_file.replace(MODEL_FOLDER, '')
     # model_variable = model_name.split('_')[0]
@@ -316,7 +322,7 @@ def check_model(model_file, num_traces=10000, template_attack=False):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Trains Neural Network Models')
-    parser.add_argument('--ALL', action="store_true", dest="TEST_ALL", help='Tests all available models',
+    parser.add_argument('--ALL', '--TEST_ALL', action="store_true", dest="TEST_ALL", help='Tests all available models',
                         default=False)
     parser.add_argument('--MLP', action="store_true", dest="USE_MLP", help='Tests Multi Layer Perceptron',
                         default=False)
@@ -365,7 +371,7 @@ if __name__ == "__main__":
         # Check all models
         for (m) in sorted(listdir(MODEL_FOLDER)):
             if string_ends_with(m, '.h5'):
-                print 'm: {}'.format(m)
+                # print 'm: {}'.format(m)
                 check_model(MODEL_FOLDER + m, TEST_TRACES, template_attack=TEMPLATE_ATTACK)
     else:
         # Check specific model

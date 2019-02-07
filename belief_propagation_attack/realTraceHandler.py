@@ -206,12 +206,13 @@ class RealTraceHandler:
         if not check_file_exists(model_file):
             if not self.no_print:
                 print "!!! Doesn't exist!"
-            return False
+            return (None, None)
         else:
             var_name, var_number, _ = split_variable_name(variable)
             window_size = get_window_size_from_model(model_file)
             model = load_sca_model(model_file)
             rank_list = list()
+            predicted_values = list()
             for trace in range(traces):
                 real_val = self.realvalues[var_name][var_number-1][trace]
                 # leakage = self.get_leakage(variable, trace=trace)
@@ -219,6 +220,8 @@ class RealTraceHandler:
                 new_input = np.resize(power_value, (1, power_value.size))
                 leakage = model.predict(new_input)[0]
                 rank = get_rank_from_prob_dist(leakage, real_val)
+                # print 'Real value: {}, Prob: {}, Rank: {}, Best Value: {} (prob {})'.format(real_val, leakage[real_val], rank, np.argmax(leakage), leakage[np.argmax(leakage)])
                 rank_list.append(rank)
+                predicted_values.append(np.argmax(leakage))
             # Return Rank List
-            return rank_list
+            return (rank_list, predicted_values)

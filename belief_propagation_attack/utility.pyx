@@ -224,6 +224,8 @@ def my_mult2(v1, v2, v3):
 #################################################################
 
 def get_shifted_tracedata_filepath(extra=False,shifted=50):
+    if shifted is None or shifted == 0:
+        return TRACEDATA_EXTRA_FILEPATH if extra else TRACEDATA_FILEPATH
     return TRACEDATA_FOLDER + '{}tracedata_shifted{}.npy'.format('extra' if extra else '', shifted)
 
 def get_realigned_tracedata_filepath(extra=False,shifted=50):
@@ -900,8 +902,10 @@ def print_new_line():
 def get_average(l):
     return sum(l) / float(len(l))
 
-def get_mode(l):
-    return max(set(l), key=l.count)
+def get_mode(np.ndarray l):
+    # return max(set(l), key=l.count)
+    m = stats.mode(l)
+    return (m[0][0], m[1][0])
 
 def bit_length(x):
     return int(round(x)).bit_length() - 1
@@ -1432,6 +1436,9 @@ def get_statistics_string(l, log = False):
 def get_log_list(l):
     return [bit_length(i) for i in l]
 
+def percentage(part, whole):
+  return 100 * float(part)/float(whole)
+
 def print_statistics(l, log = False, top = False):
     l = np.array(l)
     if len(l) == 0:
@@ -1449,6 +1456,8 @@ def print_statistics(l, log = False, top = False):
         else:
             range_l = max_l - min_l
         var_l = array_variance(l)
+
+        mode_l, mode_l_occ = get_mode(l)
 
         # Extra strings
         max_l_log = ""
@@ -1482,6 +1491,7 @@ def print_statistics(l, log = False, top = False):
         print "Med:  {:40} {}".format(med_l, med_l_log)
         print "Rng:  {:40} {}".format(range_l, range_l_log)
         print "Var:  {:40} {}".format(var_l, var_l_log)
+        print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
         print_new_line()
 
 def save_statistics(name, l):
@@ -1618,7 +1628,7 @@ def get_value_from_plaintext_array(v):
 #### bpann helper to load profiling and attack data (traces and labels)
 # Loads the profiling and attack datasets from the bpann
 # database
-def load_bpann(variable, load_metadata=False, normalise_traces=True, input_length=700, training_traces=50000, sd = 100, augment_method=2):
+def load_bpann(variable, load_metadata=False, normalise_traces=True, input_length=700, training_traces=50000, sd = 100, augment_method=2, jitter=None):
 
     # Load meta
     profile_traces, attack_traces, samples, coding = load_meta()
@@ -1627,7 +1637,7 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
     var_name, var_number, _ = split_variable_name(variable)
 
     # TRY LOADING FIRST
-    filename = '{}_meta{}_norm{}_input{}_training{}_sd{}_aug{}.pkl'.format(variable, load_metadata, normalise_traces, input_length, training_traces, sd, augment_method)
+    filename = '{}_meta{}_norm{}_input{}_training{}_sd{}_aug{}_jitter{}.pkl'.format(variable, load_metadata, normalise_traces, input_length, training_traces, sd, augment_method, jitter)
 
     try:
         return load_object(TEMP_FOLDER + filename)
@@ -1639,7 +1649,7 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
         start_window = max(0, time_point - (input_length/2))
         end_window = min(samples, time_point + (input_length/2))
 
-        trace_data = load_trace_data()[:, start_window:end_window]
+        trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter))[:, start_window:end_window]
         traces, data_length = trace_data.shape
         type = trace_data.dtype
         real_values = np.load('{}{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
@@ -1702,7 +1712,7 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
             Y_profiling = real_values[:training_traces]
 
         # Load attack traces
-        X_attack = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH)[:, start_window:end_window]
+        X_attack = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter, extra=True))[:, start_window:end_window]
         # Load attacking labels
         Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
 

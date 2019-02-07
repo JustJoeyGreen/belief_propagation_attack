@@ -196,7 +196,7 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, progress_bar=1, mlp_nodes=200, lstm_nodes=64):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64):
 
     if add_noise:
         standard_deviation = 10
@@ -211,8 +211,8 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_best_model, MODEL_FOLDER +
-                    "{}_cnn_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}.h5".format(
-                        variable, input_length, cnn_epochs, cnn_batchsize, sd, training_traces, augment_method),
+                    "{}_cnn_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, input_length, cnn_epochs, cnn_batchsize, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
                     progress_bar=progress_bar)
 
@@ -222,8 +222,8 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_pretrained_model, MODEL_FOLDER +
-                    "{}_cnnpretrained_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}.h5".format(
-                        variable, input_length, cnn_epochs, cnn_batchsize, sd, training_traces, augment_method),
+                    "{}_cnnpretrained_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, input_length, cnn_epochs, cnn_batchsize, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
                     progress_bar=progress_bar)
 
@@ -233,9 +233,9 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         mlp_epochs = epochs if epochs is not None else 200
         mlp_batchsize = batch_size
         train_model(X_profiling, Y_profiling, mlp_best_model, MODEL_FOLDER +
-                    "{}_mlp{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}.h5".format(
+                    "{}_mlp{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
                         variable, mlp_layers, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, sd,
-                        training_traces, augment_method), epochs=mlp_epochs, batch_size=mlp_batchsize,
+                        training_traces, augment_method, jitter), epochs=mlp_epochs, batch_size=mlp_batchsize,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
 
     ### LSTM training
@@ -244,9 +244,9 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         lstm_epochs = epochs if epochs is not None else 75
         lstm_batchsize = batch_size
         train_model(X_profiling, Y_profiling, lstm_best_model, MODEL_FOLDER +
-                    "{}_lstm{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}.h5".format(
+                    "{}_lstm{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
                         variable, lstm_layers, lstm_nodes, input_length, lstm_epochs, lstm_batchsize, sd,
-                        training_traces, augment_method), epochs=lstm_epochs, batch_size=lstm_batchsize,
+                        training_traces, augment_method, jitter), epochs=lstm_epochs, batch_size=lstm_batchsize,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
 
     ### SVM training
@@ -255,9 +255,9 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         svm_epochs = epochs if epochs is not None else 75
         svm_batchsize = batch_size
         train_model(X_profiling, Y_profiling, svm_best_model, MODEL_FOLDER +
-                    "{}_svm{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}.h5".format(
+                    "{}_svm{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
                         variable, svm_layers, svm_nodes, input_length, svm_epochs, svm_batchsize, sd,
-                        training_traces, augment_method), epochs=svm_epochs, batch_size=svm_batchsize,
+                        training_traces, augment_method, jitter), epochs=svm_epochs, batch_size=svm_batchsize,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
 
 
@@ -308,6 +308,11 @@ if __name__ == "__main__":
                         help='Prints Progress Bar', default=False)
     parser.add_argument('--ALLVARS', action="store_true", dest="ALL_VARS",
                         help='Trains all Variable Nodes', default=False)
+    parser.add_argument('-j', '-jitter', action="store", dest="JITTER",
+                        help='Clock Jitter to use on real traces (default: None)',
+                        type=int, default=None)
+    parser.add_argument('--TEST', '--TEST_VARIABLES', action="store_true", dest="TEST_VARIABLES",
+                        help='Trains only specified Testing Variable Nodes', default=False)
 
 
     # Target node here
@@ -331,6 +336,9 @@ if __name__ == "__main__":
     ALL_VARIABLE    = args.ALL_VARIABLE
     AUGMENT_METHOD  = args.AUGMENT_METHOD
     ALL_VARS        = args.ALL_VARS
+    JITTER          = args.JITTER
+    TEST_VARIABLES  = args.TEST_VARIABLES
+
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
     # Handle dodgy input
@@ -338,22 +346,24 @@ if __name__ == "__main__":
         print "|| Error: input length must be even, adding 1 to fix ({} -> {})".format(INPUT_LENGTH, INPUT_LENGTH+1)
         INPUT_LENGTH += 1
 
-    if ALL_VARIABLE is None:
+    if TEST_VARIABLES:
+        variable_list = ['k001','s001','t001','k004']
+    elif ALL_VARIABLE is None:
         variable_list = [VARIABLE]
     else:
         variable_list = ['{}{}'.format(ALL_VARIABLE, pad_string_zeros(i+1)) for i in range(variable_dict[ALL_VARIABLE])]
 
     for variable in variable_list:
 
-        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Noise {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}".format(
-            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, ADD_NOISE, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES)
+        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}".format(
+            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES)
 
         # Load the profiling traces and the attack traces
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
-                                                                      input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD)
+                                                                      input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER)
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
-            training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, progress_bar=PROGRESS_BAR)
+            training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):
