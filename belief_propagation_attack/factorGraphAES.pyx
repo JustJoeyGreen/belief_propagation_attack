@@ -43,7 +43,7 @@ shared_variables = ['k', 'sk', 'xk', 'rc']
 class FactorGraphAES:
 
     """ Container for Factor Graph """
-    def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None):
+    def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None):
 
         self.no_print = no_print
 
@@ -157,7 +157,18 @@ class FactorGraphAES:
         if real_traces:
             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter)
 
-        self.averaged_key_values = None
+        self.averaged_key_values    = None
+
+        self.badly_leaking_snr      = badly_leaking_snr
+        self.badly_leaking_traces   = badly_leaking_traces
+
+        self.badly_leaking_nodes    = badly_leaking_nodes
+        self.no_noise_nodes         = no_noise_nodes
+
+        # self.badly_leaking_nodes = None if badly_leaking_nodes is None else get_all_variables_that_match(self.variables, self.badly_leaking_nodes)
+        # self.no_noise_nodes = None if no_noise_nodes is None else get_all_variables_that_match(self.variables, self.no_noise_nodes)
+
+        # print 'Badly Leaking Nodes: {}'.format(self.badly_leaking_nodes)
 
     def set_key(self, val):
         self.key = val
@@ -308,7 +319,8 @@ class FactorGraphAES:
             leakage_simulator.fix_key(self.key)
 
             # leakage = leakage_simulator.simulate(snr = snr, traces = self.traces, offset = 0, read_plaintexts = 0, random_plaintexts = 1)
-            leakage_simulator.simulate(snr = snr, traces = averaged_traces, offset = offset, read_plaintexts = 0, random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = 0, print_all = 0, affect_with_noise = not no_noise, hw_leakage_model = False, real_values = False, rounds_of_aes = self.rounds_of_aes)
+            print "* In Factor Graph, badly leaking traces {}".format(self.badly_leaking_traces)
+            leakage_simulator.simulate(snr = snr, traces = averaged_traces, offset = offset, read_plaintexts = 0, random_plaintexts = 1, badly_leaking_nodes = self.badly_leaking_nodes, badly_leaking_traces = self.badly_leaking_traces, badly_leaking_snr = self.badly_leaking_snr, no_noise_nodes = self.no_noise_nodes, threshold = None, local_leakage = 0, print_all = 0, affect_with_noise = not no_noise, hw_leakage_model = False, real_values = False, rounds_of_aes = self.rounds_of_aes)
 
             leakage = leakage_simulator.get_leakage_dictionary()
 
@@ -349,7 +361,7 @@ class FactorGraphAES:
 
     def set_all_initial_distributions(self, specific_trace = None, no_leak = None,
                                       fixed_value = None, elmo_pow_model = False, real_traces = False,
-                                      seed=0, no_noise=False, offset=0, ignore_bad=False):
+                                      seed=0, no_noise=False, offset=0, ignore_bad=False, trace_id = None):
 
         snr = 2 ** self.SNR_exp
 
@@ -372,7 +384,7 @@ class FactorGraphAES:
             leakage_simulator.fix_key(self.key)
 
             # leakage = leakage_simulator.simulate(snr = snr, traces = self.traces, offset = 0, read_plaintexts = 0, random_plaintexts = 1)
-            leakage_simulator.simulate(snr = snr, traces = self.traces, offset = offset, read_plaintexts = 0, random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = 0, print_all = 0, affect_with_noise = not no_noise, hw_leakage_model = False, real_values = False, rounds_of_aes = self.rounds_of_aes)
+            leakage_simulator.simulate(snr = snr, traces = self.traces, offset = offset, read_plaintexts = 0, random_plaintexts = 1, badly_leaking_nodes = self.badly_leaking_nodes, badly_leaking_traces = self.badly_leaking_traces, badly_leaking_snr = self.badly_leaking_snr, no_noise_nodes = self.no_noise_nodes, threshold = None, local_leakage = 0, print_all = 0, affect_with_noise = not no_noise, hw_leakage_model = False, real_values = False, rounds_of_aes = self.rounds_of_aes, trace_id=trace_id)
 
             leakage = leakage_simulator.get_leakage_dictionary()
 

@@ -40,7 +40,7 @@ class LeakageSimulatorAESFurious:
         np.random.seed(seed)
 
     def simulate(self, float snr = 32.0, int traces = 1, int offset = 0, int read_plaintexts = 0, int random_plaintexts = 1, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, int local_leakage = 1, int print_all = 0, affect_with_noise = True, hw_leakage_model = False, real_values = False, rounds_of_aes = 10,
-    average_key_nodes = False):
+    average_key_nodes = False, trace_id = None):
 
         cdef int i, j, trace, index
 
@@ -271,7 +271,7 @@ class LeakageSimulatorAESFurious:
 
         # Affect with Noise
         if affect_with_noise:
-            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)
+            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes, trace_id = trace_id)
 
 
     def elmo_simulation(self, snr = 32.0, traces = 1, offset = 0, read_plaintexts = True, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, local_leakage = True, affect_with_noise = True, hw_leakage_model = True):
@@ -514,7 +514,7 @@ class LeakageSimulatorAESFurious:
 
         # Affect with Noise
         if affect_with_noise:
-            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes)
+            self.affect_dictionary_with_noise(snr = snr, badly_leaking_nodes = badly_leaking_nodes, badly_leaking_traces = badly_leaking_traces, badly_leaking_snr = badly_leaking_snr, no_noise_nodes = no_noise_nodes, threshold = threshold, hw_leakage_model = hw_leakage_model, average_key_nodes = average_key_nodes, trace_id = trace_id)
 
 
 
@@ -522,7 +522,7 @@ class LeakageSimulatorAESFurious:
     def save_simulation(self):
         save_leakage(self.simulated_dictionary, 'furious_dict')
 
-    def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False):
+    def affect_dictionary_with_noise(self, float snr, badly_leaking_nodes = None, badly_leaking_traces = None, badly_leaking_snr = 0.1, no_noise_nodes = None, threshold = None, hw_leakage_model = False, average_key_nodes = False, trace_id = None):
 
         if badly_leaking_nodes is None:
             badly_leaking_nodes = []
@@ -542,6 +542,8 @@ class LeakageSimulatorAESFurious:
         variables = ['k','sk','xk','p','t','s','mc','xt','cm','h']
 
         traces = len(dictionary['p'])
+
+        # print "In Leakage Simulator AES Furious, badly_leaking_traces = {}, badly_leaking_nodes: {}".format(badly_leaking_traces, badly_leaking_nodes)
 
         if len(badly_leaking_traces) == 0:
             badly_leaking_traces = range(traces)
@@ -569,7 +571,13 @@ class LeakageSimulatorAESFurious:
                         print_new_line()
                         print_new_line()
 
-                    badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes)
+
+                    # badly_leaking_node = (trace in badly_leaking_traces and variable in badly_leaking_nodes) or (trace_id is not None and trace_id in badly_leaking_traces and )
+
+                    badly_leaking_node = variable in badly_leaking_nodes and ((trace_id is None and trace in badly_leaking_traces) or (trace_id is not None and trace_id in badly_leaking_traces))
+
+                    # print 'Bad leaking node? {} (trace {} in {}: {}, variable {} in {}: {})'.format(badly_leaking_node, trace, badly_leaking_traces, trace in badly_leaking_traces, variable, badly_leaking_nodes, variable in badly_leaking_nodes)
+
 
                     if variable is 'p':
                         dictionary[variable][trace] = np.append(dictionary[variable][trace][:16][:], self.affect_array_with_noise(dictionary[variable][trace][16:][:], snr, threshold = threshold, hw_leakage_model = hw_leakage_model, category = get_category(variable), bad_leak = badly_leaking_node, badly_leaking_snr = badly_leaking_snr))
@@ -655,7 +663,7 @@ class LeakageSimulatorAESFurious:
             return value
         try:
             if bad_leak:
-                noise = np.mean(np.random.normal(0, get_sigma(badly_leaking_snr), average))
+                noise = np.mean(np.random.normal(0, get_sigma(badly_leaking_snr, hw = False, category = category), average))
             else:
                 # TEST
                 noise = np.mean(np.random.normal(0, sigma, average))

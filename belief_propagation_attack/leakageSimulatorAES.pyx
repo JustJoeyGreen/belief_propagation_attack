@@ -1,3 +1,7 @@
+##############################################################################
+# JOEY, IF YOU ARE READING THIS, AES FURIOUS IS THE ONE YOU SHOULD BE USING
+##############################################################################
+
 import random
 import pickle
 import numpy as np

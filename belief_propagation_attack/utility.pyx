@@ -22,6 +22,8 @@ import cython
 from cython.parallel import prange, parallel
 cimport numpy as np
 import os
+from fastdtw import fastdtw
+from scipy.spatial.distance import euclidean
 os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
 
 DTYPE = np.float32
@@ -848,7 +850,10 @@ def string_contains_any(string, lst):
 
 def get_variable_name(string):
     # sk102-0 -> sk
-    return re.search(r'^[a-z]+', string).group(0)
+    try:
+        return re.search(r'^[a-z]+', string).group(0)
+    except AttributeError:
+        return None
 
 def get_variable_number(string):
     # sk102-0 -> 102
@@ -1123,6 +1128,7 @@ def get_variables_that_match(variables, target_var):
         var_name, var_number, var_trace = split_variable_name(var)
         # print target_name, target_number, target_trace, var_name, var_number, var_trace
         # Check for match
+        # 3 cases: direct match, no trace but match up, or no variable number but match up
         if (target_number is not None and target_trace is not None and target_name == var_name and target_number == var_number and target_trace == var_trace) or (target_number is not None and target_trace is None and target_name == var_name and target_number == var_number) or (target_number is None and target_trace is None and target_name == var_name):
             matching_variables.append(var)
     return matching_variables
@@ -1781,8 +1787,84 @@ def shift_traces(extra=True, shifted=2):
         shifted_data[t] = roll_and_pad(trace_data[t], randint)
     del shifted_data
 
+def get_first_occurance_in_path(path, j):
+    # First, try path[j]
+    location = j
+    while path[location][0] != j:
+        # print 'Path at location {}: {} (not {})'.format(location, path[location][0], j)
+        location = location + j - path[location][0]
+        # print '> location now {}'.format(location)
+    return location
 
+def get_y_values_from_path(path, j):
+    y_vals = list()
+    count = get_first_occurance_in_path(path, j)
+    # Will only be right from there
+    while count < len(path) and path[count][0] == j:
+        y_vals.append(path[count][1])
+        count += 1
+    return y_vals
 
+def realign_trace(base_trace,target_trace):
+    _, path = fastdtw(base_trace, target_trace, dist=euclidean)
+    realigned_trace = np.zeros(target_trace.shape)
+    for sample in range(target_trace.shape[0]):
+        y_vals = get_y_values_from_path(path, sample)
+        total = 0
+        for count, index in enumerate(y_vals):
+            total += target_trace[index]
+        realigned_trace[sample] = total / (len(y_vals) + 0.0)
+    return realigned_trace
+
+def realign_traces(extra=True, shifted=2):
+    # Load original trace data and shifted trace data
+    print "REALIGNING!"
+    single_nonjitter_trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)[0]
+    jittery_trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=extra, shifted=shifted))
+    traces, samples = jittery_trace_data.shape
+    _, _, _, coding = load_meta()
+    realigned_filepath = get_realigned_tracedata_filepath(extra=extra, shifted=shifted)
+    realigned_data = np.memmap(realigned_filepath, shape=(traces, samples), mode='w+', dtype=coding)
+    print "Extra: {}, Shifted: {}, Filepath: {}".format(extra, shifted, realigned_filepath)
+    for t in range(traces):
+        if ((t % (traces/100)) == 0):
+            print "{}% Complete".format(t*100 / (traces + 0.0))
+        if t<10:
+            print 'Trace {} Realigned!'.format(t)
+        realigned_data[t] = realign_trace(single_nonjitter_trace_data, jittery_trace_data[t])
+    del realigned_data
+
+def handle_list_string(l):
+    # print "Handling list: {}".format(l)
+    if len(l) == 1:
+        try:
+            # print "> eval(l[0]): eval({}): {} ({})".format(l[0], eval(l[0]), type(eval(l[0])))
+            if type(eval(l[0])) == list:
+                return eval(l[0])
+        except NameError:
+            return handle_variable_string_list(l[0])
+    # print "> Length {}, ignoring".format(len(l))
+    return l
+
+def handle_variable_string_list(s):
+    # e.g. '[k,t,s]' -> ['k','t','s']
+    # Ensure first character '['
+    if s[0] != '[':
+        print "!!! Error, {} not a variable string list".format(s)
+        raise
+    # Loop through and append to out
+    out = list()
+    current_buffer = ''
+    for i in s[1:]:
+        if i == ',' or i == ']':
+            if len(current_buffer) > 0:
+                out.append(current_buffer)
+            current_buffer = ''
+            if i == ']':
+                break
+        else:
+            current_buffer += i
+    return out
 
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]

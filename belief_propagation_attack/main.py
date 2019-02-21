@@ -150,6 +150,7 @@ def run_belief_propagation_attack(margdist=None):
         convergence_holder = []
         found_holder = []
         timer_holder = []
+        failure_array = [[] for i in range(REPEAT)]
 
         if TRACE_NPY:
             rank_after_each_trace = np.zeros((REPEAT, TRACES), dtype=np.uint8)
@@ -163,7 +164,9 @@ def run_belief_propagation_attack(margdist=None):
                                      key_scheduling=INCLUDE_KEY_SCHEDULING, furious=not USE_ARM_AES,
                                      rounds_of_aes=ROUNDS_OF_AES,
                                      remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
-                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, jitter=JITTER)
+                                     use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, jitter=JITTER,
+                                     badly_leaking_snr=badly_leaking_snr, badly_leaking_nodes=BADLY_LEAKING_NODES,
+                                     badly_leaking_traces=BADLY_LEAKING_TRACES, no_noise_nodes=NO_NOISE_NODES)
 
         for rep in range(REPEAT):
 
@@ -189,6 +192,7 @@ def run_belief_propagation_attack(margdist=None):
 
             # Failed Trace Counter
             failed_traces = 0
+
 
             max_rounds_taken = 0
 
@@ -221,7 +225,7 @@ def run_belief_propagation_attack(margdist=None):
                 my_graph.set_all_initial_distributions( #specific_trace=specific_trace,
                                                        no_leak=NOT_LEAKING_NODES, fixed_value=fixed_node_tuple,
                                                        elmo_pow_model=ELMO_POWER_MODEL, real_traces=REAL_TRACES,
-                                                       no_noise=NO_NOISE, offset=trace+(rep*TRACES), ignore_bad=IGNORE_BAD_TEMPLATES)
+                                                       no_noise=NO_NOISE, offset=trace+(rep*TRACES), ignore_bad=IGNORE_BAD_TEMPLATES, trace_id = specific_trace)
 
                 if PRINT_ALL_KEY_RANKS:
                     print "-~-~-~-~-~-~- Trace {} -~-~-~-~-~-~-".format(trace)
@@ -307,7 +311,7 @@ def run_belief_propagation_attack(margdist=None):
 
                 # Check for failure
                 if IGNORE_GROUND_TRUTHS or (
-                        not my_graph.check_plaintext_failure(debug_mode=True) and
+                        not my_graph.check_plaintext_failure(debug_mode=False) and
                         not my_graph.check_failure_on_specific_byte('t', debug_mode=False)):
 
                     # Update Key Distribution Depending
@@ -349,6 +353,7 @@ def run_belief_propagation_attack(margdist=None):
                         print_new_line()
                     failed_traces += 1
                     total_failures += 1
+                    failure_array[rep].append(trace)
 
                 if not ONLY_END and PRINT_EVERY_TRACE and not NO_PRINT and (method == "IND" or method == "SEQ"):
                     print print_fill_2, "Current Computed Key Ranks (Repeat {}, after Trace {})".format(rep,
@@ -468,6 +473,12 @@ def run_belief_propagation_attack(margdist=None):
             print "+++++++ Timing Statistics (per trace, in seconds) +++++++"
             print_statistics(timer_holder)
             print_new_line()
+
+            if total_failures > 0:
+                print "+++++++ Erroneous Trace Detection Statistics +++++++"
+                for fail_repeat in range(REPEAT):
+                    print "Repeat {:3}: {}".format(fail_repeat, failure_array[fail_repeat])
+                print_new_line()
 
         if RANK_CSV:
             OUTOF = REPEAT if method == "LFG" else TRACES * REPEAT
@@ -650,6 +661,7 @@ def run_belief_propagation_attack(margdist=None):
                     g_string += "Aprime"
                 else:
                     g_string += "A"
+            testname_string = TEST_NAME + '_'
             connection_string = "{}_".format(method)
             lda_string = "LDA{}_".format(TPRANGE) if USE_LDA else ""
             nn_string = "NN{}_".format(TPRANGE) if USE_NN else ""
@@ -660,7 +672,7 @@ def run_belief_propagation_attack(margdist=None):
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
             kavg_string = "KEYAVG_" if KEY_POWER_VALUE_AVERAGE else ""
             Pickle.dump(rank_after_each_trace,
-                        open("{}_{}{}{}{}{}{}_{}{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, connection_string, lda_string, nn_string, best_string, ignore_string, g_string, kavg_string,
+                        open("{}_{}{}{}{}{}{}{}_{}{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, testname_string, connection_string, lda_string, nn_string, best_string, ignore_string, g_string, kavg_string,
                                                             ks_string, TRACES, ROUNDS, snr_string), "wb"))
             if PLOT:
 
@@ -742,7 +754,7 @@ if __name__ == "__main__":
                         help='Threshold for refusing bad point of interest detected nodes (default: None)', type=float, default=None)
 
     parser.add_argument('-raes', '-rounds_of_aes', action="store", dest="ROUNDS_OF_AES",
-                        help='Number of Rounds of AES (default: 10)', type=int, default=10)
+                        help='Number of Rounds of AES (default: 2)', type=int, default=2)
 
     parser.add_argument('--LFG', action="store_true", dest="LARGE_FACTOR_GRAPH",
                         help='Toggles Large Factor Graph On (default: False)', default=False)
@@ -977,6 +989,13 @@ if __name__ == "__main__":
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)
 
+    # Handle Lists using handle_list_string()
+    BADLY_LEAKING_TRACES = handle_list_string(BADLY_LEAKING_TRACES)
+    BADLY_LEAKING_NODES = handle_list_string(BADLY_LEAKING_NODES)
+    NOT_LEAKING_NODES = handle_list_string(NOT_LEAKING_NODES)
+    NO_NOISE_NODES = handle_list_string(NO_NOISE_NODES)
+
+    # print 'Badly Leaking Traces: {}'.format(BADLY_LEAKING_TRACES)
     BADLY_LEAKING_TRACES = [int(i) for i in BADLY_LEAKING_TRACES]
 
     ################################################################################

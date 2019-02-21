@@ -6,9 +6,8 @@ import argparse
 import matplotlib.pyplot as plt
 import trsfile
 import operator
-from fastdtw import fastdtw
-from scipy.spatial.distance import euclidean
 import timing
+import factorGraphAES as fG
 
 parser = argparse.ArgumentParser(description='Trains Neural Network Models')
 parser.add_argument('-t', '-traces', '-test_traces', action="store", dest="TRACES",
@@ -26,61 +25,54 @@ SHIFT_TRACES = True
 SHIFT_VAL = 2
 SHIFT_EXTRA = False
 
-def get_first_occurance_in_path(path, j):
-    # First, try path[j]
-    location = j
-    while path[location][0] != j:
-        # print 'Path at location {}: {} (not {})'.format(location, path[location][0], j)
-        location = location + j - path[location][0]
-        # print '> location now {}'.format(location)
-    return location
+# # IAVG G2 100T 50I
+# names = ['UNI', 'LDA', 'NN', 'IGB', 'BEST']
+# # names = ['LDA']
+# filepath = PATH_TO_TRACES + 'Results/'
+#
+# for name in names:
+#     a = np.mean(np.load('{}{}.npy'.format(filepath, name)), axis=0)
+#     # np.savetxt("{}{}.csv".format(filepath, name), a, delimiter=",")
+#     plt.plot(a, label=name)
+#
+# plt.legend()
+# plt.show()
+#
+# exit(1)
+#
+#
+# best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
+#
+# csv_filepath = 'output/best_templates.csv'
+#
+# clear_csv(csv_filepath)
+# out = 'Variable,Univariate,LDA,Neural Network\n'
+# for variable, ranks in best_templates.iteritems():
+#     out += '{},'.format(variable)
+#     for method, rank in ranks.iteritems():
+#         out += '{},'.format(rank)
+#     out += '\n'
+#
+# append_csv(csv_filepath, out)
+#
+# # print type(best_templates)
+# # print best_templates
+#
+#
+# exit(1)
+#
+# for shifted in [2,10,50,100,500,1000]:
+#     for extra in [True]:
+#         realign_traces(extra=extra, shifted=shifted)
+#
+# print "All done!"
+# exit(1)
 
-def get_y_values_from_path(path, j):
-    y_vals = list()
-    count = get_first_occurance_in_path(path, j)
-    # Will only be right from there
-    while count < len(path) and path[count][0] == j:
-        y_vals.append(path[count][1])
-        count += 1
-    return y_vals
 
-def realign_trace(base_trace,target_trace):
-    _, path = fastdtw(base_trace, target_trace, dist=euclidean)
-    realigned_trace = np.zeros(target_trace.shape)
-    for sample in range(target_trace.shape[0]):
-        y_vals = get_y_values_from_path(path, sample)
-        total = 0
-        for count, index in enumerate(y_vals):
-            total += target_trace[index]
-        realigned_trace[sample] = total / (len(y_vals) + 0.0)
-    return realigned_trace
+my_graph = fG.FactorGraphAES()
 
-def get_realigned_tracedata_filepath(extra=False,shifted=50):
-    return TRACEDATA_FOLDER + '{}tracedata_realigned{}.npy'.format('extra' if extra else '', shifted)
+print get_all_variables_that_match(my_graph.get_variables(), ['k001'])
 
-def realign_traces(extra=True, shifted=2):
-    # Load original trace data and shifted trace data
-    print "REALIGNING!"
-    single_nonjitter_trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if not extra else TRACEDATA_EXTRA_FILEPATH)[0]
-    jittery_trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(extra=extra, shifted=shifted))
-    traces, samples = jittery_trace_data.shape
-    _, _, _, coding = load_meta()
-    realigned_filepath = get_realigned_tracedata_filepath(extra=extra, shifted=shifted)
-    realigned_data = np.memmap(realigned_filepath, shape=(traces, samples), mode='w+', dtype=coding)
-    print "Extra: {}, Shifted: {}, Filepath: {}".format(extra, shifted, realigned_filepath)
-    for t in range(traces):
-        if ((t % (traces/100)) == 0):
-            print "{}% Complete".format(t*100 / (traces + 0.0))
-        if t<10:
-            print 'Trace {} Realigned!'.format(t)
-        realigned_data[t] = realign_trace(single_nonjitter_trace_data, jittery_trace_data[t])
-    del realigned_data
-
-for shifted in [2,10,50,100,500,1000]:
-    for extra in [True]:
-        realign_traces(extra=extra, shifted=shifted)
-
-print "All done!"
 exit(1)
 
 my_length = 3
