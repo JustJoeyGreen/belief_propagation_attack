@@ -22,7 +22,10 @@ import cython
 from cython.parallel import prange, parallel
 cimport numpy as np
 import os
-from fastdtw import fastdtw
+try:
+    from fastdtw import fastdtw
+except ImportError:
+    pass
 from scipy.spatial.distance import euclidean
 os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
 

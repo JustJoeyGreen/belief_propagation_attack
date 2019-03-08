@@ -756,6 +756,24 @@ if __name__ == "__main__":
     parser.add_argument('-raes', '-rounds_of_aes', action="store", dest="ROUNDS_OF_AES",
                         help='Number of Rounds of AES (default: 2)', type=int, default=2)
 
+    parser.add_argument('-rm', action="append", dest="REMOVED_NODES", help="Removes target variable (default: [])",
+                        default=[])
+    parser.add_argument('-lo', action="append", dest="LEFT_OUT_NODES",
+                        help="For Distance between nodes, leave out node (default: [])", default=[])
+    parser.add_argument('-nl', action="append", dest="NOT_LEAKING_NODES",
+                        help="Doesn't leak on target variable (default: [])", default=[])
+    parser.add_argument('-nn', action="append", dest="NO_NOISE_NODES", help="No noise on target variable (default: [])",
+                        default=[])
+    parser.add_argument('-bl', action="append", dest="BADLY_LEAKING_NODES",
+                        help="Badly leaks on target variable (default: [])", default=[])
+    parser.add_argument('-blsnrexp', action="store", dest="BADLY_LEAKING_SNR_exp",
+                        help='snr Exponent for the bad leakage, s.t. snr = 2**SNR_exp (default: -7)', type=float,
+                        default=-7)
+    parser.add_argument('-blt', action="append", dest="BADLY_LEAKING_TRACES",
+                        help="Badly leaks on target traces (default: [])", default=[])
+    parser.add_argument('-fix', action="store", dest="FIXED_VALUE_NODE",
+                        help='Fix Variable node to get Marginal Distance to Key Bytes (default: None)', default=None)
+
     parser.add_argument('--LFG', action="store_true", dest="LARGE_FACTOR_GRAPH",
                         help='Toggles Large Factor Graph On (default: False)', default=False)
     parser.add_argument('--SQG', '--SEQ', '--SFG', action="store_true", dest="SEQUENTIAL_GRAPHS",
@@ -849,12 +867,6 @@ if __name__ == "__main__":
                         help='Updates Key Initial Distributions (default: False)', default=False)
     parser.add_argument('--UNPROFILED', '--NEW', action="store_false", dest="UNPROFILED",
                         help='If Real Traces, only attack unprofiled traces (default: True)', default=True)
-
-    # parser.add_argument('--ONE_ROUND', '--FIRST_ROUND', action="store_true", dest="FIRST_ROUND",
-    #                     help='Only models first round of AES (default: False)', default=False)
-    # parser.add_argument('--TWO_ROUNDS', '--SECOND_ROUND', action="store_true", dest="SECOND_ROUND",
-    #                     help='Only models first two rounds of AES (default: False)', default=False)
-
     parser.add_argument('--REAL_TRACES', '--REAL', action="store_true", dest="REAL_TRACES",
                         help='Attacks a Real Trace (default: False)', default=False)
 
@@ -883,24 +895,6 @@ if __name__ == "__main__":
     parser.add_argument('--SAVE_FIRST_DISTS', '--SFD', action="store_true", dest="SAVE_FIRST_DISTS",
                         help='Saves the Distributions of the first Key and Plaintexts bytes (Test Purposes Only) (default: False)',
                         default=False)
-
-    parser.add_argument('-rm', action="append", dest="REMOVED_NODES", help="Removes target variable (default: [])",
-                        default=[])
-    parser.add_argument('-lo', action="append", dest="LEFT_OUT_NODES",
-                        help="For Distance between nodes, leave out node (default: [])", default=[])
-    parser.add_argument('-nl', action="append", dest="NOT_LEAKING_NODES",
-                        help="Doesn't leak on target variable (default: [])", default=[])
-    parser.add_argument('-nn', action="append", dest="NO_NOISE_NODES", help="No noise on target variable (default: [])",
-                        default=[])
-    parser.add_argument('-bl', action="append", dest="BADLY_LEAKING_NODES",
-                        help="Badly leaks on target variable (default: [])", default=[])
-    parser.add_argument('-blsnrexp', action="store", dest="BADLY_LEAKING_SNR_exp",
-                        help='snr Exponent for the bad leakage, s.t. snr = 2**SNR_exp (default: -7)', type=float,
-                        default=-7)
-    parser.add_argument('-blt', action="append", dest="BADLY_LEAKING_TRACES",
-                        help="Badly leaks on target traces (default: [])", default=[])
-    parser.add_argument('-fix', action="store", dest="FIXED_VALUE_NODE",
-                        help='Fix Variable node to get Marginal Distance to Key Bytes (default: None)', default=None)
 
     parser.add_argument('--CL', '--CHECK_LEAKAGE', action="store_true", dest="CHECK_LEAKAGE",
                         help='Checks Initial Leakage (default: False)', default=False)

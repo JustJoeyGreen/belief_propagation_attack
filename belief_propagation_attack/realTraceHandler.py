@@ -11,13 +11,28 @@ TPRANGE_LDA = 200
 
 class RealTraceHandler:
 
-    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, jitter = None):
+    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, jitter = None, use_extra = True):
         self.no_print = no_print
         if not no_print:
             print "Preloading Matrix real_trace_data, may take a while..."
-        self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if jitter is None else get_shifted_tracedata_filepath(extra=True, shifted=jitter), memory_mapped=memory_mapped)
+
+        if use_extra:
+            self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if jitter is None else get_shifted_tracedata_filepath(extra=True, shifted=jitter), memory_mapped=memory_mapped)
+            self.plaintexts = np.load(PLAINTEXT_EXTRA_FILEPATH)
+            if debug:
+                self.realvalues = dict()
+                for var in variable_dict:
+                    self.realvalues[var] = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var))
+        else:
+            self.real_trace_data = load_trace_data(filepath=TRACEDATA_FILEPATH if jitter is None else get_shifted_tracedata_filepath(extra=False, shifted=jitter), memory_mapped=memory_mapped)
+            self.plaintexts = np.load(PLAINTEXT_FILEPATH)
+            if debug:
+                self.realvalues = dict()
+                for var in variable_dict:
+                    self.realvalues[var] = np.load('{}{}.npy'.format(REALVALUES_FOLDER, var))
+
         self.real_trace_data_maxtraces, self.real_trace_data_len = self.real_trace_data.shape
-        self.plaintexts = np.load(PLAINTEXT_EXTRA_FILEPATH)
+
 
         if not no_print:
             print "Preloading all timepoints, may take a while..."
@@ -25,10 +40,7 @@ class RealTraceHandler:
         for var in variable_dict:
             self.timepoints[var] = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var))
 
-        if debug:
-            self.realvalues = dict()
-            for var in variable_dict:
-                self.realvalues[var] = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var))
+
 
         self.use_best = use_best
         self.use_lda = use_lda

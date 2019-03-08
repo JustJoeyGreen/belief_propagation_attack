@@ -70,18 +70,18 @@ def check_file_exists(file_path):
     return
 
 #### MLP Best model (6 layers of 200 units)
-def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700):
+def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001):
     model = Sequential()
     model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
     for i in range(layer_nb-2):
         model.add(Dense(mlp_nodes, activation='relu'))
     model.add(Dense(256, activation='softmax'))
-    optimizer = RMSprop(lr=0.00001)
+    optimizer = RMSprop(lr=learning_rate)
     model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
 ### CNN Best model
-def cnn_best(classes=256, input_length=700):
+def cnn_best(classes=256, input_length=700, learning_rate=0.00001):
     # From VGG16 design
     input_shape = (input_length, 1)
     img_input = Input(shape=input_shape)
@@ -109,13 +109,13 @@ def cnn_best(classes=256, input_length=700):
     inputs = img_input
     # Create model.
     model = Model(inputs, x, name='cnn_best')
-    optimizer = RMSprop(lr=0.00001)
+    optimizer = RMSprop(lr=learning_rate)
     model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
 
 ### CNN Previously Trained model
-def cnn_pretrained(classes=256, input_length=700):
+def cnn_pretrained(classes=256, input_length=700, learning_rate=0.00001):
     # load model
     cnn_previous = load_model(CNN_ASCAD_FILEPATH)
     for layer in cnn_previous.layers[:-6]:
@@ -123,12 +123,12 @@ def cnn_pretrained(classes=256, input_length=700):
 
     model = Sequential()
     model.add(cnn_previous)
-    optimizer = RMSprop(lr=0.00001)
+    optimizer = RMSprop(lr=learning_rate)
     model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
 ### LSTM Best model
-def lstm_best(classes=256, input_length=700, layer_nb=1, lstm_nodes=64, use_dropout=True):
+def lstm_best(classes=256, input_length=700, layer_nb=1, lstm_nodes=64, use_dropout=True, learning_rate=0.00001):
     # From VGG16 design
     input_shape = (input_length, 1)
     img_input = Input(shape=input_shape)
@@ -151,7 +151,7 @@ def lstm_best(classes=256, input_length=700, layer_nb=1, lstm_nodes=64, use_drop
     inputs = img_input
     # Create model.
     model = Model(inputs, x, name='lstm_best')
-    optimizer = RMSprop(lr=0.00001)
+    optimizer = RMSprop(lr=learning_rate)
     model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
@@ -196,7 +196,7 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001):
 
     if add_noise:
         standard_deviation = 10
@@ -207,45 +207,45 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
 
     ### CNN training
     if cnn:
-        cnn_best_model = cnn_best(input_length=input_length)
+        cnn_best_model = cnn_best(input_length=input_length, learning_rate=learning_rate)
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_best_model, MODEL_FOLDER +
-                    "{}_cnn_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, input_length, cnn_epochs, cnn_batchsize, sd, training_traces, augment_method, jitter),
+                    "{}_cnn_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
                     progress_bar=progress_bar)
 
     ### CNN pre-trained training
     if cnn_pre:
-        cnn_pretrained_model = cnn_pretrained(input_length=input_length)
+        cnn_pretrained_model = cnn_pretrained(input_length=input_length, learning_rate=learning_rate)
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_pretrained_model, MODEL_FOLDER +
-                    "{}_cnnpretrained_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, input_length, cnn_epochs, cnn_batchsize, sd, training_traces, augment_method, jitter),
+                    "{}_cnnpretrained_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
                     progress_bar=progress_bar)
 
     ### MLP training
     if mlp:
-        mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers)
+        mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate)
         mlp_epochs = epochs if epochs is not None else 200
         mlp_batchsize = batch_size
         train_model(X_profiling, Y_profiling, mlp_best_model, MODEL_FOLDER +
-                    "{}_mlp{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, mlp_layers, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, sd,
+                    "{}_mlp{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, mlp_layers, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
                         training_traces, augment_method, jitter), epochs=mlp_epochs, batch_size=mlp_batchsize,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
 
     ### LSTM training
     if lstm:
-        lstm_best_model = lstm_best(input_length=input_length, layer_nb=lstm_layers)
+        lstm_best_model = lstm_best(input_length=input_length, layer_nb=lstm_layers, learning_rate=learning_rate)
         lstm_epochs = epochs if epochs is not None else 75
         lstm_batchsize = batch_size
         train_model(X_profiling, Y_profiling, lstm_best_model, MODEL_FOLDER +
-                    "{}_lstm{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, lstm_layers, lstm_nodes, input_length, lstm_epochs, lstm_batchsize, sd,
+                    "{}_lstm{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, lstm_layers, lstm_nodes, input_length, lstm_epochs, lstm_batchsize, learning_rate, sd,
                         training_traces, augment_method, jitter), epochs=lstm_epochs, batch_size=lstm_batchsize,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
 
@@ -280,6 +280,8 @@ if __name__ == "__main__":
                         default='s001')
     parser.add_argument('-l', '-length', '-input', action="store", dest="INPUT_LENGTH", help='Input Length (default: 700)',
                         type=int, default=700)
+    parser.add_argument('-lr', '-learn', '-learning_rate', action="store", dest="LEARNING_RATE", help='Learning Rate (default: 0.00001)',
+                        type=float, default=0.00001)
     parser.add_argument('-e', '-epochs', action="store", dest="EPOCHS", help='Number of Epochs in Training (default: 75 CNN, 6000 MLP)',
                         type=int, default=6000)
     parser.add_argument('-t', '-traces', action="store", dest="TRAINING_TRACES", help='Number of Traces in Training (default: 200000)',
@@ -338,6 +340,7 @@ if __name__ == "__main__":
     ALL_VARS        = args.ALL_VARS
     JITTER          = args.JITTER
     TEST_VARIABLES  = args.TEST_VARIABLES
+    LEARNING_RATE   = args.LEARNING_RATE
 
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
@@ -355,15 +358,16 @@ if __name__ == "__main__":
 
     for variable in variable_list:
 
-        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}".format(
-            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES)
+        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}".format(
+            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES)
 
         # Load the profiling traces and the attack traces
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
                                                                       input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER)
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
-            training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR)
+            training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,
+            learning_rate=LEARNING_RATE)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):

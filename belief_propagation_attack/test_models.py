@@ -16,9 +16,9 @@ import realTraceHandler as rTH
 
 class TestModels:
 
-    def __init__(self, jitter=None):
+    def __init__(self, jitter=None, use_extra = True):
         # Real Trace Handler
-        self.real_trace_handler = rTH.RealTraceHandler(no_print = True, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True, jitter=jitter)
+        self.real_trace_handler = rTH.RealTraceHandler(no_print = True, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True, jitter=jitter, use_extra = use_extra)
 
 
     AES_Sbox = np.array([
@@ -350,6 +350,8 @@ if __name__ == "__main__":
     parser.add_argument('-j', '-jitter', action="store", dest="JITTER",
                         help='Clock Jitter to use on real traces (default: None)',
                         type=int, default=None)
+    parser.add_argument('--E', '--EX', '--EXTRA', action="store_false", dest="USE_EXTRA",
+                        help='Toggle to Turn USE EXTRA Off (Attack Trained Traces)', default=True)
 
     # Target node here
     args = parser.parse_args()
@@ -363,6 +365,7 @@ if __name__ == "__main__":
     SAVE = args.SAVE
     TEMPLATE_ATTACK = args.TEMPLATE_ATTACK
     JITTER = args.JITTER
+    USE_EXTRA = args.USE_EXTRA
 
     # var_list = list()
     # for v in variable_dict:
@@ -373,7 +376,7 @@ if __name__ == "__main__":
 
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
-    model_tester = TestModels(jitter=JITTER)
+    model_tester = TestModels(jitter=JITTER, use_extra=USE_EXTRA)
 
     if TEST_ALL:
         # Clear statistics
