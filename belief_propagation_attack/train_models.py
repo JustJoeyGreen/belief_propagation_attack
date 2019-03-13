@@ -345,7 +345,7 @@ if __name__ == "__main__":
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
     # Handle dodgy input
-    if (INPUT_LENGTH % 2):
+    if (INPUT_LENGTH % 2) and INPUT_LENGTH != 1:
         print "|| Error: input length must be even, adding 1 to fix ({} -> {})".format(INPUT_LENGTH, INPUT_LENGTH+1)
         INPUT_LENGTH += 1
 

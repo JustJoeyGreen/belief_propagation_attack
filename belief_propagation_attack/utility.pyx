@@ -62,7 +62,7 @@ variable_dict = {'k': 16 + (r_of_aes * 16), 'sk': (r_of_aes * 4),
 
 # FOLDERS
 TIMEPOINTS_FOLDER   = TRACE_FOLDER + 'timepoints/'
-POWERVALUES_FOLDER  = TRACE_FOLDER + 'powervalues/'
+# POWERVALUES_FOLDER  = TRACE_FOLDER + 'powervalues/'
 REALVALUES_FOLDER   = TRACE_FOLDER + 'realvalues/'
 LDA_FOLDER          = TRACE_FOLDER + 'lda/'
 ELASTIC_FOLDER      = TRACE_FOLDER + 'elastic/'
@@ -78,7 +78,7 @@ OUTPUT_FOLDER       = 'output/'
 MODEL_FOLDER        = 'models/'
 NEURAL_MODEL_FOLDER = TRACE_FOLDER + 'models/'
 
-ALL_DIRECTORIES     = [TRACE_FOLDER, TIMEPOINTS_FOLDER, POWERVALUES_FOLDER,
+ALL_DIRECTORIES     = [TRACE_FOLDER, TIMEPOINTS_FOLDER, # POWERVALUES_FOLDER,
                         LDA_FOLDER, ELASTIC_FOLDER, COEFFICIENT_FOLDER,
                         PLAINTEXT_FOLDER, TRACEDATA_FOLDER, REALVALUES_FOLDER,
                         TENSORFLOW_FOLDER, FEATURECOLUMN_FOLDER, LABEL_FOLDER,
@@ -1646,7 +1646,7 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
     var_name, var_number, _ = split_variable_name(variable)
 
     # TRY LOADING FIRST
-    filename = '{}_meta{}_norm{}_input{}_training{}_sd{}_aug{}_jitter{}.pkl'.format(variable, load_metadata, normalise_traces, input_length, training_traces, sd, augment_method, jitter)
+    filename = '{}_meta{}_norm{}_input{}_training{}_sd{}_aug{}_jitter{}'.format(variable, load_metadata, normalise_traces, input_length, training_traces, sd, augment_method, jitter)
 
     try:
         return load_object(TEMP_FOLDER + filename)
@@ -1657,6 +1657,8 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
 
         start_window = max(0, time_point - (input_length/2))
         end_window = min(samples, time_point + (input_length/2))
+        if start_window == end_window:
+            end_window += 1
 
         trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter))[:, start_window:end_window]
         traces, data_length = trace_data.shape
@@ -1725,7 +1727,7 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
         # Load attacking labels
         Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
 
-        if normalise_traces:
+        if input_length > 1 and normalise_traces:
             X_profiling = normalise_neural_traces(X_profiling)
             X_attack = normalise_neural_traces(X_attack)
 
@@ -1755,7 +1757,11 @@ def normalise_neural_traces(X):
             out[i] = normalise_neural_trace_single(X[i])
         return out
     else:
-        return divide_rows_by_max(np.apply_along_axis(normalise_neural_trace, 1, X))
+
+        # DEBUG
+        minimum_value_zero = np.apply_along_axis(normalise_neural_trace, 1, X)
+        divided_by_max = divide_rows_by_max(minimum_value_zero)
+        return divided_by_max
 
 def get_window_size_from_model(str):
     try:

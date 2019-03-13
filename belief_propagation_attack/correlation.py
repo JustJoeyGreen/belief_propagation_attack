@@ -13,7 +13,7 @@ import timing
 
 KEY = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
 ATTACK_TRACES = 10000
-POI_CAP = 10000
+POI_CAP = 10000 # Because this is computationally expensive, don't need 200000 traces to find PoI, just use 10000
 USED_TRACES = None
 PRINT = False
 save = True
@@ -396,7 +396,7 @@ def simulate_data_from_plaintexts():
 
 
 # noinspection PyTypeChecker
-def point_of_interest_detection(save_file=True, hw=False, variables=None):
+def point_of_interest_detection(save_file=True, hw=True, variables=None):
     # Correlation!
     # for each variable, load the .npy
     # then load matrix trace_data
@@ -419,10 +419,9 @@ def point_of_interest_detection(save_file=True, hw=False, variables=None):
         else:
             var_array = np.copy(var_array_real)
 
-        print "Variable {:5}:\n{}".format(var, var_array)
+        print "Variable {:3} ({}):\n{}".format(var, var_array.shape, var_array)
 
         for j in range(number_of_nodes):
-        # for j in range(2):
 
             if np.std(var_array[j]) == 0.0:
                 print "Standard Deviation of Variable {}[{}] is 0, cannot find trace point!".format(var, j)
@@ -442,7 +441,19 @@ def point_of_interest_detection(save_file=True, hw=False, variables=None):
                 #             raise ValueError
                 #         coeff_array[sample] = coeff
 
-                coeff_array = np.array([np.abs(np.corrcoef(var_array[j][:, :POI_CAP], sample))[0, 1] for sample in trace_data])
+                # print "DEBUG"
+                # print var_array[j]
+                # print var_array[j].shape
+                # print POI_CAP
+                # print var_array[j][:POI_CAP]
+                # print np.corrcoef(var_array[j][:POI_CAP], sample)
+                # print np.abs(np.corrcoef(var_array[j][:POI_CAP], sample))
+                # print np.abs(np.corrcoef(var_array[j][:POI_CAP], sample)).shape
+                #
+                # exit(1)
+
+
+                coeff_array = np.array([np.abs(np.corrcoef(var_array[j][:POI_CAP], timeslice))[0, 1] for timeslice in trace_data])
 
                 top_n = coeff_array.argsort()[-TOP_N:][::-1]
                 print "Top {} Coefficient Indexes for Variable {}[{}]:".format(TOP_N, var, j)
@@ -454,7 +465,7 @@ def point_of_interest_detection(save_file=True, hw=False, variables=None):
 
                 # Store!
                 if save_file:
-                    np.save("{}{}_{}.npy".format(COEFFICIENT_FOLDER, var, j), coeff_array)
+                    np.save("{}{}_{}{}.npy".format(COEFFICIENT_FOLDER, var, j, '_HW' if hw else ''), coeff_array)
 
                 # Stop for now!
                 # exit(1)
@@ -468,7 +479,7 @@ def point_of_interest_detection(save_file=True, hw=False, variables=None):
     print_new_line()
 
 
-def get_time_points_for_each_node():
+def get_time_points_for_each_node(hw=True):
 
     # print "Loading Matrix trace_data, may take a while..."
     # trace_data = np.load(TRACEDATA_FILEPATH)
@@ -492,7 +503,7 @@ def get_time_points_for_each_node():
 
         for j in range(number_of_nodes):
             # Load
-            coeff_array = np.load("{}{}_{}.npy".format(COEFFICIENT_FOLDER, var, j), mmap_mode='r')
+            coeff_array = np.load("{}{}_{}{}.npy".format(COEFFICIENT_FOLDER, var, j, '_HW' if hw else ''), mmap_mode='r')
 
             # Find the Highest Correlated Time Point
             poi = np.argmax(coeff_array)
@@ -509,40 +520,40 @@ def get_time_points_for_each_node():
     print_new_line()
 
 
-def get_power_values_for_each_node():
-
-    for data_count, trace_data_path in enumerate([TRACEDATA_FILEPATH, TRACEDATA_EXTRA_FILEPATH]):
-
-        print "Loading Matrix trace_data {}, may take a while...".format(data_count)
-        trace_data = (load_trace_data(file_path=trace_data_path, memory_mapped = MEMORY_MAPPED))
-        print "...done!"
-        print_new_line()
-
-        traces, samples = trace_data.shape
-        print traces, samples
-
-        for var, number_of_nodes in variable_dict.iteritems():
-
-            if PRINT:
-                print "* Variable {}".format(var)
-
-            # Get Time Points
-            time_points = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))
-
-            power_values = np.zeros([traces, number_of_nodes])
-
-            for trace in range(traces):
-                if PRINT:
-                    print "- Trace {}".format(trace)
-                print trace_data[trace].shape, time_points
-                power_values[trace] = np.take(trace_data[trace], time_points)
-
-            # Save
-            extra_string = "extra_" if data_count == 1 else ""
-            np.save("{}{}{}.npy".format(POWERVALUES_FOLDER, extra_string, var), power_values)
-
-    print "Saved and Completed!"
-    print_new_line()
+# def get_power_values_for_each_node():
+#
+#     for data_count, trace_data_path in enumerate([TRACEDATA_FILEPATH, TRACEDATA_EXTRA_FILEPATH]):
+#
+#         print "Loading Matrix trace_data {}, may take a while...".format(data_count)
+#         trace_data = (load_trace_data(filepath=trace_data_path, memory_mapped = MEMORY_MAPPED))
+#         print "...done!"
+#         print_new_line()
+#
+#         traces, samples = trace_data.shape
+#         print traces, samples
+#
+#         for var, number_of_nodes in variable_dict.iteritems():
+#
+#             if PRINT:
+#                 print "* Variable {}".format(var)
+#
+#             # Get Time Points
+#             time_points = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))
+#
+#             power_values = np.zeros([traces, number_of_nodes])
+#
+#             for trace in range(traces):
+#                 if PRINT:
+#                     print "- Trace {}".format(trace)
+#                 print trace_data[trace].shape, time_points
+#                 power_values[trace] = np.take(trace_data[trace], time_points)
+#
+#             # Save
+#             extra_string = "extra_" if data_count == 1 else ""
+#             np.save("{}{}{}.npy".format(POWERVALUES_FOLDER, extra_string, var), power_values)
+#
+#     print "Saved and Completed!"
+#     print_new_line()
 
 
 def elastic_alignment(start_trace=0):
@@ -693,6 +704,10 @@ def lda_templates(tprange=200):
     # profile_traces = int(traces * 0.8)
 
     for variable, length in variable_dict.iteritems():
+
+        if variable not in ['xt','k','h']:
+            print "DEBUG: Skipping {}".format(variable)
+            continue
 
         # if PRINT:
         print "Generating Template for Variable {}, Length {}".format(variable, length)
@@ -1050,48 +1065,48 @@ def lda_matching_performance(tprange=200):
         pass
 
 
-def get_feature_column_csv(prev_and_sub=True):
-
-    if prev_and_sub:
-        for i in range(2):
-            extra_string = "extra_" if i == 1 else ""
-            trace_data_name = TRACEDATA_EXTRA_FILEPATH if i == 1 else TRACEDATA_FILEPATH
-            print "Loading from {}...".format(trace_data_name)
-            trace_data = np.transpose(load_trace_data(trace_data_name, memory_mapped = MEMORY_MAPPED))
-            print "...done"
-            for var_name, total_vars in variable_dict.iteritems():
-                time_points = np.load(TIMEPOINTS_FOLDER + var_name + '.npy')
-                real_values = np.load(REALVALUES_FOLDER + extra_string + var_name + '.npy')
-                for var_number in range(total_vars):
-                    time_point = time_points[var_number]
-                    data = trace_data[:, time_point-1:time_point+2]
-                    labels = real_values[var_number, :]
-                    print data.shape
-                    print np.unique(data, axis=0).shape
-                    dataframe = pd.DataFrame(data = data, columns=['PreviousPowerValue', 'TargetPowerValue', 'SubsequentPowerValue'])
-
-                    for j, value in enumerate(labels):
-                        if value == 139:
-                            print (dataframe.iloc[j])
-
-                    # Save
-                    np.save('{}{}{}{}.npy'.format(LABEL_FOLDER, extra_string, var_name, var_number), labels)
-                    dataframe.to_csv('{}{}{}{}.csv'.format(FEATURECOLUMN_FOLDER, extra_string, var_name, var_number))
-    else:
-        # Need: real values for each variable, plus power values
-        # Loop through variable names
-        for i in range(2):
-            extra_string = "extra_" if i == 1 else ""
-            for var_name, total_vars in variable_dict.iteritems():
-                power_values = np.transpose(np.load(POWERVALUES_FOLDER + extra_string + var_name + '.npy'))
-                real_values = np.load(REALVALUES_FOLDER + extra_string + var_name + '.npy')
-                for var_number in range(total_vars):
-                    data = power_values[var_number, :]
-                    labels = real_values[var_number, :]
-                    dataframe = pd.DataFrame(data = data, columns=['PowerValue'])
-                    # Save
-                    np.save('{}{}{}{}.npy'.format(LABEL_FOLDER, extra_string, var_name, var_number), labels)
-                    dataframe.to_csv('{}{}{}{}.csv'.format(FEATURECOLUMN_FOLDER, extra_string, var_name, var_number))
+# def get_feature_column_csv(prev_and_sub=True):
+#
+#     if prev_and_sub:
+#         for i in range(2):
+#             extra_string = "extra_" if i == 1 else ""
+#             trace_data_name = TRACEDATA_EXTRA_FILEPATH if i == 1 else TRACEDATA_FILEPATH
+#             print "Loading from {}...".format(trace_data_name)
+#             trace_data = np.transpose(load_trace_data(trace_data_name, memory_mapped = MEMORY_MAPPED))
+#             print "...done"
+#             for var_name, total_vars in variable_dict.iteritems():
+#                 time_points = np.load(TIMEPOINTS_FOLDER + var_name + '.npy')
+#                 real_values = np.load(REALVALUES_FOLDER + extra_string + var_name + '.npy')
+#                 for var_number in range(total_vars):
+#                     time_point = time_points[var_number]
+#                     data = trace_data[:, time_point-1:time_point+2]
+#                     labels = real_values[var_number, :]
+#                     print data.shape
+#                     print np.unique(data, axis=0).shape
+#                     dataframe = pd.DataFrame(data = data, columns=['PreviousPowerValue', 'TargetPowerValue', 'SubsequentPowerValue'])
+#
+#                     for j, value in enumerate(labels):
+#                         if value == 139:
+#                             print (dataframe.iloc[j])
+#
+#                     # Save
+#                     np.save('{}{}{}{}.npy'.format(LABEL_FOLDER, extra_string, var_name, var_number), labels)
+#                     dataframe.to_csv('{}{}{}{}.csv'.format(FEATURECOLUMN_FOLDER, extra_string, var_name, var_number))
+#     else:
+#         # Need: real values for each variable, plus power values
+#         # Loop through variable names
+#         for i in range(2):
+#             extra_string = "extra_" if i == 1 else ""
+#             for var_name, total_vars in variable_dict.iteritems():
+#                 power_values = np.transpose(np.load(POWERVALUES_FOLDER + extra_string + var_name + '.npy'))
+#                 real_values = np.load(REALVALUES_FOLDER + extra_string + var_name + '.npy')
+#                 for var_number in range(total_vars):
+#                     data = power_values[var_number, :]
+#                     labels = real_values[var_number, :]
+#                     dataframe = pd.DataFrame(data = data, columns=['PowerValue'])
+#                     # Save
+#                     np.save('{}{}{}{}.npy'.format(LABEL_FOLDER, extra_string, var_name, var_number), labels)
+#                     dataframe.to_csv('{}{}{}{}.csv'.format(FEATURECOLUMN_FOLDER, extra_string, var_name, var_number))
 
 
 def check_directories():
@@ -1139,23 +1154,23 @@ def ALL(skip_code = 0):
     if skip_code <= 5:
         print "> Getting Time Points for Each Detected Point"
         get_time_points_for_each_node()
-        print "> Getting Power Values for Each Detected Time Point"
-        get_power_values_for_each_node()
+        # print "> Getting Power Values for Each Detected Time Point"
+        # get_power_values_for_each_node()
 
     # Get linDisAnalysis Templates
-    # if skip_code <= 6:
-    #     print "> Getting linDisAnalysis Templates"
-    #     lda_templates()
+    if skip_code <= 6:
+        print "> Getting linDisAnalysis Templates"
+        lda_templates()
 
-    # Prints out SNRs
-    if skip_code <= 7:
-        print "> Printing SNRs"
-        get_snrs()
-
-    # Matching Performance
-    if skip_code <= 8:
-        print "> Matching Performance"
-        matching_performance()
+    # # Prints out SNRs
+    # if skip_code <= 7:
+    #     print "> Printing SNRs"
+    #     get_snrs()
+    #
+    # # Matching Performance
+    # if skip_code <= 8:
+    #     print "> Matching Performance"
+    #     matching_performance()
 
 
 ######################################## STEP 1: PARSE HEADER ########################################
@@ -1185,9 +1200,10 @@ if __name__ == "__main__":
     SKIP_CODE = args.SKIP_CODE
 
     # TODO
-    # ALL(skip_code=SKIP_CODE)
+    ALL(skip_code=SKIP_CODE)
 
-    lda_templates()
+    # print "> Points of Interest Detection with Hamming Weights!"
+    # point_of_interest_detection(hw=True)
 
     # a = load_trace_data(memory_mapped = MEMORY_MAPPED)
     #
