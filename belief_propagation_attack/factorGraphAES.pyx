@@ -7,6 +7,7 @@ import math
 import numpy as np
 cimport numpy as np
 from utility import *
+import sys
 # from joblib import Parallel, delayed
 # import dill
 # import multiprocessing as mp
@@ -496,7 +497,7 @@ class FactorGraphAES:
             print "Fabricating now!"
         else:
             print "No need to fabricate"
-        exit(1)
+        sys.exit(1)
 
     def get_neighbours(self, name):
         return list(self.G.neighbors(name))
@@ -905,7 +906,7 @@ class FactorGraphAES:
 
             # if i > 0:
             #     print "Ending After First Round!"
-            #     exit(1)
+            #     sys.exit(1)
 
         else:
             round_converged = rounds
@@ -1067,7 +1068,7 @@ class FactorGraphAES:
         #     print_statistics(distance_list)
         # # print "Failure Threshold: {}".format(FAILURE_THRESHOLD_AT_NODE * self.get_snr_exp())
         # return False
-        # # exit(1)
+        # # sys.exit(1)
 
     def check_plaintext_failure(self, snr = None, debug_mode = False):
         if debug_mode:
@@ -1111,7 +1112,7 @@ class FactorGraphAES:
             #     print "Correct Value for k: {}, Top Values: {}".format(k_val, get_top_values(xor_to_k))
             #     print "XORd together:\n\n{}\n".format(incoming)
             #     print "Correct Value for p: {}, Top Values: {}".format(correct_val, get_top_values(incoming))
-            #     exit(1)
+            #     sys.exit(1)
             # else:
             incoming = self.get_all_incoming_messages(p)
 

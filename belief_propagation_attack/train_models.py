@@ -23,6 +23,7 @@ from keras.callbacks import TensorBoard
 from keras.utils import to_categorical
 from keras.models import load_model
 import tensorflow as tf
+from keras import backend as K
 from utility import *
 
 ###########################################################################
@@ -69,15 +70,45 @@ def check_file_exists(file_path):
         sys.exit(-1)
     return
 
+############# Loss functions #############
+
+#### MLP Weighted bit model (6 layers of 200 units)
+def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True):
+    model = Sequential()
+    model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
+    for i in range(layer_nb-2):
+        model.add(Dense(mlp_nodes, activation='relu'))
+    model.add(Dense(8, activation='sigmoid'))
+    optimizer = RMSprop(lr=learning_rate)
+    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    return model
+
+def tf_rank_loss(y_true, y_pred):
+    argsort1 = tf.argsort(y_pred, direction='DESCENDING')
+    argsort2 = tf.argsort(argsort1, direction='ASCENDING')
+    argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
+    # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
+    reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
+    tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
+    reshaped_tf_range = tf.expand_dims(tf_range, 1)
+    concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
+    gathered = tf.gather_nd(argsort2, concatenated_onehot)
+    mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
+    # print "Mean, type {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
+    return mean
+
 #### MLP Best model (6 layers of 200 units)
-def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001):
+def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True):
     model = Sequential()
     model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
     for i in range(layer_nb-2):
         model.add(Dense(mlp_nodes, activation='relu'))
     model.add(Dense(256, activation='softmax'))
     optimizer = RMSprop(lr=learning_rate)
-    model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    if rank_loss:
+        model.compile(loss=tf_rank_loss, optimizer=optimizer, metrics=['accuracy'])
+    else:
+        model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
 ### CNN Best model
@@ -165,7 +196,8 @@ def load_sca_model(model_file):
     return model
 
 #### Training high level function
-def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, batch_size=100, validation_data=None, progress_bar=1):
+def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, batch_size=100, validation_data=None, progress_bar=1, one_hot=True, multilabel=False):
+
     check_file_exists(os.path.dirname(save_file_name))
     # Save model every epoch
     save_model = ModelCheckpoint(save_file_name)
@@ -190,13 +222,30 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
         print("Error: model input shape length %d is not expected ..." % len(input_layer_shape))
         sys.exit(-1)
 
-    history = model.fit(x=Reshaped_X_profiling, y=to_categorical(Y_profiling, num_classes=256), batch_size=batch_size, verbose = progress_bar, epochs=epochs, callbacks=callbacks, validation_data=(Reshaped_validation_data, to_categorical(validation_data[1], num_classes=256)))
+    # Split up for debug
+    if multilabel:
+        # print "Before: {} {} {}".format(Y_profiling.shape, type(Y_profiling), Y_profiling)
+        reshaped_y = np.unpackbits( np.expand_dims(Y_profiling, 1).astype(np.uint8), axis=1)
+        reshaped_val = np.unpackbits( np.expand_dims(validation_data[1], 1).astype(np.uint8), axis=1)
+    elif one_hot:
+        reshaped_y = to_categorical(Y_profiling, num_classes=256)
+        reshaped_val = to_categorical(validation_data[1], num_classes=256)
+    else:
+        reshaped_y = Y_profiling
+        reshaped_val = tvalidation_data[1]
+
+    # Debug
+    print "Reshaped y:\n{}\n".format(reshaped_y)
+    print "Reshaped val:\n{}\n".format(reshaped_val)
+
+
+    history = model.fit(x=Reshaped_X_profiling, y=reshaped_y, batch_size=batch_size, verbose = progress_bar, epochs=epochs, callbacks=callbacks, validation_data=(Reshaped_validation_data, reshaped_val))
     return history
 
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, rank_loss=False, multilabel=False):
 
     if add_noise:
         standard_deviation = 10
@@ -229,14 +278,17 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
 
     ### MLP training
     if mlp:
-        mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate)
+        if multilabel:
+            mlp_best_model = mlp_weighted_bit(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss)
+        else:
+            mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss)
         mlp_epochs = epochs if epochs is not None else 200
         mlp_batchsize = batch_size
         train_model(X_profiling, Y_profiling, mlp_best_model, MODEL_FOLDER +
-                    "{}_mlp{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, mlp_layers, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
-                        training_traces, augment_method, jitter), epochs=mlp_epochs, batch_size=mlp_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
+                    "{}_mlp{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}{}.h5".format(
+                        variable, mlp_layers, '_multilabel' if multilabel else '', mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
+                        training_traces, augment_method, jitter, '_rankloss' if rank_loss else ''), epochs=mlp_epochs, batch_size=mlp_batchsize,
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel)
 
     ### LSTM training
     if lstm:
@@ -315,6 +367,12 @@ if __name__ == "__main__":
                         type=int, default=None)
     parser.add_argument('--TEST', '--TEST_VARIABLES', action="store_true", dest="TEST_VARIABLES",
                         help='Trains only specified Testing Variable Nodes', default=False)
+    parser.add_argument('--RANK_LOSS', '--LOSS', '--L', action="store_true", dest="RANK_LOSS",
+                        help='Uses our own loss function, related to classification rank', default=False)
+    parser.add_argument('--MULTILABEL', '--ML', '--M', action="store_true", dest="MULTILABEL",
+                        help='Uses multilabels in binary form', default=False)
+
+
 
 
     # Target node here
@@ -341,6 +399,8 @@ if __name__ == "__main__":
     JITTER          = args.JITTER
     TEST_VARIABLES  = args.TEST_VARIABLES
     LEARNING_RATE   = args.LEARNING_RATE
+    RANK_LOSS       = args.RANK_LOSS
+    MULTILABEL      = args.MULTILABEL
 
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
@@ -367,7 +427,7 @@ if __name__ == "__main__":
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,
-            learning_rate=LEARNING_RATE)
+            learning_rate=LEARNING_RATE, rank_loss=RANK_LOSS, multilabel=MULTILABEL)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):

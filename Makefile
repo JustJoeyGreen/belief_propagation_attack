@@ -12,6 +12,10 @@ clean-output:
 	rm -f graphs/*
 	rm -f output/*
 
+clean-logs:
+	rm -f -r logs/training
+	rm -f -r logs/validation
+
 clean-all: clean clean-pyc clean-c clean-output
 
 dirs:

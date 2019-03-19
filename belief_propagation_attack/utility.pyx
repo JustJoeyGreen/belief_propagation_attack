@@ -28,6 +28,7 @@ except ImportError:
     pass
 from scipy.spatial.distance import euclidean
 os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
+from os import listdir
 
 DTYPE = np.float32
 ctypedef np.float32_t DTYPE_t
@@ -36,8 +37,18 @@ import platform
 from keras.models import load_model
 
 # Read Paths from PATH_FILE.txt
-with open("PATH_FILE.txt","r") as f:
-    content = f.readlines()
+try:
+    with open("PATH_FILE.txt","r") as f:
+        content = f.readlines()
+except IOError:
+    print "! Can't find PATH_FILE.txt, checking outer directory..."
+    try:
+        with open("../PATH_FILE.txt","r") as f:
+            content = f.readlines()
+    except IOError:
+        print "! No luck finding PATH_FILE.txt"
+        raise IOError
+
 PATH_DICT = dict([i.replace('\n','').strip("=").split("=")
     for i in content if i[0] != '#'])
 
@@ -1875,6 +1886,12 @@ def handle_variable_string_list(s):
             current_buffer += i
     return out
 
+def get_files_in_folder(folder, substring=None):
+    files = list()
+    for (m) in sorted(listdir(folder)):
+        if not string_starts_with(m, '.') and (substring is None or string_contains(m, substring)):
+            files.append(m)
+    return files
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]
