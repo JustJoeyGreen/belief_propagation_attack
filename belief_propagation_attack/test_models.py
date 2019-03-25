@@ -278,7 +278,7 @@ class TestModels:
         try:
             rank_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces)
             if rank_list is not None:
-                print "Model: {}".format(model_file)
+                print "\n\nModel: {}".format(model_file)
                 print_statistics(rank_list)
                 print "> Top Predicted Indices:"
                 print_statistics(predicted_values)

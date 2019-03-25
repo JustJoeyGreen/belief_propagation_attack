@@ -338,6 +338,8 @@ if __name__ == "__main__":
                         type=int, default=6000)
     parser.add_argument('-t', '-traces', action="store", dest="TRAINING_TRACES", help='Number of Traces in Training (default: 200000)',
                         type=int, default=200000)
+    parser.add_argument('-vt', '-validation_traces', action="store", dest="VALIDATION_TRACES", help='Number of Validation Traces in Testing, taken from Training Traces (default: 10000)',
+                        type=int, default=10000)
     parser.add_argument('-mlp_layers', action="store", dest="MLP_LAYERS", help='Number of Layers in MLP (default: 5)',
                         type=int, default=5)
     parser.add_argument('-mlp_nodes', action="store", dest="MLP_NODES", help='Number of Nodes in MLP Layer (default: 200)',
@@ -371,7 +373,8 @@ if __name__ == "__main__":
                         help='Uses our own loss function, related to classification rank', default=False)
     parser.add_argument('--MULTILABEL', '--ML', '--M', action="store_true", dest="MULTILABEL",
                         help='Uses multilabels in binary form', default=False)
-
+    parser.add_argument('--RV', '--RKV', '--RANDOMKEY_VALIDATION', action="store_true", dest="RANDOMKEY_VALIDATION",
+                        help='Takes validation traces from randomkey set (subtracting from training traces!)', default=False)
 
 
 
@@ -401,6 +404,8 @@ if __name__ == "__main__":
     LEARNING_RATE   = args.LEARNING_RATE
     RANK_LOSS       = args.RANK_LOSS
     MULTILABEL      = args.MULTILABEL
+    VALIDATION_TRACES = args.VALIDATION_TRACES
+    RANDOMKEY_VALIDATION = args.RANDOMKEY_VALIDATION
 
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
@@ -416,14 +421,17 @@ if __name__ == "__main__":
     else:
         variable_list = ['{}{}'.format(ALL_VARIABLE, pad_string_zeros(i+1)) for i in range(variable_dict[ALL_VARIABLE])]
 
+    if RANDOMKEY_VALIDATION:
+        TRAINING_TRACES -= VALIDATION_TRACES
+
     for variable in variable_list:
 
-        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}".format(
-            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES)
+        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}".format(
+            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES)
 
         # Load the profiling traces and the attack traces
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
-                                                                      input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER)
+                                                                      input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, validation_traces=VALIDATION_TRACES, randomkey_validation=RANDOMKEY_VALIDATION)
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,

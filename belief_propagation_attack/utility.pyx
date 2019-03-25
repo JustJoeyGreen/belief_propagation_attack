@@ -1459,7 +1459,7 @@ def get_log_list(l):
 def percentage(part, whole):
   return 100 * float(part)/float(whole)
 
-def print_statistics(l, log = False, top = False):
+def print_statistics(l, log = False, top = False, mode=True):
     l = np.array(l)
     if len(l) == 0:
         print "List l is empty!"
@@ -1511,7 +1511,8 @@ def print_statistics(l, log = False, top = False):
         print "Med:  {:40} {}".format(med_l, med_l_log)
         print "Rng:  {:40} {}".format(range_l, range_l_log)
         print "Var:  {:40} {}".format(var_l, var_l_log)
-        print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
+        if mode:
+            print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
         print_new_line()
 
 def save_statistics(name, l):
@@ -1648,7 +1649,7 @@ def get_value_from_plaintext_array(v):
 #### bpann helper to load profiling and attack data (traces and labels)
 # Loads the profiling and attack datasets from the bpann
 # database
-def load_bpann(variable, load_metadata=False, normalise_traces=True, input_length=700, training_traces=50000, sd = 100, augment_method=2, jitter=None):
+def load_bpann(variable, load_metadata=False, normalise_traces=True, input_length=700, training_traces=50000, sd = 100, augment_method=2, jitter=None, validation_traces=10000, randomkey_validation=False):
 
     # Load meta
     profile_traces, attack_traces, samples, coding = load_meta()
@@ -1657,7 +1658,7 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
     var_name, var_number, _ = split_variable_name(variable)
 
     # TRY LOADING FIRST
-    filename = '{}_meta{}_norm{}_input{}_training{}_sd{}_aug{}_jitter{}'.format(variable, load_metadata, normalise_traces, input_length, training_traces, sd, augment_method, jitter)
+    filename = '{}_meta{}_norm{}_input{}_training{}_validating{}_randomkeyval{}_sd{}_aug{}_jitter{}'.format(variable, load_metadata, normalise_traces, input_length, training_traces, validation_traces, randomkey_validation, sd, augment_method, jitter)
 
     try:
         return load_object(TEMP_FOLDER + filename)
@@ -1733,10 +1734,16 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
             # Load profiling labels
             Y_profiling = real_values[:training_traces]
 
-        # Load attack traces
-        X_attack = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter, extra=True))[:, start_window:end_window]
-        # Load attacking labels
-        Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
+        if randomkey_validation:
+            # Load attack traces
+            X_attack = trace_data[-validation_traces:, :]
+            # Load attacking labels
+            Y_attack = real_values[-validation_traces:]
+        else:
+            # Load attack traces
+            X_attack = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter, extra=True))[:, start_window:end_window]
+            # Load attacking labels
+            Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
 
         if input_length > 1 and normalise_traces:
             X_profiling = normalise_neural_traces(X_profiling)
@@ -1892,6 +1899,19 @@ def get_files_in_folder(folder, substring=None):
         if not string_starts_with(m, '.') and (substring is None or string_contains(m, substring)):
             files.append(m)
     return files
+
+def multilabel_probabilities_to_probability_distribution(multilabel_probabilities):
+    return np.array([np.abs(np.prod( (np.ones(len(multilabel_probabilities)) - np.unpackbits(np.array(i, dtype=np.uint8))) - multilabel_probabilities)) for i in range(2 ** len(multilabel_probabilities))])
+
+def get_graph_connection_method(file):
+    if string_contains(file, '_IND_'):
+        return 'IFG'
+    elif string_contains(file, '_LFG_'):
+        return 'LFG'
+    elif string_contains(file, '_SEQ_'):
+        return 'SFG'
+    else:
+        return 'Unknown'
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]
