@@ -36,6 +36,30 @@ import os.path
 import platform
 from keras.models import load_model
 
+
+# FROM TRAIN MODELS
+from keras.models import Model, Sequential
+from keras.layers import Flatten, Dense, Input, Conv1D, MaxPooling1D, GlobalAveragePooling1D, GlobalMaxPooling1D, AveragePooling1D, LSTM, Dropout
+from keras.engine.topology import get_source_inputs
+from keras.utils import layer_utils
+from keras.utils.data_utils import get_file
+from keras import backend as K
+from keras.applications.imagenet_utils import decode_predictions
+from keras.applications.imagenet_utils import preprocess_input
+try:
+    from keras.applications.imagenet_utils import _obtain_input_shape
+except ImportError:
+    from keras_applications.imagenet_utils import _obtain_input_shape
+from keras.optimizers import RMSprop
+from keras.callbacks import ModelCheckpoint
+from keras.callbacks import TensorBoard
+from keras.utils import to_categorical
+from keras.models import load_model
+import tensorflow as tf
+from keras import backend as K
+
+
+
 # Read Paths from PATH_FILE.txt
 try:
     with open("PATH_FILE.txt","r") as f:
@@ -1070,10 +1094,14 @@ def arrays_trim_mean(np.ndarray v, threshold = 0.3):
 def load_sca_model(model_file):
     check_file_exists(model_file)
     try:
-        model = load_model(model_file)
+        if string_contains(model_file, 'rankloss'):
+            model = load_model(model_file, custom_objects={'tf_rank_loss': tf_rank_loss})
+        else:
+            model = load_model(model_file)
     except:
         print("Error: can't load Keras model file '%s'" % model_file)
-        exit(-1)
+        raise
+        exit(1)
     return model
 
 def find_values_in_list(lst, val):
@@ -1912,6 +1940,40 @@ def get_graph_connection_method(file):
         return 'SFG'
     else:
         return 'Unknown'
+
+######################### LOSS FUNCTION #########################
+
+def tf_rank_loss(y_true, y_pred):
+    output = y_pred
+    target = y_true
+    axis = -1
+
+    # DEBUG: USE CATEGORICAL CROSS ENTROPY CODE AS IS IN TENSORFLOW
+    # If we can get this working, we can slowly shift to what we want
+
+    # scale preds so that the class probas of each sample sum to 1
+    output = output / tf.math.reduce_sum(output, keepdims=True)
+    # manual computation of crossentropy
+    epsilon_ = tf.convert_to_tensor(K.epsilon(), dtype=output.dtype.base_dtype)
+    clipped_output = tf.clip_by_value(output, epsilon_, 1. - epsilon_)
+    return_val = -tf.math.reduce_sum(target * tf.math.log(clipped_output))
+
+    # Our bit: Rank!
+    argsort1 = tf.argsort(y_pred, direction='DESCENDING')
+    argsort2 = tf.argsort(argsort1, direction='ASCENDING')
+    argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
+    # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
+    reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
+    tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
+    reshaped_tf_range = tf.expand_dims(tf_range, 1)
+    concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
+    gathered = tf.gather_nd(argsort2, concatenated_onehot)
+    mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
+
+    print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
+    print "Cross Entropy:\ntype {} ({}), shape {}".format(type(return_val), return_val.dtype, return_val.get_shape())
+    return return_val + mean
+    # return mean
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]

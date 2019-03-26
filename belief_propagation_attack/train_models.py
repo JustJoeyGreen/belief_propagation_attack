@@ -23,6 +23,10 @@ from keras.callbacks import TensorBoard
 from keras.utils import to_categorical
 from keras.models import load_model
 import tensorflow as tf
+
+from tensorflow.python.ops import math_ops
+from tensorflow.python.ops import clip_ops
+
 from keras import backend as K
 from utility import *
 
@@ -72,6 +76,7 @@ def check_file_exists(file_path):
 
 ############# Loss functions #############
 
+
 #### MLP Weighted bit model (6 layers of 200 units)
 def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True):
     model = Sequential()
@@ -83,19 +88,6 @@ def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0
     model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
-def tf_rank_loss(y_true, y_pred):
-    argsort1 = tf.argsort(y_pred, direction='DESCENDING')
-    argsort2 = tf.argsort(argsort1, direction='ASCENDING')
-    argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
-    # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
-    reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
-    tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
-    reshaped_tf_range = tf.expand_dims(tf_range, 1)
-    concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
-    gathered = tf.gather_nd(argsort2, concatenated_onehot)
-    mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
-    # print "Mean, type {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
-    return mean
 
 #### MLP Best model (6 layers of 200 units)
 def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True):
