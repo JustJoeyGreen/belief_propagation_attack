@@ -24,9 +24,6 @@ from keras.utils import to_categorical
 from keras.models import load_model
 import tensorflow as tf
 
-from tensorflow.python.ops import math_ops
-from tensorflow.python.ops import clip_ops
-
 from keras import backend as K
 from utility import *
 
