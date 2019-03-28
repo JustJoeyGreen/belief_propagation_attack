@@ -75,7 +75,7 @@ def check_file_exists(file_path):
 
 
 #### MLP Weighted bit model (6 layers of 200 units)
-def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True):
+def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True, classes=256):
     model = Sequential()
     model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
     for i in range(layer_nb-2):
@@ -87,12 +87,12 @@ def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0
 
 
 #### MLP Best model (6 layers of 200 units)
-def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True):
+def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True, classes=256):
     model = Sequential()
     model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
     for i in range(layer_nb-2):
         model.add(Dense(mlp_nodes, activation='relu'))
-    model.add(Dense(256, activation='softmax'))
+    model.add(Dense(classes, activation='softmax'))
     optimizer = RMSprop(lr=learning_rate)
     if rank_loss:
         model.compile(loss=tf_rank_loss, optimizer=optimizer, metrics=['accuracy'])
@@ -101,7 +101,7 @@ def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, 
     return model
 
 ### CNN Best model
-def cnn_best(classes=256, input_length=700, learning_rate=0.00001):
+def cnn_best(input_length=700, learning_rate=0.00001, classes=256):
     # From VGG16 design
     input_shape = (input_length, 1)
     img_input = Input(shape=input_shape)
@@ -135,12 +135,11 @@ def cnn_best(classes=256, input_length=700, learning_rate=0.00001):
 
 
 ### CNN Previously Trained model
-def cnn_pretrained(classes=256, input_length=700, learning_rate=0.00001):
+def cnn_pretrained(input_length=700, learning_rate=0.00001, classes=256):
     # load model
     cnn_previous = load_model(CNN_ASCAD_FILEPATH)
     for layer in cnn_previous.layers[:-6]:
         layer.trainable = False
-
     model = Sequential()
     model.add(cnn_previous)
     optimizer = RMSprop(lr=learning_rate)
@@ -148,7 +147,7 @@ def cnn_pretrained(classes=256, input_length=700, learning_rate=0.00001):
     return model
 
 ### LSTM Best model
-def lstm_best(classes=256, input_length=700, layer_nb=1, lstm_nodes=64, use_dropout=True, learning_rate=0.00001):
+def lstm_best(input_length=700, layer_nb=1, lstm_nodes=64, use_dropout=True, learning_rate=0.00001, classes=256):
     # From VGG16 design
     input_shape = (input_length, 1)
     img_input = Input(shape=input_shape)
@@ -185,7 +184,7 @@ def load_sca_model(model_file):
     return model
 
 #### Training high level function
-def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, batch_size=100, validation_data=None, progress_bar=1, one_hot=True, multilabel=False):
+def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, batch_size=100, validation_data=None, progress_bar=1, one_hot=True, multilabel=False, hammingweight=False):
 
     check_file_exists(os.path.dirname(save_file_name))
     # Save model every epoch
@@ -217,8 +216,8 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
         reshaped_y = np.unpackbits( np.expand_dims(Y_profiling, 1).astype(np.uint8), axis=1)
         reshaped_val = np.unpackbits( np.expand_dims(validation_data[1], 1).astype(np.uint8), axis=1)
     elif one_hot:
-        reshaped_y = to_categorical(Y_profiling, num_classes=256)
-        reshaped_val = to_categorical(validation_data[1], num_classes=256)
+        reshaped_y = to_categorical(Y_profiling, num_classes=9 if hammingweight else 256)
+        reshaped_val = to_categorical(validation_data[1], num_classes=9 if hammingweight else 256)
     else:
         reshaped_y = Y_profiling
         reshaped_val = tvalidation_data[1]
@@ -234,7 +233,10 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, rank_loss=False, multilabel=False):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, rank_loss=False, multilabel=False, hammingweight=False):
+
+    classes = 9 if hammingweight else 256
+    hammingweight_flag = 'hw_' if hammingweight else ''
 
     if add_noise:
         standard_deviation = 10
@@ -245,61 +247,61 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
 
     ### CNN training
     if cnn:
-        cnn_best_model = cnn_best(input_length=input_length, learning_rate=learning_rate)
+        cnn_best_model = cnn_best(input_length=input_length, learning_rate=learning_rate, classes=classes)
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_best_model, MODEL_FOLDER +
-                    "{}_cnn_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
+                    "{}_cnn_{}window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, hammingweight_flag, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
-                    progress_bar=progress_bar)
+                    progress_bar=progress_bar, hammingweight=hammingweight)
 
     ### CNN pre-trained training
     if cnn_pre:
-        cnn_pretrained_model = cnn_pretrained(input_length=input_length, learning_rate=learning_rate)
+        cnn_pretrained_model = cnn_pretrained(input_length=input_length, learning_rate=learning_rate, classes=classes)
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_pretrained_model, MODEL_FOLDER +
-                    "{}_cnnpretrained_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
+                    "{}_cnnpretrained_{}window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, hammingweight_flag, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
-                    progress_bar=progress_bar)
+                    progress_bar=progress_bar, hammingweight=hammingweight)
 
     ### MLP training
     if mlp:
         if multilabel:
-            mlp_best_model = mlp_weighted_bit(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss)
+            mlp_best_model = mlp_weighted_bit(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss, classes=classes)
         else:
-            mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss)
+            mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss, classes=classes)
         mlp_epochs = epochs if epochs is not None else 200
         mlp_batchsize = batch_size
         train_model(X_profiling, Y_profiling, mlp_best_model, MODEL_FOLDER +
-                    "{}_mlp{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}{}.h5".format(
-                        variable, mlp_layers, '_multilabel' if multilabel else '', mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
+                    "{}_mlp{}{}_nodes{}_{}window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}{}.h5".format(
+                        variable, mlp_layers, '_multilabel' if multilabel else '', hammingweight_flag, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
                         training_traces, augment_method, jitter, '_rankloss' if rank_loss else ''), epochs=mlp_epochs, batch_size=mlp_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel)
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel, hammingweight=hammingweight)
 
     ### LSTM training
     if lstm:
-        lstm_best_model = lstm_best(input_length=input_length, layer_nb=lstm_layers, learning_rate=learning_rate)
+        lstm_best_model = lstm_best(input_length=input_length, layer_nb=lstm_layers, learning_rate=learning_rate, classes=classes)
         lstm_epochs = epochs if epochs is not None else 75
         lstm_batchsize = batch_size
         train_model(X_profiling, Y_profiling, lstm_best_model, MODEL_FOLDER +
-                    "{}_lstm{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, lstm_layers, lstm_nodes, input_length, lstm_epochs, lstm_batchsize, learning_rate, sd,
+                    "{}_lstm{}_{}nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, lstm_layers, hammingweight_flag, lstm_nodes, input_length, lstm_epochs, lstm_batchsize, learning_rate, sd,
                         training_traces, augment_method, jitter), epochs=lstm_epochs, batch_size=lstm_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight)
 
     ### SVM training
     if svm:
-        svm_best_model = svm_best(input_length=input_length, layer_nb=svm_layers)
+        svm_best_model = svm_best(input_length=input_length, layer_nb=svm_layers, classes=classes)
         svm_epochs = epochs if epochs is not None else 75
         svm_batchsize = batch_size
         train_model(X_profiling, Y_profiling, svm_best_model, MODEL_FOLDER +
-                    "{}_svm{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, svm_layers, svm_nodes, input_length, svm_epochs, svm_batchsize, sd,
+                    "{}_svm{}_{}nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, svm_layers, hammingweight_flag, svm_nodes, input_length, svm_epochs, svm_batchsize, sd,
                         training_traces, augment_method, jitter), epochs=svm_epochs, batch_size=svm_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar)
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight)
 
 
 
@@ -364,7 +366,8 @@ if __name__ == "__main__":
                         help='Uses multilabels in binary form', default=False)
     parser.add_argument('--RV', '--RKV', '--RANDOMKEY_VALIDATION', action="store_true", dest="RANDOMKEY_VALIDATION",
                         help='Takes validation traces from randomkey set (subtracting from training traces!)', default=False)
-
+    parser.add_argument('--HW', '--HAMMINGWEIGHT', action="store_true", dest="HAMMINGWEIGHT",
+                        help='Trains to match Hamming Weight rather than identity', default=False)
 
 
     # Target node here
@@ -395,6 +398,7 @@ if __name__ == "__main__":
     MULTILABEL      = args.MULTILABEL
     VALIDATION_TRACES = args.VALIDATION_TRACES
     RANDOMKEY_VALIDATION = args.RANDOMKEY_VALIDATION
+    HAMMINGWEIGHT = args.HAMMINGWEIGHT
 
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
@@ -415,16 +419,21 @@ if __name__ == "__main__":
 
     for variable in variable_list:
 
-        print "$$$ Training Neural Networks $$$\nVariable {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}".format(
-            variable, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES)
+        print "$$$ Training Neural Networks $$$\nVariable {}, Hamming Weight {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}".format(
+            variable, HAMMINGWEIGHT, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES)
 
         # Load the profiling traces and the attack traces
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
-                                                                      input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, validation_traces=VALIDATION_TRACES, randomkey_validation=RANDOMKEY_VALIDATION)
+                                                                      input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, validation_traces=VALIDATION_TRACES, randomkey_validation=RANDOMKEY_VALIDATION,
+                                                                      hammingweight=HAMMINGWEIGHT)
+
+        print "Debug:"
+        print Y_attack.shape
+        print Y_attack
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,
-            learning_rate=LEARNING_RATE, rank_loss=RANK_LOSS, multilabel=MULTILABEL)
+            learning_rate=LEARNING_RATE, rank_loss=RANK_LOSS, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):

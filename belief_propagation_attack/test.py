@@ -227,7 +227,7 @@ def weighted_bits():
     print out
 
 
-def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, extra_size = 10000):
+def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, extra_size = 10000, hw=False):
 
     print "* Value Occurance Checker, {} {} *".format(var_name, var_num)
 
@@ -239,36 +239,143 @@ def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, ex
                 real_values = real_values[-extra_size:]
             else:
                 real_values = real_values[:-extra_size]
+
+        # print 'Before', real_values
+        if hw:
+            real_values = linear_get_hamming_weights(real_values)
+        # print 'After', real_values
+
         unique, counts = np.unique(real_values, return_counts=True)
-        if unique.shape[0] != 256 and not (var_name == 'k' and unique.shape[0] == 1):
+        if unique.shape[0] != (9 if hw else 256) and not (var_name == 'k' and unique.shape[0] == 1):
             print "GOTCHA! Unique is only size {}:\n{}\n".format(unique.shape[0], unique)
             raise
         print "> {} Values ({}):".format('Attack' if extra_file else 'Profile', real_values.shape[0])
-        print_statistics(counts, mode=extra_file)
+        print_statistics(real_values, mode=extra_file)
+        if hw:
+            print ">> Counts: {}".format(counts)
+
+
+
+def stretch_and_shrink(vector, start, length=300, stretch_length=20):
+    section = vector[start:start+length]
+
+    stretched = np.repeat(section[:stretch_length], 2)
+
+    # print stretched.shape, section[stretch_length:].shape
+
+    new_section = np.concatenate((stretched, section[stretch_length:]))
+
+    count = -1
+    while len(new_section) > len(section):
+        new_section = np.delete(new_section, count)
+        count -= 1
+
+    return np.concatenate((vector[:start], new_section, vector[start+length:]))
 
 
 
 
 
-if __name__ == "__main__":
+def latexify(fig_width=None, fig_height=None, columns=1):
+    """Set up matplotlib's RC params for LaTeX plotting.
+    Call this before plotting a figure.
 
-    for var_name in ['s', 'k']:
-        for var_num in [1,4,8]:
-            value_occurance_checker(var_name, var_num, randomkey_extra=True)
-    exit(1)
+    Parameters
+    ----------
+    fig_width : float, optional, inches
+    fig_height : float,  optional, inches
+    columns : {1, 2}
+    """
 
-    # Testnames: GraphStructure, ReducedGraphs, GroundTruth
-    # plot_results(testname='GraphStructure')
+    # code adapted from http://www.scipy.org/Cookbook/Matplotlib/LaTeX_Examples
 
-    # numpy_tests()
+    # Width and max height in inches for IEEE journals taken from
+    # computer.org/cms/Computer.org/Journal%20templates/transactions_art_guide.pdf
 
-    # plot_results(testname='GraphStructure')
+    assert(columns in [1,2])
 
-    # exit(1)
+    if fig_width is None:
+        fig_width = 3.39 if columns==1 else 6.9 # width in inches
 
-    # fig, ax = plt.subplots()
+    if fig_height is None:
+        golden_mean = (sqrt(5)-1.0)/2.0    # Aesthetic ratio
+        fig_height = fig_width*golden_mean # height in inches
 
-    plt.figure(figsize=(20,5))
+    MAX_HEIGHT_INCHES = 8.0
+    if fig_height > MAX_HEIGHT_INCHES:
+        print("WARNING: fig_height too large:" + fig_height +
+              "so will reduce to" + MAX_HEIGHT_INCHES + "inches.")
+        fig_height = MAX_HEIGHT_INCHES
+
+    params = {'backend': 'ps',
+              'text.latex.preamble': ['\usepackage{gensymb}'],
+              'axes.labelsize': 8, # fontsize for x and y labels (was 10)
+              'axes.titlesize': 8,
+              'text.fontsize': 8, # was 10
+              'legend.fontsize': 8, # was 10
+              'xtick.labelsize': 8,
+              'ytick.labelsize': 8,
+              'text.usetex': True,
+              'figure.figsize': [fig_width,fig_height],
+              'font.family': 'serif'
+    }
+
+    matplotlib.rcParams.update(params)
+
+
+def format_axes(ax):
+
+    for spine in ['top', 'right']:
+        ax.spines[spine].set_visible(False)
+
+    for spine in ['left', 'bottom']:
+        ax.spines[spine].set_color(SPINE_COLOR)
+        ax.spines[spine].set_linewidth(0.5)
+
+    ax.xaxis.set_ticks_position('bottom')
+    ax.yaxis.set_ticks_position('left')
+
+    for axis in [ax.xaxis, ax.yaxis]:
+        axis.set_tick_params(direction='out', color=SPINE_COLOR)
+
+    return ax
+
+
+def dtw_plot(dtw=True):
+
+    start, length = 10000, 500
+    trace_data = load_trace_data()[:, start:start+length]
+
+    trace1 = trace_data[0]
+    trace2 = stretch_and_shrink(trace_data[1], length / 5)
+
+    f = plt.figure()
+
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+
+    plt.plot(trace1)
+    plt.plot(trace2)
+
+    if dtw:
+        _, path = fastdtw(trace1, trace2, dist=euclidean)
+        for [map_x, map_y] in path:
+            plt.plot([map_x, map_y], [trace1[map_x], trace2[map_y]], 'r')
+
+    # plt.title(r'\textbf{Dynamic Time Warping Path}', fontsize=11)
+    plt.xlabel(r'\textbf{Samples}', fontsize=11)
+    plt.ylabel(r'\textbf{Power Consumption}', fontsize=11)
+
+    plt.show()
+
+    f.savefig("output/dynamic_time_warping_{}.pdf".format('on' if dtw else 'off'), bbox_inches='tight')
+
+
+def timepoint_plot():
+    f = plt.figure(figsize=(20,5))
+
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 
     for var, length in variable_dict.iteritems():
         print "\n* Var {}".format(var)
@@ -284,12 +391,37 @@ if __name__ == "__main__":
         plt.axvline(x=vertical_line, linewidth=0.1)
     # ax.legend()
 
-    plt.xlabel("Samples")
-    plt.ylabel("Variables")
+    plt.xlabel(r'\textbf{Samples}', fontsize=11)
+    plt.ylabel(r'\textbf{Variables}', fontsize=11)
 
     # plt.show()
-    plt.savefig("output/hw_timepoints.pdf")
-    # plt.savefig("output/identity_timepoints.pdf")
+
+    # f.savefig("output/hw_timepoints.pdf")
+    plt.savefig("output/identity_timepoints.pdf")
+
+if __name__ == "__main__":
+
+    # for bool in [True, False]:
+    #     dtw_plot(dtw=bool)
+    # exit(1)
+
+    for var_name in ['s', 'k']:
+        for var_num in [1,4,8]:
+            value_occurance_checker(var_name, var_num, randomkey_extra=True, hw=True)
+    exit(1)
+
+    # Testnames: GraphStructure, ReducedGraphs, GroundTruth
+    # plot_results(testname='GraphStructure')
+
+    # numpy_tests()
+
+    # plot_results(testname='GraphStructure')
+
+    # exit(1)
+
+    # fig, ax = plt.subplots()
+
+
 
     exit(1)
 

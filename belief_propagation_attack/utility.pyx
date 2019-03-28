@@ -1677,7 +1677,7 @@ def get_value_from_plaintext_array(v):
 #### bpann helper to load profiling and attack data (traces and labels)
 # Loads the profiling and attack datasets from the bpann
 # database
-def load_bpann(variable, load_metadata=False, normalise_traces=True, input_length=700, training_traces=50000, sd = 100, augment_method=2, jitter=None, validation_traces=10000, randomkey_validation=False):
+def load_bpann(variable, load_metadata=True, normalise_traces=True, input_length=700, training_traces=50000, sd = 100, augment_method=2, jitter=None, validation_traces=10000, randomkey_validation=False, hammingweight=False):
 
     # Load meta
     profile_traces, attack_traces, samples, coding = load_meta()
@@ -1686,101 +1686,107 @@ def load_bpann(variable, load_metadata=False, normalise_traces=True, input_lengt
     var_name, var_number, _ = split_variable_name(variable)
 
     # TRY LOADING FIRST
-    filename = '{}_meta{}_norm{}_input{}_training{}_validating{}_randomkeyval{}_sd{}_aug{}_jitter{}'.format(variable, load_metadata, normalise_traces, input_length, training_traces, validation_traces, randomkey_validation, sd, augment_method, jitter)
+    filename = '{}_hw{}_norm{}_input{}_training{}_validating{}_randomkeyval{}_sd{}_aug{}_jitter{}'.format(variable, hammingweight, normalise_traces, input_length, training_traces, validation_traces, randomkey_validation, sd, augment_method, jitter)
 
-    try:
-        return load_object(TEMP_FOLDER + filename)
-    except IOError:
+    if load_metadata:
+        try:
+            return load_object(TEMP_FOLDER + filename)
+        except IOError:
+            print "! Could not load metadata! Writing from scratch..."
 
-        # Get time point for variable
-        time_point = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var_name))[var_number-1]
+    # Get time point for variable
+    time_point = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var_name))[var_number-1]
 
-        start_window = max(0, time_point - (input_length/2))
-        end_window = min(samples, time_point + (input_length/2))
-        if start_window == end_window:
-            end_window += 1
+    start_window = max(0, time_point - (input_length/2))
+    end_window = min(samples, time_point + (input_length/2))
+    if start_window == end_window:
+        end_window += 1
 
-        trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter))[:, start_window:end_window]
-        traces, data_length = trace_data.shape
-        type = trace_data.dtype
-        real_values = np.load('{}{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
+    trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter))[:, start_window:end_window]
+    traces, data_length = trace_data.shape
+    type = trace_data.dtype
+    real_values = np.load('{}{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
 
-        if training_traces > traces:
-            print 'Augmenting {} Traces!'.format(training_traces - traces)
+    if training_traces > traces:
+        print 'Augmenting {} Traces!'.format(training_traces - traces)
 
-            # X_profiling = np.empty((training_traces, data_length), dtype=type)
-            X_profiling = np.memmap('{}tmp_{}_{}_sd{}_window{}_aug{}.mmap'.format(TRACE_FOLDER, variable, training_traces, sd, input_length, augment_method), shape=(training_traces, data_length), mode='w+', dtype=type)
-            Y_profiling = np.empty(training_traces, dtype=int)
+        # X_profiling = np.empty((training_traces, data_length), dtype=type)
+        X_profiling = np.memmap('{}tmp_{}_{}_sd{}_window{}_aug{}.mmap'.format(TRACE_FOLDER, variable, training_traces, sd, input_length, augment_method), shape=(training_traces, data_length), mode='w+', dtype=type)
+        Y_profiling = np.empty(training_traces, dtype=int)
 
-            X_profiling[:traces] = trace_data
-            Y_profiling[:traces] = real_values
+        X_profiling[:traces] = trace_data
+        Y_profiling[:traces] = real_values
 
-            for train_trace in range(traces, training_traces):
+        for train_trace in range(traces, training_traces):
 
-                # AUGMENT METHODS
-                # 0 - gaussian noise
-                # 1 - time warping
-                # 2 - averaging traces
+            # AUGMENT METHODS
+            # 0 - gaussian noise
+            # 1 - time warping
+            # 2 - averaging traces
 
-                # Get Random Number
-                random_number = np.random.randint(0, traces)
+            # Get Random Number
+            random_number = np.random.randint(0, traces)
 
-                # Add label
-                Y_profiling[train_trace] = real_values[random_number]
+            # Add label
+            Y_profiling[train_trace] = real_values[random_number]
 
-                if augment_method == 0:
+            if augment_method == 0:
 
-                    # GAUSSIAN NOISE
-                    random_noise = np.random.normal(0, sd, data_length).round().astype(int)
+                # GAUSSIAN NOISE
+                random_noise = np.random.normal(0, sd, data_length).round().astype(int)
 
-                    # Add to Profiling after applying noise
-                    X_profiling[train_trace] = (trace_data[random_number] + random_noise).astype(type)
+                # Add to Profiling after applying noise
+                X_profiling[train_trace] = (trace_data[random_number] + random_noise).astype(type)
 
-                elif augment_method == 1:
+            elif augment_method == 1:
 
-                    # TIME WARPING
-                    random_shift = 0
-                    while random_shift == 0:
-                        random_shift = np.random.randint(-MAX_SHIFT, MAX_SHIFT)
-                        print random_shift
+                # TIME WARPING
+                random_shift = 0
+                while random_shift == 0:
+                    random_shift = np.random.randint(-MAX_SHIFT, MAX_SHIFT)
+                    print random_shift
 
-                    X_profiling[train_trace] = roll_and_pad(trace_data[random_number], random_shift)
+                X_profiling[train_trace] = roll_and_pad(trace_data[random_number], random_shift)
 
-                elif augment_method == 2:
+            elif augment_method == 2:
 
-                    # AVERAGING TRACES (need to be have same value!)
-                    pot = np.where(real_values == real_values[random_number])[0]
-                    other_trace = pot[np.random.randint(0,len(pot)-1)]
+                # AVERAGING TRACES (need to be have same value!)
+                pot = np.where(real_values == real_values[random_number])[0]
+                other_trace = pot[np.random.randint(0,len(pot)-1)]
 
-                    X_profiling[train_trace] = np.mean(np.array([trace_data[random_number], trace_data[other_trace]]), axis=0)
+                X_profiling[train_trace] = np.mean(np.array([trace_data[random_number], trace_data[other_trace]]), axis=0)
 
 
 
-        else:
-            # Load profiling traces
-            X_profiling = trace_data[:training_traces, :]
-            # Load profiling labels
-            Y_profiling = real_values[:training_traces]
+    else:
+        # Load profiling traces
+        X_profiling = trace_data[:training_traces, :]
+        # Load profiling labels
+        Y_profiling = real_values[:training_traces]
 
-        if randomkey_validation:
-            # Load attack traces
-            X_attack = trace_data[-validation_traces:, :]
-            # Load attacking labels
-            Y_attack = real_values[-validation_traces:]
-        else:
-            # Load attack traces
-            X_attack = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter, extra=True))[:, start_window:end_window]
-            # Load attacking labels
-            Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
+    if randomkey_validation:
+        # Load attack traces
+        X_attack = trace_data[-validation_traces:, :]
+        # Load attacking labels
+        Y_attack = real_values[-validation_traces:]
+    else:
+        # Load attack traces
+        X_attack = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter, extra=True))[:, start_window:end_window]
+        # Load attacking labels
+        Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
 
-        if input_length > 1 and normalise_traces:
-            X_profiling = normalise_neural_traces(X_profiling)
-            X_attack = normalise_neural_traces(X_attack)
+    if input_length > 1 and normalise_traces:
+        X_profiling = normalise_neural_traces(X_profiling)
+        X_attack = normalise_neural_traces(X_attack)
 
-        # Save!
-        save_object(((X_profiling, Y_profiling), (X_attack, Y_attack)), TEMP_FOLDER + filename)
+    if hammingweight:
+        Y_profiling = linear_get_hamming_weights(Y_profiling)
+        Y_attack = linear_get_hamming_weights(Y_attack)
 
-        return (X_profiling, Y_profiling), (X_attack, Y_attack)
+    # Save!
+    save_object(((X_profiling, Y_profiling), (X_attack, Y_attack)), TEMP_FOLDER + filename)
+
+    return (X_profiling, Y_profiling), (X_attack, Y_attack)
 
 def normalise_neural_trace(v):
     # Shift up
