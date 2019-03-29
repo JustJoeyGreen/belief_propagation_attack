@@ -740,7 +740,7 @@ def lda_templates(tprange=200):
             pickle.dump(lda, open("{}{}_{}_{}.p".format(LDA_FOLDER, tprange, variable, i), "wb"))
 
 
-def get_mean_and_sigma_for_each_node(hw=False, save=True):
+def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True):
     musig_dict_path = MUSIGMA_FILEPATH
 
     NUMBER_OF_TEMPLATES = 256
@@ -760,21 +760,17 @@ def get_mean_and_sigma_for_each_node(hw=False, save=True):
 
     for var, number_of_nodes in variable_dict.iteritems():
 
-        # TODO: Remove!
-        if var != 'sk':
-            continue
-
         if PRINT:
             print "* Variable {}".format(var)
 
         var_array = np.load(REALVALUES_FOLDER + var + '.npy')
-        if hw:
+        if hw_musig:
             var_array = get_hw_of_vector(var_array)
 
         for j in range(number_of_nodes):
 
             # Load
-            coeff_array = np.load("{}{}_{}.npy".format(COEFFICIENT_FOLDER, var, j))
+            coeff_array = np.load("{}{}_{}{}.npy".format(COEFFICIENT_FOLDER, var, j, '_HW' if hw_tp else ''))
 
             # Find the Highest Correlated Time Point
             poi = np.argmax(coeff_array)
@@ -1200,7 +1196,9 @@ if __name__ == "__main__":
     SKIP_CODE = args.SKIP_CODE
 
     # TODO
-    ALL(skip_code=SKIP_CODE)
+    # ALL(skip_code=SKIP_CODE)
+
+    get_mean_and_sigma_for_each_node()
 
     # print "> Points of Interest Detection with Hamming Weights!"
     # point_of_interest_detection(hw=True)

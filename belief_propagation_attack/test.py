@@ -372,7 +372,8 @@ def dtw_plot(dtw=True):
 
 
 def timepoint_plot():
-    f = plt.figure(figsize=(20,5))
+    # f = plt.figure(figsize=(20,5))
+    f = plt.figure()
 
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
@@ -394,30 +395,32 @@ def timepoint_plot():
     plt.xlabel(r'\textbf{Samples}', fontsize=11)
     plt.ylabel(r'\textbf{Variables}', fontsize=11)
 
-    # plt.show()
+    plt.show()
 
-    # f.savefig("output/hw_timepoints.pdf")
-    plt.savefig("output/identity_timepoints.pdf")
+    f.savefig("output/hw_timepoints.pdf")
+    # f.savefig("output/identity_timepoints.pdf")
 
 if __name__ == "__main__":
 
-    # for bool in [True, False]:
-    #     dtw_plot(dtw=bool)
+    # timepoint_plot()
+    #
+    # # for bool in [True, False]:
+    # #     dtw_plot(dtw=bool)
+    # # exit(1)
+    #
+    # # for var_name in ['s', 'k']:
+    # #     for var_num in [1,4,8]:
+    # #         value_occurance_checker(var_name, var_num, randomkey_extra=True, hw=True)
     # exit(1)
 
-    for var_name in ['s', 'k']:
-        for var_num in [1,4,8]:
-            value_occurance_checker(var_name, var_num, randomkey_extra=True, hw=True)
-    exit(1)
-
     # Testnames: GraphStructure, ReducedGraphs, GroundTruth
-    # plot_results(testname='GraphStructure')
+    plot_results(testname='GraphStructure')
 
     # numpy_tests()
 
     # plot_results(testname='GraphStructure')
 
-    # exit(1)
+    exit(1)
 
     # fig, ax = plt.subplots()
 

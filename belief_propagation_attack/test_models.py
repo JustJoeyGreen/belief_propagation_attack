@@ -273,17 +273,18 @@ class TestModels:
         # return f_ranks
 
     # Check a saved model against one of the bpann databases Attack traces
-    def check_model(self, model_file, num_traces=10000, template_attack=False):
+    def check_model(self, model_file, num_traces=10000, template_attack=False, random_key=False):
 
+        print "Check model, random key {}".format(random_key)
         try:
-            rank_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces)
+            rank_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces, from_end=random_key)
             if rank_list is not None:
                 print "\n\nModel: {}".format(model_file)
-                print_statistics(rank_list)
+                print_statistics(rank_list, mode=False)
                 print "> Top Predicted Indices:"
                 print_statistics(predicted_values)
         except Exception as e:
-            print "! Uh oh, couldn't check the model! Need to resubmit." #PASSING OVER..."
+            print "! Uh oh, couldn't check the model! Need to resubmit (in test_models)" #PASSING OVER..."
             print e
 
         # model_name = model_file.replace(MODEL_FOLDER, '')
@@ -350,8 +351,11 @@ if __name__ == "__main__":
     parser.add_argument('-j', '-jitter', action="store", dest="JITTER",
                         help='Clock Jitter to use on real traces (default: None)',
                         type=int, default=None)
-    parser.add_argument('--E', '--EX', '--EXTRA', action="store_false", dest="USE_EXTRA",
+    parser.add_argument('--E', '--EX', '--EXTRA', '--USE_EXTRA', action="store_false", dest="USE_EXTRA",
                         help='Toggle to Turn USE EXTRA Off (Attack Trained Traces)', default=True)
+
+    parser.add_argument('--RK', '--RANDOMKEY', action="store_true", dest="RANDOM_KEY",
+                        help='Toggle to Turn RANDOM_KEY On (Attack Validation Traces)', default=False)
 
     # Target node here
     args = parser.parse_args()
@@ -366,6 +370,7 @@ if __name__ == "__main__":
     TEMPLATE_ATTACK = args.TEMPLATE_ATTACK
     JITTER = args.JITTER
     USE_EXTRA = args.USE_EXTRA
+    RANDOM_KEY = args.RANDOM_KEY
 
     # var_list = list()
     # for v in variable_dict:
@@ -376,7 +381,8 @@ if __name__ == "__main__":
 
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
-    model_tester = TestModels(jitter=JITTER, use_extra=USE_EXTRA)
+    print "* Testing with Random Key! (Validation Traces)"
+    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA)
 
     if TEST_ALL:
         # Clear statistics
@@ -386,7 +392,7 @@ if __name__ == "__main__":
         for (m) in sorted(listdir(MODEL_FOLDER)):
             if string_ends_with(m, '.h5'):
                 # print 'm: {}'.format(m)
-                model_tester.check_model(MODEL_FOLDER + m, TEST_TRACES, template_attack=TEMPLATE_ATTACK)
+                model_tester.check_model(MODEL_FOLDER + m, TEST_TRACES, template_attack=TEMPLATE_ATTACK, random_key=RANDOM_KEY)
     else:
         # Check specific model
         # TODO

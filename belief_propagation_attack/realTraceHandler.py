@@ -209,12 +209,12 @@ class RealTraceHandler:
         # Return Rank List
         return rank_list
 
-    def get_leakage_rank_list_with_specific_model(self, model_file, traces=1):
+    def get_leakage_rank_list_with_specific_model(self, model_file, traces=1, from_end=False):
         # Get variable of model
         model_name = model_file.replace(MODEL_FOLDER, '')
         variable = model_name.split('_')[0]
         if not self.no_print:
-            print "\n* Checking model {} (variable {}) *\n".format(model_name, variable)
+            print "\n* Checking model {} (variable {}) {}*\n".format(model_name, variable, 'WITH VALIDATION TRACES' if from_end else '')
         if not check_file_exists(model_file):
             if not self.no_print:
                 print "!!! Doesn't exist!"
@@ -223,19 +223,30 @@ class RealTraceHandler:
             multilabel = False
             if string_contains(model_file, '_multilabel_'):
                 multilabel = True
+            hw = False
+            if string_contains(model_file, 'hw_'):
+                hw = True
             var_name, var_number, _ = split_variable_name(variable)
             window_size = get_window_size_from_model(model_file)
             model = load_sca_model(model_file)
             rank_list = list()
             predicted_values = list()
             for trace in range(traces):
-                real_val = self.realvalues[var_name][var_number-1][trace]
+                real_val = self.realvalues[var_name][var_number-1][(self.real_trace_data_maxtraces - trace - 1) if from_end else trace]
+
+                if trace < 3:
+                    print "Real Value {}: {}".format(trace, real_val)
+
                 # leakage = self.get_leakage(variable, trace=trace)
-                power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=window_size)
+                power_value = self.return_power_window_of_variable(variable, (self.real_trace_data_maxtraces - trace - 1) if from_end else trace, nn_normalise=True, window=window_size)
                 new_input = np.resize(power_value, (1, power_value.size))
                 leakage = model.predict(new_input)[0]
+
                 if multilabel:
                     leakage = multilabel_probabilities_to_probability_distribution(leakage)
+                elif hw:
+                    leakage = hw_probabilities_to_probability_distribution(leakage)
+
                 rank = get_rank_from_prob_dist(leakage, real_val)
                 # print 'Real value: {}, Prob: {}, Rank: {}, Best Value: {} (prob {})'.format(real_val, leakage[real_val], rank, np.argmax(leakage), leakage[np.argmax(leakage)])
                 rank_list.append(rank)

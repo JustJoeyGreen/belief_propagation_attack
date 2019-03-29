@@ -1947,6 +1947,9 @@ def get_graph_connection_method(file):
     else:
         return 'Unknown'
 
+def hw_probabilities_to_probability_distribution(hw_probabilities):
+    return normalise_array(np.array([hw_probabilities[get_hw(i)] for i in range(256)]))
+
 ######################### LOSS FUNCTION #########################
 
 def tf_rank_loss(y_true, y_pred):
