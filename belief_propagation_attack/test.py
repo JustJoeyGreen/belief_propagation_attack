@@ -4,6 +4,7 @@ from utility import *
 import realTraceHandler as rTH
 import argparse
 import matplotlib.pyplot as plt
+from matplotlib import rc
 import trsfile
 import operator
 import timing
@@ -39,12 +40,23 @@ import tensorflow as tf
 
 def plot_results(testname='ranks_'):
 
+    # Testnames: GraphStructure, ReducedGraphs, GroundTruth
+
     # Get results files
     file_prefix = OUTPUT_FOLDER+'new_results/'
     results_files = get_files_in_folder(folder=file_prefix, substring=testname)
 
-    fig, axs = plt.subplots(2, 2)
-    fig.suptitle('Test Name: {}'.format(testname))
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+
+
+    if testname == 'GraphStructure':
+        fig, axs = plt.subplots(2, 2)
+    elif testname == 'ReducedGraphs':
+        fig, axs = plt.subplots(1, 2)
+
+
+    # fig.suptitle('Test Name: {}'.format(testname))
 
     graph_connections = ['IND', 'SEQ', 'LFG']
     snrs = ['-1', '-7']
@@ -53,13 +65,34 @@ def plot_results(testname='ranks_'):
     # for id_x, string_x in enumerate():
 
     for snr_i, snr_bool in enumerate([True, False]):
-        for acyclic_i, acyclic_bool in enumerate([True, False]):
-            print "\nSnr {}, Acyclic {}:".format(snr_bool, acyclic_bool)
-            for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool and (string_contains(rfile, 'G1A') == acyclic_bool))]:
+
+        if testname == 'GraphStructure':
+            for acyclic_i, acyclic_bool in enumerate([True, False]):
+                print "\nSnr {}, Acyclic {}:".format(snr_bool, acyclic_bool)
+                for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool and (string_contains(rfile, 'G1A') == acyclic_bool))]:
+                    current_results = np.mean(np.load(file_prefix + result_file), axis=0)
+                    axs[snr_i][acyclic_i].plot(current_results, label=get_graph_connection_method(result_file))
+                axs[snr_i][acyclic_i].legend()
+
+        elif testname == 'ReducedGraphs':
+            print "\nSnr {}:".format(snr_bool)
+            for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool)]:
                 current_results = np.mean(np.load(file_prefix + result_file), axis=0)
-                axs[snr_i][acyclic_i].plot(current_results, label=get_graph_connection_method(result_file))
-            axs[snr_i][acyclic_i].legend()
+
+                if snr_i == False:
+                    current_results = current_results[:8]
+
+                axs[snr_i].plot(current_results, label=get_graph_size_and_structure(result_file))
+            axs[snr_i].legend()
+
+    axs[0].set_xlabel('Traces', fontsize=11)
+    axs[0].set_ylabel('Classification Rank', fontsize=11)
+
+
     plt.show()
+
+    fig.savefig("output/{}.pdf".format(testname), bbox_inches='tight')
+
 
 
 def tf_get_median(v):
@@ -397,8 +430,8 @@ def timepoint_plot():
 
     plt.show()
 
-    f.savefig("output/hw_timepoints.pdf")
-    # f.savefig("output/identity_timepoints.pdf")
+    # f.savefig("output/hw_timepoints.pdf")
+    f.savefig("output/identity_timepoints.pdf")
 
 if __name__ == "__main__":
 
@@ -414,9 +447,11 @@ if __name__ == "__main__":
     # exit(1)
 
     # Testnames: GraphStructure, ReducedGraphs, GroundTruth
-    plot_results(testname='GraphStructure')
+    # plot_results(testname='ReducedGraphs')
 
     # numpy_tests()
+
+    # timepoint_plot()
 
     # plot_results(testname='GraphStructure')
 

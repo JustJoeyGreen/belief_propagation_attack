@@ -1947,6 +1947,9 @@ def get_graph_connection_method(file):
     else:
         return 'Unknown'
 
+def get_graph_size_and_structure(file):
+    return (re.search('^.*_(G\d+[A-Z]*)_.*', file).group(1))
+
 def hw_probabilities_to_probability_distribution(hw_probabilities):
     return normalise_array(np.array([hw_probabilities[get_hw(i)] for i in range(256)]))
 

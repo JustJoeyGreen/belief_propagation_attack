@@ -11,6 +11,8 @@ from fastdtw import fastdtw
 import pandas as pd
 import timing
 
+import time #DEBUG
+
 KEY = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
 ATTACK_TRACES = 10000
 POI_CAP = 10000 # Because this is computationally expensive, don't need 200000 traces to find PoI, just use 10000
@@ -705,9 +707,9 @@ def lda_templates(tprange=200):
 
     for variable, length in variable_dict.iteritems():
 
-        if variable not in ['xt','k','h']:
-            print "DEBUG: Skipping {}".format(variable)
-            continue
+        # if variable not in ['xt','k','h']:
+        #     print "DEBUG: Skipping {}".format(variable)
+        #     continue
 
         # if PRINT:
         print "Generating Template for Variable {}, Length {}".format(variable, length)
@@ -795,15 +797,29 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True):
                     print "ERROR: No Traces found where Variable {} has Value {}!".format(var_string, value)
                     print_new_line()
                     raise IOError
-                if PRINT:
-                    print "Value {}: {}".format(value, target_traces)
+                # if PRINT:
+                #     print "Value {}: {}".format(value, target_traces)
                 # Get Power Values for these traces in numpy array
-                x_power_values = np.take(trace_values, target_traces)
+
+                ### METHOD 1:
+                # x_power_values = np.take(trace_values, target_traces) #SLOW
+                ### METHOD 2:
+                # x_power_values = np.zeros(target_traces.shape[0])
+                # for x_count, x_val in enumerate(target_traces):
+                #     x_power_values[x_count] = trace_values[x_val]
+                ### METHOD 3:
+                x_power_values = trace_values[target_traces]
+
                 # Get hw and STD
                 mu = np.mean(x_power_values)
                 sigma = np.std(x_power_values)
                 # Store
                 numpy_array[value] = (mu, sigma)
+
+                if PRINT:
+                    print "Value {}: {}".format(value, (mu, sigma))
+
+
 
             # Save
             musig_dict[var_string] = numpy_array
@@ -1199,6 +1215,8 @@ if __name__ == "__main__":
     # ALL(skip_code=SKIP_CODE)
 
     get_mean_and_sigma_for_each_node()
+
+    # lda_templates()
 
     # print "> Points of Interest Detection with Hamming Weights!"
     # point_of_interest_detection(hw=True)
