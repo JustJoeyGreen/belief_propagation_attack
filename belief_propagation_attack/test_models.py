@@ -16,9 +16,9 @@ import realTraceHandler as rTH
 
 class TestModels:
 
-    def __init__(self, jitter=None, use_extra = True):
+    def __init__(self, jitter=None, use_extra = True, no_print=True):
         # Real Trace Handler
-        self.real_trace_handler = rTH.RealTraceHandler(no_print = True, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True, jitter=jitter, use_extra = use_extra)
+        self.real_trace_handler = rTH.RealTraceHandler(no_print = no_print, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True, jitter=jitter, use_extra = use_extra)
 
 
     AES_Sbox = np.array([
@@ -357,6 +357,9 @@ if __name__ == "__main__":
     parser.add_argument('--RK', '--RANDOMKEY', action="store_true", dest="RANDOM_KEY",
                         help='Toggle to Turn RANDOM_KEY On (Attack Validation Traces)', default=False)
 
+    parser.add_argument('--D', '--DEBUG', action="store_true", dest="DEBUG",
+                        help='Turns no_print off', default=False)
+
     # Target node here
     args = parser.parse_args()
     USE_MLP = args.USE_MLP
@@ -371,6 +374,7 @@ if __name__ == "__main__":
     JITTER = args.JITTER
     USE_EXTRA = args.USE_EXTRA
     RANDOM_KEY = args.RANDOM_KEY
+    DEBUG = args.DEBUG
 
     # var_list = list()
     # for v in variable_dict:
@@ -382,7 +386,7 @@ if __name__ == "__main__":
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
     print "* Testing with Random Key! (Validation Traces)"
-    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA)
+    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG)
 
     if TEST_ALL:
         # Clear statistics

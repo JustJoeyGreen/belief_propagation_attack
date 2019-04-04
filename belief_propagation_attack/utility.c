@@ -3301,7 +3301,6 @@ static const char __pyx_k_GlobalMaxPooling1D[] = "GlobalMaxPooling1D";
 static const char __pyx_k_KEY_EXTRA_FILEPATH[] = "KEY_EXTRA_FILEPATH";
 static const char __pyx_k_Large_Factor_Graph[] = "Large Factor Graph";
 static const char __pyx_k_MLP_ASCAD_FILEPATH[] = "MLP_ASCAD_FILEPATH";
-static const char __pyx_k_Mode_40_occurances[] = "Mode: {:40} ({}/{} occurances ({}%))";
 static const char __pyx_k_OUTPUT_FILE_PREFIX[] = "OUTPUT_FILE_PREFIX";
 static const char __pyx_k_PATH_TO_LOCAL_ELMO[] = "PATH_TO_LOCAL_ELMO";
 static const char __pyx_k_PLAINTEXT_FILEPATH[] = "PLAINTEXT_FILEPATH";
@@ -3337,6 +3336,7 @@ static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_string_starts_with[] = "string_starts_with";
 static const char __pyx_k_testing_models_csv[] = "testing_models.csv";
 static const char __pyx_k_Can_t_evaluate_byte[] = "Can't evaluate byte {}";
+static const char __pyx_k_Mode_40_occurrences[] = "Mode: {:40} ({}/{} occurrences ({}%))";
 static const char __pyx_k_NEURAL_MODEL_FOLDER[] = "NEURAL_MODEL_FOLDER";
 static const char __pyx_k_array_xor_permutate[] = "array_xor_permutate";
 static const char __pyx_k_concatenated_onehot[] = "concatenated_onehot";
@@ -3595,7 +3595,7 @@ static PyObject *__pyx_n_s_MemoryError;
 static PyObject *__pyx_kp_s_MemoryView_of_r_at_0x_x;
 static PyObject *__pyx_kp_s_MemoryView_of_r_object;
 static PyObject *__pyx_kp_s_Min_40;
-static PyObject *__pyx_kp_s_Mode_40_occurances;
+static PyObject *__pyx_kp_s_Mode_40_occurrences;
 static PyObject *__pyx_n_s_Model;
 static PyObject *__pyx_n_s_ModelCheckpoint;
 static PyObject *__pyx_n_s_NEURAL_MODEL_FOLDER;
@@ -43888,7 +43888,7 @@ static PyObject *__pyx_pf_7utility_336print_statistics(CYTHON_UNUSED PyObject *_
  *         print "Rng:  {:40} {}".format(range_l, range_l_log)
  *         print "Var:  {:40} {}".format(var_l, var_l_log)             # <<<<<<<<<<<<<<
  *         if mode:
- *             print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
+ *             print "Mode: {:40} ({}/{} occurrences ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
  */
     __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Var_40, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1541, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
@@ -43944,7 +43944,7 @@ static PyObject *__pyx_pf_7utility_336print_statistics(CYTHON_UNUSED PyObject *_
  *         print "Rng:  {:40} {}".format(range_l, range_l_log)
  *         print "Var:  {:40} {}".format(var_l, var_l_log)
  *         if mode:             # <<<<<<<<<<<<<<
- *             print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
+ *             print "Mode: {:40} ({}/{} occurrences ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
  *         print_new_line()
  */
     __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_mode); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 1542, __pyx_L1_error)
@@ -43953,11 +43953,11 @@ static PyObject *__pyx_pf_7utility_336print_statistics(CYTHON_UNUSED PyObject *_
       /* "utility.pyx":1543
  *         print "Var:  {:40} {}".format(var_l, var_l_log)
  *         if mode:
- *             print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))             # <<<<<<<<<<<<<<
+ *             print "Mode: {:40} ({}/{} occurrences ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))             # <<<<<<<<<<<<<<
  *         print_new_line()
  * 
  */
-      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Mode_40_occurances, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1543, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Mode_40_occurrences, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1543, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_4 = PyObject_Length(__pyx_v_l); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 1543, __pyx_L1_error)
       __pyx_t_10 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 1543, __pyx_L1_error)
@@ -44076,14 +44076,14 @@ static PyObject *__pyx_pf_7utility_336print_statistics(CYTHON_UNUSED PyObject *_
  *         print "Rng:  {:40} {}".format(range_l, range_l_log)
  *         print "Var:  {:40} {}".format(var_l, var_l_log)
  *         if mode:             # <<<<<<<<<<<<<<
- *             print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
+ *             print "Mode: {:40} ({}/{} occurrences ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
  *         print_new_line()
  */
     }
 
     /* "utility.pyx":1544
  *         if mode:
- *             print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
+ *             print "Mode: {:40} ({}/{} occurrences ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
  *         print_new_line()             # <<<<<<<<<<<<<<
  * 
  * def save_statistics(name, l):
@@ -73765,7 +73765,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_MemoryView_of_r_at_0x_x, __pyx_k_MemoryView_of_r_at_0x_x, sizeof(__pyx_k_MemoryView_of_r_at_0x_x), 0, 0, 1, 0},
   {&__pyx_kp_s_MemoryView_of_r_object, __pyx_k_MemoryView_of_r_object, sizeof(__pyx_k_MemoryView_of_r_object), 0, 0, 1, 0},
   {&__pyx_kp_s_Min_40, __pyx_k_Min_40, sizeof(__pyx_k_Min_40), 0, 0, 1, 0},
-  {&__pyx_kp_s_Mode_40_occurances, __pyx_k_Mode_40_occurances, sizeof(__pyx_k_Mode_40_occurances), 0, 0, 1, 0},
+  {&__pyx_kp_s_Mode_40_occurrences, __pyx_k_Mode_40_occurrences, sizeof(__pyx_k_Mode_40_occurrences), 0, 0, 1, 0},
   {&__pyx_n_s_Model, __pyx_k_Model, sizeof(__pyx_k_Model), 0, 0, 1, 1},
   {&__pyx_n_s_ModelCheckpoint, __pyx_k_ModelCheckpoint, sizeof(__pyx_k_ModelCheckpoint), 0, 0, 1, 1},
   {&__pyx_n_s_NEURAL_MODEL_FOLDER, __pyx_k_NEURAL_MODEL_FOLDER, sizeof(__pyx_k_NEURAL_MODEL_FOLDER), 0, 0, 1, 1},

@@ -88,10 +88,10 @@ def run_belief_propagation_attack(margdist=None):
     if not NO_PRINT:
         print "\nRunning BP on {}: {} Trace(s) and {} Round(s), Averaging over {} Pass(es)".format(graph_string, TRACES,
                                                                                                    ROUNDS, REPEAT)
-        print "Key Scheduling: {}, Removed Nodes: {}, Not Leaking Nodes: {}, Badly Leaking Nodes: {} (Traces {}, SNR 2^{}), " \
+        print "Key Scheduling: {}, Removed Nodes: {}, Not Leaking Nodes: {}, Badly Leaking Nodes: {} (Traces {}, SNR 2^{}, Erroneous {}), " \
               "Left Out Nodes: {}, Not Noisy Nodes: {}".format(
             INCLUDE_KEY_SCHEDULING, REMOVED_NODES, NOT_LEAKING_NODES, BADLY_LEAKING_NODES, BADLY_LEAKING_TRACES,
-            BADLY_LEAKING_SNR_exp,
+            BADLY_LEAKING_SNR_exp, ERRONEOUS_BAD,
             LEFT_OUT_NODES, NO_NOISE_NODES)
         if fixed_node_tuple is None:
             print "No Fixed Node(s)."
@@ -166,7 +166,8 @@ def run_belief_propagation_attack(margdist=None):
                                      remove_cycle=REMOVE_CYCLE, real_traces=REAL_TRACES,
                                      use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, jitter=JITTER,
                                      badly_leaking_snr=badly_leaking_snr, badly_leaking_nodes=BADLY_LEAKING_NODES,
-                                     badly_leaking_traces=BADLY_LEAKING_TRACES, no_noise_nodes=NO_NOISE_NODES)
+                                     badly_leaking_traces=BADLY_LEAKING_TRACES, no_noise_nodes=NO_NOISE_NODES,
+                                     erroneous_badleakage=ERRONEOUS_BAD)
 
         for rep in range(REPEAT):
 
@@ -598,7 +599,7 @@ def run_belief_propagation_attack(margdist=None):
             dump_file = 'output/results_dump.csv'
 
             if not check_file_exists(dump_file):
-                header = "TestName;"
+                header = "sep=;\nTestName;"
                 for parakey, paravalue in args.__dict__.iteritems():
                     header += str(parakey) + ";"
                 header += "SuccessfulAttacks;PercentageSuccess;BestCase;WorstCase;MedianCase;TotalEpsilonExhaustion;TotalTMax;TotalFailures;BestRoundFound;WorstRoundFound;AverageRoundFound;MinTraceTime;MaxTraceTime;AvgTraceTime;"
@@ -780,7 +781,7 @@ if __name__ == "__main__":
                         help='Toggles Sequential Graph On (default: False)', default=False)
     parser.add_argument('--ING', '--IND', '--IFG', action="store_false", dest="INDEPENDENT_GRAPHS",
                         help='Toggles Independent Graph Off (default: True)', default=True)
-    parser.add_argument('--KEYAVG', '--KAVG', '--KPAVG', action="store_false", dest="KEY_POWER_VALUE_AVERAGE",
+    parser.add_argument('--KEYAVG', '--KEY_AVG', '--KAVG', '--KPAVG', action="store_false", dest="KEY_POWER_VALUE_AVERAGE",
                         help='Toggles Key Power Value Averaging Off (default: True)', default=True)
     parser.add_argument('--KS', action="store_true", dest="KEY_SCHEDULING",
                         help='Toggles Key Scheduling On (default: False)', default=False)
@@ -901,6 +902,9 @@ if __name__ == "__main__":
     parser.add_argument('--NLKS', '--NO_LEAK_KEY_SCHEDULE', action="store_true", dest="NO_LEAK_KEY_SCHEDULE",
                         help="Doesn't leak on Key Schedule (default: False)", default=False)
 
+    parser.add_argument('--EBL', '--ERR', '--ERRONEOUS_BAD', action="store_true", dest="ERRONEOUS_BAD",
+                            help='Toggles Erroneous Leakage to replace Bad Leakage', default=False)
+
     args = parser.parse_args()
     # print args
     # exit(1)
@@ -979,6 +983,7 @@ if __name__ == "__main__":
     USE_BEST = args.USE_BEST
     KEY_POWER_VALUE_AVERAGE = args.KEY_POWER_VALUE_AVERAGE
     JITTER = args.JITTER
+    ERRONEOUS_BAD = args.ERRONEOUS_BAD
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)

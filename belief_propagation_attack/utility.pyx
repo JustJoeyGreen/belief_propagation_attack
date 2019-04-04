@@ -1540,7 +1540,7 @@ def print_statistics(l, log = False, top = False, mode=True):
         print "Rng:  {:40} {}".format(range_l, range_l_log)
         print "Var:  {:40} {}".format(var_l, var_l_log)
         if mode:
-            print "Mode: {:40} ({}/{} occurances ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
+            print "Mode: {:40} ({}/{} occurrences ({}%))".format(mode_l, mode_l_occ, len(l), percentage(mode_l_occ, len(l)))
         print_new_line()
 
 def save_statistics(name, l):

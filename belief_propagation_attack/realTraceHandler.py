@@ -220,15 +220,40 @@ class RealTraceHandler:
                 print "!!! Doesn't exist!"
             return (None, None)
         else:
-            multilabel = False
-            if string_contains(model_file, '_multilabel_'):
-                multilabel = True
-            hw = False
-            if string_contains(model_file, 'hw_'):
-                hw = True
+
+            multilabel = True if string_contains(model_file, '_multilabel_') else False
+            hw = True if string_contains(model_file, 'hw_') else False
+            cnn = True if string_contains(model_file, '_cnn') else False
+
             var_name, var_number, _ = split_variable_name(variable)
             window_size = get_window_size_from_model(model_file)
+
+            if not self.no_print:
+                print "Loading model..."
             model = load_sca_model(model_file)
+            if not self.no_print:
+                print "...loaded successfully!"
+
+
+
+            # ### IF CNN, NEED TO CHANGE INPUT SHAPE
+            #
+            # # Get the input layer shape
+            # input_layer_shape = model.get_layer(index=0).input_shape
+            # # Adapt the data shape according our model input
+            # if len(input_layer_shape) == 2:
+            #     # This is a MLP
+            #     input_data = dataset[min_trace_idx:max_trace_idx, :]
+            # elif len(input_layer_shape) == 3:
+            #     # This is a CNN: reshape the data
+            #     input_data = dataset[min_trace_idx:max_trace_idx, :]
+            #     input_data = input_data.reshape((input_data.shape[0], input_data.shape[1], 1))
+            # else:
+            #     print("Error: model input shape length %d is not expected ..." % len(input_layer_shape))
+            #     sys.exit(-1)
+
+
+
             rank_list = list()
             predicted_values = list()
             for trace in range(traces):
@@ -240,6 +265,15 @@ class RealTraceHandler:
                 # leakage = self.get_leakage(variable, trace=trace)
                 power_value = self.return_power_window_of_variable(variable, (self.real_trace_data_maxtraces - trace - 1) if from_end else trace, nn_normalise=True, window=window_size)
                 new_input = np.resize(power_value, (1, power_value.size))
+
+                ### IF CNN, NEED TO CHANGE INPUT SHAPE
+                if cnn:
+                    if trace == 0 and not self.no_print:
+                        print "* CNN so reshaping: before {}...".format(new_input.shape)
+                    new_input = new_input.reshape((new_input.shape[0], new_input.shape[1], 1))
+                    if trace == 0 and not self.no_print:
+                        print "** ...after {}".format(new_input.shape)
+
                 leakage = model.predict(new_input)[0]
 
                 if multilabel:
