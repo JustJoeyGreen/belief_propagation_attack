@@ -153,7 +153,11 @@ def run_belief_propagation_attack(margdist=None):
         failure_array = [[] for i in range(REPEAT)]
 
         if TRACE_NPY:
-            rank_after_each_trace = np.zeros((REPEAT, TRACES), dtype=np.uint8)
+            # Handle LFG differently, as it can't handle per trace!
+            if method == "LFG":
+                rank_after_each_trace = np.zeros((REPEAT), dtype=np.uint8)
+            else:
+                rank_after_each_trace = np.zeros((REPEAT, TRACES), dtype=np.uint8)
 
         # Set up graph
         traces_to_use = TRACES
@@ -308,7 +312,13 @@ def run_belief_propagation_attack(margdist=None):
                     my_graph.print_key_rank()
                 elif method == "LFG":
                     # Only need to do once, so break here
+                    if TRACE_NPY:
+                        # Must be SEQ or IND if here
+                        rank_after_each_trace[rep] = bit_length(
+                            my_graph.get_final_key_rank())
                     break
+
+                ################# ONLY IND AND SEQ FROM THIS POINT ONWARDS #################
 
                 # Check for failure
                 if IGNORE_GROUND_TRUTHS or (
@@ -363,6 +373,7 @@ def run_belief_propagation_attack(margdist=None):
                     my_graph.print_key_rank(supplied_dist=key_distributions)
 
                 if TRACE_NPY:
+                    # Must be SEQ or IND if here
                     rank_after_each_trace[rep][trace] = bit_length(
                         my_graph.get_final_key_rank(supplied_dist=key_distributions))
 

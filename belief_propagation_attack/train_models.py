@@ -101,7 +101,7 @@ def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, 
     return model
 
 ### CNN Best model
-def cnn_best(input_length=700, learning_rate=0.00001, classes=256):
+def cnn_best(input_length=700, learning_rate=0.00001, classes=256, dense_units=4096):
     # From VGG16 design
     input_shape = (input_length, 1)
     img_input = Input(shape=input_shape)
@@ -122,8 +122,9 @@ def cnn_best(input_length=700, learning_rate=0.00001, classes=256):
     x = AveragePooling1D(2, strides=2, name='block5_pool')(x)
     # Classification block
     x = Flatten(name='flatten')(x)
-    x = Dense(4096, activation='relu', name='fc1')(x)
-    x = Dense(4096, activation='relu', name='fc2')(x)
+    # Two Dense layers
+    x = Dense(dense_units, activation='relu', name='fc1')(x)
+    x = Dense(dense_units, activation='relu', name='fc2')(x)
     x = Dense(classes, activation='softmax', name='predictions')(x)
 
     inputs = img_input
