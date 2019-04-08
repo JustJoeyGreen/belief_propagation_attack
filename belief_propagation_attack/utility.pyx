@@ -1950,18 +1950,19 @@ def get_graph_connection_method(file):
 def get_graph_size_and_structure(file):
     return (re.search('^.*_(G\d+[A-Z]*)_.*', file).group(1))
 
+def get_traces_used(file):
+    return (re.search('^.*_(\d+[A-Z]*)T_.*', file).group(1))
+
 def hw_probabilities_to_probability_distribution(hw_probabilities):
     return normalise_array(np.array([hw_probabilities[get_hw(i)] for i in range(256)]))
 
 ######################### LOSS FUNCTION #########################
 
+""" Our own loss function! """
 def tf_rank_loss(y_true, y_pred):
     output = y_pred
     target = y_true
     axis = -1
-
-    # DEBUG: USE CATEGORICAL CROSS ENTROPY CODE AS IS IN TENSORFLOW
-    # If we can get this working, we can slowly shift to what we want
 
     # scale preds so that the class probas of each sample sum to 1
     output = output / tf.math.reduce_sum(output, keepdims=True)
@@ -1971,21 +1972,29 @@ def tf_rank_loss(y_true, y_pred):
     return_val = -tf.math.reduce_sum(target * tf.math.log(clipped_output))
 
     # Our bit: Rank!
+
+    # Sort once to get each index ranking
     argsort1 = tf.argsort(y_pred, direction='DESCENDING')
+    # Sort the sorted to put them in a nice order for us
     argsort2 = tf.argsort(argsort1, direction='ASCENDING')
+    # undo one-hot
     argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
-    # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
+    # reshape
     reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
+    # get tensor ([0,1,2,...])
     tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
+    # reshape
     reshaped_tf_range = tf.expand_dims(tf_range, 1)
+    # Concatenate range to onehot
     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
+    # Gather the ranks together!
     gathered = tf.gather_nd(argsort2, concatenated_onehot)
+    # Take the mean of these ranks (float value)
     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
 
     print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
     print "Cross Entropy:\ntype {} ({}), shape {}".format(type(return_val), return_val.dtype, return_val.get_shape())
     return return_val + mean
-    # return mean
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]

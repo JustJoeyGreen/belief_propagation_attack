@@ -70,8 +70,17 @@ def plot_results(testname='ranks_'):
             for acyclic_i, acyclic_bool in enumerate([True, False]):
                 print "\nSnr {}, Acyclic {}:".format(snr_bool, acyclic_bool)
                 for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool and (string_contains(rfile, 'G1A') == acyclic_bool))]:
-                    current_results = np.mean(np.load(file_prefix + result_file), axis=0)
-                    axs[snr_i][acyclic_i].plot(current_results, label=get_graph_connection_method(result_file))
+
+                    # LFG HANDLE
+                    if get_graph_connection_method(result_file) == 'LFG':
+                        lfg_traces = get_traces_used(result_file)
+                        current_results = np.load(file_prefix + result_file)
+                        print "Plot for LFG {:3}: {}".format(lfg_traces, current_results)
+                        # axs[snr_i][acyclic_i].plot(lfg_traces, current_results, label=get_graph_connection_method(result_file))
+                        continue
+                    else:
+                        current_results = np.mean(np.load(file_prefix + result_file), axis=0)
+                        axs[snr_i][acyclic_i].plot(current_results, label=get_graph_connection_method(result_file))
                 axs[snr_i][acyclic_i].legend()
 
         elif testname == 'ReducedGraphs':
@@ -85,8 +94,12 @@ def plot_results(testname='ranks_'):
                 axs[snr_i].plot(current_results, label=get_graph_size_and_structure(result_file))
             axs[snr_i].legend()
 
-    axs[0].set_xlabel('Traces', fontsize=11)
-    axs[0].set_ylabel('Classification Rank', fontsize=11)
+    try:
+        axs[0].set_xlabel('Traces', fontsize=11)
+        axs[0].set_ylabel('Classification Rank', fontsize=11)
+    except AttributeError:
+        axs[0][0].set_xlabel('Traces', fontsize=11)
+        axs[0][0].set_ylabel('Classification Rank', fontsize=11)
 
 
     plt.show()
@@ -283,7 +296,7 @@ def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, ex
             print "GOTCHA! Unique is only size {}:\n{}\n".format(unique.shape[0], unique)
             raise
         print "> {} Values ({}):".format('Attack' if extra_file else 'Profile', real_values.shape[0])
-        print_statistics(real_values, mode=extra_file)
+        print_statistics(real_values, mode=True)
         if hw:
             print ">> Counts: {}".format(counts)
 
@@ -441,9 +454,9 @@ if __name__ == "__main__":
     # #     dtw_plot(dtw=bool)
     # # exit(1)
     #
-    # # for var_name in ['s', 'k']:
-    # #     for var_num in [1,4,8]:
-    # #         value_occurance_checker(var_name, var_num, randomkey_extra=True, hw=True)
+    # for var_name in ['s', 'k']:
+    #     for var_num in [1,4,8]:
+    #         value_occurance_checker(var_name, var_num, randomkey_extra=True, hw=False)
     # exit(1)
 
     # Testnames: GraphStructure, ReducedGraphs, GroundTruth
@@ -453,7 +466,7 @@ if __name__ == "__main__":
 
     # timepoint_plot()
 
-    # plot_results(testname='GraphStructure')
+    plot_results(testname='GraphStructure')
 
     exit(1)
 
