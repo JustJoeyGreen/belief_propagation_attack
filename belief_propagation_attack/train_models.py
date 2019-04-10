@@ -6,7 +6,7 @@ import argparse
 import timing
 from time import time
 from keras.models import Model, Sequential
-from keras.layers import Flatten, Dense, Input, Conv1D, MaxPooling1D, GlobalAveragePooling1D, GlobalMaxPooling1D, AveragePooling1D, LSTM, Dropout
+from keras.layers import Flatten, Dense, Input, Conv1D, MaxPooling1D, GlobalAveragePooling1D, GlobalMaxPooling1D, AveragePooling1D, LSTM, Dropout, BatchNormalization
 from keras.engine.topology import get_source_inputs
 from keras.utils import layer_utils
 from keras.utils.data_utils import get_file
@@ -110,6 +110,64 @@ def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, 
         except ValueError:
             print "!!! Loss Function '{}' not recognised, aborting\n".format(loss_function)
             raise
+    return model
+
+### CNN From MAKE SOME NOISE (AES_HD)
+def cnn_aes_hd(input_length=700, learning_rate=0.00001, classes=256, dense_units=512):
+    # From VGG16 design
+    input_shape = (input_length, 1)
+    img_input = Input(shape=input_shape)
+
+    # Initial Batch Normalisation
+    x = BatchNormalization(name='initial_batchnorm')(img_input)
+
+    # Block 1
+    x = Conv1D(8, 3, activation='relu', padding='same', name='block1_conv1')(x)
+    x = MaxPooling1D(2, strides=2, name='block1_pool')(x)
+    x = BatchNormalization(name='block1_batchnorm')(x)
+    # Block 2
+    x = Conv1D(16, 3, activation='relu', padding='same', name='block2_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block2_pool')(x)
+    # Block 3
+    x = Conv1D(32, 3, activation='relu', padding='same', name='block3_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block3_pool')(x)
+    x = BatchNormalization(name='block3_batchnorm')(x)
+    # Block 4
+    x = Conv1D(64, 3, activation='relu', padding='same', name='block4_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block4_pool')(x)
+    # Block 5
+    x = Conv1D(128, 3, activation='relu', padding='same', name='block5_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block5_pool')(x)
+    x = BatchNormalization(name='block5_batchnorm')(x)
+    # Block 6
+    x = Conv1D(128, 3, activation='relu', padding='same', name='block6_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block6_pool')(x)
+    # Block 7
+    x = Conv1D(256, 3, activation='relu', padding='same', name='block7_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block7_pool')(x)
+    x = BatchNormalization(name='block7_batchnorm')(x)
+    # Block 8
+    x = Conv1D(256, 3, activation='relu', padding='same', name='block8_conv1')(x)
+    x = AveragePooling1D(2, strides=2, name='block8_pool')(x)
+
+    # First Dropout Layer
+    x = Dropout(0.5, name='dropout1')(x)
+    # Classification block
+    x = Flatten(name='flatten')(x)
+
+    # Second Dropout Layer
+    x = Dropout(0.5, name='dropout2')(x)
+    # One Dense layer
+    x = Dense(dense_units, activation='relu', name='fc')(x)
+
+    # Output layer
+    x = Dense(classes, activation='softmax', name='predictions')(x)
+
+    inputs = img_input
+    # Create model.
+    model = Model(inputs, x, name='cnn_best')
+    optimizer = RMSprop(lr=learning_rate)
+    model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
     return model
 
 ### CNN Best model
@@ -255,7 +313,9 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
 
     ### CNN training
     if cnn:
-        cnn_best_model = cnn_best(input_length=input_length, learning_rate=learning_rate, classes=classes)
+        # TODO: Test New CNN!
+        # cnn_best_model = cnn_best(input_length=input_length, learning_rate=learning_rate, classes=classes)
+        cnn_best_model = cnn_aes_hd(input_length=input_length, learning_rate=learning_rate, classes=classes)
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_best_model, MODEL_FOLDER +
