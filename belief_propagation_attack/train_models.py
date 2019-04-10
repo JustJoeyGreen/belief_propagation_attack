@@ -75,29 +75,41 @@ def check_file_exists(file_path):
 
 
 #### MLP Weighted bit model (6 layers of 200 units)
-def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True, classes=256):
+def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, classes=256, loss_function='binary_crossentropy'):
+    if loss_function is None:
+        loss_function='binary_crossentropy'
     model = Sequential()
     model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
     for i in range(layer_nb-2):
         model.add(Dense(mlp_nodes, activation='relu'))
     model.add(Dense(8, activation='sigmoid'))
     optimizer = RMSprop(lr=learning_rate)
-    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+    try:
+        model.compile(loss=loss_function, optimizer=optimizer, metrics=['accuracy'])
+    except ValueError:
+        print "!!! Loss Function '{}' not recognised, aborting\n".format(loss_function)
+        raise
     return model
 
 
 #### MLP Best model (6 layers of 200 units)
-def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, rank_loss=True, classes=256):
+def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, classes=256, loss_function='categorical_crossentropy'):
+    if loss_function is None:
+        loss_function='categorical_crossentropy'
     model = Sequential()
     model.add(Dense(mlp_nodes, input_dim=input_length, activation='relu'))
     for i in range(layer_nb-2):
         model.add(Dense(mlp_nodes, activation='relu'))
     model.add(Dense(classes, activation='softmax'))
     optimizer = RMSprop(lr=learning_rate)
-    if rank_loss:
+    if loss_function=='rank_loss':
         model.compile(loss=tf_rank_loss, optimizer=optimizer, metrics=['accuracy'])
     else:
-        model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+        try:
+            model.compile(loss=loss_function, optimizer=optimizer, metrics=['accuracy'])
+        except ValueError:
+            print "!!! Loss Function '{}' not recognised, aborting\n".format(loss_function)
+            raise
     return model
 
 ### CNN Best model
@@ -223,18 +235,13 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
         reshaped_y = Y_profiling
         reshaped_val = tvalidation_data[1]
 
-    # Debug
-    print "Reshaped y:\n{}\n".format(reshaped_y)
-    print "Reshaped val:\n{}\n".format(reshaped_val)
-
-
     history = model.fit(x=Reshaped_X_profiling, y=reshaped_y, batch_size=batch_size, verbose = progress_bar, epochs=epochs, callbacks=callbacks, validation_data=(Reshaped_validation_data, reshaped_val))
     return history
 
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, rank_loss=False, multilabel=False, hammingweight=False):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, multilabel=False, hammingweight=False, loss_function=None):
 
     classes = 9 if hammingweight else 256
     hammingweight_flag = '_hw' if hammingweight else ''
@@ -271,16 +278,16 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
     ### MLP training
     if mlp:
         if multilabel:
-            mlp_best_model = mlp_weighted_bit(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss, classes=classes)
+            mlp_best_model = mlp_weighted_bit(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, classes=classes, loss_function=loss_function)
         else:
-            mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, rank_loss=rank_loss, classes=classes)
+            mlp_best_model = mlp_best(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, classes=classes, loss_function=loss_function)
         mlp_epochs = epochs if epochs is not None else 200
         mlp_batchsize = batch_size
 
         train_model(X_profiling, Y_profiling, mlp_best_model, MODEL_FOLDER +
-                    "{}_mlp{}{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}{}.h5".format(
+                    "{}_mlp{}{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}_{}.h5".format(
                         variable, mlp_layers, '_multilabel' if multilabel else '', hammingweight_flag, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
-                        training_traces, augment_method, jitter, '_rankloss' if rank_loss else ''), epochs=mlp_epochs, batch_size=mlp_batchsize,
+                        training_traces, augment_method, jitter, 'defaultloss' if loss_function is None else loss_function.replace('_','')), epochs=mlp_epochs, batch_size=mlp_batchsize,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel, hammingweight=hammingweight)
 
     ### LSTM training
@@ -323,7 +330,7 @@ if __name__ == "__main__":
                         help='Adds noise to the profiling step', default=False)
     parser.add_argument('-v', '-var', '-variable', action="store", dest="VARIABLE", help='Variable to train',
                         default='s001')
-    parser.add_argument('-l', '-length', '-input', action="store", dest="INPUT_LENGTH", help='Input Length (default: 700)',
+    parser.add_argument('-l', '-length', '-input', '-window', action="store", dest="INPUT_LENGTH", help='Input Length (default: 700)',
                         type=int, default=700)
     parser.add_argument('-lr', '-learn', '-learning_rate', action="store", dest="LEARNING_RATE", help='Learning Rate (default: 0.00001)',
                         type=float, default=0.00001)
@@ -362,8 +369,6 @@ if __name__ == "__main__":
                         type=int, default=None)
     parser.add_argument('--TEST', '--TEST_VARIABLES', action="store_true", dest="TEST_VARIABLES",
                         help='Trains only specified Testing Variable Nodes', default=False)
-    parser.add_argument('--RANK_LOSS', '--LOSS', '--L', action="store_true", dest="RANK_LOSS",
-                        help='Uses our own loss function, related to classification rank', default=False)
     parser.add_argument('--MULTILABEL', '--ML', '--M', action="store_true", dest="MULTILABEL",
                         help='Uses multilabels in binary form', default=False)
     parser.add_argument('--RV', '--RKV', '--RANDOMKEY_VALIDATION', action="store_true", dest="RANDOMKEY_VALIDATION",
@@ -371,6 +376,8 @@ if __name__ == "__main__":
     parser.add_argument('--HW', '--HAMMINGWEIGHT', action="store_true", dest="HAMMINGWEIGHT",
                         help='Trains to match Hamming Weight rather than identity', default=False)
 
+    parser.add_argument('-loss', '-loss_function', action="store", dest="LOSS_FUNCTION", help='Loss Function (default: None (uses standard depending on model structure, usually categorical cross entropy))',
+                        default=None)
 
     # Target node here
     args            = parser.parse_args()
@@ -396,11 +403,11 @@ if __name__ == "__main__":
     JITTER          = args.JITTER
     TEST_VARIABLES  = args.TEST_VARIABLES
     LEARNING_RATE   = args.LEARNING_RATE
-    RANK_LOSS       = args.RANK_LOSS
     MULTILABEL      = args.MULTILABEL
     VALIDATION_TRACES = args.VALIDATION_TRACES
     RANDOMKEY_VALIDATION = args.RANDOMKEY_VALIDATION
     HAMMINGWEIGHT = args.HAMMINGWEIGHT
+    LOSS_FUNCTION = args.LOSS_FUNCTION
 
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
@@ -431,7 +438,7 @@ if __name__ == "__main__":
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,
-            learning_rate=LEARNING_RATE, rank_loss=RANK_LOSS, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT)
+            learning_rate=LEARNING_RATE, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT, loss_function=LOSS_FUNCTION)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):
