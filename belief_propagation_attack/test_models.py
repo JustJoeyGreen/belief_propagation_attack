@@ -354,7 +354,7 @@ if __name__ == "__main__":
     parser.add_argument('--E', '--EX', '--EXTRA', '--USE_EXTRA', action="store_false", dest="USE_EXTRA",
                         help='Toggle to Turn USE EXTRA Off (Attack Trained Traces)', default=True)
 
-    parser.add_argument('--RK', '--RANDOMKEY', action="store_true", dest="RANDOM_KEY",
+    parser.add_argument('--RK', '--RKV', '--RANDOMKEY', action="store_true", dest="RANDOM_KEY",
                         help='Toggle to Turn RANDOM_KEY On (Attack Validation Traces)', default=False)
 
     parser.add_argument('--D', '--DEBUG', action="store_true", dest="DEBUG",
@@ -385,7 +385,6 @@ if __name__ == "__main__":
 
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
-    print "* Testing with Random Key! (Validation Traces)"
     model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG)
 
     if TEST_ALL:

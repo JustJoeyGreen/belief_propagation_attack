@@ -692,7 +692,7 @@ def dimensionality_reduction(tprange=200):
             # z_mlp = mlp.predict(test_x)
 
 
-def lda_templates(tprange=200):
+def lda_templates(tprange=200, validation_traces=10000):
     print "linDisAnalysis Templates!"
 
     # Need: trace_data for samples, Actual Values of each node
@@ -722,8 +722,8 @@ def lda_templates(tprange=200):
             if PRINT:
                 print "Template for {}{}".format(variable, pad_string_zeros(i))
 
-            y = real_values[i, :traces]
-            X = trace_data[:, time_points[i] - (tprange / 2):time_points[i] + (tprange / 2)]
+            y = real_values[i, :traces-validation_traces]
+            X = trace_data[:-validation_traces, time_points[i] - (tprange / 2):time_points[i] + (tprange / 2)]
 
             if PRINT:
                 print "Real Values: {}".format(y)
@@ -742,7 +742,7 @@ def lda_templates(tprange=200):
             pickle.dump(lda, open("{}{}_{}_{}.p".format(LDA_FOLDER, tprange, variable, i), "wb"))
 
 
-def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True):
+def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, validation_traces=10000):
     musig_dict_path = MUSIGMA_FILEPATH
 
     NUMBER_OF_TEMPLATES = 256
@@ -780,7 +780,7 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True):
             # print "Variable {} {}: POI {}".format(var, j, poi)
 
             # Find All Trace Values for this Time Point
-            trace_values = trace_data[poi]
+            trace_values = trace_data[poi, :-validation_traces]
 
             # Save Mean and Sigma
             var_string = "{}{}".format(var, pad_string_zeros(j + 1))
@@ -1214,9 +1214,9 @@ if __name__ == "__main__":
     # TODO
     # ALL(skip_code=SKIP_CODE)
 
-    get_mean_and_sigma_for_each_node()
+    # get_mean_and_sigma_for_each_node(save=False)
 
-    # lda_templates()
+    lda_templates()
 
     # print "> Points of Interest Detection with Hamming Weights!"
     # point_of_interest_detection(hw=True)

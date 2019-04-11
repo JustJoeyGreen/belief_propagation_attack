@@ -446,6 +446,34 @@ def timepoint_plot():
     # f.savefig("output/hw_timepoints.pdf")
     f.savefig("output/identity_timepoints.pdf")
 
+def error_bar():
+    my_var = 'k004'
+    var_name, var_num, _ = split_variable_name(my_var)
+    hw = False
+
+    (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(my_var, load_metadata=False, normalise_traces=True, input_length=1, training_traces=200000, sd = 100, augment_method=2, jitter=None)
+
+    powerval_list = [list() for i in range(256 if not hw else 9)]
+
+    for i, label in enumerate(Y_profiling):
+        v = X_profiling[i][0]
+        powerval_list[get_hw(label) if hw else label].append(v)
+
+    max_list = np.array([max(i) for i in powerval_list])
+    min_list = np.array([min(i) for i in powerval_list])
+    avg_list = np.array([get_average(i) for i in powerval_list])
+
+    # plt.plot(max_list, label='max_list')
+    # plt.plot(min_list, label='min_list')
+    # plt.plot(avg_list, label='avg_list')
+
+    plt.errorbar(np.arange(256 if not hw else 9), avg_list, [avg_list - min_list, max_list - avg_list], fmt='.k', ecolor='gray', lw=1)
+
+    # plt.legend()
+    plt.show()
+
+    exit(1)
+
 if __name__ == "__main__":
 
     # timepoint_plot()
@@ -482,40 +510,3 @@ if __name__ == "__main__":
             timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))[j]
             hw_timepoint = np.argmax(np.load("{}{}_{}_HW.npy".format(COEFFICIENT_FOLDER, var, j)))
             print "TP: {:6} HWTP: {:6} RANGE: {:6}".format(timepoint, hw_timepoint, np.abs(timepoint - hw_timepoint))
-
-
-    TEST = False
-
-    # USE_REAL_TRACE_HANDLER = True
-    USE_REAL_TRACE_HANDLER = False
-
-    SHIFT_TRACES = True
-    SHIFT_VAL = 2
-    SHIFT_EXTRA = False
-
-    my_var = 'k004'
-    var_name, var_num, _ = split_variable_name(my_var)
-    hw = False
-
-    (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(my_var, load_metadata=False, normalise_traces=True, input_length=1, training_traces=200000, sd = 100, augment_method=2, jitter=None)
-
-    powerval_list = [list() for i in range(256 if not hw else 9)]
-
-    for i, label in enumerate(Y_profiling):
-        v = X_profiling[i][0]
-        powerval_list[get_hw(label) if hw else label].append(v)
-
-    max_list = np.array([max(i) for i in powerval_list])
-    min_list = np.array([min(i) for i in powerval_list])
-    avg_list = np.array([get_average(i) for i in powerval_list])
-
-    # plt.plot(max_list, label='max_list')
-    # plt.plot(min_list, label='min_list')
-    # plt.plot(avg_list, label='avg_list')
-
-    plt.errorbar(np.arange(256 if not hw else 9), avg_list, [avg_list - min_list, max_list - avg_list], fmt='.k', ecolor='gray', lw=1)
-
-    # plt.legend()
-    plt.show()
-
-    exit(1)

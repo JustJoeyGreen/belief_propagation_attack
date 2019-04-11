@@ -56306,9 +56306,9 @@ static PyObject *__pyx_pf_7utility_396hw_probabilities_to_probability_distributi
   return __pyx_r;
 }
 
-/* "utility.pyx":1961
- * ######################### LOSS FUNCTION #########################
+/* "utility.pyx":1962
  * 
+ * """ Our own loss function! """
  * def tf_rank_loss(y_true, y_pred):             # <<<<<<<<<<<<<<
  *     output = y_pred
  *     target = y_true
@@ -56346,11 +56346,11 @@ static PyObject *__pyx_pw_7utility_399tf_rank_loss(PyObject *__pyx_self, PyObjec
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_y_pred)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("tf_rank_loss", 1, 2, 2, 1); __PYX_ERR(0, 1961, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("tf_rank_loss", 1, 2, 2, 1); __PYX_ERR(0, 1962, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "tf_rank_loss") < 0)) __PYX_ERR(0, 1961, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "tf_rank_loss") < 0)) __PYX_ERR(0, 1962, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -56363,7 +56363,7 @@ static PyObject *__pyx_pw_7utility_399tf_rank_loss(PyObject *__pyx_self, PyObjec
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("tf_rank_loss", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 1961, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("tf_rank_loss", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 1962, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("utility.tf_rank_loss", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -56403,8 +56403,8 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("tf_rank_loss", 0);
 
-  /* "utility.pyx":1962
- * 
+  /* "utility.pyx":1963
+ * """ Our own loss function! """
  * def tf_rank_loss(y_true, y_pred):
  *     output = y_pred             # <<<<<<<<<<<<<<
  *     target = y_true
@@ -56413,7 +56413,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __Pyx_INCREF(__pyx_v_y_pred);
   __pyx_v_output = __pyx_v_y_pred;
 
-  /* "utility.pyx":1963
+  /* "utility.pyx":1964
  * def tf_rank_loss(y_true, y_pred):
  *     output = y_pred
  *     target = y_true             # <<<<<<<<<<<<<<
@@ -56423,64 +56423,64 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __Pyx_INCREF(__pyx_v_y_true);
   __pyx_v_target = __pyx_v_y_true;
 
-  /* "utility.pyx":1964
+  /* "utility.pyx":1965
  *     output = y_pred
  *     target = y_true
  *     axis = -1             # <<<<<<<<<<<<<<
  * 
- *     # DEBUG: USE CATEGORICAL CROSS ENTROPY CODE AS IS IN TENSORFLOW
+ *     # scale preds so that the class probas of each sample sum to 1
  */
   __pyx_v_axis = -1L;
 
-  /* "utility.pyx":1970
+  /* "utility.pyx":1968
  * 
  *     # scale preds so that the class probas of each sample sum to 1
  *     output = output / tf.math.reduce_sum(output, keepdims=True)             # <<<<<<<<<<<<<<
  *     # manual computation of crossentropy
  *     epsilon_ = tf.convert_to_tensor(K.epsilon(), dtype=output.dtype.base_dtype)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reduce_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reduce_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_output);
   __Pyx_GIVEREF(__pyx_v_output);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_output);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_keepdims, Py_True) < 0) __PYX_ERR(0, 1970, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_keepdims, Py_True) < 0) __PYX_ERR(0, 1968, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_v_output, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1970, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyNumber_Divide(__pyx_v_output, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1968, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF_SET(__pyx_v_output, __pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "utility.pyx":1972
+  /* "utility.pyx":1970
  *     output = output / tf.math.reduce_sum(output, keepdims=True)
  *     # manual computation of crossentropy
  *     epsilon_ = tf.convert_to_tensor(K.epsilon(), dtype=output.dtype.base_dtype)             # <<<<<<<<<<<<<<
  *     clipped_output = tf.clip_by_value(output, epsilon_, 1. - epsilon_)
  *     return_val = -tf.math.reduce_sum(target * tf.math.log(clipped_output))
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_convert_to_tensor); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_convert_to_tensor); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_K_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_K_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_epsilon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_epsilon); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -56495,24 +56495,24 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   }
   __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_output, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_output, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_base_dtype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_base_dtype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 1972, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1972, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1970, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -56520,19 +56520,19 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_epsilon_ = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "utility.pyx":1973
+  /* "utility.pyx":1971
  *     # manual computation of crossentropy
  *     epsilon_ = tf.convert_to_tensor(K.epsilon(), dtype=output.dtype.base_dtype)
  *     clipped_output = tf.clip_by_value(output, epsilon_, 1. - epsilon_)             # <<<<<<<<<<<<<<
  *     return_val = -tf.math.reduce_sum(target * tf.math.log(clipped_output))
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1973, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1971, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_clip_by_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1973, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_clip_by_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1971, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_, __pyx_v_epsilon_, 1., 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1973, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyFloat_SubtractCObj(__pyx_float_1_, __pyx_v_epsilon_, 1., 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1971, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_6 = 0;
@@ -56549,7 +56549,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_output, __pyx_v_epsilon_, __pyx_t_3};
-    __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1973, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1971, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -56558,14 +56558,14 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[4] = {__pyx_t_4, __pyx_v_output, __pyx_v_epsilon_, __pyx_t_3};
-    __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1973, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1971, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1973, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1971, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_4) {
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4); __pyx_t_4 = NULL;
@@ -56579,7 +56579,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_2, 2+__pyx_t_6, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1973, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1971, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
@@ -56587,27 +56587,27 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_clipped_output = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "utility.pyx":1974
+  /* "utility.pyx":1972
  *     epsilon_ = tf.convert_to_tensor(K.epsilon(), dtype=output.dtype.base_dtype)
  *     clipped_output = tf.clip_by_value(output, epsilon_, 1. - epsilon_)
  *     return_val = -tf.math.reduce_sum(target * tf.math.log(clipped_output))             # <<<<<<<<<<<<<<
  * 
  *     # Our bit: Rank!
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_math); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reduce_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_reduce_sum); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_math); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_math); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_log); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
@@ -56622,10 +56622,10 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   }
   __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_clipped_output) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_clipped_output);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_target, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_target, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -56641,10 +56641,10 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_5 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Negative(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1974, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Negative(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1972, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_return_val = __pyx_t_1;
@@ -56652,10 +56652,10 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
 
   /* "utility.pyx":1977
  * 
- *     # Our bit: Rank!
+ *     # Sort once to get each index ranking
  *     argsort1 = tf.argsort(y_pred, direction='DESCENDING')             # <<<<<<<<<<<<<<
+ *     # Sort the sorted to put them in a nice order for us
  *     argsort2 = tf.argsort(argsort1, direction='ASCENDING')
- *     argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1977, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -56678,27 +56678,27 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_argsort1 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "utility.pyx":1978
- *     # Our bit: Rank!
+  /* "utility.pyx":1979
  *     argsort1 = tf.argsort(y_pred, direction='DESCENDING')
+ *     # Sort the sorted to put them in a nice order for us
  *     argsort2 = tf.argsort(argsort1, direction='ASCENDING')             # <<<<<<<<<<<<<<
+ *     # undo one-hot
  *     argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
- *     # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1978, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1979, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argsort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1978, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_argsort); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1979, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1978, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1979, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_argsort1);
   __Pyx_GIVEREF(__pyx_v_argsort1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_argsort1);
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1978, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1979, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_direction, __pyx_n_s_ASCENDING) < 0) __PYX_ERR(0, 1978, __pyx_L1_error)
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1978, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_direction, __pyx_n_s_ASCENDING) < 0) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1979, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -56706,34 +56706,34 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_argsort2 = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "utility.pyx":1979
- *     argsort1 = tf.argsort(y_pred, direction='DESCENDING')
+  /* "utility.pyx":1981
  *     argsort2 = tf.argsort(argsort1, direction='ASCENDING')
+ *     # undo one-hot
  *     argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)             # <<<<<<<<<<<<<<
- *     # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
+ *     # reshape
  *     reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_tf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_tf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_argmax); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_argmax); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF(__pyx_v_y_true);
   __Pyx_GIVEREF(__pyx_v_y_true);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_y_true);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_tf); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_output_type, __pyx_t_4) < 0) __PYX_ERR(0, 1979, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_output_type, __pyx_t_4) < 0) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 1979, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1979, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 1981, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_5, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1981, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -56741,16 +56741,16 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_argmaxed_onehot = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "utility.pyx":1981
+  /* "utility.pyx":1983
  *     argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
- *     # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
+ *     # reshape
  *     reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)             # <<<<<<<<<<<<<<
+ *     # get tensor ([0,1,2,...])
  *     tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
- *     reshaped_tf_range = tf.expand_dims(tf_range, 1)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1981, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1983, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_expand_dims); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1981, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_expand_dims); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1983, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -56768,7 +56768,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_argmaxed_onehot, __pyx_int_1};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1981, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1983, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
@@ -56776,13 +56776,13 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_argmaxed_onehot, __pyx_int_1};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1981, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1983, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_1 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1981, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1983, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -56793,7 +56793,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_6, __pyx_int_1);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1981, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1983, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -56801,21 +56801,21 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_reshaped_onehot = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "utility.pyx":1982
- *     # reshaped_onehot = tf.reshape(argmaxed_onehot, [tf.shape(argsort2)[0], 1])
+  /* "utility.pyx":1985
  *     reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
+ *     # get tensor ([0,1,2,...])
  *     tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)             # <<<<<<<<<<<<<<
+ *     # reshape
  *     reshaped_tf_range = tf.expand_dims(tf_range, 1)
- *     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_range); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_range); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_shape); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -56830,27 +56830,27 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   }
   __pyx_t_4 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_v_argsort2) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_argsort2);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 1982, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1982, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1985, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -56858,16 +56858,16 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_tf_range = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "utility.pyx":1983
- *     reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
+  /* "utility.pyx":1987
  *     tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
+ *     # reshape
  *     reshaped_tf_range = tf.expand_dims(tf_range, 1)             # <<<<<<<<<<<<<<
+ *     # Concatenate range to onehot
  *     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
- *     gathered = tf.gather_nd(argsort2, concatenated_onehot)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1983, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1987, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_expand_dims); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1983, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_expand_dims); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1987, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -56885,7 +56885,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_tf_range, __pyx_int_1};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1983, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1987, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
@@ -56893,13 +56893,13 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_tf_range, __pyx_int_1};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1983, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1987, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1983, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1987, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -56910,7 +56910,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_int_1);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1983, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1987, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -56918,19 +56918,19 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_reshaped_tf_range = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "utility.pyx":1984
- *     tf_range = tf.range(tf.shape(argsort2)[0], dtype=tf.int32)
+  /* "utility.pyx":1989
  *     reshaped_tf_range = tf.expand_dims(tf_range, 1)
+ *     # Concatenate range to onehot
  *     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)             # <<<<<<<<<<<<<<
+ *     # Gather the ranks together!
  *     gathered = tf.gather_nd(argsort2, concatenated_onehot)
- *     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1984, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_tf); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1989, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concat); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1984, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_concat); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1989, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1984, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1989, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_reshaped_tf_range);
   __Pyx_GIVEREF(__pyx_v_reshaped_tf_range);
@@ -56953,7 +56953,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_4, __pyx_int_1};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1984, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1989, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -56962,14 +56962,14 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_4, __pyx_int_1};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1984, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1989, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   } else
   #endif
   {
-    __pyx_t_1 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1984, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1989, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -56980,7 +56980,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     __Pyx_GIVEREF(__pyx_int_1);
     PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_6, __pyx_int_1);
     __pyx_t_4 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1984, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1989, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
@@ -56988,16 +56988,16 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_concatenated_onehot = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "utility.pyx":1985
- *     reshaped_tf_range = tf.expand_dims(tf_range, 1)
+  /* "utility.pyx":1991
  *     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
+ *     # Gather the ranks together!
  *     gathered = tf.gather_nd(argsort2, concatenated_onehot)             # <<<<<<<<<<<<<<
+ *     # Take the mean of these ranks (float value)
  *     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
- * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_tf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1985, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_tf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1991, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_gather_nd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1985, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_gather_nd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1991, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -57015,7 +57015,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_argsort2, __pyx_v_concatenated_onehot};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1985, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1991, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
@@ -57023,13 +57023,13 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_argsort2, __pyx_v_concatenated_onehot};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1985, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1991, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_GOTREF(__pyx_t_3);
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1985, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1991, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_5) {
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -57040,7 +57040,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     __Pyx_INCREF(__pyx_v_concatenated_onehot);
     __Pyx_GIVEREF(__pyx_v_concatenated_onehot);
     PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_6, __pyx_v_concatenated_onehot);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1985, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1991, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -57048,21 +57048,21 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_gathered = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "utility.pyx":1986
- *     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
+  /* "utility.pyx":1993
  *     gathered = tf.gather_nd(argsort2, concatenated_onehot)
+ *     # Take the mean of these ranks (float value)
  *     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)             # <<<<<<<<<<<<<<
  * 
  *     print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_tf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_cast); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_cast); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_tf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_tf); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_reduce_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_reduce_mean); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
@@ -57077,12 +57077,12 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   }
   __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_5, __pyx_v_gathered) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_gathered);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_tf); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1986, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1993, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -57100,7 +57100,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_1, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1986, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1993, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -57110,7 +57110,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_1, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1986, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 2+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1993, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -57118,7 +57118,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   } else
   #endif
   {
-    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1986, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1993, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     if (__pyx_t_2) {
       __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -57129,7 +57129,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_t_5);
     __pyx_t_1 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1986, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1993, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
@@ -57137,18 +57137,18 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_mean = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "utility.pyx":1988
+  /* "utility.pyx":1995
  *     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
  * 
  *     print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())             # <<<<<<<<<<<<<<
  *     print "Cross Entropy:\ntype {} ({}), shape {}".format(type(return_val), return_val.dtype, return_val.get_shape())
  *     return return_val + mean
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Our_Rank_Mean_type_shape, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1988, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Our_Rank_Mean_type_shape, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1995, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_mean, __pyx_n_s_dtype); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1988, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_mean, __pyx_n_s_dtype); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1995, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mean, __pyx_n_s_get_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1988, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_mean, __pyx_n_s_get_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1995, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -57162,7 +57162,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   }
   __pyx_t_5 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1988, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1995, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -57180,7 +57180,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_1, ((PyObject *)Py_TYPE(__pyx_v_mean)), __pyx_t_7, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1988, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1995, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -57190,7 +57190,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_1, ((PyObject *)Py_TYPE(__pyx_v_mean)), __pyx_t_7, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1988, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1995, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
@@ -57198,7 +57198,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   } else
   #endif
   {
-    __pyx_t_2 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1988, __pyx_L1_error)
+    __pyx_t_2 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1995, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     if (__pyx_t_1) {
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1); __pyx_t_1 = NULL;
@@ -57212,26 +57212,26 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     PyTuple_SET_ITEM(__pyx_t_2, 2+__pyx_t_6, __pyx_t_5);
     __pyx_t_7 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1988, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_2, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1995, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 1988, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 1995, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "utility.pyx":1989
+  /* "utility.pyx":1996
  * 
  *     print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
  *     print "Cross Entropy:\ntype {} ({}), shape {}".format(type(return_val), return_val.dtype, return_val.get_shape())             # <<<<<<<<<<<<<<
  *     return return_val + mean
- *     # return mean
+ * 
  */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Cross_Entropy_type_shape, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1989, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Cross_Entropy_type_shape, __pyx_n_s_format); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 1996, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_return_val, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1989, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_return_val, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1996, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_return_val, __pyx_n_s_get_shape); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1989, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_return_val, __pyx_n_s_get_shape); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1996, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_1 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_7))) {
@@ -57245,7 +57245,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   }
   __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1989, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 1996, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -57263,7 +57263,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, ((PyObject *)Py_TYPE(__pyx_v_return_val)), __pyx_t_2, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1989, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1996, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -57273,7 +57273,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
     PyObject *__pyx_temp[4] = {__pyx_t_7, ((PyObject *)Py_TYPE(__pyx_v_return_val)), __pyx_t_2, __pyx_t_5};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1989, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_6, 3+__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1996, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -57281,7 +57281,7 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
   } else
   #endif
   {
-    __pyx_t_1 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1989, __pyx_L1_error)
+    __pyx_t_1 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1996, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -57295,31 +57295,31 @@ static PyObject *__pyx_pf_7utility_398tf_rank_loss(CYTHON_UNUSED PyObject *__pyx
     PyTuple_SET_ITEM(__pyx_t_1, 2+__pyx_t_6, __pyx_t_5);
     __pyx_t_2 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1989, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1996, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 1989, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_3) < 0) __PYX_ERR(0, 1996, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "utility.pyx":1990
+  /* "utility.pyx":1997
  *     print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
  *     print "Cross Entropy:\ntype {} ({}), shape {}".format(type(return_val), return_val.dtype, return_val.get_shape())
  *     return return_val + mean             # <<<<<<<<<<<<<<
- *     # return mean
  * 
+ * # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyNumber_Add(__pyx_v_return_val, __pyx_v_mean); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1990, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_v_return_val, __pyx_v_mean); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1997, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "utility.pyx":1961
- * ######################### LOSS FUNCTION #########################
+  /* "utility.pyx":1962
  * 
+ * """ Our own loss function! """
  * def tf_rank_loss(y_true, y_pred):             # <<<<<<<<<<<<<<
  *     output = y_pred
  *     target = y_true
@@ -77930,17 +77930,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__464);
   __pyx_codeobj__465 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__464, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_utilit, __pyx_n_s_hw_probabilities_to_probability, 1956, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__465)) __PYX_ERR(0, 1956, __pyx_L1_error)
 
-  /* "utility.pyx":1961
- * ######################### LOSS FUNCTION #########################
+  /* "utility.pyx":1962
  * 
+ * """ Our own loss function! """
  * def tf_rank_loss(y_true, y_pred):             # <<<<<<<<<<<<<<
  *     output = y_pred
  *     target = y_true
  */
-  __pyx_tuple__466 = PyTuple_Pack(17, __pyx_n_s_y_true, __pyx_n_s_y_pred, __pyx_n_s_output, __pyx_n_s_target, __pyx_n_s_axis, __pyx_n_s_epsilon_2, __pyx_n_s_clipped_output, __pyx_n_s_return_val, __pyx_n_s_argsort1, __pyx_n_s_argsort2, __pyx_n_s_argmaxed_onehot, __pyx_n_s_reshaped_onehot, __pyx_n_s_tf_range, __pyx_n_s_reshaped_tf_range, __pyx_n_s_concatenated_onehot, __pyx_n_s_gathered, __pyx_n_s_mean); if (unlikely(!__pyx_tuple__466)) __PYX_ERR(0, 1961, __pyx_L1_error)
+  __pyx_tuple__466 = PyTuple_Pack(17, __pyx_n_s_y_true, __pyx_n_s_y_pred, __pyx_n_s_output, __pyx_n_s_target, __pyx_n_s_axis, __pyx_n_s_epsilon_2, __pyx_n_s_clipped_output, __pyx_n_s_return_val, __pyx_n_s_argsort1, __pyx_n_s_argsort2, __pyx_n_s_argmaxed_onehot, __pyx_n_s_reshaped_onehot, __pyx_n_s_tf_range, __pyx_n_s_reshaped_tf_range, __pyx_n_s_concatenated_onehot, __pyx_n_s_gathered, __pyx_n_s_mean); if (unlikely(!__pyx_tuple__466)) __PYX_ERR(0, 1962, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__466);
   __Pyx_GIVEREF(__pyx_tuple__466);
-  __pyx_codeobj__467 = (PyObject*)__Pyx_PyCode_New(2, 0, 17, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__466, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_utilit, __pyx_n_s_tf_rank_loss, 1961, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__467)) __PYX_ERR(0, 1961, __pyx_L1_error)
+  __pyx_codeobj__467 = (PyObject*)__Pyx_PyCode_New(2, 0, 17, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__466, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_utilit, __pyx_n_s_tf_rank_loss, 1962, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__467)) __PYX_ERR(0, 1962, __pyx_L1_error)
 
   /* "View.MemoryView":285
  *         return self.name
@@ -86664,16 +86664,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_hw_probabilities_to_probability, __pyx_t_28) < 0) __PYX_ERR(0, 1956, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
 
-  /* "utility.pyx":1961
- * ######################### LOSS FUNCTION #########################
+  /* "utility.pyx":1962
  * 
+ * """ Our own loss function! """
  * def tf_rank_loss(y_true, y_pred):             # <<<<<<<<<<<<<<
  *     output = y_pred
  *     target = y_true
  */
-  __pyx_t_28 = PyCFunction_NewEx(&__pyx_mdef_7utility_399tf_rank_loss, NULL, __pyx_n_s_utility); if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 1961, __pyx_L1_error)
+  __pyx_t_28 = PyCFunction_NewEx(&__pyx_mdef_7utility_399tf_rank_loss, NULL, __pyx_n_s_utility); if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 1962, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_28);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tf_rank_loss, __pyx_t_28) < 0) __PYX_ERR(0, 1961, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tf_rank_loss, __pyx_t_28) < 0) __PYX_ERR(0, 1962, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_28); __pyx_t_28 = 0;
 
   /* "utility.pyx":1
