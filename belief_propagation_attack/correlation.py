@@ -765,7 +765,7 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, vali
         if PRINT:
             print "* Variable {}".format(var)
 
-        var_array = np.load(REALVALUES_FOLDER + var + '.npy')
+        var_array = np.load(REALVALUES_FOLDER + var + '.npy')[:, :-validation_traces]
         if hw_musig:
             var_array = get_hw_of_vector(var_array)
 
@@ -1214,9 +1214,9 @@ if __name__ == "__main__":
     # TODO
     # ALL(skip_code=SKIP_CODE)
 
-    # get_mean_and_sigma_for_each_node(save=False)
+    get_mean_and_sigma_for_each_node(save=False)
 
-    lda_templates()
+    # lda_templates()
 
     # print "> Points of Interest Detection with Hamming Weights!"
     # point_of_interest_detection(hw=True)
