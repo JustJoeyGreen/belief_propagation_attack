@@ -118,47 +118,47 @@ def cnn_aes_hd(input_length=700, learning_rate=0.00001, classes=256, dense_units
     input_shape = (input_length, 1)
     img_input = Input(shape=input_shape)
 
-    # Initial Batch Normalisation
-    x = BatchNormalization(name='initial_batchnorm')(img_input)
+    # # Initial Batch Normalisation
+    # x = BatchNormalization(name='initial_batchnorm')(img_input)
 
     # Block 1
-    x = Conv1D(8, 3, activation='relu', padding='same', name='block1_conv1')(x)
-    x = MaxPooling1D(2, strides=2, name='block1_pool')(x)
+    x = Conv1D(8, 3, activation='relu', padding='same', name='block1_conv1')(img_input)
     x = BatchNormalization(name='block1_batchnorm')(x)
+    x = MaxPooling1D(2, strides=2, name='block1_pool')(x)
     # Block 2
     x = Conv1D(16, 3, activation='relu', padding='same', name='block2_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block2_pool')(x)
+    x = MaxPooling1D(2, strides=2, name='block2_pool')(x)
     # Block 3
     x = Conv1D(32, 3, activation='relu', padding='same', name='block3_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block3_pool')(x)
     x = BatchNormalization(name='block3_batchnorm')(x)
+    x = MaxPooling1D(2, strides=2, name='block3_pool')(x)
     # Block 4
     x = Conv1D(64, 3, activation='relu', padding='same', name='block4_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block4_pool')(x)
+    x = MaxPooling1D(2, strides=2, name='block4_pool')(x)
     # Block 5
     x = Conv1D(128, 3, activation='relu', padding='same', name='block5_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block5_pool')(x)
     x = BatchNormalization(name='block5_batchnorm')(x)
+    x = MaxPooling1D(2, strides=2, name='block5_pool')(x)
     # Block 6
     x = Conv1D(128, 3, activation='relu', padding='same', name='block6_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block6_pool')(x)
+    x = MaxPooling1D(2, strides=2, name='block6_pool')(x)
     # Block 7
     x = Conv1D(256, 3, activation='relu', padding='same', name='block7_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block7_pool')(x)
     x = BatchNormalization(name='block7_batchnorm')(x)
+    x = MaxPooling1D(2, strides=2, name='block7_pool')(x)
     # Block 8
     x = Conv1D(256, 3, activation='relu', padding='same', name='block8_conv1')(x)
-    x = AveragePooling1D(2, strides=2, name='block8_pool')(x)
+    x = MaxPooling1D(2, strides=2, name='block8_pool')(x)
 
     # First Dropout Layer
     x = Dropout(0.5, name='dropout1')(x)
     # Classification block
     x = Flatten(name='flatten')(x)
 
-    # Second Dropout Layer
-    x = Dropout(0.5, name='dropout2')(x)
     # One Dense layer
     x = Dense(dense_units, activation='relu', name='fc')(x)
+    # Second Dropout Layer
+    x = Dropout(0.5, name='dropout2')(x)
 
     # Output layer
     x = Dense(classes, activation='softmax', name='predictions')(x)
