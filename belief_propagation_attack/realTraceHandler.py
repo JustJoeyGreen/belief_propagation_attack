@@ -16,6 +16,8 @@ class RealTraceHandler:
         if not no_print:
             print "Preloading Matrix real_trace_data, may take a while..."
 
+        self.use_extra = use_extra
+
         if use_extra:
             self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if jitter is None else get_shifted_tracedata_filepath(extra=True, shifted=jitter), memory_mapped=memory_mapped)
             self.plaintexts = np.load(PLAINTEXT_EXTRA_FILEPATH)
@@ -55,7 +57,10 @@ class RealTraceHandler:
         # for var in variable_dict:
         #     self.powervalues[var] = np.load('{}extra_{}.npy'.format(POWERVALUES_FOLDER, var))
         self.musigma_dict = pickle.load(open(MUSIGMA_FILEPATH, 'ro'))
-        self.best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
+
+        # TODO: CURRENTLY IN DEVELOPMENT
+        # self.best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
+        self.best_templates = None
 
     def return_power_window(self, timepoint, trace, window=700, nn_normalise=False):
         """ Return the window of power values for a given value """
@@ -130,6 +135,7 @@ class RealTraceHandler:
 
         var_notrace = strip_off_trace(variable)
         if best == 'nn' or (best is None and self.use_nn):
+
             if ignore_bad and not self.check_template(variable):
                 out_distribution = get_no_knowledge_array()
                 if not self.no_print:
@@ -196,6 +202,26 @@ class RealTraceHandler:
     def get_real_value(self, variable, trace=0):
         var_name, var_number, _ = split_variable_name(variable)
         return self.realvalues[var_name][var_number-1][trace]
+
+    def get_performance_of_handler(self, variable, traces=10000, use_extra=False):
+        # Sanity check
+        if use_extra != self.use_extra:
+            print "! Can't get performance of Handler, we want extra {} but handler initialised as extra {}".format(use_extra, self.use_extra)
+            raise
+        # Returns median rank and median probability of correct value
+        var_name, var_number, _ = split_variable_name(variable)
+        rank_list = list()
+        prob_list = list()
+        # TESTS ON PROFILE TRACES (not extra!)
+        for trace in range(traces):
+            real_val = self.realvalues[var_name][var_number-1][self.real_trace_data_maxtraces-trace-1]
+            leakage = self.get_leakage(variable, trace=self.real_trace_data_maxtraces-trace-1, normalise=False)
+            rank = get_rank_from_prob_dist(leakage, real_val)
+            prob = normalise_array(leakage)[real_val]
+            rank_list.append(rank)
+            prob_list.append(prob)
+        # Return Rank List and Prob List
+        return np.array(rank_list), np.array(prob_list)
 
     def get_leakage_rank_list(self, variable, traces=1, invert=False):
         var_name, var_number, _ = split_variable_name(variable)

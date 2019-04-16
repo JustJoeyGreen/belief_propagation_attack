@@ -1058,12 +1058,12 @@ def load_meta():
     # returns (profile_traces, attack_traces, samples, np.float32 if float_coding else np.int16)
     return load_object(METADATA_FILEPATH)
 
-def save_object(obj, name, output=False):
-    with open(('output/' if output else '') + name + '.pkl', 'wb') as f:
+def save_object(obj, name, output=False, suffix=True):
+    with open(('output/' if output else '') + name + ('.pkl' if suffix else ''), 'wb') as f:
         pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
 
-def load_object(name, output=False):
-    with open(('output/' if output else '') + name + '.pkl', 'rb') as f:
+def load_object(name, output=False, suffix=True):
+    with open(('output/' if output else '') + name + ('.pkl' if suffix else ''), 'rb') as f:
         return pickle.load(f)
 
 def get_random_byte():
@@ -1479,7 +1479,7 @@ def get_statistics_string(l, log = False):
         range_l = bit_length(range_l)
         var_l   = bit_length(var_l)
     # Print
-    return "{}, {}, {}, {}, {}, {}".format(max_l, min_l, avg_l, med_l, range_l, var_l)
+    return "{},{},{},{},{},{}".format(max_l, min_l, avg_l, med_l, range_l, var_l)
 
 def get_log_list(l):
     return [bit_length(i) for i in l]

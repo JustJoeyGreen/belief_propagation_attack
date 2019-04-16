@@ -1,7 +1,7 @@
 import leakageSimulatorAESFurious as lSimF
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as linDisAnalysis
 from utility import *
-import realTraceHandler as rTH
+import realTraceHandler as rTraceH
 import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rc
@@ -474,7 +474,60 @@ def error_bar():
 
     exit(1)
 
+def get_best_templates():
+
+    rtrace_uni = rTraceH.RealTraceHandler(no_print=False, use_nn=False, use_lda=False, use_best=False, tprange=1, jitter=None, use_extra=False)
+    rtrace_lda = rTraceH.RealTraceHandler(no_print=False, use_nn=False, use_lda=True, use_best=False, tprange=200, jitter=None, use_extra=False)
+    rtrace_nn = rTraceH.RealTraceHandler(no_print=False, use_nn=True, use_lda=False, use_best=False, tprange=700, jitter=None, use_extra=False) #TODO CHANGE BACK
+
+    template_dict = dict()
+
+    variables = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
+
+    my_csv = 'output/template_results.csv'
+    clear_csv(my_csv)
+    append_csv(my_csv, 'Variable,MaxRankUni,MinRankUni,MeanRankUni,MedianRankUni,RangeRankUni,VarianceRankUni,MaxProbUni,MinProbUni,MeanProbUni,MedianProbUni,RangeProbUni,VarianceProbUni,MaxRankLda,MinRankLda,MeanRankLda,MedianRankLda,RangeRankLda,VarianceRankLda,MaxProbLda,MinProbLda,MeanProbLda,MedianProbLda,RangeProbLda,VarianceProbLda,MaxRankNN,MinRankNN,MeanRankNN,MedianRankNN,RangeRankNN,VarianceRankNN,MaxProbNN,MinProbNN,MeanProbNN,MedianProbNN,RangeProbNN,VarianceProbNN,\n')
+
+    for var in variables:
+
+        print "\n\n\n*** VARIABLE {} ***".format(var)
+
+        ranklist_uni, problist_uni = rtrace_uni.get_performance_of_handler(var)
+        ranklist_lda, problist_lda = rtrace_lda.get_performance_of_handler(var)
+        ranklist_nn, problist_nn = rtrace_nn.get_performance_of_handler(var)
+
+        print "\n\n* Ranks *"
+        print "\n> Uni"
+        print_statistics(ranklist_uni)
+        print "\n> Lda"
+        print_statistics(ranklist_lda)
+        print "\n> NN"
+        print_statistics(ranklist_nn)
+
+        print "\n\n* Probabilities *"
+        print "\n> Uni"
+        print_statistics(problist_uni)
+        print "\n> Lda"
+        print_statistics(problist_lda)
+        print "\n> NN"
+        print_statistics(problist_nn)
+
+        template_dict[var] = dict()
+        template_dict[var]['uni'] = (np.median(ranklist_uni), np.median(problist_uni))
+        template_dict[var]['lda'] = (np.median(ranklist_lda), np.median(problist_lda))
+        template_dict[var]['nn'] = (np.median(ranklist_nn), np.median(problist_nn))
+
+
+
+        append_csv(my_csv,'{},{},{},{},{},{},{},\n'.format(var,get_statistics_string(ranklist_uni), get_statistics_string(problist_uni), get_statistics_string(ranklist_lda), get_statistics_string(problist_lda), get_statistics_string(ranklist_nn), get_statistics_string(problist_nn)))
+
+    # Save template
+    save_object(template_dict, BEST_TEMPLATE_DICT, suffix=False)
+
 if __name__ == "__main__":
+
+    get_best_templates()
+    exit(1)
 
     # timepoint_plot()
     #
