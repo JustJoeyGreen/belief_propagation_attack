@@ -16,9 +16,10 @@ import realTraceHandler as rTH
 
 class TestModels:
 
-    def __init__(self, jitter=None, use_extra = True, no_print=True):
+    def __init__(self, jitter=None, use_extra = True, no_print=True, verbose=False):
         # Real Trace Handler
         self.real_trace_handler = rTH.RealTraceHandler(no_print = no_print, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True, jitter=jitter, use_extra = use_extra)
+        self.verbose = verbose
 
 
     AES_Sbox = np.array([
@@ -275,14 +276,23 @@ class TestModels:
     # Check a saved model against one of the bpann databases Attack traces
     def check_model(self, model_file, num_traces=10000, template_attack=False, random_key=False):
 
-        print "Check model, random key {}".format(random_key)
         try:
-            rank_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces, from_end=random_key)
+            rank_list, prob_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces, from_end=random_key)
             if rank_list is not None:
+
                 print "\n\nModel: {}".format(model_file)
-                print_statistics(rank_list, mode=False)
-                print "> Top Predicted Indices:"
-                print_statistics(predicted_values)
+
+                if self.verbose:
+                    print "> Rank List:"
+                    print_statistics(rank_list, mode=False)
+                    print "> Probability List:"
+                    print_statistics(prob_list, mode=False)
+                    print "> Top Predicted Indices:"
+                    print_statistics(predicted_values)
+                else:
+                    print "> Median Rank: {}".format(np.median(rank_list))
+                    print "> Median Prob: {}".format(np.median(prob_list))
+
         except Exception as e:
             print "! Uh oh, couldn't check the model! Need to resubmit (in test_models)" #PASSING OVER..."
             print e
@@ -360,6 +370,11 @@ if __name__ == "__main__":
     parser.add_argument('--D', '--DEBUG', action="store_true", dest="DEBUG",
                         help='Turns no_print off', default=False)
 
+    parser.add_argument('--V', '--VERBOSE', action="store_true", dest="VERBOSE",
+                        help='Verbose Print Out (otherwise just prints out Median Probability)', default=False)
+
+
+
     # Target node here
     args = parser.parse_args()
     USE_MLP = args.USE_MLP
@@ -375,6 +390,7 @@ if __name__ == "__main__":
     USE_EXTRA = args.USE_EXTRA
     RANDOM_KEY = args.RANDOM_KEY
     DEBUG = args.DEBUG
+    VERBOSE = args.VERBOSE
 
     # var_list = list()
     # for v in variable_dict:
@@ -385,7 +401,7 @@ if __name__ == "__main__":
 
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
-    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG)
+    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG, verbose=VERBOSE)
 
     if TEST_ALL:
         # Clear statistics

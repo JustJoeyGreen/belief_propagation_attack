@@ -526,7 +526,18 @@ def get_best_templates():
 
 if __name__ == "__main__":
 
-    get_best_templates()
+    # get_best_templates()
+
+    a = np.arange(256)
+    count = 100
+
+    start_time = datetime.now()
+    for i in range(count):
+        b = hamming_distance_encode_bulk(a)
+    end_time = datetime.now()
+    time_taken = (end_time - start_time).microseconds
+    average_time_taken = time_taken / count
+    print "Time Taken: {}ms, Average Time Taken ({} Repeats): {}ms".format(time_taken, count, average_time_taken)
     exit(1)
 
     # timepoint_plot()

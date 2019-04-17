@@ -59,8 +59,7 @@ class RealTraceHandler:
         self.musigma_dict = pickle.load(open(MUSIGMA_FILEPATH, 'ro'))
 
         # TODO: CURRENTLY IN DEVELOPMENT
-        # self.best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
-        self.best_templates = None
+        self.best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
 
     def return_power_window(self, timepoint, trace, window=700, nn_normalise=False):
         """ Return the window of power values for a given value """
@@ -74,14 +73,21 @@ class RealTraceHandler:
         var_name, var_number, _ = split_variable_name(variable)
         return self.return_power_window(self.timepoints[var_name][var_number-1], trace, window=window, nn_normalise=nn_normalise)
 
-    def get_best_template(self, variable):
+    def get_best_template(self, variable, rank=True):
         templates = self.best_templates[strip_off_trace(variable)]
-        return min(templates.iteritems(), key=operator.itemgetter(1))[0]
+        comp = 256 if rank else 0
+        comp_type = 'uni'
+        for type, template in templates.iteritems():
+            if (rank and template[0] < comp) or (not rank and template[1] > comp):
+                comp = template[0] if rank else template[1]
+                comp_type = type
+        return comp_type
+        # return min(templates.iteritems(), key=operator.itemgetter(1))[0]
 
-    def check_template(self, variable, method='nn', threshold=128):
-        median_rank = self.best_templates[strip_off_trace(variable)][method]
+    def check_template(self, variable, method='nn', rank=True, rank_threshold=128, prob_threshold=0.001):
+        template = self.best_templates[strip_off_trace(variable)][method]
         # print "+ Checking template for {}, median rank {}".format(variable, median_rank)
-        return median_rank < threshold
+        return (rank and template[0] < rank_threshold) or (not rank and template[1] > prob_threshold)
 
 
     def get_leakage_value(self, variable, trace=0, average_power_values=False, averaged_traces=1):
@@ -281,12 +287,13 @@ class RealTraceHandler:
 
 
             rank_list = list()
+            prob_list = list()
             predicted_values = list()
             for trace in range(traces):
                 real_val = self.realvalues[var_name][var_number-1][(self.real_trace_data_maxtraces - trace - 1) if from_end else trace]
 
-                if trace < 3:
-                    print "Real Value {}: {}".format(trace, real_val)
+                # if trace < 3:
+                #     print "Real Value {}: {}".format(trace, real_val)
 
                 # leakage = self.get_leakage(variable, trace=trace)
                 power_value = self.return_power_window_of_variable(variable, (self.real_trace_data_maxtraces - trace - 1) if from_end else trace, nn_normalise=True, window=window_size)
@@ -307,9 +314,12 @@ class RealTraceHandler:
                 elif hw:
                     leakage = hw_probabilities_to_probability_distribution(leakage)
 
+                probability = leakage[real_val]
+
                 rank = get_rank_from_prob_dist(leakage, real_val)
                 # print 'Real value: {}, Prob: {}, Rank: {}, Best Value: {} (prob {})'.format(real_val, leakage[real_val], rank, np.argmax(leakage), leakage[np.argmax(leakage)])
                 rank_list.append(rank)
+                prob_list.append(probability)
                 predicted_values.append(np.argmax(leakage))
             # Return Rank List
-            return (rank_list, predicted_values)
+            return (rank_list, prob_list, predicted_values)

@@ -1101,7 +1101,6 @@ def load_sca_model(model_file):
     except:
         print("Error: can't load Keras model file '%s'" % model_file)
         raise
-        exit(1)
     return model
 
 def find_values_in_list(lst, val):
@@ -1955,6 +1954,17 @@ def get_traces_used(file):
 
 def hw_probabilities_to_probability_distribution(hw_probabilities):
     return normalise_array(np.array([hw_probabilities[get_hw(i)] for i in range(256)]))
+
+def hamming_distance(int x, int y):
+    return bin(x^y).count('1')
+
+def hamming_distance_encode(int x, float fraction=0.125):
+    cdef np.ndarray out = np.array([fraction ** hamming_distance(x, i) for i in range(256)])
+    out[x] = 1
+    return normalise_array(out)
+
+def hamming_distance_encode_bulk(np.ndarray v, float fraction=0.125):
+    return np.array([hamming_distance_encode(i, fraction=fraction) for i in v])
 
 ######################### LOSS FUNCTION #########################
 

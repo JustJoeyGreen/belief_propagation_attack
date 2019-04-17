@@ -261,7 +261,7 @@ def load_sca_model(model_file):
     return model
 
 #### Training high level function
-def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, batch_size=100, validation_data=None, progress_bar=1, one_hot=True, multilabel=False, hammingweight=False):
+def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, batch_size=100, validation_data=None, progress_bar=1, hamming_distance_encoding=False, one_hot=True, multilabel=False, hammingweight=False):
 
     check_file_exists(os.path.dirname(save_file_name))
     # Save model every epoch
@@ -292,12 +292,15 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
         # print "Before: {} {} {}".format(Y_profiling.shape, type(Y_profiling), Y_profiling)
         reshaped_y = np.unpackbits( np.expand_dims(Y_profiling, 1).astype(np.uint8), axis=1)
         reshaped_val = np.unpackbits( np.expand_dims(validation_data[1], 1).astype(np.uint8), axis=1)
+    elif hamming_distance_encoding:
+        reshaped_y = hamming_distance_encode_bulk(Y_profiling)
+        reshaped_val = hamming_distance_encode_bulk(validation_data[1])
     elif one_hot:
         reshaped_y = to_categorical(Y_profiling, num_classes=9 if hammingweight else 256)
         reshaped_val = to_categorical(validation_data[1], num_classes=9 if hammingweight else 256)
     else:
         reshaped_y = Y_profiling
-        reshaped_val = tvalidation_data[1]
+        reshaped_val = validation_data[1]
 
     history = model.fit(x=Reshaped_X_profiling, y=reshaped_y, batch_size=batch_size, verbose = progress_bar, epochs=epochs, callbacks=callbacks, validation_data=(Reshaped_validation_data, reshaped_val))
     return history
@@ -305,10 +308,11 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, multilabel=False, hammingweight=False, loss_function=None):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, multilabel=False, hammingweight=False, loss_function=None, hamming_distance_encoding=False):
 
     classes = 9 if hammingweight else 256
     hammingweight_flag = '_hw' if hammingweight else ''
+    hammingdistance_flag = '_hamdistencode' if hamming_distance_encoding else ''
 
     if add_noise:
         standard_deviation = 10
@@ -325,10 +329,10 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
         train_model(X_profiling, Y_profiling, cnn_best_model, MODEL_FOLDER +
-                    "{}_cnn{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
-                        variable, hammingweight_flag, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
+                    "{}_cnn{}{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
+                        variable, hammingweight_flag, hammingdistance_flag, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
-                    progress_bar=progress_bar, hammingweight=hammingweight)
+                    progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### CNN pre-trained training
     if cnn_pre:
@@ -339,7 +343,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     "{}_cnnpretrained{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
                         variable, hammingweight_flag, input_length, cnn_epochs, cnn_batchsize, learning_rate, sd, training_traces, augment_method, jitter),
                     epochs=cnn_epochs, batch_size=cnn_batchsize, validation_data=(X_attack, Y_attack),
-                    progress_bar=progress_bar, hammingweight=hammingweight)
+                    progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### MLP training
     if mlp:
@@ -351,10 +355,10 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         mlp_batchsize = batch_size
 
         train_model(X_profiling, Y_profiling, mlp_best_model, MODEL_FOLDER +
-                    "{}_mlp{}{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}_{}.h5".format(
-                        variable, mlp_layers, '_multilabel' if multilabel else '', hammingweight_flag, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
+                    "{}_mlp{}{}{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}_{}.h5".format(
+                        variable, mlp_layers, '_multilabel' if multilabel else '', hammingweight_flag, hammingdistance_flag, mlp_nodes, input_length, mlp_epochs, mlp_batchsize, learning_rate, sd,
                         training_traces, augment_method, jitter, 'defaultloss' if loss_function is None else loss_function.replace('_','')), epochs=mlp_epochs, batch_size=mlp_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel, hammingweight=hammingweight)
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### LSTM training
     if lstm:
@@ -365,7 +369,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     "{}_lstm{}{}_nodes{}_window{}_epochs{}_batchsize{}_lr{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
                         variable, lstm_layers, hammingweight_flag, lstm_nodes, input_length, lstm_epochs, lstm_batchsize, learning_rate, sd,
                         training_traces, augment_method, jitter), epochs=lstm_epochs, batch_size=lstm_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight)
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### SVM training
     if svm:
@@ -376,7 +380,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     "{}_svm{}{}_nodes{}_window{}_epochs{}_batchsize{}_sd{}_traces{}_aug{}_jitter{}.h5".format(
                         variable, svm_layers, hammingweight_flag, svm_nodes, input_length, svm_epochs, svm_batchsize, sd,
                         training_traces, augment_method, jitter), epochs=svm_epochs, batch_size=svm_batchsize,
-                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight)
+                    validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
 
 
@@ -439,8 +443,10 @@ if __name__ == "__main__":
                         help='Uses multilabels in binary form', default=False)
     parser.add_argument('--RV', '--RKV', '--RANDOMKEY_VALIDATION', action="store_true", dest="RANDOMKEY_VALIDATION",
                         help='Takes validation traces from randomkey set (subtracting from training traces!)', default=False)
-    parser.add_argument('--HW', '--HAMMINGWEIGHT', action="store_true", dest="HAMMINGWEIGHT",
+    parser.add_argument('--HW', '--HAMMINGWEIGHT', '--HAMMING_WEIGHT', action="store_true", dest="HAMMINGWEIGHT",
                         help='Trains to match Hamming Weight rather than identity', default=False)
+    parser.add_argument('--HD', '--HAMMINGDISTANCE', '--HAMMING_DISTANCE', action="store_true", dest="HAMMING_DISTANCE_ENCODING",
+                        help='Encodes to scaled Hamming Weight Distance, rather than one hot encoding', default=False)
 
     parser.add_argument('-loss', '-loss_function', action="store", dest="LOSS_FUNCTION", help='Loss Function (default: None (uses standard depending on model structure, usually categorical cross entropy))',
                         default=None)
@@ -474,6 +480,11 @@ if __name__ == "__main__":
     RANDOMKEY_VALIDATION = args.RANDOMKEY_VALIDATION
     HAMMINGWEIGHT = args.HAMMINGWEIGHT
     LOSS_FUNCTION = args.LOSS_FUNCTION
+    HAMMING_DISTANCE_ENCODING = args.HAMMING_DISTANCE_ENCODING
+
+    if not USE_MLP and not USE_CNN and not USE_CNN_PRETRAINED and not USE_LSTM:
+        print "|| No models set to run - setting USE_MLP to True"
+        USE_MLP = True
 
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
@@ -494,8 +505,8 @@ if __name__ == "__main__":
 
     for variable in variable_list:
 
-        print "$$$ Training Neural Networks $$$\nVariable {}, Hamming Weight {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}".format(
-            variable, HAMMINGWEIGHT, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES)
+        print "$$$ Training Neural Networks $$$\nVariable {}, Hamming Weight {} Hamming Distance Encoding {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}".format(
+            variable, HAMMINGWEIGHT, HAMMING_DISTANCE_ENCODING, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES)
 
         # Load the profiling traces and the attack traces
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
@@ -504,7 +515,7 @@ if __name__ == "__main__":
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,
-            learning_rate=LEARNING_RATE, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT, loss_function=LOSS_FUNCTION)
+            learning_rate=LEARNING_RATE, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT, loss_function=LOSS_FUNCTION, hamming_distance_encoding=HAMMING_DISTANCE_ENCODING)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):
