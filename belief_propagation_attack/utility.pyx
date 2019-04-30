@@ -1690,7 +1690,7 @@ def load_bpann(variable, load_metadata=True, normalise_traces=True, input_length
     # TRY LOADING FIRST
     filename = '{}_hw{}_norm{}_input{}_training{}_validating{}_randomkeyval{}_sd{}_aug{}_jitter{}'.format(variable, hammingweight, normalise_traces, input_length, training_traces, validation_traces, randomkey_validation, sd, augment_method, jitter)
 
-    if load_metadata:
+    if load_metadata and input_length > 0 and input_length < 3000:
         try:
             return load_object(TEMP_FOLDER + filename)
         except IOError:
