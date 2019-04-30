@@ -16,10 +16,11 @@ import realTraceHandler as rTH
 
 class TestModels:
 
-    def __init__(self, jitter=None, use_extra = True, no_print=True, verbose=False):
+    def __init__(self, jitter=None, use_extra = True, no_print=True, verbose=False, histogram=False):
         # Real Trace Handler
         self.real_trace_handler = rTH.RealTraceHandler(no_print = no_print, use_nn = True, use_lda = False, memory_mapped=True, tprange=700, debug=True, jitter=jitter, use_extra = use_extra)
         self.verbose = verbose
+        self.histogram = histogram
 
 
     AES_Sbox = np.array([
@@ -274,7 +275,7 @@ class TestModels:
         # return f_ranks
 
     # Check a saved model against one of the bpann databases Attack traces
-    def check_model(self, model_file, num_traces=10000, template_attack=False, random_key=False):
+    def check_model(self, model_file, num_traces=10000, template_attack=False, random_key=False, save=True):
 
         try:
             rank_list, prob_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces, from_end=random_key)
@@ -292,6 +293,15 @@ class TestModels:
                 else:
                     print "> Median Rank: {}".format(np.median(rank_list))
                     print "> Median Prob: {}".format(np.median(prob_list))
+
+                if SAVE:
+                    save_statistics(model_file, prob_list)
+
+                if self.histogram:
+                    plt.clf()
+                    plt.hist(prob_list, bins='auto')
+                    plt.title(model_file)
+                    plt.savefig('output/probabilityhistogram_{}.svg'.format(model_file.replace('models/', '').replace('.h5', '')), format='svg', dpi=1200)
 
         except Exception as e:
             print "! Uh oh, couldn't check the model! Need to resubmit (in test_models)" #PASSING OVER..."
@@ -373,6 +383,9 @@ if __name__ == "__main__":
     parser.add_argument('--V', '--VERBOSE', action="store_true", dest="VERBOSE",
                         help='Verbose Print Out (otherwise just prints out Median Probability)', default=False)
 
+    parser.add_argument('--H', '--HIST', '--HISTOGRAM', action="store_true", dest="HISTOGRAM",
+                        help='Plots histogram of probabilities', default=False)
+
 
 
     # Target node here
@@ -391,6 +404,7 @@ if __name__ == "__main__":
     RANDOM_KEY = args.RANDOM_KEY
     DEBUG = args.DEBUG
     VERBOSE = args.VERBOSE
+    HISTOGRAM = args.HISTOGRAM
 
     # var_list = list()
     # for v in variable_dict:
@@ -401,7 +415,7 @@ if __name__ == "__main__":
 
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
-    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG, verbose=VERBOSE)
+    model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG, verbose=VERBOSE, histogram=HISTOGRAM)
 
     if TEST_ALL:
         # Clear statistics
@@ -410,8 +424,7 @@ if __name__ == "__main__":
         # Check all models
         for (m) in sorted(listdir(MODEL_FOLDER)):
             if string_ends_with(m, '.h5'):
-                # print 'm: {}'.format(m)
-                model_tester.check_model(MODEL_FOLDER + m, TEST_TRACES, template_attack=TEMPLATE_ATTACK, random_key=RANDOM_KEY)
+                model_tester.check_model(MODEL_FOLDER + m, TEST_TRACES, template_attack=TEMPLATE_ATTACK, random_key=RANDOM_KEY, save=SAVE)
     else:
         # Check specific model
         # TODO

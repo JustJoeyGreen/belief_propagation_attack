@@ -104,6 +104,8 @@ def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, 
     optimizer = RMSprop(lr=learning_rate)
     if loss_function=='rank_loss':
         model.compile(loss=tf_rank_loss, optimizer=optimizer, metrics=['accuracy'])
+    elif loss_function=='median_probability_loss':
+        model.compile(loss=tf_median_probability_loss, optimizer=optimizer, metrics=['accuracy'])
     else:
         try:
             model.compile(loss=loss_function, optimizer=optimizer, metrics=['accuracy'])
@@ -489,7 +491,7 @@ if __name__ == "__main__":
     PROGRESS_BAR = 1 if args.PROGRESS_BAR else 0
 
     # Handle dodgy input
-    if (INPUT_LENGTH % 2) and INPUT_LENGTH != 1:
+    if (INPUT_LENGTH % 2) and INPUT_LENGTH != 1 and INPUT_LENGTH != -1:
         print "|| Error: input length must be even, adding 1 to fix ({} -> {})".format(INPUT_LENGTH, INPUT_LENGTH+1)
         INPUT_LENGTH += 1
 
@@ -512,6 +514,12 @@ if __name__ == "__main__":
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
                                                                       input_length=INPUT_LENGTH, training_traces=TRAINING_TRACES, sd = STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, validation_traces=VALIDATION_TRACES, randomkey_validation=RANDOMKEY_VALIDATION,
                                                                       hammingweight=HAMMINGWEIGHT)
+
+        # Handle Input Length of -1
+        if INPUT_LENGTH < 0:
+            # Set to length of X_profiling
+            print "|| Changing Input Length from {} to {} (max samples)".format(INPUT_LENGTH, X_profiling.shape[1])
+            INPUT_LENGTH = X_profiling.shape[1]
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,

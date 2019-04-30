@@ -37,6 +37,10 @@ quick-build: dirs
 	python setup.py build_ext --inplace --use-cython
 	mv *.so belief_propagation_attack/
 
+quick-build3: dirs
+	python3 setup.py build_ext --inplace --use-cython
+	mv *.so belief_propagation_attack/
+
 install:
 	pip install -r REQUIREMENTS.txt
 

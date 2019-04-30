@@ -68,14 +68,14 @@ def plot_results(testname='ranks_'):
 
         if testname == 'GraphStructure':
             for acyclic_i, acyclic_bool in enumerate([True, False]):
-                print "\nSnr {}, Acyclic {}:".format(snr_bool, acyclic_bool)
+                print ("\nSnr {}, Acyclic {}:").format(snr_bool, acyclic_bool)
                 for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool and (string_contains(rfile, 'G1A') == acyclic_bool))]:
 
                     # LFG HANDLE
                     if get_graph_connection_method(result_file) == 'LFG':
                         lfg_traces = get_traces_used(result_file)
                         current_results = np.load(file_prefix + result_file)
-                        print "Plot for LFG {:3}: {}".format(lfg_traces, current_results)
+                        print ("Plot for LFG {:3}: {}".format(lfg_traces, current_results))
                         # axs[snr_i][acyclic_i].plot(lfg_traces, current_results, label=get_graph_connection_method(result_file))
                         continue
                     else:
@@ -84,7 +84,7 @@ def plot_results(testname='ranks_'):
                 axs[snr_i][acyclic_i].legend()
 
         elif testname == 'ReducedGraphs':
-            print "\nSnr {}:".format(snr_bool)
+            print ("\nSnr {}:".format(snr_bool))
             for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool)]:
                 current_results = np.mean(np.load(file_prefix + result_file), axis=0)
 
@@ -141,17 +141,11 @@ def tf_rank_loss(y_true, y_pred):
     concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
     gathered = tf.gather_nd(argsort2, concatenated_onehot)
     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
-    # print "Mean, type {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
     return mean
-
-    # out = tf.constant(1, dtype=tf.float32)
-    # print "Here, type {} ({}), shape {}".format(type(out), out.dtype, out.get_shape())
-    # return out
 
 
 def tf_cross_entropy_test(y_true, y_pred):
     cross = tf.losses.softmax_cross_entropy(y_true, y_pred)
-    # print "Here, type {} ({}), shape {}".format(type(cross), cross.dtype, cross.get_shape())
     return cross
 
 def tensors():
@@ -163,7 +157,6 @@ def tensors():
     true_onehot = np.array([get_plaintext_array(255-i) for i in my_values])
 
     true = np.array([(i) for i in my_values])
-    # print "True:\n{}\n\n".format(true)
     # pred = np.array([get_hamming_weight_array(i) for i in range(hw_limit)])
     pred = np.array([get_hamming_weight_array(get_hw(i)) for i in my_values])
     # pred = np.array([get_hamming_weight_array(1)])
@@ -184,22 +177,7 @@ def tensors():
     gathered = tf.gather_nd(argsort2, concatenated_onehot)
     mean = tf.reduce_mean(gathered)
 
-
-    # with tf.Session() as sess:
-    #     print "y_pred ({}, {}):\n{}\n".format(y_pred.dtype, y_pred.get_shape(), sess.run(y_pred))
-    #     print "argsort1 ({}, {}):\n{}\n".format(argsort1.dtype, argsort1.get_shape(), sess.run(argsort1))
-    #     print "argsort2 ({}, {}):\n{}\n".format(argsort2.dtype, argsort2.get_shape(), sess.run(argsort2))
-    #     print "argmaxed_onehot ({}, {}):\n{}\n".format(argmaxed_onehot.dtype, argmaxed_onehot.get_shape(), sess.run(argmaxed_onehot))
-    #     print "reshaped_onehot ({}, {}):\n{}\n".format(reshaped_onehot.dtype, reshaped_onehot.get_shape(), sess.run(reshaped_onehot))
-    #     print "tf_range ({}, {}):\n{}\n".format(tf_range.dtype, tf_range.get_shape(), sess.run(tf_range))
-    #     print "reshaped_tf_range ({}, {}):\n{}\n".format(reshaped_tf_range.dtype, reshaped_tf_range.get_shape(), sess.run(reshaped_tf_range))
-    #     print "concatenated_onehot ({}, {}):\n{}\n".format(concatenated_onehot.dtype, concatenated_onehot.get_shape(), sess.run(concatenated_onehot))
-    #     print "gathered ({}, {}):\n{}\n".format(gathered.dtype, gathered.get_shape(), sess.run(gathered))
-    #     print "mean ({}, {}):\n{}\n".format(mean.dtype, mean.get_shape(), sess.run(mean))
-    #
-    # exit(1)
-
-    loss1 = tf_rank_loss(y_true_onehot, y_pred)
+    loss1 = tf_median_probability_loss(y_true_onehot, y_pred)
     loss2 = tf.losses.softmax_cross_entropy(y_true_onehot, y_pred)
 
     # Rank list of predictions
@@ -211,13 +189,13 @@ def tensors():
     # print result
 
     # with tf.Session() as sess:
-    #     print "\nTrue:\n"
+    #     print ("\nTrue:\n"
     #     print(sess.run(y_true))
-    #     print "\nPred:\n"
+    #     print ("\nPred:\n"
     #     print(sess.run(y_pred))
-    #     print "\nCross Entropy Loss Function:\n"
+    #     print ("\nCross Entropy Loss Function:\n"
     #     print(sess.run(loss2))
-    #     print "\nRank Loss Function:\n"
+    #     print ("\nRank Loss Function:\n"
     #     print(sess.run(loss1))
 
     # Model time
@@ -232,11 +210,11 @@ def tensors():
         model.add(Dense(mlp_nodes, activation='relu'))
     model.add(Dense(256, activation='softmax'))
     optimizer = RMSprop(lr=learning_rate)
-    model.compile(loss=tf_rank_loss, optimizer=optimizer, metrics=['accuracy'])
+    model.compile(loss=tf_median_probability_loss, optimizer=optimizer, metrics=['accuracy'])
     # model.compile(loss=tf_cross_entropy_test, optimizer=optimizer, metrics=['accuracy'])
 
 
-    print "Model compiled successfully..."
+    print ("Model compiled successfully...")
 
 
 def numpy_tests():
@@ -247,11 +225,11 @@ def numpy_tests():
 
     for i, value in enumerate(zip(true_onehot, pred)):
 
-        print "\n\n\ni: {}\n".format(i)
+        print ("\n\n\ni: {}\n".format(i))
 
         # Step 1: Decode one hot
         decoded_onehot = np.argmax(value[0])
-        print "Decoded One Hot: {}".format(decoded_onehot)
+        print ("Decoded One Hot: {}".format(decoded_onehot))
 
         # Step 2: ???
         argsorted_pred = np.argsort(value[1])
@@ -270,12 +248,12 @@ def weighted_bits():
     #     bit_corrected = (np.ones(8) - bits) - multilabel_probabilities
     #     out[i] = np.abs(np.prod(bit_corrected))
 
-    print out
+    print (out)
 
 
 def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, extra_size = 10000, hw=False):
 
-    print "* Value Occurance Checker, {} {} *".format(var_name, var_num)
+    print ("* Value Occurance Checker, {} {} *".format(var_name, var_num))
 
     for extra_file in [False, True]:
         filename = '{}{}{}.npy'.format(REALVALUES_FOLDER, 'extra_' if extra_file and not randomkey_extra else '', var_name)
@@ -286,19 +264,18 @@ def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, ex
             else:
                 real_values = real_values[:-extra_size]
 
-        # print 'Before', real_values
         if hw:
             real_values = linear_get_hamming_weights(real_values)
-        # print 'After', real_values
+
 
         unique, counts = np.unique(real_values, return_counts=True)
         if unique.shape[0] != (9 if hw else 256) and not (var_name == 'k' and unique.shape[0] == 1):
-            print "GOTCHA! Unique is only size {}:\n{}\n".format(unique.shape[0], unique)
+            print ("GOTCHA! Unique is only size {}:\n{}\n".format(unique.shape[0], unique))
             raise
-        print "> {} Values ({}):".format('Attack' if extra_file else 'Profile', real_values.shape[0])
+        print ("> {} Values ({}):".format('Attack' if extra_file else 'Profile', real_values.shape[0]))
         print_statistics(real_values, mode=True)
         if hw:
-            print ">> Counts: {}".format(counts)
+            print (">> Counts: {}".format(counts))
 
 
 
@@ -306,8 +283,6 @@ def stretch_and_shrink(vector, start, length=300, stretch_length=20):
     section = vector[start:start+length]
 
     stretched = np.repeat(section[:stretch_length], 2)
-
-    # print stretched.shape, section[stretch_length:].shape
 
     new_section = np.concatenate((stretched, section[stretch_length:]))
 
@@ -353,20 +328,25 @@ def latexify(fig_width=None, fig_height=None, columns=1):
               "so will reduce to" + MAX_HEIGHT_INCHES + "inches.")
         fig_height = MAX_HEIGHT_INCHES
 
-    params = {'backend': 'ps',
-              'text.latex.preamble': ['\usepackage{gensymb}'],
-              'axes.labelsize': 8, # fontsize for x and y labels (was 10)
-              'axes.titlesize': 8,
-              'text.fontsize': 8, # was 10
-              'legend.fontsize': 8, # was 10
-              'xtick.labelsize': 8,
-              'ytick.labelsize': 8,
-              'text.usetex': True,
-              'figure.figsize': [fig_width,fig_height],
-              'font.family': 'serif'
-    }
+    print ("TODO: Fix latexify for python3")
 
-    matplotlib.rcParams.update(params)
+    # try:
+    #     params = {'backend': 'ps',
+    #               'text.latex.preamble': ['\usepackage{gensymb}'],
+    #               'axes.labelsize': 8, # fontsize for x and y labels (was 10)
+    #               'axes.titlesize': 8,
+    #               'text.fontsize': 8, # was 10
+    #               'legend.fontsize': 8, # was 10
+    #               'xtick.labelsize': 8,
+    #               'ytick.labelsize': 8,
+    #               'text.usetex': True,
+    #               'figure.figsize': [fig_width,fig_height],
+    #               'font.family': 'serif'
+    #     }
+    # except SyntaxError:
+    #     print ("Doesn't work with Python3")
+    #     exit(1)
+    # matplotlib.rcParams.update(params)
 
 
 def format_axes(ax):
@@ -425,7 +405,7 @@ def timepoint_plot():
     plt.rc('font', family='serif')
 
     for var, length in variable_dict.iteritems():
-        print "\n* Var {}".format(var)
+        print ("\n* Var {}".format(var))
         timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))
         # ax.scatter(var, timepoint, label=var)
         var_l = [var for i in range(len(timepoint))]
@@ -490,26 +470,26 @@ def get_best_templates():
 
     for var in variables:
 
-        print "\n\n\n*** VARIABLE {} ***".format(var)
+        print ("\n\n\n*** VARIABLE {} ***".format(var))
 
         ranklist_uni, problist_uni = rtrace_uni.get_performance_of_handler(var)
         ranklist_lda, problist_lda = rtrace_lda.get_performance_of_handler(var)
         ranklist_nn, problist_nn = rtrace_nn.get_performance_of_handler(var)
 
-        print "\n\n* Ranks *"
-        print "\n> Uni"
+        print ("\n\n* Ranks *")
+        print ("\n> Uni")
         print_statistics(ranklist_uni)
-        print "\n> Lda"
+        print ("\n> Lda")
         print_statistics(ranklist_lda)
-        print "\n> NN"
+        print ("\n> NN")
         print_statistics(ranklist_nn)
 
-        print "\n\n* Probabilities *"
-        print "\n> Uni"
+        print ("\n\n* Probabilities *")
+        print ("\n> Uni")
         print_statistics(problist_uni)
-        print "\n> Lda"
+        print ("\n> Lda")
         print_statistics(problist_lda)
-        print "\n> NN"
+        print ("\n> NN")
         print_statistics(problist_nn)
 
         template_dict[var] = dict()
@@ -537,7 +517,7 @@ if __name__ == "__main__":
     end_time = datetime.now()
     time_taken = (end_time - start_time).microseconds
     average_time_taken = time_taken / count
-    print "Time Taken: {}ms, Average Time Taken ({} Repeats): {}ms".format(time_taken, count, average_time_taken)
+    print ("Time Taken: {}ms, Average Time Taken ({} Repeats): {}ms".format(time_taken, count, average_time_taken))
     exit(1)
 
     # timepoint_plot()
@@ -569,8 +549,8 @@ if __name__ == "__main__":
     exit(1)
 
     for var, length in variable_dict.iteritems():
-        print "\n* Var {}".format(var)
+        print ("\n* Var {}".format(var))
         for j in range(length):
             timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))[j]
             hw_timepoint = np.argmax(np.load("{}{}_{}_HW.npy".format(COEFFICIENT_FOLDER, var, j)))
-            print "TP: {:6} HWTP: {:6} RANGE: {:6}".format(timepoint, hw_timepoint, np.abs(timepoint - hw_timepoint))
+            print ("TP: {:6} HWTP: {:6} RANGE: {:6}".format(timepoint, hw_timepoint, np.abs(timepoint - hw_timepoint)))

@@ -1096,6 +1096,8 @@ def load_sca_model(model_file):
     try:
         if string_contains(model_file, 'rankloss'):
             model = load_model(model_file, custom_objects={'tf_rank_loss': tf_rank_loss})
+        elif string_contains(model_file, 'median'):
+            model = load_model(model_file, custom_objects={'tf_median_probability_loss': tf_median_probability_loss})
         else:
             model = load_model(model_file)
     except:
@@ -1560,18 +1562,19 @@ def save_statistics(name, l):
             range_l = max_l - min_l
         var_l = array_variance(l)
 
-        top_list = [1,5,10,20]
+
+        top_list = [0.9,0.5,0.1,0.00390625]
         top_l = [0] * len(top_list)
         for i, t in enumerate(top_list):
-            top_l[i] = (np.where(l<=t)[0].size / (l.size + 0.0)) * 100
+            top_l[i] = (np.where(l>=t)[0].size / (l.size + 0.0)) * 100
 
-        my_string = '{},{},{},{},{},{},{},{},\n'.format(name, top_l[0], top_l[1], top_l[2], top_l[3], med_l, avg_l, max_l)
+        my_string = '{},{},{},{},{},{},{},{},{},\n'.format(name, top_l[0], top_l[1], top_l[2], top_l[3], min_l, max_l, med_l, avg_l)
         append_csv(TESTING_MODELS_CSV, my_string)
 
 def clear_statistics():
     clear_csv(TESTING_MODELS_CSV)
-    append_csv(TESTING_MODELS_CSV, 'Name,Top 1 (%),Top 5 (%),Top 10 (%),Top 20 (%),Median,Average,Max,\n')
-    append_csv(TESTING_MODELS_CSV, '* BASELINE *,0.4,1.9,3.9,7.8,128,128,255,\n')
+    append_csv(TESTING_MODELS_CSV, 'Name,Over 0.9,Over 0.5,Over 0.1,Over 0.00390625,Min,Max,Median,Average,\n')
+    append_csv(TESTING_MODELS_CSV, '* BASELINE *,0,0,0,50,0.00390625,0.00390625,0.00390625,0.00390625,\n')
 
 
 def hex_string_to_int_array(hex_string):
@@ -1696,8 +1699,8 @@ def load_bpann(variable, load_metadata=True, normalise_traces=True, input_length
     # Get time point for variable
     time_point = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var_name))[var_number-1]
 
-    start_window = max(0, time_point - (input_length/2))
-    end_window = min(samples, time_point + (input_length/2))
+    start_window = 0 if input_length == -1 else max(0, time_point - (input_length/2))
+    end_window = samples if input_length == -1 else min(samples, time_point + (input_length/2))
     if start_window == end_window:
         end_window += 1
 
@@ -1783,7 +1786,8 @@ def load_bpann(variable, load_metadata=True, normalise_traces=True, input_length
         Y_attack = linear_get_hamming_weights(Y_attack)
 
     # Save!
-    save_object(((X_profiling, Y_profiling), (X_attack, Y_attack)), TEMP_FOLDER + filename)
+    if input_length > 0 and input_length < 3000:
+        save_object(((X_profiling, Y_profiling), (X_attack, Y_attack)), TEMP_FOLDER + filename)
 
     return (X_profiling, Y_profiling), (X_attack, Y_attack)
 
@@ -2005,6 +2009,24 @@ def tf_rank_loss(y_true, y_pred):
     print "Our Rank Mean:\ntype {} ({}), shape {}".format(type(mean), mean.dtype, mean.get_shape())
     print "Cross Entropy:\ntype {} ({}), shape {}".format(type(return_val), return_val.dtype, return_val.get_shape())
     return return_val + mean
+
+def tf_median_probability_loss(y_true, y_pred):
+    # undo one-hot
+    argmaxed_onehot = tf.argmax(y_true, output_type=tf.int32, axis=1)
+    # reshape
+    reshaped_onehot = tf.expand_dims(argmaxed_onehot, 1)
+    # get tensor ([0,1,2,...])
+    tf_range = tf.range(tf.shape(y_pred)[0], dtype=tf.int32)
+    # reshape
+    reshaped_tf_range = tf.expand_dims(tf_range, 1)
+    # Concatenate range to onehot
+    concatenated_onehot = tf.concat([reshaped_tf_range, reshaped_onehot], 1)
+    # Gather the probabilities together!
+    gathered = tf.gather_nd(y_pred, concatenated_onehot)
+    # Take the mean of these ranks (float value)
+    median = 1 - tf.cast(tf.contrib.distributions.percentile(gathered, 50.0), tf.float32)
+    # print "Our Rank Median:\ntype {} ({}), shape {}".format(type(median), median.dtype, median.get_shape())
+    return median
 
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]
