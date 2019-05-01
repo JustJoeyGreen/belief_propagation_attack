@@ -402,12 +402,12 @@ if __name__ == "__main__":
                         help='Adds noise to the profiling step', default=False)
     parser.add_argument('-v', '-var', '-variable', action="store", dest="VARIABLE", help='Variable to train',
                         default='s001')
-    parser.add_argument('-l', '-length', '-input', '-window', action="store", dest="INPUT_LENGTH", help='Input Length (default: 700)',
-                        type=int, default=700)
+    parser.add_argument('-l', '-length', '-input', '-window', action="store", dest="INPUT_LENGTH", help='Input Length (default: 2000)',
+                        type=int, default=2000)
     parser.add_argument('-lr', '-learn', '-learning_rate', action="store", dest="LEARNING_RATE", help='Learning Rate (default: 0.00001)',
                         type=float, default=0.00001)
-    parser.add_argument('-e', '-epochs', action="store", dest="EPOCHS", help='Number of Epochs in Training (default: 75 CNN, 6000 MLP)',
-                        type=int, default=6000)
+    parser.add_argument('-e', '-epochs', action="store", dest="EPOCHS", help='Number of Epochs in Training (default: 75 CNN, 100 MLP)',
+                        type=int, default=100)
     parser.add_argument('-t', '-traces', action="store", dest="TRAINING_TRACES", help='Number of Traces in Training (default: 200000)',
                         type=int, default=200000)
     parser.add_argument('-vt', '-validation_traces', action="store", dest="VALIDATION_TRACES", help='Number of Validation Traces in Testing, taken from Training Traces (default: 10000)',
@@ -415,7 +415,7 @@ if __name__ == "__main__":
     parser.add_argument('-mlp_layers', action="store", dest="MLP_LAYERS", help='Number of Layers in MLP (default: 5)',
                         type=int, default=5)
     parser.add_argument('-mlp_nodes', action="store", dest="MLP_NODES", help='Number of Nodes in MLP Layer (default: 200)',
-                        type=int, default=200)
+                        type=int, default=100)
     parser.add_argument('-lstm_layers', action="store", dest="LSTM_LAYERS",
                         help='Number of Layers in LSTM (default: 1)',
                         type=int, default=1)
@@ -423,7 +423,7 @@ if __name__ == "__main__":
                         help='Number of Nodes in LSTM Layer (default: 64)',
                         type=int, default=64)
     parser.add_argument('-b', '-batch', '-batch_size', action="store", dest="BATCH_SIZE", help='Size of Training Batch (default: 200)',
-                        type=int, default=200)
+                        type=int, default=50)
     parser.add_argument('-allvar', '-av', action="store", dest="ALL_VARIABLE",
                         help='Train all Variables that match (default: None)', default=None)
     parser.add_argument('-sd', action="store", dest="STANDARD_DEVIATION",
