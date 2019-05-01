@@ -504,9 +504,6 @@ if __name__ == "__main__":
     else:
         variable_list = ['{}{}'.format(ALL_VARIABLE, pad_string_zeros(i+1)) for i in range(variable_dict[ALL_VARIABLE])]
 
-    print "Variable List ({}):\n{}\n".format(len(variable_list), variable_list)
-    exit(1)
-
     if RANDOMKEY_VALIDATION:
         TRAINING_TRACES -= VALIDATION_TRACES
 
