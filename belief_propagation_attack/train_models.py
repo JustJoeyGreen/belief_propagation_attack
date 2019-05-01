@@ -443,8 +443,8 @@ if __name__ == "__main__":
                         help='Trains only specified Testing Variable Nodes', default=False)
     parser.add_argument('--MULTILABEL', '--ML', '--M', action="store_true", dest="MULTILABEL",
                         help='Uses multilabels in binary form', default=False)
-    parser.add_argument('--RV', '--RKV', '--RANDOMKEY_VALIDATION', action="store_true", dest="RANDOMKEY_VALIDATION",
-                        help='Takes validation traces from randomkey set (subtracting from training traces!)', default=False)
+    parser.add_argument('--RV', '--RKV', '--RANDOMKEY_VALIDATION', action="store_false", dest="RANDOMKEY_VALIDATION",
+                        help='Takes validation traces from randomkey set (subtracting from training traces!), default True', default=True)
     parser.add_argument('--HW', '--HAMMINGWEIGHT', '--HAMMING_WEIGHT', action="store_true", dest="HAMMINGWEIGHT",
                         help='Trains to match Hamming Weight rather than identity', default=False)
     parser.add_argument('--HD', '--HAMMINGDISTANCE', '--HAMMING_DISTANCE', action="store_true", dest="HAMMING_DISTANCE_ENCODING",
@@ -497,10 +497,15 @@ if __name__ == "__main__":
 
     if TEST_VARIABLES:
         variable_list = ['k001','s001','t001','k004']
+    if ALL_VARS:
+        variable_list = get_variable_list()
     elif ALL_VARIABLE is None:
         variable_list = [VARIABLE]
     else:
         variable_list = ['{}{}'.format(ALL_VARIABLE, pad_string_zeros(i+1)) for i in range(variable_dict[ALL_VARIABLE])]
+
+    print "Variable List ({}):\n{}\n".format(len(variable_list), variable_list)
+    exit(1)
 
     if RANDOMKEY_VALIDATION:
         TRAINING_TRACES -= VALIDATION_TRACES

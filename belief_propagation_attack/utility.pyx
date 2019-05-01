@@ -2028,6 +2028,9 @@ def tf_median_probability_loss(y_true, y_pred):
     # print "Our Rank Median:\ntype {} ({}), shape {}".format(type(median), median.dtype, median.get_shape())
     return median
 
+def get_variable_list():
+    return ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
+
 # variable_list = ['{}{}'.format(k, pad_string_zeros(i+1)) for k, v in variable_dict.iteritems() for i in range(v)]
 # variable_list = ['{}{}'.format(vk, vi) for vi in range(vv) for vk,vv in variable_dict.iteritems()]
 # variable_list = ['{}{}'.format(vk, vi) for vk,vi in variable_dict.iteritems()]
