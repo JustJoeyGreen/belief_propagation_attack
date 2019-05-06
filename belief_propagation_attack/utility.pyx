@@ -1666,7 +1666,7 @@ def load_trace_data(filepath=TRACEDATA_FILEPATH, memory_mapped=True, no_print=Tr
             print ">>> Loading Trace Data, used_traces = {}, memory_mapped: {}".format(used_traces, memory_mapped)
         return np.memmap(filepath, dtype=coding, mode='r+', shape=(used_traces, samples))
     else:
-        return np.load(filepath, mmap_mode='r')
+        return np.load(filepath, mmap_mode='r', allow_pickle=True)
 
 def print_details(x):
     print "Type: {}, Contents: {}".format(type(x), x)
@@ -1675,6 +1675,23 @@ def print_details(x):
 
 def get_value_from_plaintext_array(v):
     return np.where(v==1)[0][0]
+
+
+def handle_window(time_point, input_length, minimum, maximum):
+    # Get window
+    start_window = 0 if input_length == -1 else time_point - (input_length/2)
+    end_window = maximum if input_length == -1 else time_point + (input_length/2)
+    if start_window == end_window:
+        end_window += 1
+    if start_window < minimum:
+        # print "Handling here! Before: {}".format((start_window, end_window))
+        end_window = end_window - start_window
+        start_window = minimum
+        # print "After: {}".format((start_window, end_window))
+    elif end_window > maximum:
+        start_window = start_window - (end_window - maximum)
+        end_window = maximum
+    return (start_window, end_window)
 
 #### bpann helper to load profiling and attack data (traces and labels)
 # Loads the profiling and attack datasets from the bpann
@@ -1697,17 +1714,14 @@ def load_bpann(variable, load_metadata=True, normalise_traces=True, input_length
             print "! Could not load metadata! Writing from scratch..."
 
     # Get time point for variable
-    time_point = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var_name))[var_number-1]
+    time_point = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, var_name), allow_pickle=True)[var_number-1]
 
-    start_window = 0 if input_length == -1 else max(0, time_point - (input_length/2))
-    end_window = samples if input_length == -1 else min(samples, time_point + (input_length/2))
-    if start_window == end_window:
-        end_window += 1
+    start_window, end_window = handle_window(time_point, input_length, 0, samples - 1)
 
     trace_data = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter))[:, start_window:end_window]
     traces, data_length = trace_data.shape
     type = trace_data.dtype
-    real_values = np.load('{}{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
+    real_values = np.load('{}{}.npy'.format(REALVALUES_FOLDER, var_name), allow_pickle=True)[var_number-1,:]
 
     if training_traces > traces:
         print 'Augmenting {} Traces!'.format(training_traces - traces)
@@ -1775,7 +1789,7 @@ def load_bpann(variable, load_metadata=True, normalise_traces=True, input_length
         # Load attack traces
         X_attack = load_trace_data(filepath=get_shifted_tracedata_filepath(shifted=jitter, extra=True))[:, start_window:end_window]
         # Load attacking labels
-        Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name))[var_number-1,:]
+        Y_attack = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, var_name), allow_pickle=True)[var_number-1,:]
 
     if input_length > 1 and normalise_traces:
         X_profiling = normalise_neural_traces(X_profiling)

@@ -46,12 +46,15 @@ def plot_results(testname='ranks_'):
     file_prefix = OUTPUT_FOLDER+'new_results/'
     results_files = get_files_in_folder(folder=file_prefix, substring=testname)
 
+    print 'Files:', results_files
+
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
 
 
     if testname == 'GraphStructure':
-        fig, axs = plt.subplots(2, 2)
+        # fig, axs = plt.subplots(2, 2)
+        pass
     elif testname == 'ReducedGraphs':
         fig, axs = plt.subplots(1, 2)
 
@@ -69,42 +72,94 @@ def plot_results(testname='ranks_'):
         if testname == 'GraphStructure':
             for acyclic_i, acyclic_bool in enumerate([True, False]):
                 print ("\nSnr {}, Acyclic {}:").format(snr_bool, acyclic_bool)
-                for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool and (string_contains(rfile, 'G1A') == acyclic_bool))]:
+
+                # LFG
+                lfg_x = list()
+                lfg_y = list()
+
+                for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool and (string_contains(rfile, 'G1A') == acyclic_bool)) and not string_contains(rfile, 'KEYAVG')]:
+
+                    print "> {}".format(result_file)
 
                     # LFG HANDLE
                     if get_graph_connection_method(result_file) == 'LFG':
                         lfg_traces = get_traces_used(result_file)
-                        current_results = np.load(file_prefix + result_file)
-                        print ("Plot for LFG {:3}: {}".format(lfg_traces, current_results))
-                        # axs[snr_i][acyclic_i].plot(lfg_traces, current_results, label=get_graph_connection_method(result_file))
+
+                        try:
+                            current_results = np.mean(np.load(file_prefix + result_file, allow_pickle=True), axis=0)
+                            print ("Plot for LFG {:3}: {}".format(lfg_traces, current_results))
+                            # print 'LFG Shape: {}'.format(current_results.shape)
+                            lfg_x.append(eval(lfg_traces))
+                            lfg_y.append(current_results)
+                            # axs[snr_i][acyclic_i].plot(lfg_traces, current_results, label=get_graph_connection_method(result_file))
+                        except ValueError:
+                            print "Could not load file {}".format(result_file)
                         continue
                     else:
-                        current_results = np.mean(np.load(file_prefix + result_file), axis=0)
-                        axs[snr_i][acyclic_i].plot(current_results, label=get_graph_connection_method(result_file))
-                axs[snr_i][acyclic_i].legend()
+
+                        try:
+                            current_results = np.mean(np.load(file_prefix + result_file, allow_pickle=True), axis=0)
+                            # print 'IFG / LFG Shape: {}'.format(current_results.shape)
+
+                            # axs[snr_i][acyclic_i].plot(current_results, label=get_graph_connection_method(result_file))
+                            # plt.plot(current_results, label=get_graph_connection_method(result_file))
+
+                            np.savetxt('output/{}_{}_acyclic{}_{}.csv'.format(testname, get_graph_connection_method(result_file), acyclic_bool, '-1' if snr_bool else '-7'), current_results, delimiter=",")
+
+                        except ValueError:
+                            print "Could not load file {}".format(result_file)
+
+                # Finish with LFG Traces
+                lfg_x_sorted = sorted(lfg_x)
+                lfg_y_sorted = [x for _,x in sorted(zip(lfg_x,lfg_y))]
+
+                print lfg_x, lfg_y
+                print lfg_x_sorted, lfg_y_sorted
+
+                interpolated = np.interp(np.arange(1,101), lfg_x_sorted, lfg_y_sorted)
+
+                # Make into length 100 by interpolating
+
+                np.savetxt('output/{}_{}_acyclic{}_{}.csv'.format(testname, 'LFG', acyclic_bool, '-1' if snr_bool else '-7'), interpolated, delimiter=",")
+
+                # axs[snr_i][acyclic_i].plot(lfg_x_sorted, lfg_y_sorted, label='LFG')
+                # plt.plot(lfg_x_sorted, lfg_y_sorted, label='LFG')
+
+                # Legend
+                # axs[snr_i][acyclic_i].legend()
+                # plt.xlabel(r'\textbf{Traces}', fontsize=11)
+                # plt.ylabel(r'\textbf{Median Rank}', fontsize=11)
+                # plt.legend()
+                # plt.savefig('output/{}_acyclic{}_{}.svg'.format(testname, acyclic_bool, '-1' if snr_bool else '-7'), format='svg', dpi=1200)
+                # plt.clf()
 
         elif testname == 'ReducedGraphs':
             print ("\nSnr {}:".format(snr_bool))
             for result_file in [rfile for rfile in results_files if (string_contains(rfile, '-1') == snr_bool)]:
-                current_results = np.mean(np.load(file_prefix + result_file), axis=0)
 
-                if snr_i == False:
-                    current_results = current_results[:8]
+                try:
+                    loaded = np.load(file_prefix + result_file, allow_pickle=True)
+                    current_results = np.mean(loaded, axis=0)
 
-                axs[snr_i].plot(current_results, label=get_graph_size_and_structure(result_file))
+                    if snr_i == False:
+                        current_results = current_results[:8]
+
+                    axs[snr_i].plot(current_results, label=get_graph_size_and_structure(result_file))
+                except ValueError:
+                    print "Could not load file {}".format(result_file)
             axs[snr_i].legend()
 
-    try:
-        axs[0].set_xlabel('Traces', fontsize=11)
-        axs[0].set_ylabel('Classification Rank', fontsize=11)
-    except AttributeError:
-        axs[0][0].set_xlabel('Traces', fontsize=11)
-        axs[0][0].set_ylabel('Classification Rank', fontsize=11)
-
-
-    plt.show()
-
-    fig.savefig("output/{}.pdf".format(testname), bbox_inches='tight')
+    # try:
+    #     axs[0].set_xlabel('Traces', fontsize=11)
+    #     axs[0].set_ylabel('Classification Rank', fontsize=11)
+    # except AttributeError:
+    #     axs[0][0].set_xlabel('Traces', fontsize=11)
+    #     axs[0][0].set_ylabel('Classification Rank', fontsize=11)
+    #
+    #
+    # plt.show()
+    #
+    # fig.savefig("output/{}.pdf".format(testname), bbox_inches='tight')
 
 
 
@@ -121,15 +176,6 @@ def tf_rank(input):
     argsort2 = tf.argsort(argsort1, direction='ASCENDING')
     return tf.gather_nd(argsort2[0], argmaxed_onehot)
 
-
-    # print '\n\n\n\n\n\n\n\ntype1', type(argmaxed_onehot), '\n\n\n\n\n\n\n\n'
-    # # casted_to_int = tf.cast(argmaxed_onehot, dtype=int)
-    # casted_to_int = argmaxed_onehot.eval()
-    # print '\n\n\n\n\n\n\n\ntype3', type(casted_to_int), '\n\n\n\n\n\n\n\n'
-    #
-    # return tf.size(tf.where(input[1] >= input[1][argmaxed_onehot]))
-    # return tf.size(tf.where(input[1] >= input[1][0]))
-
 def tf_rank_loss(y_true, y_pred):
     argsort1 = tf.argsort(y_pred, direction='DESCENDING')
     argsort2 = tf.argsort(argsort1, direction='ASCENDING')
@@ -142,7 +188,6 @@ def tf_rank_loss(y_true, y_pred):
     gathered = tf.gather_nd(argsort2, concatenated_onehot)
     mean = tf.cast(tf.reduce_mean(gathered), tf.float32)
     return mean
-
 
 def tf_cross_entropy_test(y_true, y_pred):
     cross = tf.losses.softmax_cross_entropy(y_true, y_pred)
@@ -216,7 +261,6 @@ def tensors():
 
     print ("Model compiled successfully...")
 
-
 def numpy_tests():
 
     my_values = range(3) # 256
@@ -234,7 +278,6 @@ def numpy_tests():
         # Step 2: ???
         argsorted_pred = np.argsort(value[1])
 
-
 def weighted_bits():
 
     multilabel_probabilities = np.array([0.2,0.3,0.1,0.01,0.2,0.1,0.05,0.4])
@@ -250,14 +293,13 @@ def weighted_bits():
 
     print (out)
 
-
 def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, extra_size = 10000, hw=False):
 
     print ("* Value Occurance Checker, {} {} *".format(var_name, var_num))
 
     for extra_file in [False, True]:
         filename = '{}{}{}.npy'.format(REALVALUES_FOLDER, 'extra_' if extra_file and not randomkey_extra else '', var_name)
-        real_values = np.load(filename)[var_num-1]
+        real_values = np.load(filename, allow_pickle=True)[var_num-1]
         if randomkey_extra:
             if extra_file:
                 real_values = real_values[-extra_size:]
@@ -277,8 +319,6 @@ def value_occurance_checker(var_name='s', var_num=1, randomkey_extra = False, ex
         if hw:
             print (">> Counts: {}".format(counts))
 
-
-
 def stretch_and_shrink(vector, start, length=300, stretch_length=20):
     section = vector[start:start+length]
 
@@ -292,10 +332,6 @@ def stretch_and_shrink(vector, start, length=300, stretch_length=20):
         count -= 1
 
     return np.concatenate((vector[:start], new_section, vector[start+length:]))
-
-
-
-
 
 def latexify(fig_width=None, fig_height=None, columns=1):
     """Set up matplotlib's RC params for LaTeX plotting.
@@ -366,7 +402,6 @@ def format_axes(ax):
 
     return ax
 
-
 def dtw_plot(dtw=True):
 
     start, length = 10000, 500
@@ -396,7 +431,6 @@ def dtw_plot(dtw=True):
 
     f.savefig("output/dynamic_time_warping_{}.pdf".format('on' if dtw else 'off'), bbox_inches='tight')
 
-
 def timepoint_plot():
     # f = plt.figure(figsize=(20,5))
     f = plt.figure()
@@ -406,7 +440,7 @@ def timepoint_plot():
 
     for var, length in variable_dict.iteritems():
         print ("\n* Var {}".format(var))
-        timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))
+        timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var), allow_pickle=True)
         # ax.scatter(var, timepoint, label=var)
         var_l = [var for i in range(len(timepoint))]
         plt.scatter(timepoint, var_l)
@@ -504,53 +538,35 @@ def get_best_templates():
     # Save template
     save_object(template_dict, BEST_TEMPLATE_DICT, suffix=False)
 
+def handle_window(time_point, input_length, minimum, maximum):
+    # Get window
+    start_window = 0 if input_length == -1 else time_point - (input_length/2)
+    end_window = maximum if input_length == -1 else time_point + (input_length/2)
+    if start_window == end_window:
+        end_window += 1
+    if start_window < minimum:
+        end_window = end_window - start_window
+        start_window = minimum
+    elif end_window > maximum:
+        start_window = start_window - (end_window - maximum)
+        end_window = maximum
+    return (start_window, end_window)
+
 if __name__ == "__main__":
 
-    # get_best_templates()
+    # plot_results(testname='GraphStructure')
+    my_min = 0
+    my_max = 99
+    window = 20
 
-    a = np.arange(256)
-    count = 100
-
-    start_time = datetime.now()
-    for i in range(count):
-        b = hamming_distance_encode_bulk(a)
-    end_time = datetime.now()
-    time_taken = (end_time - start_time).microseconds
-    average_time_taken = time_taken / count
-    print ("Time Taken: {}ms, Average Time Taken ({} Repeats): {}ms".format(time_taken, count, average_time_taken))
-    exit(1)
-
-    # timepoint_plot()
-    #
-    # # for bool in [True, False]:
-    # #     dtw_plot(dtw=bool)
-    # # exit(1)
-    #
-    # for var_name in ['s', 'k']:
-    #     for var_num in [1,4,8]:
-    #         value_occurance_checker(var_name, var_num, randomkey_extra=True, hw=False)
-    # exit(1)
-
-    # Testnames: GraphStructure, ReducedGraphs, GroundTruth
-    # plot_results(testname='ReducedGraphs')
-
-    # numpy_tests()
-
-    # timepoint_plot()
-
-    plot_results(testname='GraphStructure')
-
-    exit(1)
-
-    # fig, ax = plt.subplots()
-
-
+    for i in [0, 10, 50, 90, 99]:
+        print 'i = {}, window: {}'.format(i, handle_window(i, window, my_min, my_max))
 
     exit(1)
 
     for var, length in variable_dict.iteritems():
         print ("\n* Var {}".format(var))
         for j in range(length):
-            timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var))[j]
-            hw_timepoint = np.argmax(np.load("{}{}_{}_HW.npy".format(COEFFICIENT_FOLDER, var, j)))
+            timepoint = np.load("{}{}.npy".format(TIMEPOINTS_FOLDER, var), allow_pickle=True)[j]
+            hw_timepoint = np.argmax(np.load("{}{}_{}_HW.npy".format(COEFFICIENT_FOLDER, var, j), allow_pickle=True))
             print ("TP: {:6} HWTP: {:6} RANGE: {:6}".format(timepoint, hw_timepoint, np.abs(timepoint - hw_timepoint)))
