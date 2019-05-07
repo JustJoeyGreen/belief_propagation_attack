@@ -538,20 +538,6 @@ def get_best_templates():
     # Save template
     save_object(template_dict, BEST_TEMPLATE_DICT, suffix=False)
 
-def handle_window(time_point, input_length, minimum, maximum):
-    # Get window
-    start_window = 0 if input_length == -1 else time_point - (input_length/2)
-    end_window = maximum if input_length == -1 else time_point + (input_length/2)
-    if start_window == end_window:
-        end_window += 1
-    if start_window < minimum:
-        end_window = end_window - start_window
-        start_window = minimum
-    elif end_window > maximum:
-        start_window = start_window - (end_window - maximum)
-        end_window = maximum
-    return (start_window, end_window)
-
 if __name__ == "__main__":
 
     # plot_results(testname='GraphStructure')

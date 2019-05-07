@@ -64,9 +64,7 @@ class RealTraceHandler:
     def return_power_window(self, timepoint, trace, window=700, nn_normalise=False):
         """ Return the window of power values for a given value """
         trace_data = normalise_neural_trace_single(self.real_trace_data[trace]) if nn_normalise else self.real_trace_data[trace]
-        start_window = 0 if window == -1 else max(0, timepoint - (window/2))
-        end_window = trace_data.shape[0] if window == -1 else min(self.real_trace_data_len, timepoint + (window/2))
-        if start_window == end_window: end_window += 1 #TODO This isn't consistent!!
+        start_window, end_window = handle_window(time_point, window, 0, trace_data.shape[0] - 1)
         return trace_data[start_window:end_window]
 
     def return_power_window_of_variable(self, variable, trace, window=700, nn_normalise=False):
