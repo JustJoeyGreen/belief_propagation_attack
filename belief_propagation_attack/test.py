@@ -56,7 +56,8 @@ def plot_results(testname='ranks_'):
         # fig, axs = plt.subplots(2, 2)
         pass
     elif testname == 'ReducedGraphs':
-        fig, axs = plt.subplots(1, 2)
+        # fig, axs = plt.subplots(1, 2)
+        pass
 
 
     # fig.suptitle('Test Name: {}'.format(testname))
@@ -144,10 +145,13 @@ def plot_results(testname='ranks_'):
                     if snr_i == False:
                         current_results = current_results[:8]
 
-                    axs[snr_i].plot(current_results, label=get_graph_size_and_structure(result_file))
+                    # axs[snr_i].plot(current_results, label=get_graph_size_and_structure(result_file))
+
+                    np.savetxt('output/{}_{}_{}.csv'.format(testname, get_graph_size_and_structure(result_file), '-1' if snr_bool else '-7'), current_results, delimiter=",")
+
                 except ValueError:
                     print "Could not load file {}".format(result_file)
-            axs[snr_i].legend()
+            # axs[snr_i].legend()
 
     # try:
     #     axs[0].set_xlabel('Traces', fontsize=11)
@@ -540,13 +544,9 @@ def get_best_templates():
 
 if __name__ == "__main__":
 
-    # plot_results(testname='GraphStructure')
-    my_min = 0
-    my_max = 99
-    window = 20
+    # plot_results(testname='ReducedGraphs')
 
-    for i in [0, 10, 50, 90, 99]:
-        print 'i = {}, window: {}'.format(i, handle_window(i, window, my_min, my_max))
+    print variable_dict
 
     exit(1)
 

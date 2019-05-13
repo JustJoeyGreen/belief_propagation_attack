@@ -277,35 +277,35 @@ class TestModels:
     # Check a saved model against one of the bpann databases Attack traces
     def check_model(self, model_file, num_traces=10000, template_attack=False, random_key=False, save=True):
 
-        try:
-            rank_list, prob_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces, from_end=random_key)
-            if rank_list is not None:
+        # try:
+        rank_list, prob_list, predicted_values = self.real_trace_handler.get_leakage_rank_list_with_specific_model(model_file, traces=num_traces, from_end=random_key)
+        if rank_list is not None:
 
-                print "\n\nModel: {}".format(model_file)
+            print "\n\nModel: {}".format(model_file)
 
-                if self.verbose:
-                    print "> Rank List:"
-                    print_statistics(rank_list, mode=False)
-                    print "> Probability List:"
-                    print_statistics(prob_list, mode=False)
-                    print "> Top Predicted Indices:"
-                    print_statistics(predicted_values)
-                else:
-                    print "> Median Rank: {}".format(np.median(rank_list))
-                    print "> Median Prob: {}".format(np.median(prob_list))
+            if self.verbose:
+                print "> Rank List:"
+                print_statistics(rank_list, mode=False)
+                print "> Probability List:"
+                print_statistics(prob_list, mode=False)
+                print "> Top Predicted Indices:"
+                print_statistics(predicted_values)
+            else:
+                print "> Median Rank: {}".format(np.median(rank_list))
+                print "> Median Prob: {}".format(np.median(prob_list))
 
-                if SAVE:
-                    save_statistics(model_file, prob_list)
+            if SAVE:
+                save_statistics(model_file, prob_list)
 
-                if self.histogram:
-                    plt.clf()
-                    plt.hist(prob_list, bins='auto')
-                    plt.title(model_file)
-                    plt.savefig('output/probabilityhistogram_{}.svg'.format(model_file.replace('models/', '').replace('.h5', '')), format='svg', dpi=1200)
+            if self.histogram:
+                plt.clf()
+                plt.hist(prob_list, bins='auto')
+                plt.title(model_file)
+                plt.savefig('output/probabilityhistogram_{}.svg'.format(model_file.replace('models/', '').replace('.h5', '')), format='svg', dpi=1200)
 
-        except Exception as e:
-            print "! Uh oh, couldn't check the model! Need to resubmit (in test_models)" #PASSING OVER..."
-            print e
+        # except Exception as e:
+        #     print "! Uh oh, couldn't check the model! Need to resubmit (in test_models)" #PASSING OVER..."
+        #     print e
 
         # model_name = model_file.replace(MODEL_FOLDER, '')
         # model_variable = model_name.split('_')[0]
@@ -348,8 +348,7 @@ class TestModels:
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='Trains Neural Network Models')
-    parser.add_argument('--ALL', '--ALL_VARS', '--TEST_ALL', action="store_true", dest="TEST_ALL", help='Tests all available models',
-                        default=False)
+    parser.add_argument('--ALL', '--ALL_VARS', '--TEST_ALL', action="store_false", dest="TEST_ALL", help='Tests all available models (default True)', default=True)
     parser.add_argument('--MLP', action="store_true", dest="USE_MLP", help='Tests Multi Layer Perceptron',
                         default=False)
     parser.add_argument('--CNN', action="store_true", dest="USE_CNN",
@@ -374,8 +373,8 @@ if __name__ == "__main__":
     parser.add_argument('--E', '--EX', '--EXTRA', '--USE_EXTRA', action="store_false", dest="USE_EXTRA",
                         help='Toggle to Turn USE EXTRA Off (Attack Trained Traces)', default=True)
 
-    parser.add_argument('--RK', '--RKV', '--RANDOMKEY', action="store_true", dest="RANDOM_KEY",
-                        help='Toggle to Turn RANDOM_KEY On (Attack Validation Traces)', default=False)
+    parser.add_argument('--RK', '--RKV', '--RANDOMKEY', action="store_false", dest="RANDOM_KEY",
+                        help='Toggle to Turn RANDOM_KEY On (Attack Validation Traces)', default=True)
 
     parser.add_argument('--D', '--DEBUG', action="store_true", dest="DEBUG",
                         help='Turns no_print off', default=False)
