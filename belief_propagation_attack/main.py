@@ -1062,10 +1062,15 @@ if __name__ == "__main__":
             print "|| If not using LDA or NN, range must be 1 - setting TPRANGE to 1"
         TPRANGE = 1
 
-    if USE_NN and TPRANGE != 700:
+    # if USE_NN and TPRANGE != 700:
+    #     if not NO_PRINT:
+    #         print "|| Neural Networks only uses window size 700 - setting TPRANGE to 700"
+    #     TPRANGE = 700
+
+    if USE_NN and TPRANGE != 2000:
         if not NO_PRINT:
-            print "|| Neural Networks only uses window size 700 - setting TPRANGE to 700"
-        TPRANGE = 700
+            print "|| Neural Networks only uses window size 2000 - setting TPRANGE to 2000"
+        TPRANGE = 2000
 
     if USE_LDA and TPRANGE == 1:
         if not NO_PRINT:

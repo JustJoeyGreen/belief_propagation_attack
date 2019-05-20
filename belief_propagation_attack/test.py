@@ -542,11 +542,54 @@ def get_best_templates():
     # Save template
     save_object(template_dict, BEST_TEMPLATE_DICT, suffix=False)
 
+def timepoint_test(tp_threshold = 100):
+
+    count = 0
+
+    for variable, length in variable_dict.iteritems():
+
+        print "* variable {} ({}) *".format(variable, length)
+
+        id_timepoints = np.load('{}{}{}.npy'.format(TRACE_FOLDER, 'identity_timepoints/', variable))
+        hw_timepoints = np.load('{}{}{}.npy'.format(TRACE_FOLDER, 'timepoints/', variable))
+
+        for i in range(length):
+
+            id_tp = int(id_timepoints[i])
+            hw_tp = int(hw_timepoints[i])
+            diff = id_tp - hw_tp
+
+            if abs(id_tp - hw_tp) > tp_threshold:
+
+                print "n: {:3}, diff: {:4} HW {:6} ID {:6}".format(i+1, diff, hw_tp, id_tp)
+
+                count += 1
+
+
+    print "Total: {}".format(count)
+
+
+
+
 if __name__ == "__main__":
 
-    # plot_results(testname='ReducedGraphs')
 
-    print variable_dict
+
+    file_prefix = OUTPUT_FOLDER+'new_results/'
+
+    uni = np.load('{}{}'.format(file_prefix, 'ranks_Standard_IND_G2_KEYAVG_100T_100I_REALNone.npy'), allow_pickle=True)
+    lda = np.load('{}{}'.format(file_prefix, 'ranks_Standard_IND_LDA200_G2_KEYAVG_100T_100I_REALNone.npy'), allow_pickle=True)
+
+    uni = np.mean(uni, axis=0)
+    lda = np.mean(lda, axis=0)
+
+    np.savetxt('output/uni.csv', uni, delimiter=",")
+    np.savetxt('output/lda.csv', lda, delimiter=",")
+
+    # plt.plot(uni, label='uni')
+    # plt.plot(lda, label='lda')
+    # plt.legend()
+    # plt.show()
 
     exit(1)
 

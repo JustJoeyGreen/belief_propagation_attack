@@ -6,7 +6,7 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as linDisAn
 import operator
 
 KEY = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
-TPRANGE_NN = 700
+TPRANGE_NN = 2000 #700
 TPRANGE_LDA = 200
 
 class RealTraceHandler:
@@ -61,13 +61,13 @@ class RealTraceHandler:
         # TODO: CURRENTLY IN DEVELOPMENT
         self.best_templates = pickle.load(open(BEST_TEMPLATE_DICT,'ro'))
 
-    def return_power_window(self, timepoint, trace, window=700, nn_normalise=False):
+    def return_power_window(self, timepoint, trace, window=2000, nn_normalise=False):
         """ Return the window of power values for a given value """
         trace_data = normalise_neural_trace_single(self.real_trace_data[trace]) if nn_normalise else self.real_trace_data[trace]
         start_window, end_window = handle_window(timepoint, window, 0, trace_data.shape[0] - 1)
         return trace_data[start_window:end_window]
 
-    def return_power_window_of_variable(self, variable, trace, window=700, nn_normalise=False):
+    def return_power_window_of_variable(self, variable, trace, window=2000, nn_normalise=False):
         var_name, var_number, _ = split_variable_name(variable)
         return self.return_power_window(self.timepoints[var_name][var_number-1], trace, window=window, nn_normalise=nn_normalise)
 
@@ -153,7 +153,10 @@ class RealTraceHandler:
                     # Add to dict!
                     if not self.no_print:
                         print "> Loading NN for Variable {}...".format(var_notrace)
-                    self.neural_network_dict[var_notrace] = load_sca_model('{}{}_mlp5_nodes200_window{}_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var_notrace, tprange))
+                    # OLD: TODO FIX
+                    # self.neural_network_dict[var_notrace] = load_sca_model('{}{}_mlp5_nodes200_window{}_epochs6000_batchsize200_sd100_traces200000_aug0.h5'.format(NEURAL_MODEL_FOLDER, var_notrace, tprange))
+                    # NEW NEURAL NETWORKS 20/5/19
+                    self.neural_network_dict[var_notrace] = load_sca_model('{}{}_mlp5_nodes100_window{}_epochs100_batchsize50_lr1e-05_sd100_traces190000_aug0_jitterNone_defaultloss.h5'.format(NEURAL_MODEL_FOLDER, var_notrace, tprange))
                     neural_network = self.neural_network_dict[var_notrace]
                 new_input = np.resize(power_value, (1, power_value.size))
                 out_distribution = neural_network.predict(new_input)[0]
