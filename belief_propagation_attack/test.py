@@ -496,7 +496,7 @@ def get_best_templates():
 
     rtrace_uni = rTraceH.RealTraceHandler(no_print=False, use_nn=False, use_lda=False, use_best=False, tprange=1, jitter=None, use_extra=False)
     rtrace_lda = rTraceH.RealTraceHandler(no_print=False, use_nn=False, use_lda=True, use_best=False, tprange=200, jitter=None, use_extra=False)
-    rtrace_nn = rTraceH.RealTraceHandler(no_print=False, use_nn=True, use_lda=False, use_best=False, tprange=700, jitter=None, use_extra=False) #TODO CHANGE BACK
+    rtrace_nn = rTraceH.RealTraceHandler(no_print=False, use_nn=True, use_lda=False, use_best=False, tprange=2000, jitter=None, use_extra=False) #TODO CHANGE BACK
 
     template_dict = dict()
 
@@ -573,7 +573,9 @@ def timepoint_test(tp_threshold = 100):
 
 if __name__ == "__main__":
 
+    get_best_templates()
 
+    exit(1)
 
     file_prefix = OUTPUT_FOLDER+'new_results/'
 
