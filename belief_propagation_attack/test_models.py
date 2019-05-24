@@ -386,7 +386,6 @@ if __name__ == "__main__":
                         help='Plots histogram of probabilities', default=False)
 
 
-
     # Target node here
     args = parser.parse_args()
     USE_MLP = args.USE_MLP
@@ -415,6 +414,8 @@ if __name__ == "__main__":
     # print "*** TEST VARIABLE {} ***".format(VARIABLE)
 
     model_tester = TestModels(jitter=JITTER, use_extra=(not RANDOM_KEY) and USE_EXTRA, no_print=not DEBUG, verbose=VERBOSE, histogram=HISTOGRAM)
+
+
 
     if TEST_ALL:
         # Clear statistics

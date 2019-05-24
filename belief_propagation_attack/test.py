@@ -9,7 +9,8 @@ import trsfile
 import operator
 import timing
 import factorGraphAES as fG
-
+import csv
+import os
 
 
 # KERAS AND TENSORFLOW
@@ -569,11 +570,42 @@ def timepoint_test(tp_threshold = 100):
     print "Total: {}".format(count)
 
 
+def get_best_models():
 
+    # Load mig vs bcp4 csv
+    csv_file = TRACE_FOLDER + 'mig_vs_bcp4.csv'
+    current_probability = 0
+    with open(csv_file, 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            # Get variable, and whether bcp4 or mig
+            model_name, median_prob = row[0], row[7]
+
+            try:
+                variable = re.search('models\/([a-z]+[0-9]+).*', model_name).group(1)
+                source = re.search('.*loss_([a-z]+[0-9]*).h5', model_name).group(1)
+                model_name_stripped = re.search('models\/(.*)_.*.h5', model_name).group(1)
+                print variable, source, median_prob
+
+                if source == 'bcp4':
+                    current_probability = median_prob
+                else:
+                    model_name_remove = '{}_{}.h5'.format(model_name_stripped, 'mig' if median_prob < current_probability else 'bcp4')
+                    if median_prob < current_probability:
+                        print "Variable {:5}: REMOVE MIG".format(variable)
+                    else:
+                        print "Variable {:5}: REMOVE BCP4".format(variable)
+                    print "> removing {}".format(model_name_remove)
+                    # os.remove(NEURAL_MODEL_FOLDER + model_name_remove)
+
+            except AttributeError:
+                print "! Ignoring model '{}'".format(model_name)
 
 if __name__ == "__main__":
 
-    get_best_templates()
+    # get_best_templates()
+
+    get_best_models()
 
     exit(1)
 
