@@ -73,6 +73,64 @@ def check_file_exists(file_path):
 
 ############# Loss functions #############
 
+#### MLP Best model (6 layers of 200 units)
+def mlp_ascad(node=200,layer_nb=6):
+	model = Sequential()
+	model.add(Dense(node, input_dim=700, activation='relu'))
+	for i in range(layer_nb-2):
+		model.add(Dense(node, activation='relu'))
+	model.add(Dense(256, activation='softmax'))
+	optimizer = RMSprop(lr=0.00001)
+	model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+	return model
+
+### CNN Best model
+def cnn_ascad(classes=256):
+	# From VGG16 design
+	input_shape = (700,1)
+	img_input = Input(shape=input_shape)
+	# Block 1
+	x = Conv1D(64, 11, activation='relu', padding='same', name='block1_conv1')(img_input)
+	print x.get_shape()
+	x = AveragePooling1D(2, strides=2, name='block1_pool')(x)
+	print x.get_shape()
+	# Block 2
+	x = Conv1D(128, 11, activation='relu', padding='same', name='block2_conv1')(x)
+	print x.get_shape()
+	x = AveragePooling1D(2, strides=2, name='block2_pool')(x)
+	print x.get_shape()
+	# Block 3
+	x = Conv1D(256, 11, activation='relu', padding='same', name='block3_conv1')(x)
+	print x.get_shape()
+	x = AveragePooling1D(2, strides=2, name='block3_pool')(x)
+	print x.get_shape()
+	# Block 4
+	x = Conv1D(512, 11, activation='relu', padding='same', name='block4_conv1')(x)
+	print x.get_shape()
+	x = AveragePooling1D(2, strides=2, name='block4_pool')(x)
+	print x.get_shape()
+	# Block 5
+	x = Conv1D(512, 11, activation='relu', padding='same', name='block5_conv1')(x)
+	print x.get_shape()
+	x = AveragePooling1D(2, strides=2, name='block5_pool')(x)
+	print x.get_shape()
+	# Classification block
+	x = Flatten(name='flatten')(x)
+	print x.get_shape()
+	x = Dense(4096, activation='relu', name='fc1')(x)
+	print x.get_shape()
+	x = Dense(4096, activation='relu', name='fc2')(x)
+	print x.get_shape()
+	x = Dense(classes, activation='softmax', name='predictions')(x)
+	print x.get_shape()
+
+	inputs = img_input
+	# Create model.
+	model = Model(inputs, x, name='cnn_best')
+	optimizer = RMSprop(lr=0.00001)
+	model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
+	return model
+
 
 #### MLP Weighted bit model (6 layers of 200 units)
 def mlp_weighted_bit(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, classes=256, loss_function='binary_crossentropy'):
@@ -310,7 +368,7 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
 # def train_svm()
 
 
-def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, multilabel=False, hammingweight=False, loss_function=None, hamming_distance_encoding=False, scratch_storage=False):
+def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=True, cnn=True, cnn_pre=False, lstm=True, svm=False, add_noise=False, input_length=700, normalise_traces=True, epochs=None, training_traces=50000, mlp_layers=6, lstm_layers=1, batch_size=200, sd=100, augment_method=0, jitter=None, progress_bar=1, mlp_nodes=200, lstm_nodes=64, learning_rate=0.00001, multilabel=False, hammingweight=False, loss_function=None, hamming_distance_encoding=False, scratch_storage=False, use_ascad=False):
 
     store_directory = NEURAL_MODEL_FOLDER if scratch_storage else MODEL_FOLDER
 
@@ -325,8 +383,14 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
         X_profiling = X_profiling + np.round(np.random.normal(0, standard_deviation, X_profiling.shape)).astype(int)
         X_attack = X_attack + np.round(np.random.normal(0, standard_deviation, X_attack.shape)).astype(int)
 
+    if use_ascad:
+        # Done slightly differently
+        ascad_model = cnn_ascad() if cnn else mlp_ascad()
+        train_model(X_profiling, Y_profiling, ascad_model, store_directory + '{}_{}_ASCAD.h5'.format(variable, 'cnn' if cnn else 'mlp'), epochs=75 if cnn else 200, batch_size=200 if cnn else 100, validation_data=(X_attack, Y_attack),
+        progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
+
     ### CNN training
-    if cnn:
+    elif cnn:
         # TODO: Test New CNN!
         # cnn_best_model = cnn_best(input_length=input_length, learning_rate=learning_rate, classes=classes)
         cnn_best_model = cnn_aes_hd(input_length=input_length, learning_rate=learning_rate, classes=classes)
@@ -339,7 +403,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### CNN pre-trained training
-    if cnn_pre:
+    elif cnn_pre:
         cnn_pretrained_model = cnn_pretrained(input_length=input_length, learning_rate=learning_rate, classes=classes)
         cnn_epochs = epochs if epochs is not None else 75
         cnn_batchsize = batch_size
@@ -350,7 +414,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### MLP training
-    if mlp:
+    elif mlp:
         if multilabel:
             mlp_best_model = mlp_weighted_bit(input_length=input_length, layer_nb=mlp_layers, learning_rate=learning_rate, classes=classes, loss_function=loss_function)
         else:
@@ -365,7 +429,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar, multilabel=multilabel, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### LSTM training
-    if lstm:
+    elif lstm:
         lstm_best_model = lstm_best(input_length=input_length, layer_nb=lstm_layers, learning_rate=learning_rate, classes=classes)
         lstm_epochs = epochs if epochs is not None else 75
         lstm_batchsize = batch_size
@@ -376,7 +440,7 @@ def train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack,
                     validation_data=(X_attack, Y_attack), progress_bar=progress_bar, hammingweight=hammingweight, hamming_distance_encoding=hamming_distance_encoding)
 
     ### SVM training
-    if svm:
+    elif svm:
         svm_best_model = svm_best(input_length=input_length, layer_nb=svm_layers, classes=classes)
         svm_epochs = epochs if epochs is not None else 75
         svm_batchsize = batch_size
@@ -455,6 +519,8 @@ if __name__ == "__main__":
                         help='Toggles loading of metadata, default True (bad for mig!)', default=True)
     parser.add_argument('--SCRATCH', '--SCRATCH_STORAGE', '--S', action="store_true", dest="SCRATCH_STORAGE",
                         help='Stores neural networks on scratch storage (external hard drive)', default=False)
+    parser.add_argument('--ASCAD', '--USE_ASCAD', action="store_true", dest="USE_ASCAD",
+                        help='Uses ASCAD Default Model, CNN or MLP', default=False)
 
     parser.add_argument('-loss', '-loss_function', action="store", dest="LOSS_FUNCTION", help='Loss Function (default: None (uses standard depending on model structure, usually categorical cross entropy))',
                         default=None)
@@ -491,6 +557,7 @@ if __name__ == "__main__":
     HAMMING_DISTANCE_ENCODING = args.HAMMING_DISTANCE_ENCODING
     LOAD_METADATA = args.LOAD_METADATA
     SCRATCH_STORAGE = args.SCRATCH_STORAGE
+    USE_ASCAD = args.USE_ASCAD
 
     if not USE_MLP and not USE_CNN and not USE_CNN_PRETRAINED and not USE_LSTM:
         print "|| No models set to run - setting USE_MLP to True"
@@ -502,6 +569,13 @@ if __name__ == "__main__":
     if (INPUT_LENGTH % 2) and INPUT_LENGTH != 1 and INPUT_LENGTH != -1:
         print "|| Error: input length must be even, adding 1 to fix ({} -> {})".format(INPUT_LENGTH, INPUT_LENGTH+1)
         INPUT_LENGTH += 1
+
+    # Handle ASCAD Defaults
+    if USE_ASCAD:
+        print "|| Setting to ASCAD Default Values (epochs etc):"
+        print "|| * INPUT_LENGTH {} -> 700".format(INPUT_LENGTH)
+        INPUT_LENGTH = 700
+
 
     if TEST_VARIABLES:
         variable_list = ['k001','s001','t001','k004']
@@ -517,8 +591,8 @@ if __name__ == "__main__":
 
     for variable in variable_list:
 
-        print "$$$ Training Neural Networks $$$\nVariable {}, Hamming Weight {} Hamming Distance Encoding {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}".format(
-            variable, HAMMINGWEIGHT, HAMMING_DISTANCE_ENCODING, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES)
+        print "$$$ Training Neural Networks $$$\nVariable {}, Hamming Weight {} Hamming Distance Encoding {}, MLP {} ({} layers, {} nodes per layer), CNN {} (Pretrained {}), LSTM {} ({} layers, {} nodes per layer), Input Length {}, Learning Rate {}, Noise {}, Jitter {}, Normalising {}\n{} Epochs, Batch Size {}, Training Traces {}, Validation Traces {}, ASCAD {}".format(
+            variable, HAMMINGWEIGHT, HAMMING_DISTANCE_ENCODING, USE_MLP, MLP_LAYERS, MLP_NODES, USE_CNN, USE_CNN_PRETRAINED, USE_LSTM, LSTM_LAYERS, LSTM_NODES, INPUT_LENGTH, LEARNING_RATE, ADD_NOISE, JITTER, NORMALISE, EPOCHS, BATCH_SIZE, TRAINING_TRACES, VALIDATION_TRACES, USE_ASCAD)
 
         # Load the profiling traces and the attack traces
         (X_profiling, Y_profiling), (X_attack, Y_attack) = load_bpann(variable, normalise_traces=NORMALISE,
@@ -534,7 +608,7 @@ if __name__ == "__main__":
 
         train_variable_model(variable, X_profiling, Y_profiling, X_attack, Y_attack, mlp=USE_MLP, cnn=USE_CNN, cnn_pre=USE_CNN_PRETRAINED, lstm=USE_LSTM, input_length=INPUT_LENGTH, add_noise=ADD_NOISE, epochs=EPOCHS,
             training_traces=TRAINING_TRACES, mlp_layers=MLP_LAYERS, mlp_nodes=MLP_NODES, lstm_layers=LSTM_LAYERS, lstm_nodes=LSTM_NODES, batch_size=BATCH_SIZE, sd=STANDARD_DEVIATION, augment_method=AUGMENT_METHOD, jitter=JITTER, progress_bar=PROGRESS_BAR,
-            learning_rate=LEARNING_RATE, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT, loss_function=LOSS_FUNCTION, hamming_distance_encoding=HAMMING_DISTANCE_ENCODING, scratch_storage=SCRATCH_STORAGE)
+            learning_rate=LEARNING_RATE, multilabel=MULTILABEL, hammingweight=HAMMINGWEIGHT, loss_function=LOSS_FUNCTION, hamming_distance_encoding=HAMMING_DISTANCE_ENCODING, scratch_storage=SCRATCH_STORAGE, use_ascad=USE_ASCAD)
 
     # for var, length in variable_dict.iteritems():
     #     for i in range(length):

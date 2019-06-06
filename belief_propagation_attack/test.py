@@ -601,15 +601,65 @@ def get_best_models():
             except AttributeError:
                 print "! Ignoring model '{}'".format(model_name)
 
+def load_new_result(filename, file_prefix = OUTPUT_FOLDER+'new_results/'):
+    return np.load('{}{}'.format(file_prefix, filename), allow_pickle=True)
+
 if __name__ == "__main__":
 
     # get_best_templates()
 
-    get_best_models()
+    # get_best_models()
+
+    # file_prefix = OUTPUT_FOLDER+'new_results/'
+
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+
+    prefix = 'ranks_NeuralNetworks_IND_'
+    classifiers = ['NN2000', 'LDA200', '']
+    # graphs = ['G2', 'G1', 'G1A']
+    graphs = ['G1']
+    midfix = '_KEYAVG_100T_'
+    suffix = '_REALNone.npy'
+
+    for classifier in classifiers:
+        for graph in graphs:
+            plot_name = '{}{}{}{}{}{}{}'.format(prefix, classifier, '_' if classifier is not '' else '', graph, midfix, '100I' if graph is not 'G1A' else '8I', suffix)
+            try:
+                load_plot = np.mean(load_new_result(plot_name), axis=0)
+                plt.plot(load_plot, label='{} {}'.format('Uni' if classifier is '' else classifier, graph))
+            except:
+                print "!! No plot called {}".format(plot_name)
+                raise
+
+
+
+    # nn_g2 = load_new_result('ranks_NeuralNetworks_IND_NN2000_G2_KEYAVG_100T_100I_REALNone.npy')
+    # nn_g1 = load_new_result('ranks_NeuralNetworks_IND_NN2000_G1_KEYAVG_100T_100I_REALNone.npy')
+    # nn_g1a = load_new_result('ranks_NeuralNetworks_IND_NN2000_G1A_KEYAVG_100T_8I_REALNone.npy')
+    # lda = load_new_result('ranks_NeuralNetworks_IND_LDA200_G2_KEYAVG_100T_100I_REALNone.npy')
+    # uni = load_new_result('ranks_NeuralNetworks_IND_G2_KEYAVG_100T_100I_REALNone.npy')
+    #
+    # nn_g2 = np.mean(nn_g2, axis=0)
+    # nn_g1 = np.mean(nn_g1, axis=0)
+    # nn_g1a = np.mean(nn_g1a, axis=0)
+    # uni = np.mean(uni, axis=0)
+    # lda = np.mean(lda, axis=0)
+    #
+    # plt.plot(uni, label='Uni BAD G2')
+    # plt.plot(lda, label='LDA G2')
+    # plt.plot(nn_g2, label='NN G2')
+    # plt.plot(nn_g1, label='NN G1')
+    # plt.plot(nn_g1a, label='NN G1A')
+
+
+    plt.xlabel(r'\textbf{Traces}', fontsize=11)
+    plt.ylabel(r'\textbf{Mean Rank}', fontsize=11)
+
+    plt.legend()
+    plt.show()
 
     exit(1)
-
-    file_prefix = OUTPUT_FOLDER+'new_results/'
 
     uni = np.load('{}{}'.format(file_prefix, 'ranks_Standard_IND_G2_KEYAVG_100T_100I_REALNone.npy'), allow_pickle=True)
     lda = np.load('{}{}'.format(file_prefix, 'ranks_Standard_IND_LDA200_G2_KEYAVG_100T_100I_REALNone.npy'), allow_pickle=True)
