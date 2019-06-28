@@ -606,6 +606,17 @@ def load_new_result(filename, file_prefix = OUTPUT_FOLDER+'new_results/'):
 
 if __name__ == "__main__":
 
+    shifted_l = [2,10,50,100,500,1000]
+    extra_l = [False,True]
+
+    for extra in extra_l:
+        for shifted in shifted_l:
+            print "*** Warping extra {} shift {}".format(extra, shifted)
+            realign_traces(extra=extra, shifted=shifted)
+
+
+    exit(1)
+
     # get_best_templates()
 
     # get_best_models()
@@ -628,6 +639,7 @@ if __name__ == "__main__":
             try:
                 load_plot = np.mean(load_new_result(plot_name), axis=0)
                 plt.plot(load_plot, label='{} {}'.format('Uni' if classifier is '' else classifier, graph))
+                np.savetxt('output/bpacomp_{}.csv'.format('Uni' if classifier is '' else classifier, graph), load_plot, delimiter=",")
             except:
                 print "!! No plot called {}".format(plot_name)
                 raise
