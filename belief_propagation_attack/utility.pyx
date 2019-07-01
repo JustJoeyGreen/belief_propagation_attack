@@ -1859,12 +1859,15 @@ def shift_traces(extra=True, shifted=2):
         if ((t % (traces/100)) == 0):
             print "{}% Complete".format(t*100 / (traces + 0.0))
         randint = np.random.randint(-shifted/2, shifted/2)
-
-        if t<10:
+        if t>0 and t<10:
             print '{}: {}'.format(t, randint)
             print "WAS: {}".format(trace_data[t][:10])
             print "NOW: {}".format(roll_and_pad(trace_data[t], randint)[:10])
-        shifted_data[t] = roll_and_pad(trace_data[t], randint)
+
+        if t>0:
+            shifted_data[t] = roll_and_pad(trace_data[t], randint)
+        else:
+            shifted_data[t] = trace_data[t]
     del shifted_data
 
 def get_first_occurance_in_path(path, j):
@@ -1887,7 +1890,7 @@ def get_y_values_from_path(path, j):
 
 def realign_trace(base_trace,target_trace):
     _, path = fastdtw(base_trace, target_trace, dist=euclidean)
-    realigned_trace = np.zeros(target_trace.shape)
+    realigned_trace = np.zeros(target_trace.shape, dtype=base_trace.dtype)
     for sample in range(target_trace.shape[0]):
         y_vals = get_y_values_from_path(path, sample)
         total = 0

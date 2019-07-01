@@ -8,15 +8,18 @@ import operator
 KEY = [0x54, 0x68, 0x61, 0x74, 0x73, 0x20, 0x6D, 0x79, 0x20, 0x4B, 0x75, 0x6E, 0x67, 0x20, 0x46, 0x75]
 TPRANGE_NN = 2000 #700
 TPRANGE_LDA = 200
+REALIGN_OVERHEAD = 500
 
 class RealTraceHandler:
 
-    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, jitter = None, use_extra = True):
+    def __init__(self, no_print = False, use_best = False, use_nn = False, use_lda = False, memory_mapped=True, tprange=200, debug=True, jitter = None, use_extra = True, auto_realign = False):
         self.no_print = no_print
         if not no_print:
             print "Preloading Matrix real_trace_data, may take a while..."
 
         self.use_extra = use_extra
+        self.auto_realign = auto_realign
+
 
         if use_extra:
             self.real_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH if jitter is None else get_shifted_tracedata_filepath(extra=True, shifted=jitter), memory_mapped=memory_mapped)
@@ -89,7 +92,7 @@ class RealTraceHandler:
         return (rank and template[0] < rank_threshold) or (not rank and template[1] > prob_threshold)
 
 
-    def get_leakage_value(self, variable, trace=0, average_power_values=False, averaged_traces=1):
+    def get_leakage_value(self, variable, trace=0, average_power_values=False, averaged_traces=1, auto_realign=True):
         # myvarlist = ["k001-K", "k001"]
         # if variable in myvarlist:
             # print "Getting Leakage for {}, trace {}".format(variable, trace)
@@ -111,7 +114,18 @@ class RealTraceHandler:
         if average_power_values:
             power_value = np.mean(np.array([self.return_power_window_of_variable(variable, i, nn_normalise=nn_normalise, window=tprange) for i in range(averaged_traces)]), axis=0)
         else:
-            power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=nn_normalise, window=tprange)
+            if self.auto_realign and trace > 0:
+                # print "* auto realigning * tprange+realign = {}".format(tprange+REALIGN_OVERHEAD)
+                target_window = self.return_power_window_of_variable(variable, trace, nn_normalise=nn_normalise, window=(tprange+(REALIGN_OVERHEAD*2)))
+                base_window = self.return_power_window_of_variable(variable, 0, nn_normalise=nn_normalise, window=(tprange+(REALIGN_OVERHEAD*2)))
+                realigned_window = realign_trace(base_window, target_window)
+                sw, ew = REALIGN_OVERHEAD, tprange+REALIGN_OVERHEAD-1
+                if sw == ew: ew += 1
+                power_value = realigned_window[sw:ew]
+            else:
+                power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=nn_normalise, window=tprange)
+            # if trace > 0:
+            #     print "> v {:10} t {:3}: {}".format(variable, trace, power_value)
 
         # if best == 'nn' or (best is None and self.use_nn):
         #     power_value = self.return_power_window_of_variable(variable, trace, nn_normalise=True, window=tprange)

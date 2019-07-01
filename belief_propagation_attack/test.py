@@ -611,9 +611,8 @@ if __name__ == "__main__":
 
     for extra in extra_l:
         for shifted in shifted_l:
-            print "*** Warping extra {} shift {}".format(extra, shifted)
-            realign_traces(extra=extra, shifted=shifted)
-
+            print "*** Shifting {} extra {}".format(shifted, extra)
+            shift_traces(extra=extra, shifted=shifted)
 
     exit(1)
 

@@ -44,7 +44,7 @@ shared_variables = ['k', 'sk', 'xk', 'rc']
 class FactorGraphAES:
 
     """ Container for Factor Graph """
-    def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False):
+    def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False, auto_realign=False):
 
         self.no_print = no_print
 
@@ -156,7 +156,7 @@ class FactorGraphAES:
         self.initialise_edges()
 
         if real_traces:
-            self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter)
+            self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter, auto_realign=auto_realign)
 
         self.averaged_key_values    = None
 

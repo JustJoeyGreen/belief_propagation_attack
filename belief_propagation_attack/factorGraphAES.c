@@ -2288,6 +2288,7 @@ static const char __pyx_k_Remove_Cycle[] = "Remove Cycle: {}";
 static const char __pyx_k_RemovedCycle[] = "RemovedCycle";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_all_positive[] = "all_positive";
+static const char __pyx_k_auto_realign[] = "auto_realign";
 static const char __pyx_k_bp_one_round[] = "bp_one_round";
 static const char __pyx_k_current_node[] = "current_node";
 static const char __pyx_k_dead_factors[] = "dead_factors";
@@ -2914,6 +2915,7 @@ static PyObject *__pyx_n_s_array_min;
 static PyObject *__pyx_n_s_array_multiply;
 static PyObject *__pyx_n_s_array_subtract;
 static PyObject *__pyx_n_s_astype;
+static PyObject *__pyx_n_s_auto_realign;
 static PyObject *__pyx_n_s_average_power_values;
 static PyObject *__pyx_n_s_averaged_key_values;
 static PyObject *__pyx_n_s_averaged_power_values;
@@ -3337,7 +3339,7 @@ static PyObject *__pyx_n_s_xb;
 static PyObject *__pyx_n_s_xk;
 static PyObject *__pyx_n_s_xt;
 static PyObject *__pyx_n_s_zeros;
-static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_no_print, int __pyx_v_traces, PyObject *__pyx_v_removed_nodes, PyObject *__pyx_v_left_out_nodes, PyObject *__pyx_v_key_scheduling, PyObject *__pyx_v_furious, PyObject *__pyx_v_rounds_of_aes, PyObject *__pyx_v_remove_cycle, PyObject *__pyx_v_my_print, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_use_nn, PyObject *__pyx_v_use_lda, PyObject *__pyx_v_use_best, PyObject *__pyx_v_tprange, PyObject *__pyx_v_jitter, PyObject *__pyx_v_badly_leaking_snr, PyObject *__pyx_v_badly_leaking_nodes, PyObject *__pyx_v_badly_leaking_traces, PyObject *__pyx_v_no_noise_nodes, PyObject *__pyx_v_erroneous_badleakage); /* proto */
+static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_no_print, int __pyx_v_traces, PyObject *__pyx_v_removed_nodes, PyObject *__pyx_v_left_out_nodes, PyObject *__pyx_v_key_scheduling, PyObject *__pyx_v_furious, PyObject *__pyx_v_rounds_of_aes, PyObject *__pyx_v_remove_cycle, PyObject *__pyx_v_my_print, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_use_nn, PyObject *__pyx_v_use_lda, PyObject *__pyx_v_use_best, PyObject *__pyx_v_tprange, PyObject *__pyx_v_jitter, PyObject *__pyx_v_badly_leaking_snr, PyObject *__pyx_v_badly_leaking_nodes, PyObject *__pyx_v_badly_leaking_traces, PyObject *__pyx_v_no_noise_nodes, PyObject *__pyx_v_erroneous_badleakage, PyObject *__pyx_v_auto_realign); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_2set_key(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_val); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_4set_snr_exp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_val); /* proto */
 static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES_6get_snr_exp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
@@ -3647,7 +3649,7 @@ static PyObject *__pyx_codeobj__199;
 /* "factorGraphAES.pyx":47
  * 
  *     """ Container for Factor Graph """
- *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False):             # <<<<<<<<<<<<<<
+ *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False, auto_realign=False):             # <<<<<<<<<<<<<<
  * 
  *         self.no_print = no_print
  */
@@ -3677,12 +3679,13 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_1__init__(PyObject *
   PyObject *__pyx_v_badly_leaking_traces = 0;
   PyObject *__pyx_v_no_noise_nodes = 0;
   PyObject *__pyx_v_erroneous_badleakage = 0;
+  PyObject *__pyx_v_auto_realign = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__init__ (wrapper)", 0);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_no_print,&__pyx_n_s_traces,&__pyx_n_s_removed_nodes,&__pyx_n_s_left_out_nodes,&__pyx_n_s_key_scheduling,&__pyx_n_s_furious,&__pyx_n_s_rounds_of_aes,&__pyx_n_s_remove_cycle,&__pyx_n_s_my_print,&__pyx_n_s_real_traces,&__pyx_n_s_use_nn,&__pyx_n_s_use_lda,&__pyx_n_s_use_best,&__pyx_n_s_tprange,&__pyx_n_s_jitter,&__pyx_n_s_badly_leaking_snr,&__pyx_n_s_badly_leaking_nodes,&__pyx_n_s_badly_leaking_traces,&__pyx_n_s_no_noise_nodes,&__pyx_n_s_erroneous_badleakage,0};
-    PyObject* values[21] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_no_print,&__pyx_n_s_traces,&__pyx_n_s_removed_nodes,&__pyx_n_s_left_out_nodes,&__pyx_n_s_key_scheduling,&__pyx_n_s_furious,&__pyx_n_s_rounds_of_aes,&__pyx_n_s_remove_cycle,&__pyx_n_s_my_print,&__pyx_n_s_real_traces,&__pyx_n_s_use_nn,&__pyx_n_s_use_lda,&__pyx_n_s_use_best,&__pyx_n_s_tprange,&__pyx_n_s_jitter,&__pyx_n_s_badly_leaking_snr,&__pyx_n_s_badly_leaking_nodes,&__pyx_n_s_badly_leaking_traces,&__pyx_n_s_no_noise_nodes,&__pyx_n_s_erroneous_badleakage,&__pyx_n_s_auto_realign,0};
+    PyObject* values[22] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     values[1] = ((PyObject *)((PyObject *)Py_False));
     values[3] = ((PyObject *)((PyObject *)Py_None));
     values[4] = ((PyObject *)((PyObject *)Py_None));
@@ -3702,10 +3705,13 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_1__init__(PyObject *
     values[18] = ((PyObject *)((PyObject *)Py_None));
     values[19] = ((PyObject *)((PyObject *)Py_None));
     values[20] = ((PyObject *)((PyObject *)Py_False));
+    values[21] = ((PyObject *)((PyObject *)Py_False));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case 22: values[21] = PyTuple_GET_ITEM(__pyx_args, 21);
+        CYTHON_FALLTHROUGH;
         case 21: values[20] = PyTuple_GET_ITEM(__pyx_args, 20);
         CYTHON_FALLTHROUGH;
         case 20: values[19] = PyTuple_GET_ITEM(__pyx_args, 19);
@@ -3876,12 +3882,20 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_1__init__(PyObject *
           PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_erroneous_badleakage);
           if (value) { values[20] = value; kw_args--; }
         }
+        CYTHON_FALLTHROUGH;
+        case 21:
+        if (kw_args > 0) {
+          PyObject* value = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_auto_realign);
+          if (value) { values[21] = value; kw_args--; }
+        }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case 22: values[21] = PyTuple_GET_ITEM(__pyx_args, 21);
+        CYTHON_FALLTHROUGH;
         case 21: values[20] = PyTuple_GET_ITEM(__pyx_args, 20);
         CYTHON_FALLTHROUGH;
         case 20: values[19] = PyTuple_GET_ITEM(__pyx_args, 19);
@@ -3952,23 +3966,24 @@ static PyObject *__pyx_pw_14factorGraphAES_14FactorGraphAES_1__init__(PyObject *
     __pyx_v_badly_leaking_traces = values[18];
     __pyx_v_no_noise_nodes = values[19];
     __pyx_v_erroneous_badleakage = values[20];
+    __pyx_v_auto_realign = values[21];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 21, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 22, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("factorGraphAES.FactorGraphAES.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14factorGraphAES_14FactorGraphAES___init__(__pyx_self, __pyx_v_self, __pyx_v_no_print, __pyx_v_traces, __pyx_v_removed_nodes, __pyx_v_left_out_nodes, __pyx_v_key_scheduling, __pyx_v_furious, __pyx_v_rounds_of_aes, __pyx_v_remove_cycle, __pyx_v_my_print, __pyx_v_real_traces, __pyx_v_use_nn, __pyx_v_use_lda, __pyx_v_use_best, __pyx_v_tprange, __pyx_v_jitter, __pyx_v_badly_leaking_snr, __pyx_v_badly_leaking_nodes, __pyx_v_badly_leaking_traces, __pyx_v_no_noise_nodes, __pyx_v_erroneous_badleakage);
+  __pyx_r = __pyx_pf_14factorGraphAES_14FactorGraphAES___init__(__pyx_self, __pyx_v_self, __pyx_v_no_print, __pyx_v_traces, __pyx_v_removed_nodes, __pyx_v_left_out_nodes, __pyx_v_key_scheduling, __pyx_v_furious, __pyx_v_rounds_of_aes, __pyx_v_remove_cycle, __pyx_v_my_print, __pyx_v_real_traces, __pyx_v_use_nn, __pyx_v_use_lda, __pyx_v_use_best, __pyx_v_tprange, __pyx_v_jitter, __pyx_v_badly_leaking_snr, __pyx_v_badly_leaking_nodes, __pyx_v_badly_leaking_traces, __pyx_v_no_noise_nodes, __pyx_v_erroneous_badleakage, __pyx_v_auto_realign);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_no_print, int __pyx_v_traces, PyObject *__pyx_v_removed_nodes, PyObject *__pyx_v_left_out_nodes, PyObject *__pyx_v_key_scheduling, PyObject *__pyx_v_furious, PyObject *__pyx_v_rounds_of_aes, PyObject *__pyx_v_remove_cycle, PyObject *__pyx_v_my_print, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_use_nn, PyObject *__pyx_v_use_lda, PyObject *__pyx_v_use_best, PyObject *__pyx_v_tprange, PyObject *__pyx_v_jitter, PyObject *__pyx_v_badly_leaking_snr, PyObject *__pyx_v_badly_leaking_nodes, PyObject *__pyx_v_badly_leaking_traces, PyObject *__pyx_v_no_noise_nodes, PyObject *__pyx_v_erroneous_badleakage) {
+static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_no_print, int __pyx_v_traces, PyObject *__pyx_v_removed_nodes, PyObject *__pyx_v_left_out_nodes, PyObject *__pyx_v_key_scheduling, PyObject *__pyx_v_furious, PyObject *__pyx_v_rounds_of_aes, PyObject *__pyx_v_remove_cycle, PyObject *__pyx_v_my_print, PyObject *__pyx_v_real_traces, PyObject *__pyx_v_use_nn, PyObject *__pyx_v_use_lda, PyObject *__pyx_v_use_best, PyObject *__pyx_v_tprange, PyObject *__pyx_v_jitter, PyObject *__pyx_v_badly_leaking_snr, PyObject *__pyx_v_badly_leaking_nodes, PyObject *__pyx_v_badly_leaking_traces, PyObject *__pyx_v_no_noise_nodes, PyObject *__pyx_v_erroneous_badleakage, PyObject *__pyx_v_auto_realign) {
   PyObject *__pyx_v_furious_string = NULL;
   PyObject *__pyx_v_round_string = NULL;
   PyObject *__pyx_v_remove_cycle_string = NULL;
@@ -4010,7 +4025,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
   __Pyx_INCREF(__pyx_v_left_out_nodes);
 
   /* "factorGraphAES.pyx":49
- *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False):
+ *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False, auto_realign=False):
  * 
  *         self.no_print = no_print             # <<<<<<<<<<<<<<
  * 
@@ -6584,7 +6599,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         self.initialise_edges()
  * 
  *         if real_traces:             # <<<<<<<<<<<<<<
- *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter)
+ *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter, auto_realign=auto_realign)
  * 
  */
   __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_real_traces); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 158, __pyx_L1_error)
@@ -6593,7 +6608,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
     /* "factorGraphAES.pyx":159
  * 
  *         if real_traces:
- *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter)             # <<<<<<<<<<<<<<
+ *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter, auto_realign=auto_realign)             # <<<<<<<<<<<<<<
  * 
  *         self.averaged_key_values    = None
  */
@@ -6602,7 +6617,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
     __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_RealTraceHandler); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = __Pyx_PyDict_NewPresized(6); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 159, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_no_print); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -6613,6 +6628,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
     if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_use_best, __pyx_v_use_best) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
     if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_tprange, __pyx_v_tprange) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
     if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_jitter, __pyx_v_jitter) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_auto_realign, __pyx_v_auto_realign) < 0) __PYX_ERR(0, 159, __pyx_L1_error)
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_empty_tuple, __pyx_t_12); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6624,13 +6640,13 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
  *         self.initialise_edges()
  * 
  *         if real_traces:             # <<<<<<<<<<<<<<
- *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter)
+ *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter, auto_realign=auto_realign)
  * 
  */
   }
 
   /* "factorGraphAES.pyx":161
- *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter)
+ *             self.handler = rTraceH.RealTraceHandler(no_print=self.no_print, use_nn=use_nn, use_lda=use_lda, use_best=use_best, tprange=tprange, jitter=jitter, auto_realign=auto_realign)
  * 
  *         self.averaged_key_values    = None             # <<<<<<<<<<<<<<
  * 
@@ -6686,7 +6702,7 @@ static PyObject *__pyx_pf_14factorGraphAES_14FactorGraphAES___init__(CYTHON_UNUS
   /* "factorGraphAES.pyx":47
  * 
  *     """ Container for Factor Graph """
- *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False):             # <<<<<<<<<<<<<<
+ *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False, auto_realign=False):             # <<<<<<<<<<<<<<
  * 
  *         self.no_print = no_print
  */
@@ -43545,6 +43561,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_array_multiply, __pyx_k_array_multiply, sizeof(__pyx_k_array_multiply), 0, 0, 1, 1},
   {&__pyx_n_s_array_subtract, __pyx_k_array_subtract, sizeof(__pyx_k_array_subtract), 0, 0, 1, 1},
   {&__pyx_n_s_astype, __pyx_k_astype, sizeof(__pyx_k_astype), 0, 0, 1, 1},
+  {&__pyx_n_s_auto_realign, __pyx_k_auto_realign, sizeof(__pyx_k_auto_realign), 0, 0, 1, 1},
   {&__pyx_n_s_average_power_values, __pyx_k_average_power_values, sizeof(__pyx_k_average_power_values), 0, 0, 1, 1},
   {&__pyx_n_s_averaged_key_values, __pyx_k_averaged_key_values, sizeof(__pyx_k_averaged_key_values), 0, 0, 1, 1},
   {&__pyx_n_s_averaged_power_values, __pyx_k_averaged_power_values, sizeof(__pyx_k_averaged_power_values), 0, 0, 1, 1},
@@ -44159,14 +44176,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "factorGraphAES.pyx":47
  * 
  *     """ Container for Factor Graph """
- *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False):             # <<<<<<<<<<<<<<
+ *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False, auto_realign=False):             # <<<<<<<<<<<<<<
  * 
  *         self.no_print = no_print
  */
-  __pyx_tuple__23 = PyTuple_Pack(32, __pyx_n_s_self, __pyx_n_s_no_print, __pyx_n_s_traces, __pyx_n_s_removed_nodes, __pyx_n_s_left_out_nodes, __pyx_n_s_key_scheduling, __pyx_n_s_furious, __pyx_n_s_rounds_of_aes, __pyx_n_s_remove_cycle, __pyx_n_s_my_print, __pyx_n_s_real_traces, __pyx_n_s_use_nn, __pyx_n_s_use_lda, __pyx_n_s_use_best, __pyx_n_s_tprange, __pyx_n_s_jitter, __pyx_n_s_badly_leaking_snr, __pyx_n_s_badly_leaking_nodes, __pyx_n_s_badly_leaking_traces, __pyx_n_s_no_noise_nodes, __pyx_n_s_erroneous_badleakage, __pyx_n_s_furious_string, __pyx_n_s_round_string, __pyx_n_s_remove_cycle_string, __pyx_n_s_variables, __pyx_n_s_factors, __pyx_n_s_key_nodes, __pyx_n_s_plaintext_nodes, __pyx_n_s_node, __pyx_n_s_var, __pyx_n_s_dead_factors, __pyx_n_s_fac); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(33, __pyx_n_s_self, __pyx_n_s_no_print, __pyx_n_s_traces, __pyx_n_s_removed_nodes, __pyx_n_s_left_out_nodes, __pyx_n_s_key_scheduling, __pyx_n_s_furious, __pyx_n_s_rounds_of_aes, __pyx_n_s_remove_cycle, __pyx_n_s_my_print, __pyx_n_s_real_traces, __pyx_n_s_use_nn, __pyx_n_s_use_lda, __pyx_n_s_use_best, __pyx_n_s_tprange, __pyx_n_s_jitter, __pyx_n_s_badly_leaking_snr, __pyx_n_s_badly_leaking_nodes, __pyx_n_s_badly_leaking_traces, __pyx_n_s_no_noise_nodes, __pyx_n_s_erroneous_badleakage, __pyx_n_s_auto_realign, __pyx_n_s_furious_string, __pyx_n_s_round_string, __pyx_n_s_remove_cycle_string, __pyx_n_s_variables, __pyx_n_s_factors, __pyx_n_s_key_nodes, __pyx_n_s_plaintext_nodes, __pyx_n_s_node, __pyx_n_s_var, __pyx_n_s_dead_factors, __pyx_n_s_fac); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(21, 0, 32, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_factor, __pyx_n_s_init, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(22, 0, 33, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_belief_propagation_attack_factor, __pyx_n_s_init, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 47, __pyx_L1_error)
 
   /* "factorGraphAES.pyx":176
  *         # print 'Badly Leaking Nodes: {}'.format(self.badly_leaking_nodes)
@@ -45853,13 +45870,13 @@ if (!__Pyx_RefNanny) {
   /* "factorGraphAES.pyx":47
  * 
  *     """ Container for Factor Graph """
- *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False):             # <<<<<<<<<<<<<<
+ *     def __init__(self, no_print = False, int traces = 1, removed_nodes = None, left_out_nodes = None, key_scheduling = False, furious = True, rounds_of_aes = 10, remove_cycle = False, my_print = False, real_traces = False, use_nn = False, use_lda = False, use_best = False, tprange=200, jitter = None, badly_leaking_snr = -7, badly_leaking_nodes = None, badly_leaking_traces = None, no_noise_nodes = None, erroneous_badleakage=False, auto_realign=False):             # <<<<<<<<<<<<<<
  * 
  *         self.no_print = no_print
  */
   __pyx_t_1 = __Pyx_PyInt_From_int(((int)1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(20); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(21); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)Py_False));
   __Pyx_GIVEREF(((PyObject *)Py_False));
@@ -45920,6 +45937,9 @@ if (!__Pyx_RefNanny) {
   __Pyx_INCREF(((PyObject *)Py_False));
   __Pyx_GIVEREF(((PyObject *)Py_False));
   PyTuple_SET_ITEM(__pyx_t_3, 19, ((PyObject *)Py_False));
+  __Pyx_INCREF(((PyObject *)Py_False));
+  __Pyx_GIVEREF(((PyObject *)Py_False));
+  PyTuple_SET_ITEM(__pyx_t_3, 20, ((PyObject *)Py_False));
   __pyx_t_1 = 0;
   __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_14factorGraphAES_14FactorGraphAES_1__init__, 0, __pyx_n_s_FactorGraphAES___init, NULL, __pyx_n_s_factorGraphAES, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

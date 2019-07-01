@@ -99,7 +99,7 @@ def run_belief_propagation_attack(margdist=None):
             print "Fixed Node: {}, Fixed Value: {}".format(FIXED_VALUE_NODE, fixed_node_tuple[1])
         print "snr = 2^{} = {} (sigma = {}), Threshold: {}".format(SNR_exp, snr, sigma, THRESHOLD)
         print "Epsilon = {}, Epsilon Successions: {}".format(EPSILON, EPSILON_S)
-        print "Using REAL TRACES: {} (Jitter {})".format(REAL_TRACES, JITTER)
+        print "Using REAL TRACES: {} (Jitter {}, Auto Realign {})".format(REAL_TRACES, JITTER, AUTO_REALIGN)
         print "Using LDA: {}, Using Neural Networks: {} (Window Size {}), Using Best Template: {}".format(USE_LDA, USE_NN, TPRANGE, USE_BEST)
         if REAL_TRACES:
             print "Correlation Threshold: {}".format(CORRELATION_THRESHOLD)
@@ -171,7 +171,7 @@ def run_belief_propagation_attack(margdist=None):
                                      use_lda=USE_LDA, use_nn=USE_NN, use_best=USE_BEST, tprange=TPRANGE, jitter=JITTER,
                                      badly_leaking_snr=badly_leaking_snr, badly_leaking_nodes=BADLY_LEAKING_NODES,
                                      badly_leaking_traces=BADLY_LEAKING_TRACES, no_noise_nodes=NO_NOISE_NODES,
-                                     erroneous_badleakage=ERRONEOUS_BAD)
+                                     erroneous_badleakage=ERRONEOUS_BAD, auto_realign=AUTO_REALIGN)
 
         for rep in range(REPEAT):
 
@@ -683,9 +683,10 @@ def run_belief_propagation_attack(margdist=None):
             # np.save("{}_{}_{}.npy".format(OUTPUT_FILE_PREFIX, g_string, TRACES), rank_after_each_trace)
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
             kavg_string = "KEYAVG_" if KEY_POWER_VALUE_AVERAGE else ""
+            realignment_string = "REALIGNED_" if AUTO_REALIGN else ""
             Pickle.dump(rank_after_each_trace,
-                        open("{}_{}{}{}{}{}{}{}_{}{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, testname_string, connection_string, lda_string, nn_string, best_string, ignore_string, g_string, kavg_string,
-                                                            ks_string, TRACES, ROUNDS, snr_string), "wb"))
+                        open("{}_{}{}{}{}{}{}{}_{}{}{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, testname_string, connection_string, lda_string, nn_string, best_string, ignore_string, g_string, kavg_string,
+                                                            ks_string, realignment_string, TRACES, ROUNDS, snr_string), "wb"))
             if PLOT:
 
                 fig = plt.figure()
@@ -916,6 +917,12 @@ if __name__ == "__main__":
     parser.add_argument('--EBL', '--ERR', '--ERRONEOUS_BAD', action="store_true", dest="ERRONEOUS_BAD",
                             help='Toggles Erroneous Leakage to replace Bad Leakage', default=False)
 
+    parser.add_argument('--REALIGN', '--AUTO_REALIGN', '--ALIGN', '--DTW', '--AR', action="store_true", dest="AUTO_REALIGN",
+                            help='Auto Realigns Jittery Traces using FastDTW', default=False)
+
+
+
+
     args = parser.parse_args()
     # print args
     # exit(1)
@@ -995,6 +1002,7 @@ if __name__ == "__main__":
     KEY_POWER_VALUE_AVERAGE = args.KEY_POWER_VALUE_AVERAGE
     JITTER = args.JITTER
     ERRONEOUS_BAD = args.ERRONEOUS_BAD
+    AUTO_REALIGN = args.AUTO_REALIGN
 
     if MY_KEY is not None:
         CHOSEN_KEY = hex_string_to_int_array(MY_KEY)
