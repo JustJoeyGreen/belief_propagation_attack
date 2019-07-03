@@ -666,7 +666,7 @@ def array_inv_sbox(np.ndarray v):
 
 def linear_sbox(v):
     cdef int i
-    cdef np.ndarray v_sbox = np.zeros(len(v))
+    cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
     for i in range(len(v)):
         v_sbox[i] = sbox[v[i]]
     return v_sbox

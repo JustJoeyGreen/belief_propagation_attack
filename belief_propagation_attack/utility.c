@@ -18040,7 +18040,7 @@ static PyObject *__pyx_pf_7utility_122array_inv_sbox(CYTHON_UNUSED PyObject *__p
  * 
  * def linear_sbox(v):             # <<<<<<<<<<<<<<
  *     cdef int i
- *     cdef np.ndarray v_sbox = np.zeros(len(v))
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
  */
 
 /* Python wrapper */
@@ -18064,8 +18064,8 @@ static PyObject *__pyx_pf_7utility_124linear_sbox(CYTHON_UNUSED PyObject *__pyx_
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  Py_ssize_t __pyx_t_4;
+  Py_ssize_t __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
   Py_ssize_t __pyx_t_6;
   int __pyx_t_7;
@@ -18074,67 +18074,67 @@ static PyObject *__pyx_pf_7utility_124linear_sbox(CYTHON_UNUSED PyObject *__pyx_
   /* "utility.pyx":669
  * def linear_sbox(v):
  *     cdef int i
- *     cdef np.ndarray v_sbox = np.zeros(len(v))             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)             # <<<<<<<<<<<<<<
  *     for i in range(len(v)):
  *         v_sbox[i] = sbox[v[i]]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 669, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 669, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = PyObject_Length(__pyx_v_v); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 669, __pyx_L1_error)
-  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 669, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-      __Pyx_INCREF(__pyx_t_5);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
-    }
-  }
-  __pyx_t_1 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_5, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 669, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 669, __pyx_L1_error)
-  __pyx_v_v_sbox = ((PyArrayObject *)__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_3 = PyObject_Length(__pyx_v_v); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 669, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
   __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_v, __pyx_n_s_dtype); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_5) < 0) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 669, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 669, __pyx_L1_error)
+  __pyx_v_v_sbox = ((PyArrayObject *)__pyx_t_5);
+  __pyx_t_5 = 0;
 
   /* "utility.pyx":670
  *     cdef int i
- *     cdef np.ndarray v_sbox = np.zeros(len(v))
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
  *     for i in range(len(v)):             # <<<<<<<<<<<<<<
  *         v_sbox[i] = sbox[v[i]]
  *     return v_sbox
  */
-  __pyx_t_4 = PyObject_Length(__pyx_v_v); if (unlikely(__pyx_t_4 == ((Py_ssize_t)-1))) __PYX_ERR(0, 670, __pyx_L1_error)
-  __pyx_t_6 = __pyx_t_4;
+  __pyx_t_3 = PyObject_Length(__pyx_v_v); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 670, __pyx_L1_error)
+  __pyx_t_6 = __pyx_t_3;
   for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_i = __pyx_t_7;
 
     /* "utility.pyx":671
- *     cdef np.ndarray v_sbox = np.zeros(len(v))
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
  *     for i in range(len(v)):
  *         v_sbox[i] = sbox[v[i]]             # <<<<<<<<<<<<<<
  *     return v_sbox
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_sbox); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 671, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_sbox); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 671, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_v, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 671, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_v, __pyx_v_i, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 671, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 671, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 671, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_v_sbox), __pyx_v_i, __pyx_t_2, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 671, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_v_sbox), __pyx_v_i, __pyx_t_4, int, 1, __Pyx_PyInt_From_int, 0, 1, 1) < 0)) __PYX_ERR(0, 671, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
 
   /* "utility.pyx":672
@@ -18154,14 +18154,14 @@ static PyObject *__pyx_pf_7utility_124linear_sbox(CYTHON_UNUSED PyObject *__pyx_
  * 
  * def linear_sbox(v):             # <<<<<<<<<<<<<<
  *     cdef int i
- *     cdef np.ndarray v_sbox = np.zeros(len(v))
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_AddTraceback("utility.linear_sbox", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
@@ -78107,7 +78107,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * def linear_sbox(v):             # <<<<<<<<<<<<<<
  *     cdef int i
- *     cdef np.ndarray v_sbox = np.zeros(len(v))
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
  */
   __pyx_tuple__197 = PyTuple_Pack(3, __pyx_n_s_v, __pyx_n_s_i, __pyx_n_s_v_sbox); if (unlikely(!__pyx_tuple__197)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__197);
@@ -86889,7 +86889,7 @@ if (!__Pyx_RefNanny) {
  * 
  * def linear_sbox(v):             # <<<<<<<<<<<<<<
  *     cdef int i
- *     cdef np.ndarray v_sbox = np.zeros(len(v))
+ *     cdef np.ndarray v_sbox = np.zeros(len(v), dtype=v.dtype)
  */
   __pyx_t_28 = PyCFunction_NewEx(&__pyx_mdef_7utility_125linear_sbox, NULL, __pyx_n_s_utility); if (unlikely(!__pyx_t_28)) __PYX_ERR(0, 667, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_28);

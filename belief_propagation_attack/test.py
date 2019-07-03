@@ -604,7 +604,117 @@ def get_best_models():
 def load_new_result(filename, file_prefix = OUTPUT_FOLDER+'new_results/'):
     return np.load('{}{}'.format(file_prefix, filename), allow_pickle=True)
 
+
+
+def dpa(traces = 200, repeats = 2, window = 10, use_random_traces = True, no_print = False):
+
+    if traces < 1:
+        print "!!! Cannot run DPA with {} Traces!".format(traces)
+        return None
+
+    np.random.seed(0)
+
+    # First, get power values
+    full_trace_data = load_trace_data(filepath=TRACEDATA_EXTRA_FILEPATH)
+    _, samples = full_trace_data.shape
+
+    # Then, get all plaintexts
+    full_plaintexts = np.load(PLAINTEXT_EXTRA_FILEPATH)
+    timepoints = np.load('{}{}.npy'.format(TIMEPOINTS_FOLDER, 's'), allow_pickle=True)
+    keyvalues = np.load('{}extra_{}.npy'.format(REALVALUES_FOLDER, 'k'), allow_pickle=True)
+
+    # REPEATS!
+    rank_list = list()
+
+    for repeat in range(repeats):
+
+        random_trace_list = get_random_numbers(traces, 0, 10000)
+        trace_data = full_trace_data[random_trace_list, :]
+        plaintexts = full_plaintexts[random_trace_list, :]
+
+        final_key_rank = 1
+
+        # For ALL KEYS 1 to 16
+        for target_key in range(16):
+
+            # FOR NOW, just targeting s1, so get k1
+            plaintexts_target = plaintexts[:,target_key]
+            timepoint_target = timepoints[target_key]
+            start, end = timepoint_target - (window/2), timepoint_target + (window/2)
+
+            # To get rank, get real values
+            keyvalues_target = keyvalues[target_key,0]
+
+            # Set up probdist
+            probability_distribution = get_empty_array()
+
+            # Loop through key guesses
+            for key_guess in range(256):
+                hypothetical_hammingweights = linear_get_hamming_weights(linear_sbox(plaintexts_target ^ key_guess))
+                # print "Hypothetical Hamming Weights: {}".format(hypothetical_hammingweights)
+                correlation_vector = np.array([np.corrcoef(hypothetical_hammingweights, trace_data[:,sample])[0,1] for sample in range(start,end)])
+
+                # CHECK FOR NAN
+                if np.any(np.isnan(correlation_vector)):
+                    # Not enough information to give a proper result, so end here
+                    return None
+
+                # print "Correlation Vector: {}".format(correlation_vector)
+                probability_distribution[key_guess] = np.max(np.abs(correlation_vector))
+                # print "Probability for {}: {}".format(key_guess, probability_distribution[key_guess])
+
+            # Plot probability distribution
+            probability_distribution = normalise_array(probability_distribution)
+            rank = get_rank_from_prob_dist(probability_distribution, keyvalues_target)
+            # print "Key Byte {:3}: Rank {:3}".format(target_key+1, rank)
+
+            final_key_rank *= rank
+
+        # Append the log of the final key rank
+        rank_list.append(final_key_rank)
+
+    if not no_print:
+        print "* DPA Results, {} Traces, {} Repeats, {} Window *".format(traces, repeats, window)
+        print_statistics(rank_list, log=True)
+
+    return rank_list
+
+def dpa_runner():
+
+    min_traces = 9 # won't work for fewer than 9 traces
+    max_traces = 12
+    repeats = 2
+    window = 10
+
+    median_ranks = list()
+    # x_axis = list()
+
+    for i in range(min_traces, max_traces):
+        rank_list = dpa(traces=i, repeats=repeats, window=window)
+        if rank_list is not None:
+            rank = bit_length(np.median(rank_list))
+            median_ranks.append(rank)
+            # x_axis.append(i)
+        else:
+            print "! Not enough traces to run DPA ({} traces)".format(i)
+            median_ranks.append(256)
+
+    # STORE!
+    save_object(median_ranks, 'dpa_traces{}_repeats{}_window{}'.format(max_traces,repeats, window), output=True)
+
+    # plt.plot(x_axis, median_ranks)
+    # plt.show()
+
+
 if __name__ == "__main__":
+
+    # dpa_runner()
+
+    test = load_object('dpa_traces{}_repeats{}_window{}'.format(12,2,10), output=True)
+
+    print test
+
+    exit()
 
     shifted_l = [2,10,50,100,500,1000]
     extra_l = [False,True]
