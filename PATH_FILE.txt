@@ -15,4 +15,6 @@ PATH_TO_TRACES=/Volumes/TRACES/
 #PATH_TO_TRACES=scratch/TRACES/
 # When using PC (Traces on Desktop):
 #PATH_TO_TRACES=/home/joey/Desktop/TRACES/
+# When using mig:
+#PATH_TO_TRACES=/home/joey/TRACES/
 #### End of File ####

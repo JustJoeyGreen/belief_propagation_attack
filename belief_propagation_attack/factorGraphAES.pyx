@@ -369,6 +369,8 @@ class FactorGraphAES:
 
         snr = 2 ** self.SNR_exp
 
+        # print "Check: no_leak: {}".format(no_leak)
+
         # Handle no leaks and fixed values
         if no_leak is None:
             no_leak = []
@@ -479,6 +481,7 @@ class FactorGraphAES:
                     elif var_name == 'p' and var_number <= 16:
                         self.set_initial_distribution(var, self.handler.get_plaintext_byte_distribution(var, trace=offset+trace))
                     elif var_name == 'k' and var_number <= 16 and self.averaged_key_values is not None:
+                        # print "Uh oh, here... No Leak: {}".format(no_leak)
                         self.set_initial_distribution(var, self.handler.get_leakage_distribution(var, self.averaged_key_values[var_number-1], ignore_bad=ignore_bad))
                         # print "Initial Dist for var {}:\n{}\n".format(var, self.handler.get_leakage_distribution(var, self.averaged_key_values[var_number-1], ignore_bad=ignore_bad)) #debug
                     else:

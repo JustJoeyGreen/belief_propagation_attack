@@ -5,7 +5,6 @@ import realTraceHandler as rTraceH
 import argparse
 import matplotlib.pyplot as plt
 from matplotlib import rc
-import trsfile
 import operator
 import timing
 import factorGraphAES as fG
@@ -708,11 +707,7 @@ def dpa_runner():
 
 if __name__ == "__main__":
 
-    # dpa_runner()
-
-    test = load_object('dpa_traces{}_repeats{}_window{}'.format(12,2,10), output=True)
-
-    print test
+    dpa_runner()
 
     exit()
 
