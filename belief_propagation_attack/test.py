@@ -10,6 +10,7 @@ import timing
 import factorGraphAES as fG
 import csv
 import os
+import time
 
 
 # KERAS AND TENSORFLOW
@@ -31,6 +32,7 @@ from keras.callbacks import TensorBoard
 from keras.utils import to_categorical
 from keras.models import load_model
 import tensorflow as tf
+from scipy.signal import savgol_filter
 
 
 
@@ -705,7 +707,112 @@ def dpa_runner():
     # plt.show()
 
 
+def timer():
+
+    trace_data = np.transpose(load_trace_data(memory_mapped = True))
+
+    start_time = time.time()
+
+    var = 's'
+    j = 0
+    validation_traces = 0
+    NUMBER_OF_TEMPLATES = 256
+    PRINT = False
+
+    var_array = np.load(REALVALUES_FOLDER + var + '.npy')
+    var_array = get_hw_of_vector(var_array)
+
+    # Load
+    coeff_array = np.load("{}{}_{}{}.npy".format(COEFFICIENT_FOLDER, var, j, '_HW'))
+
+    # Find the Highest Correlated Time Point
+    poi = np.argmax(coeff_array)
+
+    # print "Variable {} {}: POI {}".format(var, j, poi)
+
+    # Find All Trace Values for this Time Point
+    trace_values = trace_data[poi, :-validation_traces]
+    print trace_values.shape, trace_values
+
+    # Save Mean and Sigma
+    var_string = "{}{}".format(var, pad_string_zeros(j + 1))
+    numpy_array = np.zeros((NUMBER_OF_TEMPLATES, 2))
+
+    # Save Mean and Sigma for Each Hamming Weight
+    if PRINT:
+        print "For Variable {}:".format(var_string)
+    for value in range(NUMBER_OF_TEMPLATES):
+        # Get list of traces where hw is used
+        target_traces = get_list_of_value_matches(var_array[j], value)
+        print value, target_traces
+        if len(target_traces) == 0:
+            print_new_line()
+            print "ERROR: No Traces found where Variable {} has Value {}!".format(var_string, value)
+            print_new_line()
+            # raise IOError
+            pass
+        # if PRINT:
+        #     print "Value {}: {}".format(value, target_traces)
+        # Get Power Values for these traces in numpy array
+
+        ### METHOD 1:
+        # x_power_values = np.take(trace_values, target_traces) #SLOW
+        ### METHOD 2:
+        # x_power_values = np.zeros(target_traces.shape[0])
+        # for x_count, x_val in enumerate(target_traces):
+        #     x_power_values[x_count] = trace_values[x_val]
+        ### METHOD 3:
+        x_power_values = trace_values[target_traces]
+
+        # Get hw and STD
+        mu = np.mean(x_power_values)
+        sigma = np.std(x_power_values)
+        # Store
+        numpy_array[value] = (mu, sigma)
+
+        if PRINT:
+            print "Value {}: {}".format(value, (mu, sigma))
+
+
+
+    # Save
+    print numpy_array
+
+    elapsed_time = time.time() - start_time
+
+    print "Elapsed Time: {} seconds".format(elapsed_time)
+
 if __name__ == "__main__":
+
+    timer()
+
+    exit()
+
+    cpa = load_object('dpa_traces200_repeats100_window10', output=True)[:100]
+
+    # PLOT SUBBYTES ATTACK
+    suffix = 'output/ranks_Standard_IND_'
+    prefix = 'G0_KEYAVG_100T_2I_REALNone.npy'
+
+    classifiers = ['', 'NN2000_', 'LDA200_']
+
+    for classifier in classifiers:
+        data = np.load('{}{}{}'.format(suffix, classifier, prefix), allow_pickle=True)
+        label = 'Univariate' if classifier is '' else classifier.replace('_', '')
+        mean = np.mean(data, axis=0)
+        plt.plot(mean, label=label)
+        np.savetxt('output/{}.csv'.format(label), mean, delimiter=",")
+
+    cpa_x = range(10,100)
+    cpa_y = savgol_filter(cpa[10:], 21, 2)
+    plt.plot(cpa_x, cpa_y, label='HW Based CPA')
+    np.savetxt('output/{}.csv'.format('cpa'), cpa_y, delimiter=",")
+
+    plt.legend()
+    plt.show()
+
+
+    exit()
 
     dpa_runner()
 

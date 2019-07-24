@@ -23,6 +23,7 @@ from keras.callbacks import TensorBoard
 from keras.utils import to_categorical
 from keras.models import load_model
 import tensorflow as tf
+from keras.utils.vis_utils import plot_model
 
 from keras import backend as K
 from utility import *
@@ -159,6 +160,10 @@ def mlp_best(mlp_nodes=200,layer_nb=6, input_length=700, learning_rate=0.00001, 
     for i in range(layer_nb-2):
         model.add(Dense(mlp_nodes, activation='relu'))
     model.add(Dense(classes, activation='softmax'))
+
+    # Save image!
+    plot_model(model, to_file='output/model_plot.png', show_shapes=True, show_layer_names=True)
+
     optimizer = RMSprop(lr=learning_rate)
     if loss_function=='rank_loss':
         model.compile(loss=tf_rank_loss, optimizer=optimizer, metrics=['accuracy'])
@@ -327,7 +332,7 @@ def train_model(X_profiling, Y_profiling, model, save_file_name, epochs=150, bat
     # Save model every epoch
     save_model = ModelCheckpoint(save_file_name)
     # tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
-    callbacks=[save_model, TrainValTensorBoard(write_graph=False)]
+    callbacks=[save_model, TrainValTensorBoard(write_graph=True)]
     # Get the input layer shape
     input_layer_shape = model.get_layer(index=0).input_shape
     # Sanity check

@@ -10,6 +10,7 @@ from scipy.spatial.distance import euclidean
 from fastdtw import fastdtw
 import pandas as pd
 import timing
+import time
 
 import time #DEBUG
 
@@ -758,6 +759,8 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, vali
     print "...done!"
     print_new_line()
 
+    time_list = list()
+
     # samples, traces = trace_data.shape
 
     for var, number_of_nodes in variable_dict.iteritems():
@@ -770,6 +773,9 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, vali
             var_array = get_hw_of_vector(var_array)
 
         for j in range(number_of_nodes):
+
+            # JOEY DEBUG
+            start_time = time.time()
 
             # Load
             coeff_array = np.load("{}{}_{}{}.npy".format(COEFFICIENT_FOLDER, var, j, '_HW' if hw_tp else ''))
@@ -823,6 +829,18 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, vali
 
             # Save
             musig_dict[var_string] = numpy_array
+
+            # JOEY DEBUG
+            elapsed_time = time.time() - start_time
+            print "Elapsed Time: {}".format(elapsed_time)
+            time_list.append(elapsed_time)
+
+    # JOEY DEBUG
+    print "Time List stats:"
+    print_statistics(elapsed_time)
+    exit()
+
+
 
     for key, val in musig_dict.iteritems():
         print "* {} *\n\n{}\n\n".format(key, val)
