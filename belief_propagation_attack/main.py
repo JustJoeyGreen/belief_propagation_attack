@@ -684,7 +684,7 @@ def run_belief_propagation_attack(margdist=None):
             snr_string = SNR_exp if not REAL_TRACES else 'REAL{}'.format(CORRELATION_THRESHOLD)
             kavg_string = "KEYAVG_" if KEY_POWER_VALUE_AVERAGE else ""
             realignment_string = "REALIGNED_" if AUTO_REALIGN else ""
-            jitter_string = "JITTER{}_" if JITTER is not None else ""
+            jitter_string = "JITTER{}_".format(JITTER) if JITTER is not None else ""
 
             Pickle.dump(rank_after_each_trace,
                         open("{}_{}{}{}{}{}{}{}_{}{}{}{}{}T_{}I_{}.npy".format(OUTPUT_FILE_PREFIX, testname_string, connection_string, lda_string, nn_string, best_string, ignore_string, g_string, kavg_string,

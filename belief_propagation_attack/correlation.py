@@ -770,12 +770,12 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, vali
 
         var_array = np.load(REALVALUES_FOLDER + var + '.npy')[:, :-validation_traces]
         if hw_musig:
-            var_array = get_hw_of_vector(var_array)
+            var_array = get_hw_of_vector(var_array) # list of hamming weights
 
         for j in range(number_of_nodes):
 
-            # JOEY DEBUG
-            start_time = time.time()
+            # # JOEY DEBUG
+            # start_time = time.time()
 
             # Load
             coeff_array = np.load("{}{}_{}{}.npy".format(COEFFICIENT_FOLDER, var, j, '_HW' if hw_tp else ''))
@@ -795,50 +795,62 @@ def get_mean_and_sigma_for_each_node(hw_musig=False, hw_tp=True, save=True, vali
             # Save Mean and Sigma for Each Hamming Weight
             if PRINT:
                 print "For Variable {}:".format(var_string)
+
+            partitioned_list = [list() for i in range(NUMBER_OF_TEMPLATES)]
+            for i, identity in enumerate(var_array[j]):
+                partitioned_list[identity].append(trace_values[i])
+
             for value in range(NUMBER_OF_TEMPLATES):
-                # Get list of traces where hw is used
-                target_traces = get_list_of_value_matches(var_array[j], value)
-                if len(target_traces) == 0:
-                    print_new_line()
-                    print "ERROR: No Traces found where Variable {} has Value {}!".format(var_string, value)
-                    print_new_line()
-                    raise IOError
-                # if PRINT:
-                #     print "Value {}: {}".format(value, target_traces)
-                # Get Power Values for these traces in numpy array
-
-                ### METHOD 1:
-                # x_power_values = np.take(trace_values, target_traces) #SLOW
-                ### METHOD 2:
-                # x_power_values = np.zeros(target_traces.shape[0])
-                # for x_count, x_val in enumerate(target_traces):
-                #     x_power_values[x_count] = trace_values[x_val]
-                ### METHOD 3:
-                x_power_values = trace_values[target_traces]
-
-                # Get hw and STD
-                mu = np.mean(x_power_values)
-                sigma = np.std(x_power_values)
+                mu = np.mean(partitioned_list[value])
+                sigma = np.std(partitioned_list[value])
                 # Store
                 numpy_array[value] = (mu, sigma)
 
-                if PRINT:
-                    print "Value {}: {}".format(value, (mu, sigma))
+            ## OLD AND SLOW, PARSES THROUGH TRACE DATA TOO MANY TIMES
+            # for value in range(NUMBER_OF_TEMPLATES):
+            #     # Get list of traces where hw is used
+            #     target_traces = get_list_of_value_matches(var_array[j], value)
+            #     if len(target_traces) == 0:
+            #         print_new_line()
+            #         print "ERROR: No Traces found where Variable {} has Value {}!".format(var_string, value)
+            #         print_new_line()
+            #         raise IOError
+            #     # if PRINT:
+            #     #     print "Value {}: {}".format(value, target_traces)
+            #     # Get Power Values for these traces in numpy array
+            #
+            #     ### METHOD 1:
+            #     # x_power_values = np.take(trace_values, target_traces) #SLOW
+            #     ### METHOD 2:
+            #     # x_power_values = np.zeros(target_traces.shape[0])
+            #     # for x_count, x_val in enumerate(target_traces):
+            #     #     x_power_values[x_count] = trace_values[x_val]
+            #     ### METHOD 3:
+            #     x_power_values = trace_values[target_traces]
+            #
+            #     # Get hw and STD
+            #     mu = np.mean(x_power_values)
+            #     sigma = np.std(x_power_values)
+            #     # Store
+            #     numpy_array[value] = (mu, sigma)
+            #
+            #     if PRINT:
+            #         print "Value {}: {}".format(value, (mu, sigma))
 
 
 
             # Save
             musig_dict[var_string] = numpy_array
 
-            # JOEY DEBUG
-            elapsed_time = time.time() - start_time
-            print "Elapsed Time: {}".format(elapsed_time)
-            time_list.append(elapsed_time)
+            # # JOEY DEBUG
+            # elapsed_time = time.time() - start_time
+            # print "Elapsed Time: {}".format(elapsed_time)
+            # time_list.append(elapsed_time)
 
-    # JOEY DEBUG
-    print "Time List stats:"
-    print_statistics(elapsed_time)
-    exit()
+    # # JOEY DEBUG
+    # print "Time List stats:"
+    # print_statistics(elapsed_time)
+    # exit()
 
 
 
