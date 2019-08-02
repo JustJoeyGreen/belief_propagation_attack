@@ -708,9 +708,9 @@ def lda_templates(tprange=200, validation_traces=10000):
 
     for variable, length in variable_dict.iteritems():
 
-        # if variable not in ['xt','k','h']:
-        #     print "DEBUG: Skipping {}".format(variable)
-        #     continue
+        if variable in ['xk','sk']:
+            print "DEBUG: Skipping {}".format(variable)
+            continue
 
         # if PRINT:
         print "Generating Template for Variable {}, Length {}".format(variable, length)
@@ -737,6 +737,7 @@ def lda_templates(tprange=200, validation_traces=10000):
 
             # Set up linDisAnalysis
             lda = linDisAnalysis()
+            print "> Fitting for {}...".format(i)
             lda.fit(X, y)
 
             # Save
@@ -1244,7 +1245,10 @@ if __name__ == "__main__":
     # TODO
     # ALL(skip_code=SKIP_CODE)
 
-    get_mean_and_sigma_for_each_node(save=False)
+    # get_mean_and_sigma_for_each_node(save=False)
+
+    for i in [2,5,10,20,50,100,150,200,250,300]:
+        lda_templates(tprange=i, validation_traces=110000)
 
     # lda_templates()
 
